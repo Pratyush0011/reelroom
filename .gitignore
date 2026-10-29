@@ -1,0 +1,10 @@
+node_modules/
+out/
+.env
+.env.*
+# Generated audio for each run (re-created by `npm run voice`)
+public/runs/
+# Big binaries from local runs; the example run keeps its MP4 via the README link instead
+runs/**/qa/
+# Recreated any time with `npx tsx pipeline/make-demo.ts`
+runs/_demo/

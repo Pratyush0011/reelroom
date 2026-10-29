@@ -1,0 +1,288 @@
+{
+  "story": "Anthropic's 22 Oct 2026 guide tells builders to try folding specialist subagents back into one agent loop, often faster and cheaper, but it is a conditional 'measure it' recommendation, not a verdict that single agents beat multi-agent setups.",
+  "input": "Anthropic says single AI agents beat multi-agent setups (Silicon Report archive, week of 19 Oct 2026: https://www.siliconreport.com/ai/archive/2026-10)",
+  "publishable": true,
+  "kill_reason": null,
+  "mode": "news",
+  "checked_at": "2026-10-29",
+  "verdict_summary": "9 verified, 7 need softer wording (incl. C0 premise), 0 unverified, 1 false (C16, colour only). C0 holds only with qualifiers; all 4 core claims (C0-C3) survive.",
+  "claims": [
+    {
+      "id": "C0",
+      "text": "Anthropic says single AI agents beat multi-agent setups",
+      "type": "premise",
+      "importance": "core",
+      "sources": [
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "tier": 4, "quote": "Anthropic says single AI agents beat multi-agent setups", "date": "2026-10-25"},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "a single agent with skills frequently outperformed both the one-prompt-for-everything design and the subagent design", "date": "2026-10-22"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Anthropic says that in several enterprise deployments, a single agent that loads skills and tools on demand frequently beat a multi-subagent design, often more cheaply and faster, but subagents 'still have their place' and teams should test before folding.",
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "In our comparisons across several enterprise deployments, a single agent with skills frequently outperformed both the one-prompt-for-everything design and the subagent design on quality", "tier": 1},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "To be clear, subagents still have their place, including at the research frontier.", "tier": 1},
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "quote": "Anthropic says single AI agents beat multi-agent setups", "tier": 4},
+        {"url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone", "publisher": "The Decoder", "quote": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone", "tier": 3}
+      ],
+      "note": "Judged as worded. Anthropic never says 'single AI agents beat multi-agent setups' as a general rule. As worded, the premise overstates, so it cannot run unqualified. It is not false, though: Anthropic does say a single agent with skills 'frequently outperformed' the subagent design on quality, 'often at a lower cost and latency per task', in its comparisons 'across several enterprise deployments'. The qualifiers that make it true are: 'frequently' (not always); Anthropic's own unpublished comparisons (no figures or method); a single agent *with skills/tools loaded on demand* (not any single agent); and the explicit caveat that subagents still have their place (context bloat, parallel work). Its title is 'When to fold subagents', which is conditional advice. Silicon Report's own body text reports the subagent caveat, which undercuts its headline. Writers must never show the headline wording as Anthropic's claim; they may quote it as the press headline (see C15)."
+    },
+    {
+      "id": "C1",
+      "text": "On 22 October 2026 Anthropic published 'Building agents: When to fold subagents into your main agent loop', arguing that using fewer subagents in favor of progressively disclosed context and tools can improve quality.",
+      "type": "event",
+      "importance": "core",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "using fewer subagents in favor of progressively disclosed context and tools can improve quality", "date": "2026-10-22"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "using fewer subagents in favor of progressively disclosed context and tools can improve quality", "tier": 1},
+        {"url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone", "publisher": "The Decoder", "quote": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone", "tier": 3}
+      ],
+      "note": "Page dated October 22, 2026, author Diane Sarkis; title and quote confirmed verbatim. The Decoder (25 Oct) independently reports the article and links to it. The same page also says it 'can improve quality while reducing cost and latency' (hedged 'can')."
+    },
+    {
+      "id": "C2",
+      "text": "Anthropic's claim is hedged, not absolute: in its comparisons a single agent with skills 'frequently' outperformed both a one-prompt-for-everything design and a subagent design, and Anthropic says subagents still have their place.",
+      "type": "quote",
+      "importance": "core",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "a single agent with skills frequently outperformed both the one-prompt-for-everything design and the subagent design", "date": "2026-10-22"},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "To be clear, subagents still have their place, including at the research frontier.", "date": "2026-10-22"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Anthropic says that across several enterprise deployments, a single agent with skills 'frequently' beat both a one-big-prompt design and a subagent design, but it gives no figures and says subagents 'still have their place'.",
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "In our comparisons across several enterprise deployments, a single agent with skills frequently outperformed both the one-prompt-for-everything design and the subagent design on quality", "tier": 1},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "To be clear, subagents still have their place, including at the research frontier.", "tier": 1},
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "quote": "Anthropic says single AI agents beat multi-agent setups", "tier": 4}
+      ],
+      "note": "Both quotes verbatim. Scope added: the comparison is Anthropic's own, 'across several enterprise deployments', on quality; no sample size, metric or method is published. Do not imply a measured quality score."
+    },
+    {
+      "id": "C3",
+      "text": "One (unnamed) customer that compared its multi-agent harness with a single agent loop saw roughly 2x faster runtime with the single loop.",
+      "type": "number",
+      "importance": "core",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "saw a roughly 2x faster runtime with the latter.", "date": "2026-10-22"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Anthropic says one unnamed customer that tested its multi-agent setup against a single agent loop saw roughly 2x faster runtime with the single loop.",
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "One customer that evaluated their multi-agent harness against a single agent loop ... saw a roughly 2x faster runtime with the latter.", "tier": 1},
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "quote": "about twice as fast", "tier": 4}
+      ],
+      "note": "Confirmed verbatim. Scope: one customer, unnamed, self-reported via Anthropic; runtime (speed) only, nothing said about cost or answer quality for this customer. Must be attributed to Anthropic and kept to 'one customer'. Do not write 'halves latency' (Silicon Report's subhead paraphrase) or generalise to all single agents."
+    },
+    {
+      "id": "C4",
+      "text": "Anthropic says the single agent with skills often ran at a lower cost and latency per task.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "and often at a lower cost and latency per task.", "date": "2026-10-22"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "and often at a lower cost and latency per task.", "tier": 1}
+      ],
+      "note": "Verbatim; continues the 'several enterprise deployments' sentence. Already attributed and hedged ('often'). No cost figure exists; do not invent one."
+    },
+    {
+      "id": "C5",
+      "text": "Anthropic reduced Claude Code's system prompt for more advanced models by over 80%.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "we reduced Claude Code's system prompt for more advanced models by over 80%", "date": "2026-10-22"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Anthropic says it cut Claude Code's system prompt for its more advanced models by over 80%.",
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "we reduced Claude Code's system prompt for more advanced models by over 80%", "tier": 1},
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "quote": "more than 80 percent", "tier": 4}
+      ],
+      "note": "Verbatim. Company self-report about its own product; scope is 'for more advanced models' only, not all Claude Code use. Cuts included progressively disclosing skills and tools. Keep 'over 80%' and the 'more advanced models' qualifier. Note: 01-research.md says the newer models named are 'Opus 5.5, Fable 5.1'; the article's actual line is 'starting with Opus 4.5, models became capable of managing far more in a single loop'. Do not attach model names to this number."
+    },
+    {
+      "id": "C6",
+      "text": "Anthropic says tool choice tends to degrade once a system prompt exceeds 30-50 tool definitions.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "once you exceed 30-50 tool definitions in the system prompt, tool choice tends to degrade.", "date": "2026-10-22"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Anthropic's rule of thumb: past 30-50 tool definitions in a system prompt, tool choice tends to degrade.",
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "once you exceed 30-50 tool definitions in the system prompt, tool choice tends to degrade.", "tier": 1}
+      ],
+      "note": "Verbatim. It is guidance with no data or study cited, so present it as Anthropic's rule of thumb, not a measured threshold. Keep the range '30-50'."
+    },
+    {
+      "id": "C7",
+      "text": "For the examples it describes, Anthropic suggests one clear system prompt, 4-5 thin data tools and firm output guardrails would cover most of the use case.",
+      "type": "number",
+      "importance": "color",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "one clear system prompt, 4-5 thin data tools, and firm output guardrails would cover most of the use case.", "date": "2026-10-22"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "one clear system prompt, 4-5 thin data tools, and firm output guardrails would cover most of the use case.", "tier": 1}
+      ],
+      "note": "Verbatim. Context: said in response to an over-engineered proposed design (intent classifier, fixed pipeline, segment buckets, orchestrator); tools are not named. It is advice, not a result."
+    },
+    {
+      "id": "C8",
+      "text": "Folding is not risk-free: in Anthropic's sample support-agent test, folding one subagent into another lowered latency but broke a process that had been passing.",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "folding one subagent into another lowered latency, but also broke a process that had been passing.", "date": "2026-10-22"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "When we tested this on a sample support agent, folding one subagent into another lowered latency, but also broke a process that had been passing.", "tier": 1}
+      ],
+      "note": "Verbatim, and confirmed as a test on a sample support agent, not production. Detail: the main agent answered an order question without asking the shipping specialist for the delivery date; the break appeared in one of two runs."
+    },
+    {
+      "id": "C9",
+      "text": "Anthropic says keep subagents when a single agent loop hits measurable performance degradation from context bloat, or when multiple tasks need to run in parallel with fresh context windows.",
+      "type": "quote",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "A single agent loop hits measurable performance degradation from context bloat", "date": "2026-10-22"},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "tier": 1, "quote": "Multiple tasks need to be tackled in parallel with fresh context windows", "date": "2026-10-22"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "A single agent loop hits measurable performance degradation from context bloat, or", "tier": 1},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "Multiple tasks need to be tackled in parallel with fresh context windows that can be discarded once the task is done, or", "tier": 1}
+      ],
+      "note": "Both bullets verbatim. The list has further conditions (the 'or' continues); the claim does not say it is exhaustive, which is fine."
+    },
+    {
+      "id": "C10",
+      "text": "Anthropic released a companion GitHub starter kit, anthropics/single-agent-loop-kit (Apache-2.0), for moving a multi-agent system toward one agent loop that loads skills and tools on demand; it is marked as a reference implementation, not maintained.",
+      "type": "availability",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://github.com/anthropics/single-agent-loop-kit", "publisher": "Anthropic (GitHub, anthropics org)", "tier": 1, "quote": "A starter kit for moving a multi-agent system (a router or orchestrator in front of specialist subagents) toward one agent loop that loads skills and tools on demand.", "date": "2026-10-22"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://github.com/anthropics/single-agent-loop-kit", "publisher": "Anthropic (GitHub, anthropics org)", "quote": "Reference implementation. Not maintained and not accepting contributions.", "tier": 1},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "migration kit ... https://github.com/anthropics/single-agent-loop-kit", "tier": 1}
+      ],
+      "note": "README first sentence verbatim; Apache-2.0 confirmed; 'Reference implementation. Not maintained and not accepting contributions.' confirmed; 1 commit. The article links the kit. The repo page shows no date: the source date 2026-10-22 is the article's date, and the reported 15 Oct creation date is unverified, so do not state a repo date."
+    },
+    {
+      "id": "C11",
+      "text": "Anthropic's January 2026 guidance already said multi-agent implementations typically use 3-10x more tokens than single-agent approaches for equivalent tasks.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them", "publisher": "Anthropic (Claude blog)", "tier": 1, "quote": "typically use 3-10x more tokens than single-agent approaches for equivalent tasks", "date": "2026-01-23"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "In January 2026 Anthropic said that in its testing, multi-agent setups typically used 3-10x more tokens than single agents for the same tasks.",
+      "checked_sources": [
+        {"url": "https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them", "publisher": "Anthropic (Claude blog)", "quote": "In our testing, multi-agent implementations typically use 3-10x more tokens than single-agent approaches for equivalent tasks", "tier": 1}
+      ],
+      "note": "Verbatim; dated January 23, 2026, author Cara Phillips. Sentence opens 'In our testing', so attribute it to Anthropic's own testing. Tokens are a cost proxy; do not convert to '3-10x more expensive'."
+    },
+    {
+      "id": "C12",
+      "text": "Anthropic's January 2026 advice: start with the simplest approach that works and add complexity only when evidence supports it.",
+      "type": "quote",
+      "importance": "color",
+      "sources": [
+        {"url": "https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them", "publisher": "Anthropic (Claude blog)", "tier": 1, "quote": "Our advice? Start with the simplest approach that works, and add complexity only when evidence supports it.", "date": "2026-01-23"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them", "publisher": "Anthropic (Claude blog)", "quote": "Our advice? Start with the simplest approach that works, and add complexity only when evidence supports it.", "tier": 1}
+      ],
+      "note": "Verbatim, dated 2026-01-23."
+    },
+    {
+      "id": "C13",
+      "text": "In June 2025 Anthropic reported its multi-agent research system outperformed single-agent Claude Opus 4 by 90.2% on its internal research eval, while using about 15x more tokens than chats.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://www.anthropic.com/engineering/multi-agent-research-system", "publisher": "Anthropic Engineering", "tier": 1, "quote": "outperformed single-agent Claude Opus 4 by 90.2% on our internal research eval", "date": "2025-06-13"},
+        {"url": "https://www.anthropic.com/engineering/multi-agent-research-system", "publisher": "Anthropic Engineering", "tier": 1, "quote": "multi-agent systems use about 15× more tokens than chats", "date": "2025-06-13"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://www.anthropic.com/engineering/multi-agent-research-system", "publisher": "Anthropic Engineering", "quote": "outperformed single-agent Claude Opus 4 by 90.2% on our internal research eval", "tier": 1},
+        {"url": "https://www.anthropic.com/engineering/multi-agent-research-system", "publisher": "Anthropic Engineering", "quote": "multi-agent systems use about 15× more tokens than chats", "tier": 1}
+      ],
+      "note": "Both verbatim; dated June 13, 2025. Scope as written is correct: internal research eval, Opus 4 lead with Sonnet 4 subagents vs single-agent Opus 4. Caution: the 15x is versus chats, NOT versus a single agent (the same post says single agents use about 4x chats). Never write '15x more than a single agent'. Keep 'internal eval' on screen with 90.2%."
+    },
+    {
+      "id": "C14",
+      "text": "In August 2026 Anthropic research found a coordinating agent swarm found 266 vulnerabilities over a 27 million token run, versus 21 for a simple independent parallelized method over 6.5 million tokens.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://www.anthropic.com/research/multiagent-systems", "publisher": "Anthropic Research", "tier": 1, "quote": "while the coordinating agent swarm found 266 vulnerabilities over a 27 million token run.", "date": "2026-08-13"},
+        {"url": "https://www.anthropic.com/research/multiagent-systems", "publisher": "Anthropic Research", "tier": 1, "quote": "the simple independent parallelized method produces 21 vulnerabilities over a 6.5 million token run", "date": "2026-08-13"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "In an August 2026 Anthropic experiment, a coordinating agent swarm found 266 vulnerabilities using 27 million tokens, versus 21 for independent parallel agents using 6.5 million tokens; about half the swarm's finds were in code the parallel agents weren't assigned.",
+      "checked_sources": [
+        {"url": "https://www.anthropic.com/research/multiagent-systems", "publisher": "Anthropic Research", "quote": "For Mythos Preview, the simple independent parallelized method produces 21 vulnerabilities over a 6.5 million token run", "tier": 1},
+        {"url": "https://www.anthropic.com/research/multiagent-systems", "publisher": "Anthropic Research", "quote": "while the coordinating agent swarm found 266 vulnerabilities over a 27 million token run.", "tier": 1},
+        {"url": "https://www.anthropic.com/research/multiagent-systems", "publisher": "Anthropic Research", "quote": "the two methods seem comparable in terms of tokens per vulnerability found", "tier": 1}
+      ],
+      "note": "Numbers verbatim; page dated Aug 13, 2026, Frontier Red Team (corresponding author Carolyn Zou). Scope: one experiment with Mythos Preview. Roughly half of the 266 were outside the core directories the independent agents were told to search; within those directories tokens-per-vulnerability were comparable; only 12 overlapped; findings were validated by an arbiter agent, no human verification described. So it is NOT a clean 'swarms find 12x more bugs' result: 01-research.md's '12x more bugs' framing must not be used. The swarm also used ~4x the tokens."
+    },
+    {
+      "id": "C15",
+      "text": "The 'one agent beats many' framing comes from press coverage, e.g. The Decoder's 25 Oct 2026 headline; Anthropic's own title is 'When to fold subagents into your main agent loop'.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone", "publisher": "The Decoder", "tier": 3, "quote": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone", "date": "2026-10-25"},
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "tier": 4, "quote": "Anthropic says single AI agents beat multi-agent setups", "date": "2026-10-25"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone", "publisher": "The Decoder", "quote": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone", "tier": 3},
+        {"url": "https://www.siliconreport.com/anthropic-says-single-ai-agents-beat-multi-agent-setups", "publisher": "Silicon Report", "quote": "Anthropic says single AI agents beat multi-agent setups", "tier": 4},
+        {"url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop", "publisher": "Anthropic (claude.com resources)", "quote": "Building agents: When to fold subagents into your main agent loop", "tier": 1}
+      ],
+      "note": "Both headlines confirmed verbatim, both dated Oct 25, 2026 (The Decoder: Matthias Bastian; Silicon Report: Margaret Chen). Anthropic's title confirmed. Name the outlets factually; do not claim they 'got it wrong', only that the headline is stronger than Anthropic's hedged wording."
+    },
+    {
+      "id": "C16",
+      "text": "A Vals study cited by The Decoder found scaling from ten to 30 or 100 agents brought no quality gains but significantly higher costs (tier 3 only; primary study not opened).",
+      "type": "opinion",
+      "importance": "color",
+      "sources": [
+        {"url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone", "publisher": "The Decoder", "tier": 3, "quote": "Scaling from ten to 30 or 100 agents brought no quality gains but significantly higher costs, according to the study.", "date": "2026-10-25"}
+      ],
+      "status": "false",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone", "publisher": "The Decoder", "quote": "Scaling from ten to 30 or 100 agents brought no quality gains but significantly higher costs, according to the study.", "tier": 3},
+        {"url": "https://www.vals.ai/blogs/multi-agent-vibe-code-bench", "publisher": "Vals AI", "quote": "Teams cost 1.8 to 5.1 times as much as single agents, and only one difference in score was statistically significant.", "tier": 1}
+      ],
+      "note": "The Decoder sentence is quoted correctly, but it is contradicted by the primary source. The Vals study (Vals AI blog, 9 Oct 2026, Katrina Drozdov, Vibe Code Bench) capped teams at five concurrent subagents and did not test 10, 30 or 100 agents. Its actual finding: teams cost 1.8-5.1x as much as single agents and only one score difference (GPT 6 Sol, medium effort) was statistically significant. The 10/30/100 scaling figures appear to come from other, secondary-reported data showing small (not zero) gains. Do not use. If a writer wants the Vals point, it would need a new claim from the Vals primary post and a fresh check."
+    }
+  ]
+}

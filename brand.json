@@ -1,0 +1,20 @@
+{
+  "name": "reelroom",
+  "handle": "@reelroom.ai",
+  "audience": "Curious people in India and worldwide who use AI tools but don't follow AI news closely: students, creators, working professionals.",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "voiceRate": "+6%",
+  "wordsPerSecond": 2.5,
+  "minSeconds": 20,
+  "maxSeconds": 50,
+  "colors": {
+    "bg": "#0A0A0C",
+    "surface": "#16161B",
+    "text": "#F4F2EE",
+    "muted": "#8C8A93",
+    "accent": "#D7FF3A",
+    "accentInk": "#0A0A0C",
+    "warn": "#FF5C39",
+    "good": "#3DDC97"
+  }
+}

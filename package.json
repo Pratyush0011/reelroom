@@ -1,0 +1,38 @@
+{
+  "name": "reelroom",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A writers' room of AI agents that turns any AI story into a fact-checked, ready-to-post vertical reel.",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "reel": "tsx pipeline/run.ts",
+    "voice": "tsx pipeline/voice.ts",
+    "check": "tsx pipeline/check.ts",
+    "render": "tsx pipeline/render.ts",
+    "stills": "tsx pipeline/stills.ts",
+    "test": "tsx --test pipeline/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.539",
+    "@remotion/cli": "^4.0.539",
+    "@remotion/google-fonts": "^4.0.539",
+    "@remotion/layout-utils": "^4.0.539",
+    "@remotion/media": "^4.0.539",
+    "@remotion/media-utils": "^4.0.539",
+    "@remotion/renderer": "^4.0.539",
+    "@remotion/transitions": "^4.0.539",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.539",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.312",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

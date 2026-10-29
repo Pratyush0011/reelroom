@@ -1,0 +1,626 @@
+{
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "s1",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s1.mp3",
+      "audioMs": 9984,
+      "durationInFrames": 308,
+      "words": [
+        {
+          "text": "Anthropic's",
+          "startMs": 83,
+          "endMs": 755
+        },
+        {
+          "text": "AI",
+          "startMs": 861,
+          "endMs": 1226
+        },
+        {
+          "text": "team",
+          "startMs": 1226,
+          "endMs": 1639
+        },
+        {
+          "text": "beat",
+          "startMs": 1851,
+          "endMs": 2134
+        },
+        {
+          "text": "a",
+          "startMs": 2335,
+          "endMs": 2382
+        },
+        {
+          "text": "solo",
+          "startMs": 2382,
+          "endMs": 2972
+        },
+        {
+          "text": "AI",
+          "startMs": 3054,
+          "endMs": 3632
+        },
+        {
+          "text": "by",
+          "startMs": 3785,
+          "endMs": 3950
+        },
+        {
+          "text": "ninety",
+          "startMs": 3962,
+          "endMs": 4363
+        },
+        {
+          "text": "point",
+          "startMs": 4363,
+          "endMs": 4634
+        },
+        {
+          "text": "two",
+          "startMs": 4634,
+          "endMs": 4788
+        },
+        {
+          "text": "percent",
+          "startMs": 4788,
+          "endMs": 5283
+        },
+        {
+          "text": "Now",
+          "startMs": 5649,
+          "endMs": 5873
+        },
+        {
+          "text": "Anthropic",
+          "startMs": 5884,
+          "endMs": 6474
+        },
+        {
+          "text": "says",
+          "startMs": 6698,
+          "endMs": 7017
+        },
+        {
+          "text": "one",
+          "startMs": 7099,
+          "endMs": 7500
+        },
+        {
+          "text": "AI",
+          "startMs": 7630,
+          "endMs": 8231
+        },
+        {
+          "text": "frequently",
+          "startMs": 8467,
+          "endMs": 9057
+        },
+        {
+          "text": "wins",
+          "startMs": 9068,
+          "endMs": 9634
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s2.mp3",
+      "audioMs": 3792,
+      "durationInFrames": 123,
+      "words": [
+        {
+          "text": "Both",
+          "startMs": 94,
+          "endMs": 271
+        },
+        {
+          "text": "are",
+          "startMs": 271,
+          "endMs": 318
+        },
+        {
+          "text": "true",
+          "startMs": 318,
+          "endMs": 672
+        },
+        {
+          "text": "That",
+          "startMs": 1061,
+          "endMs": 1167
+        },
+        {
+          "text": "win",
+          "startMs": 1179,
+          "endMs": 1262
+        },
+        {
+          "text": "was",
+          "startMs": 1262,
+          "endMs": 1368
+        },
+        {
+          "text": "on",
+          "startMs": 1368,
+          "endMs": 1462
+        },
+        {
+          "text": "Anthropic's",
+          "startMs": 1462,
+          "endMs": 2193
+        },
+        {
+          "text": "own",
+          "startMs": 2335,
+          "endMs": 2535
+        },
+        {
+          "text": "research",
+          "startMs": 2535,
+          "endMs": 2995
+        },
+        {
+          "text": "test",
+          "startMs": 2995,
+          "endMs": 3443
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s3.mp3",
+      "audioMs": 6720,
+      "durationInFrames": 210,
+      "words": [
+        {
+          "text": "The",
+          "startMs": 94,
+          "endMs": 165
+        },
+        {
+          "text": "one-AI",
+          "startMs": 165,
+          "endMs": 790
+        },
+        {
+          "text": "win",
+          "startMs": 802,
+          "endMs": 1097
+        },
+        {
+          "text": "came",
+          "startMs": 1108,
+          "endMs": 1356
+        },
+        {
+          "text": "from",
+          "startMs": 1356,
+          "endMs": 1474
+        },
+        {
+          "text": "a",
+          "startMs": 1474,
+          "endMs": 1557
+        },
+        {
+          "text": "different",
+          "startMs": 1568,
+          "endMs": 1875
+        },
+        {
+          "text": "job",
+          "startMs": 1875,
+          "endMs": 2300
+        },
+        {
+          "text": "several",
+          "startMs": 2689,
+          "endMs": 2995
+        },
+        {
+          "text": "company",
+          "startMs": 2995,
+          "endMs": 3266
+        },
+        {
+          "text": "deployments",
+          "startMs": 3278,
+          "endMs": 3974
+        },
+        {
+          "text": "one",
+          "startMs": 4186,
+          "endMs": 4493
+        },
+        {
+          "text": "AI",
+          "startMs": 4599,
+          "endMs": 5130
+        },
+        {
+          "text": "grabbing",
+          "startMs": 5142,
+          "endMs": 5578
+        },
+        {
+          "text": "tools",
+          "startMs": 5578,
+          "endMs": 5861
+        },
+        {
+          "text": "as",
+          "startMs": 5873,
+          "endMs": 5967
+        },
+        {
+          "text": "needed",
+          "startMs": 5979,
+          "endMs": 6368
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s4.mp3",
+      "audioMs": 3288,
+      "durationInFrames": 108,
+      "words": [
+        {
+          "text": "Often",
+          "startMs": 94,
+          "endMs": 401
+        },
+        {
+          "text": "cheaper",
+          "startMs": 401,
+          "endMs": 896
+        },
+        {
+          "text": "and",
+          "startMs": 908,
+          "endMs": 991
+        },
+        {
+          "text": "faster",
+          "startMs": 1002,
+          "endMs": 1675
+        },
+        {
+          "text": "No",
+          "startMs": 2064,
+          "endMs": 2276
+        },
+        {
+          "text": "figures",
+          "startMs": 2288,
+          "endMs": 2677
+        },
+        {
+          "text": "though",
+          "startMs": 2677,
+          "endMs": 2948
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s5.mp3",
+      "audioMs": 7656,
+      "durationInFrames": 239,
+      "words": [
+        {
+          "text": "Helpers",
+          "startMs": 94,
+          "endMs": 389
+        },
+        {
+          "text": "still",
+          "startMs": 401,
+          "endMs": 649
+        },
+        {
+          "text": "have",
+          "startMs": 649,
+          "endMs": 896
+        },
+        {
+          "text": "their",
+          "startMs": 896,
+          "endMs": 1026
+        },
+        {
+          "text": "place",
+          "startMs": 1026,
+          "endMs": 1627
+        },
+        {
+          "text": "Anthropic",
+          "startMs": 1804,
+          "endMs": 2417
+        },
+        {
+          "text": "says",
+          "startMs": 2429,
+          "endMs": 2948
+        },
+        {
+          "text": "When",
+          "startMs": 3325,
+          "endMs": 3408
+        },
+        {
+          "text": "one",
+          "startMs": 3408,
+          "endMs": 3632
+        },
+        {
+          "text": "AI",
+          "startMs": 3715,
+          "endMs": 4198
+        },
+        {
+          "text": "is",
+          "startMs": 4198,
+          "endMs": 4328
+        },
+        {
+          "text": "swamped",
+          "startMs": 4340,
+          "endMs": 4847
+        },
+        {
+          "text": "Or",
+          "startMs": 5236,
+          "endMs": 5307
+        },
+        {
+          "text": "when",
+          "startMs": 5307,
+          "endMs": 5448
+        },
+        {
+          "text": "jobs",
+          "startMs": 5460,
+          "endMs": 5873
+        },
+        {
+          "text": "must",
+          "startMs": 5873,
+          "endMs": 6085
+        },
+        {
+          "text": "run",
+          "startMs": 6097,
+          "endMs": 6427
+        },
+        {
+          "text": "side",
+          "startMs": 6427,
+          "endMs": 6722
+        },
+        {
+          "text": "by",
+          "startMs": 6722,
+          "endMs": 6840
+        },
+        {
+          "text": "side",
+          "startMs": 6851,
+          "endMs": 7311
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s6.mp3",
+      "audioMs": 8136,
+      "durationInFrames": 253,
+      "words": [
+        {
+          "text": "The",
+          "startMs": 94,
+          "endMs": 177
+        },
+        {
+          "text": "catch",
+          "startMs": 177,
+          "endMs": 649
+        },
+        {
+          "text": "in",
+          "startMs": 1002,
+          "endMs": 1108
+        },
+        {
+          "text": "Anthropic's",
+          "startMs": 1108,
+          "endMs": 1816
+        },
+        {
+          "text": "sample",
+          "startMs": 1828,
+          "endMs": 2146
+        },
+        {
+          "text": "support",
+          "startMs": 2146,
+          "endMs": 2571
+        },
+        {
+          "text": "bot",
+          "startMs": 2571,
+          "endMs": 2889
+        },
+        {
+          "text": "after",
+          "startMs": 3337,
+          "endMs": 3573
+        },
+        {
+          "text": "two",
+          "startMs": 3573,
+          "endMs": 3821
+        },
+        {
+          "text": "helpers",
+          "startMs": 3821,
+          "endMs": 4198
+        },
+        {
+          "text": "merged",
+          "startMs": 4210,
+          "endMs": 4670
+        },
+        {
+          "text": "it",
+          "startMs": 5012,
+          "endMs": 5083
+        },
+        {
+          "text": "skipped",
+          "startMs": 5083,
+          "endMs": 5425
+        },
+        {
+          "text": "checking",
+          "startMs": 5425,
+          "endMs": 5802
+        },
+        {
+          "text": "the",
+          "startMs": 5802,
+          "endMs": 5873
+        },
+        {
+          "text": "delivery",
+          "startMs": 5873,
+          "endMs": 6274
+        },
+        {
+          "text": "date",
+          "startMs": 6285,
+          "endMs": 6639
+        },
+        {
+          "text": "One",
+          "startMs": 7028,
+          "endMs": 7229
+        },
+        {
+          "text": "run",
+          "startMs": 7241,
+          "endMs": 7394
+        },
+        {
+          "text": "in",
+          "startMs": 7394,
+          "endMs": 7465
+        },
+        {
+          "text": "two",
+          "startMs": 7476,
+          "endMs": 7795
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s7.mp3",
+      "audioMs": 7536,
+      "durationInFrames": 235,
+      "words": [
+        {
+          "text": "Anthropic's",
+          "startMs": 94,
+          "endMs": 566
+        },
+        {
+          "text": "advice",
+          "startMs": 578,
+          "endMs": 943
+        },
+        {
+          "text": "back",
+          "startMs": 943,
+          "endMs": 1215
+        },
+        {
+          "text": "in",
+          "startMs": 1215,
+          "endMs": 1274
+        },
+        {
+          "text": "January",
+          "startMs": 1274,
+          "endMs": 1840
+        },
+        {
+          "text": "start",
+          "startMs": 2229,
+          "endMs": 2441
+        },
+        {
+          "text": "simple",
+          "startMs": 2441,
+          "endMs": 2913
+        },
+        {
+          "text": "add",
+          "startMs": 3361,
+          "endMs": 3491
+        },
+        {
+          "text": "more",
+          "startMs": 3491,
+          "endMs": 3785
+        },
+        {
+          "text": "only",
+          "startMs": 3797,
+          "endMs": 4104
+        },
+        {
+          "text": "with",
+          "startMs": 4104,
+          "endMs": 4245
+        },
+        {
+          "text": "evidence",
+          "startMs": 4245,
+          "endMs": 4800
+        },
+        {
+          "text": "Team",
+          "startMs": 5189,
+          "endMs": 5342
+        },
+        {
+          "text": "of",
+          "startMs": 5342,
+          "endMs": 5436
+        },
+        {
+          "text": "AIs",
+          "startMs": 5436,
+          "endMs": 6085
+        },
+        {
+          "text": "or",
+          "startMs": 6297,
+          "endMs": 6486
+        },
+        {
+          "text": "just",
+          "startMs": 6675,
+          "endMs": 6863
+        },
+        {
+          "text": "one",
+          "startMs": 6875,
+          "endMs": 7205
+        }
+      ]
+    }
+  ]
+}

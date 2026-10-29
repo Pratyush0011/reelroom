@@ -1,0 +1,169 @@
+{
+  "story": "No primary source supports the viral claim that OpenAI confirmed on 27 Oct 2026 that GPT-7 is conscious and that the EU granted it legal personhood; OpenAI has not announced GPT-7 and no EU personhood grant was found.",
+  "input": "BREAKING: OpenAI confirmed on 27 October 2026 that GPT-7 is conscious and the EU has granted it legal personhood",
+  "publishable": true,
+  "kill_reason": null,
+  "checked_at": "2026-10-29",
+  "verdict_summary": "3 verified, 7 need softer wording, 0 unverified, 0 false. Publishable ONLY as a debunk: the input headline itself is unsupported by any source (no GPT-7, no consciousness statement, no EU personhood grant) and must never be shown or voiced as fact.",
+  "claims": [
+    {
+      "id": "C1",
+      "text": "OpenAI's official news feed contains no post about GPT-7, consciousness or legal personhood between 1 September and 28 October 2026, including 27 October 2026.",
+      "type": "event",
+      "importance": "core",
+      "sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "tier": 1, "quote": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT", "date": "2026-10-27"}
+      ],
+      "status": "verified",
+      "checked_sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT", "tier": 1}
+      ],
+      "note": "Re-fetched 2026-10-29. 141 feed items dated 1 Sep to 28 Oct 2026 checked; none mention GPT-7, consciousness, sentience or personhood in title or description. Models named: GPT-6 (Astra, Sol, Luna, Terra), GPT-6.1, GPT-5.6, GPT-Live-1. Scope is the official feed only; X posts and livestreams not audited. Independent searches also found no report of any such OpenAI statement."
+    },
+    {
+      "id": "C2",
+      "text": "No source found shows the EU granting legal personhood to GPT-7 or any AI system; the EU's 2017 'electronic persons' idea for robots was proposed by the European Parliament but not adopted.",
+      "type": "event",
+      "importance": "core",
+      "sources": [
+        {"url": "https://gizmodo.com/experts-sign-open-letter-slamming-europe-s-proposal-to-1825240003/amp", "publisher": "Gizmodo", "tier": 3, "quote": "so that at least the most sophisticated autonomous robots could be established as having the status of electronic persons", "date": "2018-04-13"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "We found no EU decision giving any AI legal personhood. The closest thing: a 2017 European Parliament report floated 'electronic persons' for advanced robots, and it never became law.",
+      "checked_sources": [
+        {"url": "https://gizmodo.com/experts-sign-open-letter-slamming-europe-s-proposal-to-1825240003/amp", "publisher": "Gizmodo", "quote": "so that at least the most sophisticated autonomous robots could be established as having the status of electronic persons", "tier": 3},
+        {"url": "https://www.technologyreview.com/2018/04/12/104503/europeans-are-arguing-over-whether-robots-should-have-rights/", "publisher": "MIT Technology Review", "quote": "A 2017 European Parliament report suggested that advanced robots could be granted \"electronic personalities.\"", "tier": 2}
+      ],
+      "note": "2017 proposal confirmed by two independent outlets (Gizmodo, MIT Technology Review). 'Not adopted' and 'no EU grant' are absence findings: three searches for Oct 2026 EU/Commission action on AI personhood returned nothing; the only 2026 EU item found (Council Decision (EU) 2026/1080, 21 Apr 2026, CoE AI convention) does not address personhood. The Commission press corner did not render for my fetcher, so no EU primary page was read. Word it as 'we found no', not 'the EU has ruled out'."
+    },
+    {
+      "id": "C3",
+      "text": "As of mid-September 2026, OpenAI had not announced, previewed or named a model called GPT-7.",
+      "type": "event",
+      "importance": "core",
+      "sources": [
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 4, "quote": "No. As of the time of writing, OpenAI has not announced, previewed, teased, or named a model called GPT-7.", "date": "2026-09-10"},
+        {"url": "https://tech-insider.org/chatgpt-7-rumors-debunked-gpt-6-astra-2026/", "publisher": "Tech Insider", "tier": 4, "quote": "OpenAI has not announced, named, previewed, or documented a model called GPT-7", "date": "2026-09-16"}
+      ],
+      "status": "verified",
+      "checked_sources": [
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "quote": "No. As of the time of writing, OpenAI has not announced, previewed, teased, or named a model called GPT-7.", "tier": 4},
+        {"url": "https://tech-insider.org/chatgpt-7-rumors-debunked-gpt-6-astra-2026/", "publisher": "Tech Insider", "quote": "As of September 16, 2026, OpenAI has not announced, named, previewed, or documented a model called GPT-7 in any official channel", "tier": 4},
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "Introducing GPT-6.1 Terra", "tier": 1}
+      ],
+      "note": "Both quotes found verbatim (Tech Insider's is a fragment of a longer sentence). Consistent with the tier 1 feed, which names no GPT-7 through 28 Oct 2026, so the claim also holds at the claim date."
+    },
+    {
+      "id": "C4",
+      "text": "OpenAI launched GPT-6 Astra on 3 September 2026.",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "tier": 1, "quote": "GPT-6 Astra: A new generation of intelligence", "date": "2026-09-03"},
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 4, "quote": "GPT-6 Astra, launched September 3, 2026. It is OpenAI's current flagship.", "date": "2026-09-10"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "OpenAI announced GPT-6 Astra on 3 September 2026.",
+      "checked_sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "GPT-6 Astra: A new generation of intelligence", "tier": 1},
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "quote": "released to approved organizations on September 3, 2026", "tier": 4}
+      ],
+      "note": "Date confirmed by tier 1 feed. 'Launched' is too broad: Pluralsight says it was released to approved organizations on 3 Sep; the feed has a separate 'GPT-6 Astra: The next generation in intelligence for work' post on 9 Sep and 'GPT-6 and Intelligent UI for everyone' on 7 Oct, so broad availability came later. Say 'announced'."
+    },
+    {
+      "id": "C5",
+      "text": "OpenAI's most recent model announcements before the claim date were GPT-6.1 Sol (29 Sep 2026) and GPT-6.1 Terra (26 Oct 2026).",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "tier": 1, "quote": "Introducing GPT-6.1 Terra", "date": "2026-10-26"},
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "tier": 1, "quote": "Introducing GPT-6.1 Sol", "date": "2026-09-29"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "OpenAI introduced GPT-6.1 Sol on 29 September and GPT-6.1 Terra on 26 October 2026, the day before the claimed date.",
+      "checked_sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "Introducing GPT-6.1 Terra", "tier": 1},
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "Introducing GPT-6.1 Sol", "tier": 1}
+      ],
+      "note": "Both titles and dates confirmed. 'Most recent model announcements' is an overstatement: between them the feed also has 'Bringing GPT-Rosalind to academic research labs' (15 Oct) and 'GPT-6 and Intelligent UI for everyone' (7 Oct). Drop the superlative."
+    },
+    {
+      "id": "C6",
+      "text": "OpenAI's Head of Applied Research, Boris Power, said 80 to 90 percent of OpenAI's research targets GPT-7 and beyond (a research goal, not a released model).",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://the-decoder.com/openai-says-80-to-90-percent-of-its-research-already-targets-gpt-7-and-beyond/", "publisher": "The Decoder", "tier": 3, "quote": "OpenAI says 80 to 90 percent of its research already targets GPT 7 and beyond", "date": "2026-09-27"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "According to The Decoder, OpenAI's Head of Applied Research Boris Power said 80 to 90 percent of the company's research goes toward GPT-7, GPT-8 and beyond.",
+      "checked_sources": [
+        {"url": "https://the-decoder.com/openai-says-80-to-90-percent-of-its-research-already-targets-gpt-7-and-beyond/", "publisher": "The Decoder", "quote": "80 to 90 percent of the company's research goes toward GPT 7, GPT 8, and beyond", "tier": 3}
+      ],
+      "note": "Title and figure confirmed in The Decoder (27 Sep 2026). Only one secondary source opened; the source video (YouTube, Fellows Forum) was not watched, so attribute to The Decoder. A Chinese-language aggregator in search results repeats the same 80-90% figure, but it was not opened."
+    },
+    {
+      "id": "C7",
+      "text": "OpenAI's publicly reported position (June 2025) is that whether its AI is conscious is scientifically unanswerable for now; it neither claims nor denies ChatGPT is conscious.",
+      "type": "quote",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://the-decoder.com/openai-leaves-the-question-of-ai-consciousness-consciously-unanswered/", "publisher": "The Decoder", "tier": 3, "quote": "considers the ontological question scientifically unanswerable, at least for now", "date": "2025-06-07"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "In June 2025, The Decoder reported that OpenAI considers whether its AI is conscious 'scientifically unanswerable, at least for now'.",
+      "checked_sources": [
+        {"url": "https://the-decoder.com/openai-leaves-the-question-of-ai-consciousness-consciously-unanswered/", "publisher": "The Decoder", "quote": "The company considers the ontological question scientifically unanswerable, at least for now.", "tier": 3}
+      ],
+      "note": "Quote confirmed verbatim, dated 7 Jun 2025, based on an X post by OpenAI's Joanne Jang. Single secondary source, 16 months old: do not call it OpenAI's 'current' position, and the 'neither claims nor denies' gloss is not in the quoted text."
+    },
+    {
+      "id": "C8",
+      "text": "In 2018, 156 AI and robotics experts signed an open letter opposing the EU 'electronic persons' proposal.",
+      "type": "number",
+      "importance": "color",
+      "sources": [
+        {"url": "https://gizmodo.com/experts-sign-open-letter-slamming-europe-s-proposal-to-1825240003/amp", "publisher": "Gizmodo", "tier": 3, "quote": "over 150", "date": "2018-04-13"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "In 2018, more than 150 experts signed an open letter against the EU 'electronic persons' idea.",
+      "checked_sources": [
+        {"url": "https://gizmodo.com/experts-sign-open-letter-slamming-europe-s-proposal-to-1825240003/amp", "publisher": "Gizmodo", "quote": "156 experts felt the need to sign", "tier": 3},
+        {"url": "https://www.technologyreview.com/2018/04/12/104503/europeans-are-arguing-over-whether-robots-should-have-rights/", "publisher": "MIT Technology Review", "quote": "over 150 experts from 14 EU countries warn", "tier": 2}
+      ],
+      "note": "Gizmodo gives both 'over 150' and '156'; MIT Technology Review gives 'over 150'. Only one source has the exact 156, so use 'more than 150'. Signatories were not all AI/robotics experts (search sources list academics, politicians and industry leaders), so drop 'AI and robotics'."
+    },
+    {
+      "id": "C9",
+      "text": "The UK Law Commission said in 2025 that current AI systems may not be advanced enough to warrant legal personality (UK, not EU).",
+      "type": "quote",
+      "importance": "color",
+      "sources": [
+        {"url": "https://www.legalcheek.com/2025/08/should-ai-be-given-legal-personhood-new-law-commission-paper-raises-radical-possibility/amp/", "publisher": "Legal Cheek", "tier": 3, "quote": "Current AI systems may not be sufficiently advanced to warrant this reform option.", "date": "2025-08"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "In 2025, a UK Law Commission discussion paper said current AI systems 'may not be sufficiently advanced' to warrant legal personality.",
+      "checked_sources": [
+        {"url": "https://www.legalcheek.com/2025/08/should-ai-be-given-legal-personhood-new-law-commission-paper-raises-radical-possibility/amp/", "publisher": "Legal Cheek", "quote": "Current AI systems may not be sufficiently advanced to warrant this reform option.", "tier": 3}
+      ],
+      "note": "Quote confirmed verbatim in Legal Cheek, which quotes the Law Commission paper 'AI and the Law' (Jul 2025). Tier 1 PDF not opened. Legal Futures separately covered the same paper (seen in search, not opened). It is a discussion paper, not a ruling, and the paper also argues the question should be discussed now; keep it framed as UK and as a discussion paper."
+    },
+    {
+      "id": "C10",
+      "text": "OpenAI's posts dated 27 October 2026 were about partnerships and customers (Retell, Oracle, Check Point), not a new model.",
+      "type": "event",
+      "importance": "color",
+      "sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "tier": 1, "quote": "Retell uses OpenAI models to help power 100M monthly calls", "date": "2026-10-27"},
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "tier": 1, "quote": "How Check Point accelerates vulnerability research with Daybreak", "date": "2026-10-27"}
+      ],
+      "status": "verified",
+      "checked_sources": [
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "Retell uses OpenAI models to help power 100M monthly calls", "tier": 1},
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT", "tier": 1},
+        {"url": "https://openai.com/news/rss.xml", "publisher": "OpenAI (official news RSS feed)", "quote": "How Check Point accelerates vulnerability research with Daybreak", "tier": 1}
+      ],
+      "note": "Exactly three feed items are dated 27 Oct 2026 (Retell, Oracle, Check Point), all customer/partnership posts. Feed only; other channels not audited."
+    }
+  ]
+}

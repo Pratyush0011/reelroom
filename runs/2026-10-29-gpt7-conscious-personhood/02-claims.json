@@ -1,0 +1,125 @@
+{
+  "story": "Viral claim says OpenAI confirmed GPT-7 is conscious and the EU granted it legal personhood on 27 Oct 2026; no source supports it and GPT-7 has not been announced.",
+  "input": "BREAKING: OpenAI confirmed on 27 October 2026 that GPT-7 is conscious and the EU has granted it legal personhood",
+  "publishable": false,
+  "kill_reason": "C0, the input's own premise (OpenAI confirmed on 27 Oct 2026 that GPT-7 is conscious and the EU granted it legal personhood), is unverified: no OpenAI statement, no EU decision and no news report of either exists in any source found. Every available signal points the other way: GPT-7 had not been announced as of 10 Sept 2026, OpenAI's release log through 26 Oct 2026 shows GPT-6.1 Terra and no GPT-7, and no EU body has granted legal personhood to any AI. This is a news run, not a debunk run, so a false or unverified premise stops the story. A debunk reel is possible only if the user re-runs with 'debunk:'.",
+  "mode": "news",
+  "checked_at": "2026-10-29",
+  "verdict_summary": "2 verified, 6 need softer wording, 1 unverified (C0, the premise), 0 false",
+  "claims": [
+    {
+      "id": "C0",
+      "text": "OpenAI confirmed on 27 October 2026 that GPT-7 is conscious and the EU has granted it legal personhood",
+      "type": "premise",
+      "importance": "core",
+      "sources": [],
+      "status": "unverified",
+      "checked_sources": [
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "No. As of the time of writing, OpenAI has not announced, previewed, teased, or named a model called GPT-7."},
+        {"url": "https://releasebot.io/updates/openai/openai-models", "publisher": "Releasebot (tracks help.openai.com model release notes)", "tier": 4, "quote": "OpenAI Models releases GPT-6.1 Terra in the API, ChatGPT Work, and Codex, with support for visual reasoning"}
+      ],
+      "note": "Judged exactly as worded. Zero sources of any tier support any part of it: no OpenAI announcement of GPT-7, no OpenAI statement that any model is conscious, no EU (Commission, Parliament or Council) act granting legal personhood to an AI. Four independent searches (standard and extended) found nothing; the only search results on EU AI personhood concern the 2017 Parliament 'electronic person' idea, reportedly rejected by the Commission and dropped from later proposals. Not marked 'false' only because I could not read OpenAI's or the EU's own listings dated 27 Oct (openai.com/news and help.openai.com returned 403; the EC press corner rendered no content), and the latest contradicting sources predate 27 Oct (Pluralsight 10 Sept; Releasebot log to 26 Oct). Debunk evidence for a possible 'debunk:' run: C1, C2, C6, C7, C8."
+    },
+    {
+      "id": "C1",
+      "text": "As of 10 September 2026, OpenAI had not announced, previewed, teased or named a model called GPT-7",
+      "type": "event",
+      "importance": "core",
+      "sources": [{"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "No. As of the time of writing, OpenAI has not announced, previewed, teased, or named a model called GPT-7.", "date": "2026-09-10"}],
+      "status": "verified_with_wording",
+      "safe_text": "As of 10 September 2026, OpenAI had not announced a model called GPT-7, and OpenAI's release notes as logged through 26 October list no GPT-7.",
+      "checked_sources": [
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "No. As of the time of writing, OpenAI has not announced, previewed, teased, or named a model called GPT-7."},
+        {"url": "https://releasebot.io/updates/openai/openai-models", "publisher": "Releasebot", "tier": 4, "quote": "OpenAI Models releases GPT-6.1 Terra in the API, ChatGPT Work, and Codex, with support for visual reasoning"}
+      ],
+      "note": "Quote confirmed verbatim on re-fetch. Pluralsight is an explainer, not OpenAI; absence of GPT-7 is corroborated by the Releasebot log (no GPT-7 entry through 26 Oct). Proves absence only up to 26 Oct, the day before the claimed event."
+    },
+    {
+      "id": "C2",
+      "text": "OpenAI's newest flagship model is GPT-6 Astra, released to approved organizations on 3 September 2026",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "The newest OpenAI model is GPT-6 Astra, released to approved organizations on September 3, 2026", "date": "2026-09-10"},
+        {"url": "https://foxbusiness.com/technology/openai-unveils-gpt-6-astra-major-advances-ai-capabilities", "publisher": "Fox Business", "tier": 3, "quote": "The San Francisco-based company said Astra is rolling out starting Thursday to enterprise customers with Daybreak access.", "date": "2026-09-03"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "OpenAI released GPT-6 Astra on 3 September 2026, first to enterprise customers.",
+      "checked_sources": [
+        {"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "The newest OpenAI model is GPT-6 Astra, released to approved organizations on September 3, 2026, and to paying ChatGPT users the following day."},
+        {"url": "https://foxbusiness.com/technology/openai-unveils-gpt-6-astra-major-advances-ai-capabilities", "publisher": "Fox Business", "tier": 3, "quote": "The San Francisco-based company said Astra is rolling out starting Thursday to enterprise customers with Daybreak access."}
+      ],
+      "note": "Date confirmed by two independent tier 3 sources (3 Sept 2026 was a Thursday). 'Newest' is stale: Releasebot lists GPT-6.1 Terra on 26 Oct, so drop 'newest'. Researcher's quote was a truncated sentence ending in a period; the full sentence is in checked_sources."
+    },
+    {
+      "id": "C3",
+      "text": "OpenAI has given no release date for GPT-7; Pluralsight estimates the second half of 2027",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [{"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "OpenAI has given no date for when GPT-7 will be released.", "date": "2026-09-10"}],
+      "status": "verified_with_wording",
+      "safe_text": "As of September 2026 OpenAI had given no GPT-7 date; Pluralsight guesses the second half of 2027.",
+      "checked_sources": [{"url": "https://www.pluralsight.com/resources/blog/ai-and-data/gpt-7", "publisher": "Pluralsight", "tier": 3, "quote": "Currently, the cadence points to GPT-7 being released in the second half of 2027."}],
+      "note": "Both sentences confirmed verbatim. The 2027 timing is Pluralsight's own estimate, not an OpenAI statement; must be attributed. Single source, dated 10 Sept."
+    },
+    {
+      "id": "C4",
+      "text": "On 28 September 2026 OpenAI confirmed it scrapped the planned October release of GPT-6.1 Astra because it did not meet its safety and alignment standards",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [{"url": "https://bdnews24.com/business/7jgbn7264z", "publisher": "Reuters via bdnews24", "tier": 3, "quote": "did not meet the company's safety and alignment standards", "date": "2026-09-29"}],
+      "status": "verified",
+      "checked_sources": [
+        {"url": "https://bdnews24.com/business/7jgbn7264z", "publisher": "Reuters via bdnews24", "tier": 3, "quote": "did not meet the company's safety and alignment standards"},
+        {"url": "https://krdo.com/news/2026/09/28/didnt-quite-meet-the-bar-openai-wont-release-new-ai-model-due-to-safety-concerns/", "publisher": "CNN via KRDO", "tier": 3, "quote": "'Didn't quite meet the bar': OpenAI won't release new AI model due to safety concerns"}
+      ],
+      "note": "Two independent agencies (Reuters, CNN) on 28-29 Sept. 28 Sept 2026 was a Monday, matching Reuters' 'confirmed on Monday'. No OpenAI page documenting it was reachable."
+    },
+    {
+      "id": "C5",
+      "text": "OpenAI safety systems head Saachi Jain said GPT-6.1 Astra \"didn't quite meet the bar in terms of staying within scope and authorisation\"",
+      "type": "quote",
+      "importance": "color",
+      "sources": [{"url": "https://bdnews24.com/business/7jgbn7264z", "publisher": "Reuters via bdnews24", "tier": 3, "quote": "it didn't quite meet the bar in terms of staying within scope and authorisation", "date": "2026-09-29"}],
+      "status": "verified",
+      "checked_sources": [
+        {"url": "https://bdnews24.com/business/7jgbn7264z", "publisher": "Reuters via bdnews24", "tier": 3, "quote": "it didn't quite meet the bar in terms of staying within scope and authorisation"},
+        {"url": "https://krdo.com/news/2026/09/28/didnt-quite-meet-the-bar-openai-wont-release-new-ai-model-due-to-safety-concerns/", "publisher": "CNN via KRDO", "tier": 3, "quote": "it didn't quite meet the bar in terms of staying within scope and authorization"}
+      ],
+      "note": "Same quote in two independent outlets; only the spelling differs (authorisation/authorization). Use the spelling of whichever source is cited on screen."
+    },
+    {
+      "id": "C6",
+      "text": "GPT-6.1 Terra was released on 26 October 2026 in the API, ChatGPT Work and Codex",
+      "type": "availability",
+      "importance": "supporting",
+      "sources": [{"url": "https://releasebot.io/updates/openai/openai-models", "publisher": "Releasebot", "tier": 4, "quote": "OpenAI Models releases GPT-6.1 Terra in the API, ChatGPT Work, and Codex, with support for visual reasoning", "date": "2026-10-26"}],
+      "status": "verified_with_wording",
+      "safe_text": "OpenAI's release notes, as tracked by Releasebot, list GPT-6.1 Terra on 26 October 2026 in the API, ChatGPT Work and Codex.",
+      "checked_sources": [{"url": "https://releasebot.io/updates/openai/openai-models", "publisher": "Releasebot", "tier": 4, "quote": "OpenAI Models releases GPT-6.1 Terra in the API, ChatGPT Work, and Codex, with support for visual reasoning"}],
+      "note": "Quote confirmed verbatim, dated 26 Oct. Releasebot links its origin as help.openai.com/en/articles/9624314-model-release-notes, which returned 403 to me, so the tier 1 page was not read. Attribute to the release log."
+    },
+    {
+      "id": "C7",
+      "text": "An October 2026 log of OpenAI model releases lists GPT-6.1 Terra (26 Oct) and the retirement of GPT-5.5 (14 Oct), with no mention of GPT-7",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [{"url": "https://releasebot.io/updates/openai/openai-models", "publisher": "Releasebot", "tier": 4, "quote": "OpenAI Models retires GPT-5.5 from ChatGPT, ChatGPT Work, and Codex while keeping API access unchanged.", "date": "2026-10-14"}],
+      "status": "verified_with_wording",
+      "safe_text": "Releasebot's log of OpenAI model release notes for October 2026 shows GPT-5.5 retired (14 Oct) and GPT-6.1 Terra (26 Oct), and no GPT-7.",
+      "checked_sources": [{"url": "https://releasebot.io/updates/openai/openai-models", "publisher": "Releasebot", "tier": 4, "quote": "OpenAI Models retires GPT-5.5 from ChatGPT, ChatGPT Work, and Codex while keeping API access unchanged."}],
+      "note": "Both entries and dates confirmed on re-fetch; no GPT-7 entry anywhere on the page. Aggregator, tier 4; covers up to 26 Oct only."
+    },
+    {
+      "id": "C8",
+      "text": "A 2025 UK Law Commission paper said AI systems do not currently have separate legal personality, and described granting it as a potentially radical option",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [{"url": "https://www.legalcheek.com/2025/08/should-ai-be-given-legal-personhood-new-law-commission-paper-raises-radical-possibility/amp/", "publisher": "Legal Cheek", "tier": 3, "quote": "AI systems do not currently have separate legal personality and therefore can neither be sued or prosecuted", "date": "2025-08"}],
+      "status": "verified_with_wording",
+      "safe_text": "A 2025 Law Commission discussion paper said AI systems do not currently have separate legal personality, calling personhood a \"potentially radical option\" (via Legal Cheek).",
+      "checked_sources": [{"url": "https://www.legalcheek.com/2025/08/should-ai-be-given-legal-personhood-new-law-commission-paper-raises-radical-possibility/amp/", "publisher": "Legal Cheek", "tier": 3, "quote": "AI systems do not currently have separate legal personality and therefore can neither be sued or prosecuted"}],
+      "note": "Quote verbatim on the article. The article does not state 'UK' or 'England and Wales' or a printed date (both inferred from context and URL); the paper itself was not read. Not an EU body, so it does not bear on the EU part of C0 directly."
+    }
+  ]
+}

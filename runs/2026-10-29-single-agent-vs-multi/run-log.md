@@ -1,0 +1,23 @@
+# Run log
+
+Input: Anthropic says single AI agents beat multi-agent setups (reported week of 19 Oct 2026)
+Started: 2026-10-29
+
+- [1 research] researcher → 16 claims, 3 core; primary source = Anthropic article 22 Oct 2026; headline 'beats' originates in press coverage, not Anthropic
+- [2 fact-check] fact-checker → PUBLISHABLE: yes. 9 verified, 7 softened (incl. C0 premise: true only with qualifiers), 1 FALSE (C16: press misreported a Vals study as testing 10-100 agents; primary study capped at 5)
+- [3 hooks] hook-writer → 3 angles, 12 hooks, 9 archetypes; C16 excluded
+- [3 hooks critique r1] retention-editor → REVISE. Best 18/25 (H6, H3). H12 disqualified on truth (implied '12x better'); H1 truth 3/5. Proposed rewrite of H6 scored 22/25.
+- [3 hooks r2] hook-writer → 6 plain-language hooks; adopts critic's rewrite as R2-H1
+- [3 hooks critique r2] retention-editor → PASS. R2-H1 22/25 (Truth 4); backup R2-H3 19/25. Fixes: stagger frame-1 elements, shorten eval label.
+- [4 script] script-writer → 7 beats, 115 words (~43 s at +6%), claims C0 C1 C2 C4 C8 C9 C12 C13
+- [4 script critique r3] retention-editor → REVISE 25/35. Truth fail: 'one research task' misstates C13 (critic's own R2 wording; VO B2, label, caption). Pay-off timing deviation accepted if B3 states 'different job'. B5 long list = main drop point.
+- [4 script r2] script-writer → applied 6 fixes, 122 words
+- [4 script critique r4] retention-editor → PASS 31/35. All truth issues resolved; 'different job' at ~14.3s. Polish: thin 50s margin, B6 wording/screen text, stagger B5 list.
+- [5 storyboard] director → 7 scenes; moved 'Both are true.' to s2 because the spelled-out hook was 22 words (gate max 20). npm run check: PASS
+- [6 voice] edge-tts → 52.2 s; GATE FAIL (max 50). Director sent back to trim say lines.
+- [6 voice r2] director trimmed 10 words (no hedges cut) → 49.2 s; npm run check PASS
+- [7 visual-qa r1] visual-qa → FIX: 1 blocker (clipped source chip on the hook frame), 4 majors (orphan words, '1 of / 2 runs' split, crowded CTA). Engine fixed (1-publisher chip, balanced wrapping); director applying text fixes.
+- [7 visual-qa r2] visual-qa → FIX: 4 of 5 resolved; s4 'No figures' split across lines. Director fix round 2 (last allowed).
+- [7 director fix r2] s4 → 'Often cheaper. No figures.'
+- [7 visual-qa r3] visual-qa → SHIP
+- [8 render] final.mp4 49.2 s 1080x1920 h264/aac; cover.png; POST.md written. DONE.

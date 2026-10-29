@@ -1,0 +1,63 @@
+# Visual direction playbook
+
+You turn an approved script into a storyboard for the reelroom video engine. The engine has a
+library of designed scene types; you choose the right one for each beat and fill in its fields.
+You do not write React code; you write `storyboard.json`, which `src/schema.ts` validates.
+
+## 1. Vertical grammar
+
+- **Canvas:** 1080 × 1920, 30 fps, 9:16.
+- **Safe zone:** the platform UI covers parts of the frame (status bar at the top, caption/username/buttons at the bottom, like/comment/share buttons on the right). The engine keeps every element inside a conservative safe zone that works across Reels, TikTok and Shorts. Don't try to place things at the edges.
+- **One idea per frame.** If a scene needs two ideas, it is two scenes.
+- **Change something every 1.5–3 s.** A new word, a counter ticking, a highlight, a new item. Static frames bleed viewers. Each scene type has built-in internal motion; choose types that keep the eye busy.
+- **Read time:** on-screen text must be readable in the time it is on screen: about 3 words per second at most, and big. Fewer words always wins.
+- **Mute-proof:** someone watching without sound should still get the story from on-screen text + captions.
+
+## 2. Scene library (what each type is for)
+
+| type | Use it for | Fields |
+|---|---|---|
+| `hook` | Beat 1 only. The text hook, slammed in word by word, with one accent word. | `headline` (≤6 words), `accent` (one word from headline), `kicker` (optional tiny label above, e.g. "AI NEWS") |
+| `statement` | A key sentence that should land hard. | `text` (≤12 words), `accent` (word or phrase to highlight) |
+| `stat` | A single striking number. The counter animates up. | `value` (number), `prefix`/`suffix` ("$", "x", "%", "M"), `decimals`, `label` (≤8 words), `context` (optional ≤10 words) |
+| `compare` | Before/after, A vs B, old vs new. | `left` and `right`: `{label, value, note?}`; `winner` ("left"/"right"/"none"); `metric` (what's being compared). If both values are numeric, bars animate. |
+| `list` | 2–4 items revealed one by one. | `title`, `items` (each ≤6 words) |
+| `quote` | A short quote from a named person/org. | `quote` (≤20 words), `who`, `role` |
+| `receipt` | Showing the source on screen: builds trust, great after a surprising claim. | `publisher`, `headline` (as published, ≤14 words), `date`, `url` |
+| `chart` | 3–5 numbers that compare (benchmarks, prices). | `title`, `unit`, `bars`: `[{label, value, highlight?}]` |
+| `catch` | The honest "but". A warning-style card. | `title` (e.g. "The catch"), `text` (≤14 words) |
+| `cta` | Final beat. A comment/save prompt. | `prompt` (≤10 words), `sub` (optional) |
+
+Rules of thumb:
+- Start with `hook`. End with `cta`.
+- Put a `receipt` right after the most surprising claim. On-screen receipts are this channel's signature.
+- Use `stat` or `compare` for any number that matters; never bury a big number inside a sentence card.
+- Don't use the same type twice in a row (except `statement` if the beats really are two lines of argument).
+- 5 to 9 scenes for a 25–45 s reel.
+
+## 3. Voice and timing
+
+- Each scene has `say`: the exact voiceover for that scene, copied from the script's voiceover lines (spoken form, numbers written out).
+- Scene length is decided by the voice: the engine generates speech per scene and sizes each scene to fit, plus a small pause. So you never set durations.
+- Captions are generated from the voice with word-level timing and shown in the lower-middle area automatically.
+
+## 4. Sources on screen
+
+Every scene that shows a fact should carry `claims: ["C2", ...]`. The engine shows a small source chip
+(publisher name) so viewers see where each fact comes from. `npm run check` rejects scenes that cite
+claims that are not `verified` / `verified_with_wording`.
+
+## 5. Output contract
+
+Write `storyboard.json`:
+```json
+{
+  "title": "...",
+  "voice": "en-US-AndrewMultilingualNeural",
+  "scenes": [
+    {"id": "s1", "type": "hook", "say": "...", "headline": "...", "accent": "...", "claims": ["C2"]},
+    ...
+  ]
+}
+```
+`voice` is optional; it defaults to the one in `brand.json`. Then run `npm run check -- <run-dir>` and fix every error before handing back.
