@@ -50,6 +50,8 @@ const screenText = (s: Scene): string[] => {
 			return [s.prompt, s.sub ?? ''];
 		case 'document':
 			return [s.publisher, s.quote];
+		case 'broll':
+			return [s.kicker ?? '', s.headline];
 		case 'merge':
 			return [s.title ?? '', s.from.label, s.to.label, s.caption ?? ''];
 		case 'versus':
@@ -71,20 +73,38 @@ const mentions = (text: string, n: number) => {
 	return [...forms].some((f) => new RegExp(`(^|[^\\d.])${f.replace('.', '\\.')}(?![\\d])`).test(plain));
 };
 
+const SHORT_FORM = /(youtube\.com\/shorts\/|instagram\.com\/(reel|reels|p)\/|tiktok\.com\/)/i;
+
+// The director's inspiration research must be real: enough references, mostly actual short-form reels, and a recipe.
+export const checkDirection = (direction: string | null): string[] => {
+	if (direction === null) return ['05b-direction.md is missing: the director must run the reel-inspiration skill first'];
+	const urls = [...new Set(direction.match(/https?:\/\/[^\s)|>\]]+/g) ?? [])];
+	const errors: string[] = [];
+	if (urls.length < 5) errors.push(`05b-direction.md cites ${urls.length} reference URLs; at least 5 are required`);
+	const short = urls.filter((u) => SHORT_FORM.test(u)).length;
+	if (short < 3) errors.push(`05b-direction.md cites ${short} short-form reels (YouTube Shorts / Reels / TikTok); at least 3 are required`);
+	if (!/motion recipe/i.test(direction)) errors.push('05b-direction.md has no "Motion recipe" section');
+	return errors;
+};
+
 export const checkRun = ({
 	storyboard,
 	ledger,
 	timing,
 	brand,
+	direction,
 }: {
 	storyboard: unknown;
 	ledger: Ledger | null;
 	timing: Timing | null;
 	brand: Pick<Brand, 'wordsPerSecond' | 'minSeconds' | 'maxSeconds'>;
+	// contents of 05b-direction.md; undefined skips the inspiration gate (unit tests of other rules)
+	direction?: string | null;
 }): Report => {
 	const errors: string[] = [];
 	const warnings: string[] = [];
 	const stats: Report['stats'] = {};
+	if (direction !== undefined) errors.push(...checkDirection(direction));
 
 	if (!ledger) errors.push('02-claims.json is missing: nothing has been fact-checked.');
 	else if (ledger.publishable === false) errors.push(`The fact-checker stopped this story: ${ledger.kill_reason ?? 'no reason given'}`);
@@ -134,6 +154,9 @@ export const checkRun = ({
 				errors.push(`${s.id}: the quote is not found verbatim in the cited claims' source quotes`);
 		}
 
+		for (const w of s.emphasis ?? [])
+			if (!s.say.toLowerCase().includes(w.toLowerCase())) errors.push(`${s.id}: emphasis "${w}" is never spoken in this scene, so it can't be timed`);
+
 		const all = [s.say, ...screenText(s)].join(' ').toLowerCase();
 		for (const phrase of BANNED) if (all.includes(phrase)) errors.push(`${s.id}: uses banned phrase "${phrase}"`);
 	}
@@ -153,6 +176,13 @@ export const checkRun = ({
 		if (stale) errors.push('voice/timing.json does not match the storyboard; run `npm run voice` again');
 		const seconds = timing.scenes.reduce((n, t) => n + t.durationInFrames, 0) / timing.fps;
 		stats.seconds = Number(seconds.toFixed(1));
+		// Pace: every scene cut and every emphasis punch-in is a visual change.
+		const changes = sb.scenes.length + sb.scenes.reduce((n, s) => n + (s.emphasis?.length ?? 0), 0);
+		const pace = seconds / changes;
+		stats.secondsPerVisualChange = Number(pace.toFixed(2));
+		if (pace > 2.0) errors.push(`only one visual change every ${pace.toFixed(1)}s; split scenes or add emphasis words to get to ≤ 2.0s`);
+		const longest = Math.max(...timing.scenes.map((t) => t.durationInFrames / timing.fps));
+		if (longest > 4.5) errors.push(`a scene runs ${longest.toFixed(1)}s; split it (max 4.5s)`);
 		if (seconds > brand.maxSeconds) errors.push(`the voiced reel is ${seconds.toFixed(1)}s; the maximum is ${brand.maxSeconds}s`);
 		if (seconds < brand.minSeconds) errors.push(`the voiced reel is ${seconds.toFixed(1)}s; the minimum is ${brand.minSeconds}s`);
 	} else {

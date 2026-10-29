@@ -22,7 +22,11 @@ const paginate = (words: Word[]) => {
 	return pages;
 };
 
-export const Captions: React.FC<{words: Word[]; colors: Colors}> = ({words, colors}) => {
+const clean = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+
+// Emphasis words pop inside the caption band as an accent "sticker", so they can never cover the scene's content.
+export const Captions: React.FC<{words: Word[]; colors: Colors; emphasis?: string[]}> = ({words, colors, emphasis = []}) => {
+	const hot = new Set(emphasis.flatMap((e) => e.split(/\s+/).map(clean)));
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const ms = (frame / fps) * 1000;
@@ -54,14 +58,29 @@ export const Captions: React.FC<{words: Word[]; colors: Colors}> = ({words, colo
 		>
 			{page.map((w) => {
 				const active = ms >= w.startMs - 40 && ms < w.endMs + 120;
+				const isHot = hot.has(clean(w.text));
+				const pop = isHot ? enter(frame, Math.floor(((w.startMs - 40) / 1000) * fps), 6) : 0;
 				return (
 					<span
 						key={w.startMs}
-						style={{
-							color: active ? colors.accent : colors.text,
-							WebkitTextStroke: `10px ${colors.bg}`,
-							paintOrder: 'stroke fill',
-						}}
+						style={
+							isHot && ms >= w.startMs - 40
+								? {
+										color: colors.accentInk,
+										background: colors.accent,
+										padding: '0 14px',
+										borderRadius: 12,
+										display: 'inline-block',
+										rotate: '-3deg',
+										scale: String(lerp(pop, 1.6, 1.12)),
+										boxShadow: '0 12px 30px rgba(0,0,0,0.45)',
+									}
+								: {
+										color: active ? colors.accent : colors.text,
+										WebkitTextStroke: `10px ${colors.bg}`,
+										paintOrder: 'stroke fill',
+									}
+						}
 					>
 						{w.text.replace(/[.,;:]$/, '')}
 					</span>

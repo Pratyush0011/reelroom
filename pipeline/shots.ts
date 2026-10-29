@@ -1,7 +1,7 @@
 // Screenshots the real source page for every `document` scene, using Remotion's headless Chrome.
 // Writes public/runs/<slug>/doc-<scene>.png and <run>/assets.json for the renderer.
 import {execFileSync} from 'node:child_process';
-import {existsSync, mkdirSync, readdirSync, rmSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {loadStoryboard, publicAudioDir, ROOT, runDirFromArgs, slugOf} from './lib.ts';
 
@@ -21,7 +21,8 @@ const sb = loadStoryboard(runDir);
 const outDir = publicAudioDir(runDir);
 mkdirSync(outDir, {recursive: true});
 const chrome = findChrome();
-const assets: Record<string, string> = {};
+const assetsFile = path.join(runDir, 'assets.json');
+const assets: Record<string, string> = existsSync(assetsFile) ? JSON.parse(readFileSync(assetsFile, 'utf8')) : {};
 
 for (const scene of sb.scenes) {
 	if (scene.type !== 'document') continue;
@@ -44,4 +45,4 @@ for (const scene of sb.scenes) {
 		console.log(`${scene.id}  ✗ could not screenshot ${scene.url}: ${String(e).slice(0, 120)}`);
 	}
 }
-writeFileSync(path.join(runDir, 'assets.json'), JSON.stringify(assets, null, 2));
+writeFileSync(assetsFile, JSON.stringify(assets, null, 2));

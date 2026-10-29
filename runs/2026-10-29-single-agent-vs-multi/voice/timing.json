@@ -4,8 +4,8 @@
     {
       "id": "s1",
       "audio": "runs/2026-10-29-single-agent-vs-multi/s1.mp3",
-      "audioMs": 4660,
-      "durationInFrames": 147,
+      "audioMs": 3637,
+      "durationInFrames": 111,
       "words": [
         {
           "text": "One",
@@ -15,12 +15,12 @@
         {
           "text": "AI",
           "startMs": 291,
-          "endMs": 582
+          "endMs": 655
         },
         {
           "text": "frequently",
           "startMs": 873,
-          "endMs": 1527
+          "endMs": 1600
         },
         {
           "text": "beats",
@@ -45,30 +45,38 @@
         {
           "text": "AI",
           "startMs": 2691,
-          "endMs": 2909
+          "endMs": 3055
         },
         {
           "text": "bots,",
-          "startMs": 3055,
-          "endMs": 3564
-        },
-        {
-          "text": "Anthropic",
-          "startMs": 3673,
-          "endMs": 4073
-        },
-        {
-          "text": "found.",
-          "startMs": 4145,
-          "endMs": 4655
+          "startMs": 3127,
+          "endMs": 3636
         }
       ]
     },
     {
       "id": "s2",
       "audio": "runs/2026-10-29-single-agent-vs-multi/s2.mp3",
-      "audioMs": 1532,
-      "durationInFrames": 53,
+      "audioMs": 1534,
+      "durationInFrames": 48,
+      "words": [
+        {
+          "text": "Anthropic",
+          "startMs": 0,
+          "endMs": 582
+        },
+        {
+          "text": "found.",
+          "startMs": 655,
+          "endMs": 1527
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s3.mp3",
+      "audioMs": 1530,
+      "durationInFrames": 48,
       "words": [
         {
           "text": "Here's",
@@ -93,10 +101,10 @@
       ]
     },
     {
-      "id": "s3",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s3.mp3",
-      "audioMs": 4225,
-      "durationInFrames": 134,
+      "id": "s4",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s4.mp3",
+      "audioMs": 4004,
+      "durationInFrames": 122,
       "words": [
         {
           "text": "The",
@@ -110,27 +118,27 @@
         },
         {
           "text": "one",
-          "startMs": 1018,
-          "endMs": 1236
+          "startMs": 1055,
+          "endMs": 1164
         },
         {
           "text": "AI",
-          "startMs": 1309,
-          "endMs": 1818
+          "startMs": 1236,
+          "endMs": 1745
         },
         {
           "text": "using",
-          "startMs": 1891,
-          "endMs": 2182
+          "startMs": 1818,
+          "endMs": 2109
         },
         {
           "text": "tools",
-          "startMs": 2255,
-          "endMs": 2691
+          "startMs": 2182,
+          "endMs": 2618
         },
         {
           "text": "only",
-          "startMs": 2836,
+          "startMs": 2764,
           "endMs": 3127
         },
         {
@@ -140,79 +148,87 @@
         },
         {
           "text": "needed.",
-          "startMs": 3782,
-          "endMs": 4291
-        }
-      ]
-    },
-    {
-      "id": "s4",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s4.mp3",
-      "audioMs": 4585,
-      "durationInFrames": 145,
-      "words": [
-        {
-          "text": "A",
-          "startMs": 0,
-          "endMs": 73
-        },
-        {
-          "text": "team",
-          "startMs": 145,
-          "endMs": 364
-        },
-        {
-          "text": "still",
-          "startMs": 509,
-          "endMs": 800
-        },
-        {
-          "text": "wins",
-          "startMs": 873,
-          "endMs": 1236
-        },
-        {
-          "text": "when",
-          "startMs": 1345,
-          "endMs": 1455
-        },
-        {
-          "text": "one",
-          "startMs": 1600,
-          "endMs": 1818
-        },
-        {
-          "text": "AI",
-          "startMs": 1891,
-          "endMs": 2255
-        },
-        {
-          "text": "is",
-          "startMs": 2327,
-          "endMs": 2545
-        },
-        {
-          "text": "overloaded",
-          "startMs": 2618,
-          "endMs": 3273
-        },
-        {
-          "text": "with",
-          "startMs": 3345,
-          "endMs": 3418
-        },
-        {
-          "text": "information.",
-          "startMs": 4000,
-          "endMs": 4655
+          "startMs": 3418,
+          "endMs": 4000
         }
       ]
     },
     {
       "id": "s5",
       "audio": "runs/2026-10-29-single-agent-vs-multi/s5.mp3",
-      "audioMs": 2697,
-      "durationInFrames": 88,
+      "audioMs": 1315,
+      "durationInFrames": 42,
+      "words": [
+        {
+          "text": "A",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "team",
+          "startMs": 291,
+          "endMs": 436
+        },
+        {
+          "text": "still",
+          "startMs": 582,
+          "endMs": 873
+        },
+        {
+          "text": "wins",
+          "startMs": 945,
+          "endMs": 1309
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s6.mp3",
+      "audioMs": 3421,
+      "durationInFrames": 105,
+      "words": [
+        {
+          "text": "when",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "one",
+          "startMs": 364,
+          "endMs": 582
+        },
+        {
+          "text": "AI",
+          "startMs": 655,
+          "endMs": 1164
+        },
+        {
+          "text": "is",
+          "startMs": 1273,
+          "endMs": 1382
+        },
+        {
+          "text": "overloaded",
+          "startMs": 1455,
+          "endMs": 2109
+        },
+        {
+          "text": "with",
+          "startMs": 2182,
+          "endMs": 2255
+        },
+        {
+          "text": "information.",
+          "startMs": 2836,
+          "endMs": 3491
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s7.mp3",
+      "audioMs": 2695,
+      "durationInFrames": 83,
       "words": [
         {
           "text": "Or",
@@ -226,7 +242,7 @@
         },
         {
           "text": "jobs",
-          "startMs": 436,
+          "startMs": 545,
           "endMs": 727
         },
         {
@@ -241,60 +257,60 @@
         },
         {
           "text": "at",
-          "startMs": 1309,
-          "endMs": 1382
+          "startMs": 1273,
+          "endMs": 1309
         },
         {
           "text": "the",
-          "startMs": 1455,
-          "endMs": 1527
+          "startMs": 1382,
+          "endMs": 1455
         },
         {
           "text": "same",
-          "startMs": 1673,
-          "endMs": 1818
+          "startMs": 1527,
+          "endMs": 1745
         },
         {
           "text": "time.",
-          "startMs": 2255,
+          "startMs": 1818,
           "endMs": 2764
         }
       ]
     },
     {
-      "id": "s6",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s6.mp3",
-      "audioMs": 4224,
-      "durationInFrames": 134,
+      "id": "s8",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s8.mp3",
+      "audioMs": 4135,
+      "durationInFrames": 126,
       "words": [
         {
           "text": "In",
           "startMs": 0,
-          "endMs": 145
+          "endMs": 73
         },
         {
           "text": "Anthropic's",
-          "startMs": 255,
-          "endMs": 727
+          "startMs": 145,
+          "endMs": 655
         },
         {
           "text": "own",
-          "startMs": 800,
-          "endMs": 1018
+          "startMs": 727,
+          "endMs": 945
         },
         {
           "text": "words,",
-          "startMs": 1236,
+          "startMs": 1164,
           "endMs": 1745
         },
         {
           "text": "teams",
-          "startMs": 2036,
-          "endMs": 2327
+          "startMs": 2073,
+          "endMs": 2400
         },
         {
           "text": "\"still",
-          "startMs": 2400,
+          "startMs": 2473,
           "endMs": 2764
         },
         {
@@ -304,21 +320,21 @@
         },
         {
           "text": "their",
-          "startMs": 3055,
+          "startMs": 3091,
           "endMs": 3200
         },
         {
           "text": "place.\"",
-          "startMs": 3418,
+          "startMs": 3673,
           "endMs": 4218
         }
       ]
     },
     {
-      "id": "s7",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s7.mp3",
-      "audioMs": 5896,
-      "durationInFrames": 184,
+      "id": "s9",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s9.mp3",
+      "audioMs": 2332,
+      "durationInFrames": 72,
       "words": [
         {
           "text": "Still,",
@@ -328,138 +344,162 @@
         {
           "text": "one",
           "startMs": 873,
-          "endMs": 1018
+          "endMs": 1091
         },
         {
           "text": "AI",
-          "startMs": 1091,
-          "endMs": 1455
+          "startMs": 1164,
+          "endMs": 1600
         },
         {
           "text": "with",
-          "startMs": 1564,
-          "endMs": 1673
+          "startMs": 1673,
+          "endMs": 1818
         },
         {
           "text": "tools",
-          "startMs": 1745,
-          "endMs": 2182
-        },
-        {
-          "text": "was",
-          "startMs": 2291,
-          "endMs": 2400
-        },
-        {
-          "text": "often",
-          "startMs": 2582,
-          "endMs": 2764
-        },
-        {
-          "text": "cheaper,",
-          "startMs": 2836,
-          "endMs": 3491
-        },
-        {
-          "text": "faster.",
-          "startMs": 3564,
-          "endMs": 4473
-        },
-        {
-          "text": "No",
-          "startMs": 4509,
-          "endMs": 4655
-        },
-        {
-          "text": "numbers",
-          "startMs": 4727,
-          "endMs": 5018
-        },
-        {
-          "text": "shared.",
-          "startMs": 5091,
-          "endMs": 5964
+          "startMs": 1891,
+          "endMs": 2327
         }
       ]
     },
     {
-      "id": "s8",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s8.mp3",
-      "audioMs": 5458,
-      "durationInFrames": 171,
+      "id": "s10",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s10.mp3",
+      "audioMs": 2259,
+      "durationInFrames": 70,
+      "words": [
+        {
+          "text": "was",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "often",
+          "startMs": 291,
+          "endMs": 582
+        },
+        {
+          "text": "cheaper,",
+          "startMs": 655,
+          "endMs": 1345
+        },
+        {
+          "text": "faster.",
+          "startMs": 1382,
+          "endMs": 2327
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s11.mp3",
+      "audioMs": 1675,
+      "durationInFrames": 53,
+      "words": [
+        {
+          "text": "No",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "numbers",
+          "startMs": 291,
+          "endMs": 655
+        },
+        {
+          "text": "shared.",
+          "startMs": 727,
+          "endMs": 1673
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s12.mp3",
+      "audioMs": 3217,
+      "durationInFrames": 99,
       "words": [
         {
           "text": "The",
           "startMs": 0,
-          "endMs": 73
+          "endMs": 145
         },
         {
           "text": "catch:",
-          "startMs": 145,
-          "endMs": 1018
+          "startMs": 364,
+          "endMs": 1091
         },
         {
           "text": "in",
-          "startMs": 1091,
+          "startMs": 1127,
           "endMs": 1164
         },
         {
           "text": "Anthropic's",
-          "startMs": 1273,
-          "endMs": 1745
+          "startMs": 1236,
+          "endMs": 1818
         },
         {
           "text": "sample",
-          "startMs": 1818,
-          "endMs": 2109
+          "startMs": 2000,
+          "endMs": 2182
         },
         {
           "text": "support",
-          "startMs": 2182,
-          "endMs": 2545
+          "startMs": 2255,
+          "endMs": 2618
         },
         {
           "text": "bot,",
-          "startMs": 2618,
+          "startMs": 2691,
           "endMs": 3200
-        },
-        {
-          "text": "they",
-          "startMs": 3309,
-          "endMs": 3418
-        },
-        {
-          "text": "merged",
-          "startMs": 3673,
-          "endMs": 3927
-        },
-        {
-          "text": "two",
-          "startMs": 4000,
-          "endMs": 4291
-        },
-        {
-          "text": "helper",
-          "startMs": 4364,
-          "endMs": 4655
-        },
-        {
-          "text": "bots.",
-          "startMs": 4873,
-          "endMs": 5455
         }
       ]
     },
     {
-      "id": "s9",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s9.mp3",
-      "audioMs": 4082,
-      "durationInFrames": 130,
+      "id": "s13",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s13.mp3",
+      "audioMs": 2186,
+      "durationInFrames": 68,
+      "words": [
+        {
+          "text": "they",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "merged",
+          "startMs": 218,
+          "endMs": 655
+        },
+        {
+          "text": "two",
+          "startMs": 727,
+          "endMs": 1018
+        },
+        {
+          "text": "helper",
+          "startMs": 1091,
+          "endMs": 1382
+        },
+        {
+          "text": "bots.",
+          "startMs": 1600,
+          "endMs": 2182
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s14.mp3",
+      "audioMs": 2037,
+      "durationInFrames": 63,
       "words": [
         {
           "text": "It",
           "startMs": 0,
-          "endMs": 73
+          "endMs": 145
         },
         {
           "text": "skipped",
@@ -484,148 +524,164 @@
         {
           "text": "date,",
           "startMs": 1527,
-          "endMs": 2000
-        },
-        {
-          "text": "in",
-          "startMs": 2036,
-          "endMs": 2182
-        },
-        {
-          "text": "one",
-          "startMs": 2255,
-          "endMs": 2327
-        },
-        {
-          "text": "of",
-          "startMs": 2436,
-          "endMs": 2545
-        },
-        {
-          "text": "two",
-          "startMs": 2618,
-          "endMs": 2836
-        },
-        {
-          "text": "test",
-          "startMs": 2909,
-          "endMs": 3127
-        },
-        {
-          "text": "runs.",
-          "startMs": 3200,
-          "endMs": 4145
+          "endMs": 2109
         }
       ]
     },
     {
-      "id": "s10",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s10.mp3",
-      "audioMs": 5820,
-      "durationInFrames": 182,
+      "id": "s15",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s15.mp3",
+      "audioMs": 2185,
+      "durationInFrames": 68,
+      "words": [
+        {
+          "text": "in",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "one",
+          "startMs": 218,
+          "endMs": 291
+        },
+        {
+          "text": "of",
+          "startMs": 400,
+          "endMs": 509
+        },
+        {
+          "text": "two",
+          "startMs": 582,
+          "endMs": 800
+        },
+        {
+          "text": "test",
+          "startMs": 873,
+          "endMs": 1164
+        },
+        {
+          "text": "runs.",
+          "startMs": 1236,
+          "endMs": 2182
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s16.mp3",
+      "audioMs": 3575,
+      "durationInFrames": 110,
       "words": [
         {
           "text": "Anthropic's",
           "startMs": 0,
-          "endMs": 582
+          "endMs": 655
         },
         {
           "text": "January",
-          "startMs": 655,
-          "endMs": 1091
+          "startMs": 727,
+          "endMs": 1164
         },
         {
           "text": "advice:",
-          "startMs": 1164,
-          "endMs": 2036
+          "startMs": 1236,
+          "endMs": 2255
         },
         {
           "text": "start",
-          "startMs": 2109,
-          "endMs": 2400
+          "startMs": 2327,
+          "endMs": 2618
         },
         {
           "text": "simple.",
-          "startMs": 2545,
-          "endMs": 3345
-        },
-        {
-          "text": "Add",
-          "startMs": 3418,
-          "endMs": 3564
-        },
-        {
-          "text": "more",
-          "startMs": 3636,
-          "endMs": 4073
-        },
-        {
-          "text": "only",
-          "startMs": 4145,
-          "endMs": 4509
-        },
-        {
-          "text": "with",
-          "startMs": 4618,
-          "endMs": 4727
-        },
-        {
-          "text": "evidence.",
-          "startMs": 4764,
-          "endMs": 5818
+          "startMs": 2764,
+          "endMs": 3636
         }
       ]
     },
     {
-      "id": "s11",
-      "audio": "runs/2026-10-29-single-agent-vs-multi/s11.mp3",
-      "audioMs": 3857,
-      "durationInFrames": 123,
+      "id": "s17",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s17.mp3",
+      "audioMs": 2407,
+      "durationInFrames": 75,
+      "words": [
+        {
+          "text": "Add",
+          "startMs": 0,
+          "endMs": 291
+        },
+        {
+          "text": "more",
+          "startMs": 509,
+          "endMs": 727
+        },
+        {
+          "text": "only",
+          "startMs": 873,
+          "endMs": 1164
+        },
+        {
+          "text": "with",
+          "startMs": 1236,
+          "endMs": 1382
+        },
+        {
+          "text": "evidence.",
+          "startMs": 1455,
+          "endMs": 2473
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "audio": "runs/2026-10-29-single-agent-vs-multi/s18.mp3",
+      "audioMs": 3637,
+      "durationInFrames": 111,
       "words": [
         {
           "text": "So,",
           "startMs": 0,
-          "endMs": 655
+          "endMs": 582
         },
         {
           "text": "one",
-          "startMs": 727,
+          "startMs": 655,
           "endMs": 873
         },
         {
           "text": "AI",
-          "startMs": 1018,
+          "startMs": 945,
           "endMs": 1527
         },
         {
           "text": "or",
-          "startMs": 1745,
-          "endMs": 1818
+          "startMs": 1600,
+          "endMs": 1673
         },
         {
           "text": "a",
-          "startMs": 1891,
-          "endMs": 1964
+          "startMs": 1709,
+          "endMs": 1745
         },
         {
           "text": "team?",
-          "startMs": 2036,
-          "endMs": 2836
+          "startMs": 1818,
+          "endMs": 2618
         },
         {
           "text": "Comment",
-          "startMs": 2982,
-          "endMs": 3127
+          "startMs": 2800,
+          "endMs": 2982
         },
         {
           "text": "your",
-          "startMs": 3236,
-          "endMs": 3345
+          "startMs": 3091,
+          "endMs": 3200
         },
         {
           "text": "pick.",
-          "startMs": 3491,
-          "endMs": 3927
+          "startMs": 3345,
+          "endMs": 3709
         }
       ]
     }

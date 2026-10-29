@@ -32,6 +32,22 @@ You do not write React code; you write `storyboard.json`, which `src/schema.ts` 
 | `hook` + `matchup` | The hook can carry a small icon line under the headline (e.g. 5 bots VS 1 bot) so frame 1 shows the idea. | `matchup`: `{left: {icon, count}, right: {icon, count}}` |
 | `versus` | **Visual metaphor.** Two icon groups face off (5 robots vs 1 robot, user vs bot…); the winner glows; a verdict stamp lands. | `title`, `left`/`right`: `{label ≤4 words, icon, count 1–6, caption?}`, `winner`, `verdict` (≤5 words). Icons: bot, user, users, brain, cpu, zap, clock, dollar, chart, search, code, file, shield, globe, phone, sparkles, wrench, database |
 
+## Motion layer (applies to every scene)
+
+Every scene can also set:
+- `emphasis`: 1–2 words from `say` → camera punch-in + the word pops as an accent sticker *inside the caption band* + click SFX,
+  exactly when spoken. Pick words that are **not already written big on screen** (repeating them adds noise, not energy).
+- `transition`: `whip` | `zoom` | `glitch` | `flash` | `slide` (otherwise the engine cycles them).
+- `shake: true` for tension beats (the catch).
+- `bg: {query}`: licensed B-roll behind the graphics. Write **concrete object + setting + light** queries
+  ("stack of documents office desk", "team working at whiteboard", "parcel delivery van daytime", "server racks data center").
+  The fetcher skips politicians, brands/ads, money/stamps and weapons, and rejects near-black clips. Visual QA checks every
+  pick; if a query keeps returning off-topic footage, rephrase it or drop the backdrop.
+- Scene type `broll`: a full-screen footage or photo moment with a slammed headline.
+
+**Pace is enforced by `npm run check`:** a visual change (cut or emphasis) at least every 2.0 s on average, and no
+scene longer than 4.5 s. Plan for 15–24 scenes in a 40–50 s reel: split voice lines across scenes (words unchanged).
+
 Rules of thumb:
 - **Pick your reference style first** (`playbooks/references.md`) and write `05b-direction.md` before the storyboard.
 - **No scene longer than ~5 seconds of voice (about 12 spoken words).** If a script beat is longer, split it across two scenes with different visuals. Long static scenes are the #1 reason a reel feels like a slideshow.

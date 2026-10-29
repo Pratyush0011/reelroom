@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {checkRun} from './checks.ts';
+import {checkDirection, checkRun} from './checks.ts';
 import type {Ledger} from './lib.ts';
 
 const brand = {wordsPerSecond: 2.5, minSeconds: 5, maxSeconds: 50};
@@ -104,6 +104,37 @@ test('a document scene must quote its source verbatim', () => {
 	const scene = (quote: string) => board([{id: 's2', type: 'document', publisher: 'Example', quote, url: 'https://example.com/a', say: 'Here is what they wrote.', claims: ['C1']}]);
 	assert.deepEqual(checkRun({storyboard: scene('2.5x faster on our benchmark'), ledger: withQuote, timing: null, brand}).errors, []);
 	assert.ok(checkRun({storyboard: scene('ten times faster than everyone'), ledger: withQuote, timing: null, brand}).errors.some((e) => e.includes('not found verbatim')));
+});
+
+test('inspiration research must cite real short-form reels and a motion recipe', () => {
+	const good = `## References
+https://www.youtube.com/shorts/aaa https://www.instagram.com/reel/bbb/ https://www.tiktok.com/@x/video/1
+https://www.youtube.com/watch?v=vox https://example.com/article
+## Motion recipe
+- cut every 1.5 s`;
+	assert.deepEqual(checkDirection(good), []);
+	assert.ok(checkDirection(null)[0].includes('missing'));
+	const articlesOnly = 'https://a.com/1 https://b.com/2 https://c.com/3 https://d.com/4 https://e.com/5 ## Motion recipe';
+	assert.ok(checkDirection(articlesOnly).some((e) => e.includes('0 short-form reels')));
+	assert.ok(checkDirection(good.replace('Motion recipe', 'Notes')).some((e) => e.includes('Motion recipe')));
+});
+
+test('pace: too few visual changes or an overlong scene fails', () => {
+	const sb = board([{id: 's2', type: 'statement', text: 'Middle', say: 'A middle line.', claims: []}]);
+	const slow = {fps: 30, scenes: ['s1', 's2', 's9'].map((id) => ({id, audio: '', audioMs: 1, durationInFrames: 150, words: []}))};
+	const r = checkRun({storyboard: sb, ledger: ledger(), timing: slow, brand});
+	assert.ok(r.errors.some((e) => e.includes('one visual change every 5.0s')));
+	assert.ok(r.errors.some((e) => e.includes('a scene runs 5.0s')));
+});
+
+test('emphasis words must actually be spoken in the scene', () => {
+	const r = checkRun({
+		storyboard: board([{id: 's2', type: 'statement', text: 'Middle', say: 'A middle line.', emphasis: ['banana'], claims: []}]),
+		ledger: ledger(),
+		timing: null,
+		brand,
+	});
+	assert.ok(r.errors.some((e) => e.includes('emphasis "banana" is never spoken')));
 });
 
 test('banned filler phrases fail', () => {

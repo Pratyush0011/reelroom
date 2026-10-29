@@ -4,6 +4,7 @@ import {AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame} from '
 import {Background} from './components/Background';
 import {Captions} from './components/Captions';
 import {Chrome} from './components/Chrome';
+import {MotionScene} from './components/Motion';
 import {SourceChip} from './components/SourceChip';
 import {enter, lerp} from './motion';
 import {SceneView} from './scenes';
@@ -27,13 +28,6 @@ export const resolveTiming = (props: ReelProps): Timing => {
 	};
 };
 
-// Every cut gets a short punch-in so hard cuts feel deliberate.
-const Cut: React.FC<{children: React.ReactNode}> = ({children}) => {
-	const frame = useCurrentFrame();
-	const p = enter(frame, 0, 8);
-	return <AbsoluteFill style={{opacity: lerp(p, 0.4, 1), scale: String(lerp(p, 1.04, 1))}}>{children}</AbsoluteFill>;
-};
-
 export const Reel: React.FC<ReelProps> = (props) => {
 	const {storyboard, colors, handle, sources} = props;
 	const timing = resolveTiming(props);
@@ -53,13 +47,12 @@ export const Reel: React.FC<ReelProps> = (props) => {
 			<Background colors={colors} />
 			{placed.map(({scene, t, from}, i) => (
 				<Sequence key={scene.id} name={`${scene.id} · ${scene.type}`} from={from} durationInFrames={t.durationInFrames}>
-					<Cut>
+					<MotionScene scene={scene} index={i} words={t.words} dur={t.durationInFrames} colors={colors} bg={props.assets?.[`bg-${scene.id}`]}>
 						<SceneView scene={scene} colors={colors} dur={t.durationInFrames} words={t.words} asset={props.assets?.[scene.id]} />
-					</Cut>
+					</MotionScene>
 					<SourceChip colors={colors} sources={scene.claims.map((c) => sources[c]).filter(Boolean)} />
-					{props.cover ? null : <Captions words={t.words} colors={colors} />}
+					{props.cover ? null : <Captions words={t.words} colors={colors} emphasis={scene.emphasis} />}
 					{t.audio ? <Audio src={staticFile(t.audio)} /> : null}
-					{i > 0 ? <Audio src={staticFile('sfx/whoosh.wav')} volume={0.18} /> : null}
 				</Sequence>
 			))}
 			{props.music ? (

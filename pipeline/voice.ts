@@ -11,9 +11,9 @@ import {elevenKey, speak} from './elevenlabs.ts';
 import {brand, loadStoryboard, publicAudioDir, readJson, ROOT, runDirFromArgs, slugOf} from './lib.ts';
 
 const FPS = 30;
-const BREATH_MS = 220;
+const BREATH_MS = 60; // fast reels cut tight; the motion layer covers the join
 const LEAD_MS = 60; // keep a hair of air before the first word
-const TAIL_MS = 140; // and after the last
+const TAIL_MS = 90; // and after the last
 
 const runDir = runDirFromArgs();
 const b = brand();

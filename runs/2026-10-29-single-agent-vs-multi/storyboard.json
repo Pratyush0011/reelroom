@@ -4,14 +4,10 @@
     {
       "id": "s1",
       "type": "hook",
-      "say": "One AI frequently beats a team of AI bots, Anthropic found.",
+      "say": "One AI frequently beats a team of AI bots,",
       "headline": "When one AI beats a team",
       "accent": "one",
       "kicker": "ANTHROPIC",
-      "claims": [
-        "C0",
-        "C2"
-      ],
       "matchup": {
         "left": {
           "icon": "bot",
@@ -21,12 +17,37 @@
           "icon": "bot",
           "count": 1
         }
-      }
+      },
+      "emphasis": [
+        "frequently",
+        "bots"
+      ],
+      "bg": {
+        "query": "server racks data center"
+      },
+      "claims": [
+        "C0",
+        "C2"
+      ]
     },
     {
       "id": "s2",
+      "type": "receipt",
+      "say": "Anthropic found.",
+      "publisher": "Anthropic",
+      "headline": "Building agents: When to fold subagents into your main agent loop",
+      "date": "22 Oct 2026",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "transition": "flash",
+      "claims": [
+        "C1"
+      ]
+    },
+    {
+      "id": "s3",
       "type": "versus",
       "say": "Here's when it doesn't.",
+      "title": "Who wins?",
       "left": {
         "label": "Team of AIs",
         "icon": "bot",
@@ -39,27 +60,50 @@
       },
       "winner": "none",
       "verdict": "Not always",
+      "transition": "glitch",
       "claims": [
         "C0",
         "C2",
         "C9"
-      ],
-      "title": "Who wins?"
+      ]
     },
     {
-      "id": "s3",
+      "id": "s4",
       "type": "statement",
       "say": "The winner: one AI using tools only when needed.",
       "text": "The winner: one AI + tools when needed",
       "accent": "winner",
+      "transition": "slide",
+      "emphasis": [
+        "using",
+        "only"
+      ],
+      "bg": {
+        "query": "hand tools wrenches"
+      },
       "claims": [
         "C0"
       ]
     },
     {
-      "id": "s4",
+      "id": "s5",
+      "type": "broll",
+      "say": "A team still wins",
+      "media": {
+        "query": "team working at whiteboard"
+      },
+      "kicker": "BUT",
+      "headline": "A team still wins",
+      "accent": "team",
+      "transition": "whip",
+      "claims": [
+        "C9"
+      ]
+    },
+    {
+      "id": "s6",
       "type": "versus",
-      "say": "A team still wins when one AI is overloaded with information.",
+      "say": "when one AI is overloaded with information.",
       "title": "When the team wins",
       "left": {
         "label": "Team of AIs",
@@ -74,29 +118,47 @@
       },
       "winner": "left",
       "verdict": "Overloaded? Team wins.",
+      "transition": "zoom",
+      "emphasis": [
+        "information"
+      ],
+      "bg": {
+        "query": "stack of documents office desk"
+      },
       "claims": [
         "C9"
       ]
     },
     {
-      "id": "s5",
+      "id": "s7",
       "type": "statement",
       "say": "Or when jobs must run at the same time.",
       "text": "Or jobs running at the same time",
       "accent": "same time",
+      "transition": "slide",
+      "emphasis": [
+        "same time"
+      ],
+      "bg": {
+        "query": "industrial robot arms assembly line"
+      },
       "claims": [
         "C9"
       ]
     },
     {
-      "id": "s6",
+      "id": "s8",
       "type": "document",
-      "say": "In Anthropic's own words, teams \"still have their place.\"",
+      "say": "In Anthropic's own words, teams still have their place.",
       "publisher": "Anthropic",
       "quote": "To be clear, subagents still have their place, including at the research frontier.",
       "highlight": "still have their place",
       "date": "22 Oct 2026",
       "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "transition": "zoom",
+      "emphasis": [
+        "own words"
+      ],
       "claims": [
         "C2",
         "C0",
@@ -104,9 +166,32 @@
       ]
     },
     {
-      "id": "s7",
+      "id": "s9",
+      "type": "versus",
+      "say": "Still, one AI with tools",
+      "title": "Cost and speed",
+      "left": {
+        "label": "Team of AIs",
+        "icon": "users",
+        "count": 4
+      },
+      "right": {
+        "label": "One AI + tools",
+        "icon": "wrench",
+        "count": 1
+      },
+      "winner": "right",
+      "verdict": "Often",
+      "transition": "whip",
+      "claims": [
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "id": "s10",
       "type": "compare",
-      "say": "Still, one AI with tools was often cheaper, faster. No numbers shared.",
+      "say": "was often cheaper, faster.",
       "metric": "Cost and speed",
       "left": {
         "label": "Cost",
@@ -116,19 +201,62 @@
       "right": {
         "label": "Speed",
         "value": "Often faster",
-        "note": "No numbers shared"
+        "note": "one AI with tools"
       },
       "winner": "none",
+      "transition": "slide",
+      "emphasis": [
+        "faster"
+      ],
+      "bg": {
+        "query": "stopwatch"
+      },
       "claims": [
-        "C2",
         "C4"
       ]
     },
     {
-      "id": "s8",
-      "type": "merge",
-      "say": "The catch: in Anthropic's sample support bot, they merged two helper bots.",
+      "id": "s11",
+      "type": "broll",
+      "say": "No numbers shared.",
+      "media": {
+        "query": "empty spreadsheet on screen"
+      },
+      "kicker": "ANTHROPIC",
+      "headline": "No numbers shared",
+      "accent": "No",
+      "transition": "glitch",
+      "emphasis": [
+        "No numbers"
+      ],
+      "claims": [
+        "C2"
+      ]
+    },
+    {
+      "id": "s12",
+      "type": "catch",
+      "say": "The catch: in Anthropic's sample support bot,",
       "title": "The catch",
+      "text": "Anthropic's sample support bot, in a test",
+      "transition": "flash",
+      "shake": true,
+      "emphasis": [
+        "catch",
+        "sample"
+      ],
+      "bg": {
+        "query": "headset customer support"
+      },
+      "claims": [
+        "C8"
+      ]
+    },
+    {
+      "id": "s13",
+      "type": "merge",
+      "say": "they merged two helper bots.",
+      "title": "Sample support bot",
       "from": {
         "icon": "bot",
         "count": 2,
@@ -138,42 +266,96 @@
         "icon": "bot",
         "label": "One bot"
       },
-      "caption": "Anthropic's sample support bot",
+      "caption": "Merged into one",
+      "tone": "warn",
+      "transition": "zoom",
+      "emphasis": [
+        "merged"
+      ],
       "claims": [
         "C8"
-      ],
-      "tone": "warn"
+      ]
     },
     {
-      "id": "s9",
+      "id": "s14",
+      "type": "broll",
+      "say": "It skipped checking the delivery date,",
+      "media": {
+        "query": "parcel delivery van daytime"
+      },
+      "kicker": "SAMPLE BOT, TEST",
+      "headline": "Delivery date: skipped",
+      "accent": "skipped",
+      "transition": "whip",
+      "emphasis": [
+        "skipped"
+      ],
+      "claims": [
+        "C8"
+      ]
+    },
+    {
+      "id": "s15",
       "type": "stat",
-      "say": "It skipped checking the delivery date, in one of two test runs.",
+      "say": "in one of two test runs.",
       "value": 1,
       "suffix": " of 2",
       "decimals": 0,
       "label": "test runs: delivery date skipped",
       "context": "Anthropic sample support bot",
+      "transition": "slide",
       "claims": [
         "C8"
       ]
     },
     {
-      "id": "s10",
+      "id": "s16",
       "type": "quote",
-      "say": "Anthropic's January advice: start simple. Add more only with evidence.",
+      "say": "Anthropic's January advice: start simple.",
       "quote": "Start with the simplest approach that works, and add complexity only when evidence supports it.",
       "who": "Anthropic",
-      "role": "Claude blog, Jan 2026",
+      "role": "Jan 2026",
+      "transition": "zoom",
+      "emphasis": [
+        "start simple"
+      ],
+      "bg": {
+        "query": "notebook and pen"
+      },
       "claims": [
         "C12"
       ]
     },
     {
-      "id": "s11",
+      "id": "s17",
+      "type": "list",
+      "say": "Add more only with evidence.",
+      "title": "Anthropic's advice, Jan 2026",
+      "items": [
+        "Start simple",
+        "Add more only with evidence"
+      ],
+      "transition": "slide",
+      "emphasis": [
+        "evidence"
+      ],
+      "bg": {
+        "query": "magnifying glass on document"
+      },
+      "claims": [
+        "C12"
+      ]
+    },
+    {
+      "id": "s18",
       "type": "cta",
       "say": "So, one AI or a team? Comment your pick.",
       "prompt": "One AI or a team?",
       "sub": "Anthropic: frequently, not always",
+      "transition": "flash",
+      "emphasis": [
+        "pick"
+      ],
       "claims": [
         "C2"
       ]

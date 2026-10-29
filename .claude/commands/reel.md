@@ -41,7 +41,9 @@ Brief: run_dir.
 - The director runs `npm run check -- <run_dir>` itself. Run it again yourself to confirm before moving on.
 
 ## 6. Voice and source screenshots
-Run `npm run shots -- <run_dir>` (screenshots the real source page for every `document` scene), then `npm run voice -- <run_dir>`. This generates speech per scene with word timings and sizes every scene.
+Run `npm run shots -- <run_dir>` (screenshots the real source page for every `document` scene),
+`npm run media -- <run_dir>` (licensed B-roll for `bg` and `broll` scenes, credited in `media-credits.json`),
+then `npm run voice -- <run_dir>`. This generates speech per scene with word timings and sizes every scene.
 Then run `npm run check -- <run_dir>` again: it now also checks the real total duration against `brand.json`.
 If it fails on duration, send the director back to shorten `say` lines (with the script-writer's wording rules), then redo voice.
 

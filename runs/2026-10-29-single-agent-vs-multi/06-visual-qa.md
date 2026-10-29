@@ -145,3 +145,58 @@ Publishability (beyond the checklist): **yes, this is now a publishable AI-news 
 No blockers or majors remain.
 
 VERDICT: SHIP
+
+## Round 6 (v3)
+Verdict: FIX
+
+I opened all 36 v3 stills (540x960, s1–s18 mid/end) and checked them against storyboard.json, media-credits.json, 02-claims.json and the motion recipe in 05b-direction.md. I also checked `public/runs/<run>/` and assets.json, because three scenes showed footage that is not in the credits.
+
+**Main finding (blocker): stale B-roll from an earlier draft is in the render, and none of it is credited.** `assets.json` still holds keys from the previous scene numbering (files written 01:27–01:28, before the 01:29 storyboard). The engine looks up `bg-<scene id>`, so:
+- s9 (versus, no `bg`) shows the stopwatch clip. `media-bg-s9.mp4` is byte-identical to s10's.
+- s15 (stat, no `bg`) shows the woman-writing photo. `media-bg-s15.jpg` is byte-identical to s16's, so s15 and s16 look the same.
+- s7 says "no licensed match", yet it plays `media-bg-s7.mp4`, an unknown 1.5 MB clip with no entry in media-credits.json.
+- Stale `s10`, `s13` and `bg-s4.mp4` entries/files are also left over. They are unused for now but could get picked up later.
+
+So the render uses footage with no licence trail. Fix: re-run `npm run media` with assets.json and the run's public media cleared first, so only current scene ids get files. Then give s9, s15 and s7 their own `bg` or leave them with none. (This is a pipeline fix. The storyboard itself is fine on this point.)
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) |
+|---|---|---|---|---|
+| s7, s9, s15 | s7-mid/end, s9-mid/end, s15-mid/end | blocker | Uncredited, stale B-roll from an earlier draft plays behind these scenes (see above). s15 shares s16's photo, so the two scenes look alike. | Rebuild media from a clean assets.json. s7: new `bg.query` "industrial robot arms assembly line" (or "highway traffic lanes" for parallel work). s9: no `bg`, or "toolbox". s15: no `bg`, or "checklist clipboard". |
+| s6 | s6-mid, s6-end | blocker | "pile of papers" pulled a **rolling-papers brand pack** (Randy's Wired Rolling Papers). Brand names are readable across the frame ("Wired Rolling Papers", "Randy's", "Since 1975"). It is off-topic, reads as a tobacco/cannabis product ad, and the big serif lettering fights the versus cards. | `bg.query` → "stack of documents office desk" or "overflowing paperwork". Avoid the word "papers" on its own. |
+| s5 | s5-mid | blocker | The "STILL" sticker lands on the headline and covers the word "still" in "still wins", so the headline reads "A team ___ wins". | Remove `emphasis` "still" from s5, since the headline already says it. |
+| s5 | s5-mid, s5-end | major | "business meeting" fetched a Philippine government clip of **President Marcos** shaking hands with Singtel executives. An identifiable head of state now illustrates "A team still wins", which suggests a political endorsement. | `media.query` → "team working at whiteboard" or "coworkers around laptop table". Prefer footage without identifiable public figures. |
+| s17 | s17-mid, s17-end | major | "magnifying glass" returned a **close-up of a 1-Reichsmark Deutsche Post stamp**. A huge "1" and "DEUTSCHE POST… RM" sit behind "Add more only with evidence". It is off-topic, and the "1" reads like a number in a list scene. | `bg.query` → "magnifying glass on document" or "laboratory measuring". If none fits, drop the `bg`. |
+| s14 | s14-mid, s14-end | major | The full-screen `broll` for "delivery date skipped" (a drone delivery clip) renders almost black. The one footage beat on the catch shows nothing, so it plays like a plain card. | `media.query` → "parcel delivery van" or "cardboard boxes doorstep" (a daylight shot). Or change the type to `statement` with `bg` "wall calendar". |
+| s10 | s10-mid | major | The "CHEAPER" sticker lands on the **Speed** tile and covers part of "Often faster" and its note, so the two facts mix. | Keep at most one emphasis word in s10 ("faster"), or none: the tiles already say it. |
+| s2 | s2-mid | major | The "FOUND" sticker covers the article date "22 Oct 2026" on the receipt card, and that date is part of the C1 evidence. | Drop `emphasis` "found" from s2. The receipt is the emphasis. |
+| s3 | s3-mid | major | A big "DOESN'T" sticker sits on the source chip, and the caption also says "DOESN'T" right under it. Out of context it reads as a stray negation. | Drop `emphasis` "doesn't". The "NOT ALWAYS" stamp makes the point. |
+| s6 | s6-mid | major | The "OVERLOADED" sticker covers the bottom of the One AI card and its own "overloaded" caption. The word is shown 3 times at once (card caption, sticker, subtitles). | Drop `emphasis` "overloaded", or remove `right.caption` "overloaded". |
+| s9 | s9-end | minor | The "TOOLS" sticker, the "OFTEN" stamp and the "TOOLS" caption pile up in one band, so the hedge stamp is the smallest of the three. | Drop `emphasis` "tools" here. s4 already used it. |
+| s11 | s11-mid, s11-end | minor | The headline sits on busy calculator keys (orange/blue labels). It is readable thanks to the shadow, but busy. The display shows "0.000000"/"8", which half-contradicts "No numbers shared". | Optional: `media.query` → "blank calculator display" or "empty spreadsheet on screen". |
+| s15, s16 | s15-mid, s16-end | minor | The "TEST RUNS" sticker touches the source chip. In s16-end, "Claude blog, Jan 2026" sits flush against the SOURCE chip. | Drop `emphasis` "test runs" in s15 (the stat label says it). Shorten the s16 `role` to "Jan 2026". |
+| s13 | s13-mid, s13-end | minor | Mid and end are the same frame: one orange bot. The two-bots-into-one merge is not visible in either still, and "TWO HELPER BOTS" is dim grey. | Check that the merge animates early in the scene. If not, add `bg` "merging lanes road" or show it as a 2-vs-1 picture. |
+| s12 | s12-mid, s12-end | minor | The call-center news clip is so dark it is invisible. It doesn't hurt, but it adds nothing. | Optional: `bg.query` "headset customer support" (a still image). |
+| s8 | s8-mid | minor | The caption breaks as `TEAMS "STILL HAVE`, leaving an opening quote mark with no closing one. | Remove the quote marks from s8 `say` (the document card already quotes). |
+
+**B-roll relevance:**
+- *Fits:* s1 server racks (dark, reads as "data centre"), s4 wrenches = tools, s10 stopwatch = faster, s11 calculator = numbers, s16 hand writing in a notebook = advice.
+- *Off-topic:* s6 rolling papers, s17 Reichsmark stamp, s5 head of state.
+- *Empty:* s14 is black and s12 is invisible.
+- *Uncredited:* s7, s9 and s15 (stale).
+
+Queries that work on Commons/Openverse are concrete objects with setting/lighting words, e.g. "stack of documents office desk", "team working at whiteboard", "parcel delivery van daytime", "magnifying glass on document", "industrial robot arms assembly line".
+
+**Legibility over B-roll:** the scrim works on stills (s1, s4, s10, s16). The full-screen footage scenes keep white text with a heavy shadow, and it is readable everywhere, including the bright s5 window and the busy s11 keys. No text is clipped and nothing important sits in the top/bottom bands, apart from the s8 page past the right edge (decorative, as in v2).
+
+**Stickers:** this is the main craft problem in v3. Every sticker pops in the same band (just above the source chip, left or right). Anything in that band gets covered: the receipt date (s2), the source chip (s3, s15), the One AI card (s6), the Speed tile (s10) and the headline word itself (s5). Six of the ~10 stickers caught in stills collide with content. Rule for the director: choose emphasis words that are **not already written on screen**, and use at most one where a card or headline fills the lower-middle band.
+
+**Overall vs the motion recipe:** the bones are right now. There are 18 cuts in ~49 s, varied transitions, a hook thumbnail that reads in one glance, a real receipt, a highlighted quote, warning stripes on the catch, and real footage behind most cards. It now feels like the Intellipaat / Analytics Vidhya reference Shorts, not the static Google Cloud counter-example. Three things stop it from being publishable today:
+- **Licensing:** stale, uncredited clips are in the render.
+- **Footage choices:** three choices a viewer would notice: a rolling-papers ad, a sitting president, and a Reichsmark stamp.
+- **Stickers:** the collisions make the "hedge words loudest" idea backfire in s2 and s5, where the sticker hides the evidence or the headline.
+
+All three are query/emphasis edits plus a clean media rebuild. No scene structure needs to change.
+
+Accuracy: all on-screen facts still match C0/C1/C2/C4/C8/C9/C12. There are no invented numbers, nothing from C16, and the press headline is never shown as Anthropic's claim.
+
+VERDICT: FIX

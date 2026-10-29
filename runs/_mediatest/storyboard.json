@@ -1,0 +1,4 @@
+{"title":"motion test","scenes":[
+{"id":"s1","type":"hook","headline":"When one AI beats a team","accent":"one","kicker":"AI NEWS","matchup":{"left":{"icon":"bot","count":5},"right":{"icon":"bot","count":1}},"say":"One AI frequently beats a whole team of AI bots.","claims":[],"emphasis":["frequently"],"bg":{"query":"server room data center"}},
+{"id":"s2","type":"broll","kicker":"REAL WORLD","headline":"Teams still win the big jobs","accent":"win","media":{"query":"office team meeting"},"say":"But teams still win the really big jobs.","claims":[],"emphasis":["big"],"transition":"whip"},
+{"id":"s3","type":"cta","prompt":"One AI or a team?","say":"So what would you pick, one AI or a team?","claims":[],"emphasis":["pick"],"bg":{"query":"robot"},"shake":true}]}

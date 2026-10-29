@@ -1,0 +1,182 @@
+{
+  "title": "When one AI beats a team (and when it doesn't)",
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "hook",
+      "say": "One AI frequently beats a team of AI bots, Anthropic found.",
+      "headline": "When one AI beats a team",
+      "accent": "one",
+      "kicker": "ANTHROPIC",
+      "claims": [
+        "C0",
+        "C2"
+      ],
+      "matchup": {
+        "left": {
+          "icon": "bot",
+          "count": 5
+        },
+        "right": {
+          "icon": "bot",
+          "count": 1
+        }
+      }
+    },
+    {
+      "id": "s2",
+      "type": "versus",
+      "say": "Here's when it doesn't.",
+      "left": {
+        "label": "Team of AIs",
+        "icon": "bot",
+        "count": 5
+      },
+      "right": {
+        "label": "One AI",
+        "icon": "bot",
+        "count": 1
+      },
+      "winner": "none",
+      "verdict": "Not always",
+      "claims": [
+        "C0",
+        "C2",
+        "C9"
+      ],
+      "title": "Who wins?"
+    },
+    {
+      "id": "s3",
+      "type": "statement",
+      "say": "The winner: one AI using tools only when needed.",
+      "text": "The winner: one AI + tools when needed",
+      "accent": "winner",
+      "claims": [
+        "C0"
+      ]
+    },
+    {
+      "id": "s4",
+      "type": "versus",
+      "say": "A team still wins when one AI is overloaded with information.",
+      "title": "When the team wins",
+      "left": {
+        "label": "Team of AIs",
+        "icon": "bot",
+        "count": 5
+      },
+      "right": {
+        "label": "One AI",
+        "icon": "bot",
+        "count": 1,
+        "caption": "overloaded"
+      },
+      "winner": "left",
+      "verdict": "Overloaded? Team wins.",
+      "claims": [
+        "C9"
+      ]
+    },
+    {
+      "id": "s5",
+      "type": "statement",
+      "say": "Or when jobs must run at the same time.",
+      "text": "Or jobs running at the same time",
+      "accent": "same time",
+      "claims": [
+        "C9"
+      ]
+    },
+    {
+      "id": "s6",
+      "type": "document",
+      "say": "In Anthropic's own words, teams \"still have their place.\"",
+      "publisher": "Anthropic",
+      "quote": "To be clear, subagents still have their place, including at the research frontier.",
+      "highlight": "still have their place",
+      "date": "22 Oct 2026",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "claims": [
+        "C2",
+        "C0",
+        "C1"
+      ]
+    },
+    {
+      "id": "s7",
+      "type": "compare",
+      "say": "Still, one AI with tools was often cheaper, faster. No numbers shared.",
+      "metric": "Cost and speed",
+      "left": {
+        "label": "Cost",
+        "value": "Often lower",
+        "note": "one AI with tools"
+      },
+      "right": {
+        "label": "Speed",
+        "value": "Often faster",
+        "note": "No numbers shared"
+      },
+      "winner": "none",
+      "claims": [
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "id": "s8",
+      "type": "merge",
+      "say": "The catch: in Anthropic's sample support bot, they merged two helper bots.",
+      "title": "The catch",
+      "from": {
+        "icon": "bot",
+        "count": 2,
+        "label": "Two helper bots"
+      },
+      "to": {
+        "icon": "bot",
+        "label": "One bot"
+      },
+      "caption": "Anthropic's sample support bot",
+      "claims": [
+        "C8"
+      ],
+      "tone": "warn"
+    },
+    {
+      "id": "s9",
+      "type": "stat",
+      "say": "It skipped checking the delivery date, in one of two test runs.",
+      "value": 1,
+      "suffix": " of 2",
+      "decimals": 0,
+      "label": "test runs: delivery date skipped",
+      "context": "Anthropic sample support bot",
+      "claims": [
+        "C8"
+      ]
+    },
+    {
+      "id": "s10",
+      "type": "quote",
+      "say": "Anthropic's January advice: start simple. Add more only with evidence.",
+      "quote": "Start with the simplest approach that works, and add complexity only when evidence supports it.",
+      "who": "Anthropic",
+      "role": "Claude blog, Jan 2026",
+      "claims": [
+        "C12"
+      ]
+    },
+    {
+      "id": "s11",
+      "type": "cta",
+      "say": "So, one AI or a team? Comment your pick.",
+      "prompt": "One AI or a team?",
+      "sub": "Anthropic: frequently, not always",
+      "claims": [
+        "C2"
+      ]
+    }
+  ]
+}

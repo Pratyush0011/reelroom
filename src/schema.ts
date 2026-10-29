@@ -10,10 +10,17 @@ const words = (max: number) =>
 
 export const ICONS = ['bot', 'user', 'users', 'brain', 'cpu', 'zap', 'clock', 'dollar', 'chart', 'search', 'code', 'file', 'shield', 'globe', 'phone', 'sparkles', 'wrench', 'database'] as const;
 
+export const TRANSITIONS = ['whip', 'zoom', 'glitch', 'flash', 'slide'] as const;
+
 const base = {
 	id: z.string().regex(/^s\d+$/, 'scene ids look like s1, s2, ...'),
 	say: z.string().min(2).describe('Exact voiceover for this scene, written as spoken'),
 	claims: z.array(z.string().regex(/^C\d+$/)).default([]),
+	// Motion layer (see .claude/skills/reel-inspiration): punch-ins on spoken words, entrance transition, shake, B-roll backdrop.
+	emphasis: z.array(z.string()).max(3).optional().describe('words from `say` that get a camera punch-in + pop sticker + SFX'),
+	transition: z.enum(TRANSITIONS).optional(),
+	shake: z.boolean().optional(),
+	bg: z.object({query: z.string().min(2)}).optional().describe('licensed B-roll behind this scene, fetched by npm run media'),
 };
 
 export const HookScene = z.object({
@@ -151,7 +158,18 @@ export const MergeScene = z.object({
 	tone: z.enum(['good', 'warn']).default('good').describe('warn = the merge went wrong (a catch)'),
 });
 
+// Full-screen B-roll moment with a big line of text on top.
+export const BrollScene = z.object({
+	...base,
+	type: z.literal('broll'),
+	media: z.object({query: z.string().min(2)}),
+	kicker: words(4).optional(),
+	headline: words(8),
+	accent: z.string().optional(),
+});
+
 export const Scene = z.discriminatedUnion('type', [
+	BrollScene,
 	DocumentScene,
 	MergeScene,
 	VersusScene,
@@ -172,7 +190,7 @@ export const Storyboard = z
 	.object({
 		title: z.string(),
 		voice: z.string().optional(),
-		scenes: z.array(Scene).min(3).max(12),
+		scenes: z.array(Scene).min(3).max(30),
 	})
 	.superRefine((sb, ctx) => {
 		const ids = sb.scenes.map((s) => s.id);
@@ -180,7 +198,7 @@ export const Storyboard = z
 		if (sb.scenes[0]?.type !== 'hook') ctx.addIssue({code: 'custom', message: 'the first scene must be a hook'});
 		if (sb.scenes.at(-1)?.type !== 'cta') ctx.addIssue({code: 'custom', message: 'the last scene must be a cta'});
 		sb.scenes.forEach((s, i) => {
-			if (i > 0 && s.type !== 'statement' && sb.scenes[i - 1].type === s.type)
+			if (i > 0 && !['statement', 'broll'].includes(s.type) && sb.scenes[i - 1].type === s.type)
 				ctx.addIssue({code: 'custom', message: `${s.id}: same scene type twice in a row (${s.type})`});
 		});
 	});

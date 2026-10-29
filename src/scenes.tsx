@@ -1,4 +1,5 @@
 import {Bot, Brain, ChartColumn, Clock, Code, Cpu, Database, DollarSign, FileText, Globe, Search, Shield, Smartphone, Sparkles, User, Users, Wrench, Zap} from 'lucide-react';
+import {Video} from '@remotion/media';
 import React from 'react';
 import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {countUp, enter, formatNumber, lerp} from './motion';
@@ -672,6 +673,40 @@ export const Versus: React.FC<P<'versus'>> = ({scene, colors, dur, words}) => {
 	);
 };
 
+// Full-screen B-roll with a slammed headline: the "real world" beat between graphics.
+export const Broll: React.FC<P<'broll'> & {asset?: string}> = ({scene, colors, dur, asset}) => {
+	const frame = useCurrentFrame();
+	const tokens = markAccent(scene.headline, scene.accent);
+	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: 3, max: 120});
+	const zoom = interpolate(frame, [0, dur], [1.12, 1.28]);
+	const media: React.CSSProperties = {position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', scale: String(zoom)};
+	return (
+		<>
+			{asset ? (
+				/\.(mp4|webm)$/i.test(asset) ? (
+					<Video src={staticFile(asset)} muted loop style={media} />
+				) : (
+					<Img src={staticFile(asset)} style={{...media, translate: `${interpolate(frame, [0, dur], [-30, 30])}px 0px`}} />
+				)
+			) : null}
+			<div style={{position: 'absolute', inset: 0, background: `linear-gradient(180deg, ${colors.bg}55 0%, transparent 30%, ${colors.bg}DD 72%)`}} />
+			<div style={{position: 'absolute', left: CONTENT.x, width: CONTENT.width, top: CONTENT.y + 470, display: 'flex', flexDirection: 'column', gap: 22}}>
+				{scene.kicker ? <Label color={colors.accentInk} bg={colors.accent}>{scene.kicker}</Label> : null}
+				<div style={{fontFamily: display, fontWeight: 900, fontSize: size, lineHeight: 1.0, letterSpacing: -size * 0.03, color: colors.text, textWrap: 'balance', textShadow: '0 6px 30px rgba(0,0,0,0.6)'}}>
+					{tokens.map(({w, hit}, i) => {
+						const p = enter(frame, 3 + i * 3, 8);
+						return (
+							<span key={i} style={{display: 'inline-block', marginRight: size * 0.24, opacity: p, translate: `0px ${lerp(p, 50, 0)}px`, color: hit ? colors.accent : colors.text}}>
+								{w}
+							</span>
+						);
+					})}
+				</div>
+			</div>
+		</>
+	);
+};
+
 // Several icons fly together and become one bigger icon: "two helper bots merged into one".
 export const Merge: React.FC<P<'merge'>> = ({scene, colors, dur, words}) => {
 	const frame = useCurrentFrame();
@@ -711,6 +746,8 @@ export const SceneView: React.FC<{scene: Scene; colors: Colors; dur: number; wor
 	switch (scene.type) {
 		case 'document':
 			return <Document scene={scene} colors={colors} dur={dur} words={words} asset={asset} />;
+		case 'broll':
+			return <Broll scene={scene} colors={colors} dur={dur} words={words} asset={asset} />;
 		case 'merge':
 			return <Merge scene={scene} colors={colors} dur={dur} words={words} />;
 		case 'versus':

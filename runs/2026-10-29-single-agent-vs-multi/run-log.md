@@ -34,3 +34,11 @@ Started: 2026-10-29
 - [v2 director fix] hook matchup, open contest s2, compare s7, merge s8, cta shortened; no say lines changed (voice from cache)
 - [v2 visual-qa r5] visual-qa → SHIP ('now a publishable AI-news reel'); showrunner applied optional polish: merge in warning colour
 - [v2 render] final.mp4 49.7 s, ElevenLabs Daniel (eleven_v4, tempo 1.1); POST.md updated. DONE.
+
+## Version 3 (2026-10-30), after user feedback: 'static, basic; inspiration research not really enabled; needs fast motion graphics + B-roll'
+- new: reel-inspiration skill (preloaded into director), gate requiring ≥5 refs incl. ≥3 real short-form reels + motion recipe
+- new: motion layer (transitions, camera drift/punch-ins, emphasis stickers, shake, SFX), animated background, licensed B-roll (Wikimedia Commons + Openverse, no keys), broll scene
+- new gate: ≤2.0 s per visual change, no scene > 4.5 s
+- [v3 direction] director → reel-inspiration: 7 references (5 YouTube Shorts with 13k–876k views, 2 documentaries: Vox, ColdFusion), studied via YouTube preview storyboards; motion recipe; 17→18 scenes; B-roll on 11 scenes (Wikimedia Commons/Openverse, licensed)
+- [v3 voice] 51.7 s → tighter joins (engine) → 48.9 s; s9 4.6 s > 4.5 → director split → 18 scenes, 49.1 s, 1.2 s per visual change; check PASS
+- [v3 visual-qa r6] visual-qa → FIX: 3 blockers (stale uncredited B-roll from old scene ids; rolling-papers pack; sticker hiding headline), majors (head-of-state footage, Reichsmark stamp, black clip, 4 sticker collisions). Engine: clean media rebuild, 8 candidates/query, risky-subject filter, brightness check, emphasis moved into caption band.

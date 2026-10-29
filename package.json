@@ -14,7 +14,8 @@
     "test": "tsx --test pipeline/*.test.ts",
     "typecheck": "tsc --noEmit",
     "voices": "tsx pipeline/voices.ts",
-    "shots": "tsx pipeline/shots.ts"
+    "shots": "tsx pipeline/shots.ts",
+    "media": "tsx pipeline/media.ts"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.539",
