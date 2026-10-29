@@ -36,11 +36,12 @@ Brief: run_dir.
 ## 4. Script → `script-writer`, then `retention-editor` (mode: script)  (GATE: script ≥ 28/35)
 - Same loop: at most 2 revision rounds.
 
-## 5. Storyboard → `director`  (GATE: `npm run check` passes)
+## 5. Direction and storyboard → `director`  (GATE: `npm run check` passes)
+- The director first picks a reference style, researches real examples and writes `05b-direction.md`.
 - The director runs `npm run check -- <run_dir>` itself. Run it again yourself to confirm before moving on.
 
-## 6. Voice
-Run `npm run voice -- <run_dir>`. This generates speech per scene with word timings and sizes every scene.
+## 6. Voice and source screenshots
+Run `npm run shots -- <run_dir>` (screenshots the real source page for every `document` scene), then `npm run voice -- <run_dir>`. This generates speech per scene with word timings and sizes every scene.
 Then run `npm run check -- <run_dir>` again: it now also checks the real total duration against `brand.json`.
 If it fails on duration, send the director back to shorten `say` lines (with the script-writer's wording rules), then redo voice.
 

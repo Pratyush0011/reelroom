@@ -9,12 +9,13 @@ You never rewrite the whole thing yourself; you tell the writer exactly what to 
 | Criterion | 5 means |
 |---|---|
 | Scroll-stop | A stranger mid-scroll would pause. Frame-1 visual + text are striking. |
-| Instant clarity | Subject is obvious in the first 3 words. No set-up needed. |
+| Instant clarity | **Passes the say-back test:** a stranger could repeat it after one listen. One idea, no number to decode, no riddle. Subject in the first 3 words. |
 | Curiosity | Opens a loop the viewer *needs* closed. |
 | Specificity | A concrete number, name, or contrast; no vague adjectives. |
 | Truthfulness | Fully supported by verified claims; the video can pay it off. (A 0–2 here disqualifies the hook.) |
 
-Pick the winner. A hook must score **≥ 20/25 and ≥ 4 on Truthfulness** to pass. If none passes,
+Pick the winner. A hook must score **≥ 20/25, ≥ 4 on Truthfulness and 5 on Instant clarity** to pass.
+For each finalist, write the say-back: how a stranger would repeat it. If your say-back is longer or vaguer than the hook, clarity is not a 5. If none passes,
 return the best two with precise rewrite notes. Then also tighten the winner: cut words, sharpen the
 verb, move the surprising part earlier.
 

@@ -21,3 +21,16 @@ Started: 2026-10-29
 - [7 director fix r2] s4 → 'Often cheaper. No figures.'
 - [7 visual-qa r3] visual-qa → SHIP
 - [8 render] final.mp4 49.2 s 1080x1920 h264/aac; cover.png; POST.md written. DONE.
+
+## Version 2 (2026-10-30), after user feedback: hook too confusing, voice not good enough, video not publishable
+- playbooks updated: hook say-back test + one-idea rule; director reference styles (references.md); new scenes document + versus; ≤5 s scenes
+- [v2 hooks] hook-writer → 8 clarity-first hooks; retention-editor → PASS: 'One AI frequently beats a team of AI bots, Anthropic found. Here's when it doesn't.' 22/25 (clarity 5, truth 5)
+- [v2 voice] user picked ElevenLabs Daniel (free plan blocks Indian library voices via API; voice design is paid-only)
+- [v2 script] script-writer → 11 beats; retention-editor → REVISE 25/35 (2 beats fail say-back; 'several companies' overstates C2; 4 statement scenes > 2)
+- [v2 script r2] retention-editor → PASS 32/35, all beats pass say-back
+- [v2 direction] director → style B (visual explainer) + A (paper trail); 3 references; 11 scenes; check PASS
+- [v2 voice] ElevenLabs Daniel: 54.7 s → gate FAIL. Engine fixes (silence trim, clip cache, pitch-preserving tempo 1.1) → 49.7 s, PASS, no re-generation cost
+- [v2 visual-qa r4] visual-qa → FIX: no blockers; 5 majors (blank page capture [stale], s2 picture contradicts voice, s7 clones s2, s7 stray '·', s11 orphan). Engine: reduced-motion screenshots, 'merge' scene, hook matchup. Director fixing.
+- [v2 director fix] hook matchup, open contest s2, compare s7, merge s8, cta shortened; no say lines changed (voice from cache)
+- [v2 visual-qa r5] visual-qa → SHIP ('now a publishable AI-news reel'); showrunner applied optional polish: merge in warning colour
+- [v2 render] final.mp4 49.7 s, ElevenLabs Daniel (eleven_v4, tempo 1.1); POST.md updated. DONE.

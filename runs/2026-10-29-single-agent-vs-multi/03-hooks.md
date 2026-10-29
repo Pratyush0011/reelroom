@@ -82,3 +82,49 @@ Archetypes (Round 2): before / after, number shock, contrarian / snapback, quest
 - No Round 2 hook relies on C14, C15 or C16.
 
 Writer's pick: R2-H1 as the main hook. R2-H3 is the strongest backup with a different angle, and R2-H2 is the most concrete backup.
+
+## Round 3 (v2: clarity first)
+
+Why a Round 3: the published v1 hook (R2-H1) confused viewers. It packed two competing claims into one opening, used "90.2%" without saying 90.2% *of what*, and ended on a riddle ("Both are true"). Round 3 follows the updated hard rules in `playbooks/hooks.md`:
+- **Say-back test.** After one listen, a stranger can repeat the hook in their own words.
+- **One idea per hook.** Every hook below carries one claim only. No hook contrasts 2025 with 2026.
+- **No numbers to decode.** There is no 90.2%, 80%, 2x, 3-10x, 15x or 266 in any hook. The only number word is "two" in R3-H8 ("two AI helpers"), which needs no decoding.
+- **No riddle endings.** "Both are true", "here's the twist" and similar lines are out.
+- **Everyday words.** "a team of AI bots", "one AI", "AI helpers". No "agent", "subagent", "fold", "tokens" or "eval".
+- **Hedges kept.** "frequently" or "often", never "always", and the claim is always attributed to Anthropic.
+- **Limits.** Spoken hooks are 16 words or fewer, text hooks 6 words or fewer.
+
+### Angles (Round 3)
+A1: For curious non-experts: Anthropic found that one AI with the right tools frequently does a job better than a team of AI bots.
+A2: For anyone who pays for or waits on AI: Anthropic says that one AI is often cheaper and faster than a team.
+A3: For people who assume more AI means better AI: Anthropic's advice is to start simple, because merging AI helpers has a catch.
+
+### Hooks (Round 3)
+| # | Angle | Archetype | Spoken hook (words) | Text hook (≤6 words) | Say-back (a stranger after one listen) | Visual hook (frame 1) | Claims used |
+|---|---|---|---|---|---|---|---|
+| R3-H1 | A1 | before / after (picture) | Anthropic compared a team of AI bots with one AI. The one AI frequently won. (15) | Team of AIs vs one AI | "Anthropic found one AI often beats a team of AIs." | **Picture.** Left: five small AI bots crowd one desk and pass papers around. Right: one AI bot wearing a toolbelt. A scoreboard ticks a point to the single bot, and "frequently" stamps under the scoreboard on the spoken word. | C0, C2 |
+| R3-H2 | A1 | contrarian / snapback (picture) | A team of AI bots sounds smarter. Anthropic says one AI frequently does the job better. (16) | Many AIs sound smarter. Are they? | "You'd think a team of AIs is smarter, but Anthropic says one AI often does better." | **Picture.** A row of AI bots lines up, each one wearing a graduation cap. Then one plain AI bot steps forward holding a finished task with a green check. "frequently" appears as a small stamp. | C0, C2 |
+| R3-H3 | A1 | curiosity / idiom (picture) | Too many AI cooks? Anthropic found one AI with the right tools frequently does better. (15) | Too many AI cooks? | "Too many cooks spoil the broth, and that goes for AI too. One AI with tools often does better." | **Picture.** A kitchen. Five robot chefs bump elbows over one pot, and steam and a spill are already moving at frame 0. One robot chef, with a full rack of tools on the wall, calmly plates a finished dish. | C0, C2 |
+| R3-H4 | A2 | stakes / consequence | Anthropic says one AI is often cheaper and faster than a team of AI bots. (15) | One AI: often cheaper, faster | "Anthropic says one AI is usually cheaper and faster than many AIs." | A team of AI bots, each one with its own ticking taxi meter and stopwatch, beside one AI bot with a single meter and stopwatch that run slower. No figures on the meters, only motion. | C4, C0 |
+| R3-H5 | A2 | relatable before / after (picture) | AI group projects have the same problem. Anthropic says one AI often finishes faster. (14) | AI's group project problem | "AI teams are like group projects, slow. One AI often finishes faster." | **Picture.** A classroom group-project table: four AI bots pass one sheet of paper around while the wall clock spins. At the next desk, one AI bot finishes alone and raises its hand. | C4, C0 |
+| R3-H6 | A1 | curiosity gap | Anthropic found one AI frequently beats a team of AI bots. Here's when it doesn't. (14) | When one AI beats a team | "One AI often beats a team of AIs, but not always, and the video says when." | A tug-of-war: a single AI bot pulls a whole team of AI bots over the line. Then the rope freezes mid-pull and a "not always" tag swings in. | C0, C2, C9 |
+| R3-H7 | A3 | myth bust | More AI helpers isn't always better. Anthropic says one AI with the right tools often wins. (16) | More AIs, not always better | "Adding more AIs doesn't always help. One AI with the right tools often wins." | AI bot icons multiply 1, 2, 4, 8 as a "better?" meter falls. They then collapse into one bot, tools snap onto it, and the meter climbs back. | C0, C2, C12 |
+| R3-H8 | A3 | contrarian / catch (picture) | Anthropic merged two AI helpers in a test bot. It sped up, then made a mistake. (16) | Merged the AIs. Then, a mistake. | "Anthropic combined two AIs in a test. It got faster but made a mistake." | **Picture.** A support-chat window labelled "test bot". Two AI bots high-five and merge into one, and a speed needle jumps. Then a parcel icon with a missing delivery date appears, and the green check flips to a red X. | C8 |
+
+Archetypes (Round 3): before / after, contrarian / snapback, curiosity (idiom), stakes / consequence, relatable before / after, curiosity gap, myth bust, contrarian / catch. Six hooks are built around a picture the viewer can imagine (R3-H1, H2, H3, H5 and H8 are explicitly marked; R3-H4, H6 and H7 also use concrete images).
+
+Word counts were checked by hand and all spoken hooks are 14 to 16 words, so every one is within the 16-word limit. Subject in the first 3 words: "Anthropic" or "team of AI bots" / "AI cooks" / "AI group projects" / "More AI helpers" opens each one.
+
+### Truth notes and promises (Round 3)
+- **"One AI" means one AI that loads its tools and skills as needed (C0).** R3-H3 and R3-H7 say "with the right tools" in the hook. Wherever the hook doesn't, the script must say so within the first beat or two.
+- **"Frequently" / "often" stay in every quality, cost and speed claim** (C2, C4). "Won", "does better" and "beats" are only ever used next to "frequently" or "often".
+- **Scope for the script, not the hook:** the result comes from Anthropic's comparisons "across several enterprise deployments". No figures are published (C2), and Anthropic says the helpers "still have their place" (C0).
+- **R3-H4 / R3-H5:** this is the cost and speed claim (C4, "often at a lower cost and latency per task"), so no figure may be invented. In R3-H5, "the same problem" means "slow", which is editorial framing. The script must pay it off as "often faster", not as a claim about why teams are slow.
+- **R3-H6:** the script must deliver C9 (one AI gets swamped by too much information, or jobs must run side by side) by about 15 s.
+- **R3-H7:** C12 is Anthropic's January 2026 advice ("start with the simplest approach that works"). If the script uses it, it says "in January".
+- **R3-H8:** "test bot" stays in the hook because C8 was a sample support agent, not a real deployment. The script must say the mistake was answering an order question without checking the delivery date, in 1 of 2 runs. It leads with the catch, so it works best as a mid-reel re-hook rather than as the opener for this story.
+- **Visual numbers:** the pictures use five or four bots only as drawings. The number is never written or spoken as a fact, and no meter or scoreboard shows a figure.
+- **Not used:** C3 (2x), C5 (80%), C11 (3-10x), C13 (90.2%, 15x), C14 (266 vs 21), C15 (press headlines) and C16 (false).
+- No hook frames this as a U-turn or as Anthropic contradicting itself.
+
+Writer's pick: **R3-H1** as the main hook, because it passes the say-back test with no loss: one picture, one claim, and the hedge is the punchline. **R3-H3** is the most memorable backup for an Indian audience, since "too many cooks" is a widely known idiom and the kitchen picture works on mute. **R3-H5** is the most relatable backup, because students know group projects.

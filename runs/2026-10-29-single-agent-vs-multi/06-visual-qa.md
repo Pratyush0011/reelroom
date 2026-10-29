@@ -74,3 +74,74 @@ Checks passed:
 No blockers or majors remain.
 
 VERDICT: SHIP
+
+## Round 4 (v2)
+Verdict: FIX
+
+Version 2 storyboard (11 scenes, new `versus` and `document` scene types). I opened all 22 stills (540x960 half-res; zones halved). Captions are word-synced, so caption fragments are expected and not flagged.
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) |
+|---|---|---|---|---|
+| s6 | s6-mid.png, s6-end.png | major | The "real Anthropic page" behind the quote card is blank. Only the claude.com nav bar and a "Claude Resources" strip render, and the body is empty off-white. It looks like a page that failed to load, so it hurts the receipt instead of proving it. | Re-capture the page so the visible area shows the article title "Building agents: When to fold subagents into your main agent loop" and the byline or date. Point the capture at the headline area, not the empty top of the page. If no good capture is possible, drop the page image and keep the card alone. |
+| s2 | s2-mid.png, s2-end.png | major | The picture contradicts the voice. The voice says "Here's when it doesn't", but the frame shows One AI winning (green, highlighted) with "Frequently. Not always." The "doesn't" picture only comes in s4. s3 then restates the same win in plain text, so s1, s2 and s3 all show the same idea. | Make s2 the open matchup: no `winner`, `verdict` "Who wins?", and change `say` to set up the contest. Or keep s2 as the winner card and delete s3, which only repeats it, then move "Here's when it doesn't" to the start of s4's `say`. |
+| s7 | s7-mid.png, s7-end.png | major | The layout repeats s2: same 5-bot team on the left, highlighted One AI on the right, and a tilted stamp below. Only the icon (zap) and the title differ. Two scenes that look the same. | Change the scene type. "Often cheaper, faster. No numbers shared." works as a `statement` with accent "Often", or as a `stat`-style frame. If it stays `versus`, change the comparison it draws (for example, cost vs speed tiles) so it does not mirror s2. |
+| s7 | s7-mid.png, s7-end.png | major | The title wraps as "Cost and speed" / "· company use", so the second line opens on a stray "·". | Set `title` to "Cost and speed" only. "Company use" is already implied, and the voice carries it. |
+| s11 | s11-mid.png, s11-end.png | major | The sub wraps "Anthropic: one AI frequently wins, not" / "always", leaving "always" alone on a line. The prompt also says "Comment your pick." right above the "TELL US IN THE COMMENTS" button, which is the same repeat flagged in Round 1. | Set `sub` to "Anthropic: frequently, not always" (one line). Set `prompt` to "One AI or a team?" and let the button ask for the comment. |
+| s6 | s6-mid.png, s6-end.png | minor | The SOURCE chip overlaps the bottom edge of the quote card. The page image also runs to x≈500 (≈1000 full-res, inside the right-edge zone), and "Try Claude" is cut off at the right in s6-end. | Shorten nothing. Ask for the card to sit higher or the page image to be scaled in. If the director can only edit the storyboard, cut the quote to "subagents still have their place" (highlight unchanged) so the card is 2 lines shorter and clears the chip. |
+| s4 | s4-mid.png, s4-end.png | minor | "Overloaded with information" exists only as small grey mono text. The One AI icon looks the same as in s2, so the picture does not show overload. | If the schema allows, use a different icon for the right side (for example a stack or file icon, `count` > 1) or shorten `caption` to "overloaded". |
+| s1 | s1-mid.png, s1-end.png | minor | The hook is strong type but has no picture. It is still legible and bold as a thumbnail. | Optional: open on the s2 matchup visual (5 bots vs 1) with the headline above it. |
+| s8 | s8-mid.png, s8-end.png | minor | "Two helper bots merged into one" is told in 4 lines of text, not shown. | Optional: shorten `text` to "Two helper bots → one" so it reads as a picture in 2 lines. |
+
+Checks passed:
+- **Accuracy:** "frequently, not always" matches C2 and C0's safe text. The s4 and s5 conditions match C9. The s6 quote is verbatim C2/C0 with the correct 22 Oct 2026 date (C1). "Often. No numbers shared." matches C4 and C2. "1 of 2 test runs: delivery date skipped, Anthropic sample support bot" matches the C8 note. The s10 quote is verbatim C12, "Claude blog, Jan 2026". No number is wrong. Nothing shows the false C16 or the press-headline wording as Anthropic's claim.
+- **Legibility:** all main type is large and high-contrast. The smallest text, the versus card captions in grey mono, can still be read.
+- **Safe zones:** only the progress bar and @handle sit in the top band, and nothing sits in the bottom band. The only edge issue is the s6 page image (minor).
+- **Caption collision:** none. Captions stay in their own band under the chip.
+- **First frame:** bold and legible, but text-only (see s1 minor).
+
+Publishability (beyond the checklist): **not yet.** v2 is a clear step up. The `document` scene is the right idea, and the versus cards give the reel real pictures. Three things hold it back:
+1. **Visual variety is still thin.** Of 11 scenes, 3 are the same versus card (s2, s4, s7) and 4 are big white text on the same dark gradient (s1, s3, s5, s8). s9, s10 and s11 are also type-only. The only scene with a real image is s6, and its image is blank. Scrolling through, the middle of the reel reads as text slide, card, text slide, card.
+2. **A clear picture per idea: about half.** s2/s4 (team vs one) and s9 (1 of 2) land without the voice. s3, s5 ("jobs at the same time" could be parallel lanes or clocks), s8 (a merge could be 2 bots becoming 1) and s7 are told, not shown. s2's picture contradicts its own line.
+3. **First frame:** clean and thumbnail-legible, but it is generic headline type that any AI page could post. The 5-vs-1 bot matchup is the reel's strongest image, and it is not on the first frame.
+
+With the five majors fixed (most of all a real s6 page capture, and s7 no longer cloning s2), this would be a clean, credible, publishable explainer. Putting the matchup on the hook would make it stand out.
+
+VERDICT: FIX
+
+## Round 5 (v2)
+Verdict: SHIP
+
+I re-opened all 22 re-rendered stills (540x960) against the updated storyboard and ran the full checklist again.
+
+Round 4 items:
+- s6 page capture: **fixed.** The claude.com article page now renders: nav, the article's icon tile, the title "Building agents: When…", the Category/Product sidebar and the byline/date sliver. The quote card no longer overlaps the SOURCE chip.
+- s2 picture vs voice: **fixed.** It is now an open contest: "Who wins?", neither card highlighted, and a "NOT ALWAYS" stamp. That fits "Here's when it doesn't" and no longer gives away s3.
+- s7 cloning s2: **fixed.** It is now a `compare` scene with two stacked tiles: "Cost / Often lower" and "Speed / Often faster", with "No numbers shared" as a note. The layout is fully different.
+- s7 title wrap: **fixed.** The title is a small "COST AND SPEED" eyebrow, and there is no stray "·".
+- s11 orphan and repeat: **fixed.** The prompt is "One AI or / a team?" on 2 clean lines. The sub "Anthropic: frequently, not always" fits one line. The button alone asks for comments.
+- s4 overload (minor): **improved.** The stamp now reads "OVERLOADED? TEAM WINS.", so the idea comes from the stamp.
+- s1 hook (minor): **fixed.** A 5-vs-1 bot matchup sits under the headline, and the single bot is in accent green.
+- s8 (minor): **fixed.** The new `merge` scene shows two bots (mid) becoming one bot (end).
+- s9: "1 of 2" spacing is clean.
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) |
+|---|---|---|---|---|
+| s8 | s8-mid.png, s8-end.png | minor | "The catch" no longer looks like a warning. The hazard stripe and orange tag are gone, and the merged bot is accent green, which reads as a success right when the voice says it went wrong. The two bots in s8-mid are small with a lot of empty space, and "TWO HELPER BOTS → ONE BOT" is small grey mono spread across the full width. | Optional: if `merge` supports a tone or colour field, set it to warning. Otherwise keep it as is: s9 ("1 of 2… skipped") lands the failure right after. |
+| s11 | s11-mid.png, s11-end.png | minor | "Anthropic: frequently, not always" lacks a subject on its own ("frequently" what?). | Optional: "Anthropic: one AI often wins, not always", only if it stays on one line. |
+| s2→s3 | s2-end.png, s3-mid.png | minor | The voice says "Here's when it doesn't", then s3 says "The winner: …" before any "doesn't" case. The visual order is fine; this is a script-order wrinkle. | Optional: change s2 `say` to "But does it always win?" |
+| s6 | s6-mid.png, s6-end.png | minor | The page image reaches x≈500 (≈1000 full-res) and "Try Claude" is cut off at the right in s6-end. It is decorative, not key content. | No change required. |
+| s3, s5 | all | minor | They are still text-only statements on the same gradient. They are legible and accented, so this is acceptable. | Optional: a picture for "same time" (parallel lanes) in a later version. |
+
+Checks passed:
+- **Accuracy:** s1/s2/s11 "frequently, not always" matches C0/C2. "One AI + tools when needed" matches C0's safe text. The s4/s5 conditions match C9. The s6 quote is verbatim (C2) with 22 Oct 2026 (C1), and the captured page is the cited URL. The s7 "Often lower / Often faster / No numbers shared" matches C4 and C2 (no invented figures). The s8/s9 "two helper bots merged… 1 of 2 test runs, delivery date skipped, sample support bot" matches C8 and its note. s10 is verbatim C12, Jan 2026. Nothing from false C16 appears, and the press headline is never shown as Anthropic's claim.
+- **Legibility and clipping:** no clipped text and no single word left alone on a line. All main type is large and high-contrast.
+- **Safe zones:** only the progress bar and @handle sit in the top band, and nothing sits in the bottom band. The only edge item is the decorative s6 page (minor).
+- **Caption collision:** none.
+- **Hierarchy:** each frame has one clear focal point.
+- **Pacing:** 9 distinct looks across 11 scenes. These are hook+matchup, open versus, statement, versus with a winner, statement, document, compare tiles, merge, stat, quote and CTA. s2 and s4 share the versus card on purpose, and they read as a before/after pair (no winner vs team highlighted).
+
+Publishability (beyond the checklist): **yes, this is now a publishable AI-news reel.** The first frame shows the whole story in one glance: "When *one* AI beats a team" over 5 bots vs 1 green bot, and it works as a thumbnail. Most ideas now have a picture: the open contest, team wins when overloaded, the real Anthropic page as the receipt, cost/speed tiles, the merge, and the "1 of 2" number. The rest are short, accented lines. The real page in s6 gives it the credibility an AI news page needs. Remaining polish for a future version: give "the catch" a warning colour, and give s3/s5 pictures to cut the text-on-gradient stretches.
+
+No blockers or majors remain.
+
+VERDICT: SHIP

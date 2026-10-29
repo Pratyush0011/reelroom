@@ -204,3 +204,222 @@ About 46 s with the +6% voice rate, or 48.8 s at the 2.5 words/s planning rate.
 3. **B6 screen text is long** (about 13 words). Suggested: "Sample bot skipped the delivery date · 1 of 2 runs". Keep "sample".
 4. **B5 list items** should appear on the words "swamped" and "side by side", not all at once. That timing is what keeps the 8.7 s beat alive.
 5. Run `npm run check` on the storyboard. The numbers and receipts above are the only ones allowed.
+
+## Round 5: hooks (v2)
+
+Test viewer: a stranger in India scrolling Instagram. They have no AI background and do not know the name "Anthropic". They hear the hook once, at normal speed, and may be on mute. Clarity is scored with the updated rule: **5 only if my own say-back is no longer or vaguer than the hook.** Other conditions for a 5: one idea, no number to decode, no riddle. The engine is also a hard limit. Frame 1 must be a `hook` scene (headline ≤6 words plus one accent word) or a `versus` scene (bot/user/... icons, count 1-6). A kitchen, a classroom or a tug-of-war cannot be drawn.
+
+Note on "Anthropic": the stranger won't know the name, but none of the hooks below needs them to. Read as "an AI company", it still works as attribution. Any hook where the idea depends on knowing Anthropic would lose clarity. None of these does.
+
+Scores (Scroll-stop / Clarity / Curiosity / Specificity / Truth = total /25):
+
+| # | S | Cl | Cu | Sp | T | Total | My say-back | One-line reason |
+|---|---|---|---|---|---|---|---|---|
+| R3-H1 | 3 | 5 | 3 | 4 | 5 | 20 | "An AI company tested one AI against a team of AIs, and the one usually won." | Very clear, but it answers itself. "Compared" is a flat verb and no loop is left open, so it is one point from failing on feel. |
+| R3-H2 | 4 | 5 | 4 | 3 | 5 | 21 | "You'd think a team of AIs is smarter, but one AI often does better." | A real belief gets reversed, and the stranger already holds the belief. No name or contrast beyond "one vs team". The graduation-cap picture can't be drawn; use `versus` instead. Strong backup. |
+| R3-H3 | 4 | 4 | 4 | 3 | 5 | 20 | "Too many cooks spoil the broth, same with AI, one AI with tools often does better." | FAILS clarity. "AI cooks" is a metaphor the listener has to decode first, and my say-back is longer than the hook. The idiom is known but not universal. A kitchen with robot chefs can't be drawn. |
+| R3-H4 | 3 | 5 | 2 | 3 | 5 | 18 | "One AI is often cheaper and faster than a team." | Clear and true, but it closes its own loop. The stranger doesn't pay for AI teams, so the stakes aren't theirs. Taxi meters can't be drawn. |
+| R3-H5 | 3 | 3 | 3 | 2 | 3 | 14 | "AI teams are like... group projects? Something about slow?" | FAILS. "The same problem" is a riddle: same as what? Truth 3, because it states a *reason* teams are slow, and no claim supports that (C4 only says "often" lower latency). |
+| R3-H6 | 4 | 5 | 4 | 4 | 5 | 22 | "One AI usually beats a team of AIs, but not always." | **Winner.** One idea, the hedge built into the structure, and an honest open loop ("when it doesn't") that a 12-year-old understands. The payoff is C9 plus C2's "still have their place, including at the research frontier". Its tug-of-war can't be drawn, but `hook` plus `versus` can. |
+| R3-H7 | 3 | 5 | 3 | 3 | 5 | 19 | "More AIs doesn't always help; one AI with tools often wins." | Clear and honest but soft. "Isn't always better" is a shrug, not an itch. |
+| R3-H8 | 4 | 4 | 4 | 3 | 4 | 19 | "They joined two AIs in a test and it got faster but messed up." | FAILS clarity. The stranger asks "why join them?", and the hook needs the main story first. Truth 4: "then made a mistake" reads as certain, while C8 says 1 of 2 runs. Agree with the writer: mid-reel re-hook only. |
+
+Verdict: PASS. R3-H6, tightened as below: 22/25, Clarity 5, Truth 5. Backup: R3-H2 (21).
+
+### Tightening (R3-H6)
+1. **Move the idea before the name.** The stranger doesn't know "Anthropic", so make the first three words "One AI frequently". The attribution moves to the end of the first sentence. The subject is still in the first 3 words, and now it's the surprising part.
+2. **Keep "frequently".** It is Anthropic's own word in C2, it is the hedge that makes "beats" true, and it is easy to understand in Indian English. Say it with weight, as in Round 2.
+3. **"Here's when it doesn't" stays word for word.** It's the loop and it's a plain promise, not a riddle.
+
+### Final hook
+- **Spoken (15 words, ~5.7 s at 2.65 w/s):** "One AI frequently beats a team of AI bots, Anthropic found. Here's when it doesn't."
+- **Text (5 words):** "When one AI beats a team". Accent: "one". Optional kicker: "ANTHROPIC".
+- **Visual, using only engine scene types:**
+  - **s1 `hook`:** the headline slams in word by word, with "one" in the accent colour. Voice: "One AI frequently beats a team of AI bots, Anthropic found." That's 11 words, ~4.2 s.
+  - **s2 `versus`:** voice is "Here's when it doesn't." Fields:
+    - left: `{label: "Team of AIs", icon: "bot", count: 5}`
+    - right: `{label: "One AI", icon: "bot", count: 1, caption: "grabs tools as needed"}`
+    - `winner: "right"`, `verdict: "Frequently. Not always."`
+    - The "not always" in the verdict is the visual promise of the loop. The caption carries C0's "with skills/tools" qualifier, which the spoken hook leaves out.
+- **Claims:** C0, C2 (hook); C9 (the promise).
+- **Numbers on screen:** none.
+
+### What this changes downstream (must fix before the reel is rebuilt)
+1. **04-script.md (Round 4 PASS) was built on the old R2-H1 hook and no longer fits.**
+   - B1 is the old hook. B2 is the 90.2% stat. B3's "a different job" answers "Both are true", a question the new hook no longer asks.
+   - The script needs a new round. The new promise is "when one AI loses", and it must be paid off by ~15 s, not at B5 (~22 s) as now.
+2. **Payoff order for the rewrite:**
+   1. Straight after the hook, say what "one AI" means: one AI that grabs tools only when it needs them (C0).
+   2. By ~15 s, give when the team still wins. That's when one AI gets swamped with too much information, or when jobs must run side by side (C9). Add Anthropic's own words, "still have their place, including at the research frontier" (C2).
+   3. Then the scope: several company deployments, no figures published (C2); often cheaper and faster too (C4).
+   4. The catch beat (C8: sample bot, delivery date, 1 of 2 runs) and the January advice CTA (C12) can stay as they are.
+3. **The 90.2% is optional now and leaves the opener.** If it comes back as a "research frontier" example, it must say *of what* in the same breath: "beat one AI on Anthropic's own research test". Keep "internal research eval" on screen (C13), and never pair it with 15x.
+4. **No U-turn framing anywhere.** That rule from Rounds 1-4 still applies.
+5. Re-run `npm run check` once the storyboard is rebuilt. The hook scene cites C0/C2, and the versus scene cites C0/C2/C9.
+
+VERDICT: PASS
+
+## Round 6: script (v2)
+
+The test viewer is the Round 5 stranger: someone in India scrolling Instagram, no AI background, doesn't know the name "Anthropic", hears each line once. This time the sound is on. I checked every voiceover line, screen text and caption against `02-claims.json` (`safe_text` where it exists, checked quotes otherwise). Timing uses 2.65 words/s effective (2.5 at +6%). I also checked the script against the new visual-direction rule: **at most two `statement` scenes per reel, pictures over sentences.**
+
+Scores:
+
+| Criterion | Score | One-line reason |
+|---|---|---|
+| Hook delivery | 4 | The real answer (B4-B5) closes by ~15.5 s. But B3 comes straight after "Here's when it doesn't" and sounds like the answer, which it isn't (fix 1). |
+| Momentum | 3 | After 15.5 s the main loop is closed and no new one is open until "The catch" at 23.4 s. B6 repeats B4-B5 and B7 lets the energy drop. The ABT's "therefore" before B6 is really an "and". |
+| Re-hooks | 3 | The cuts are fast (11 scenes, ~3.6 s each), but 15.5-23.4 s brings no new information: a restatement, then "no numbers shared". That's the biggest drop point. |
+| Clarity | 3 | Two say-back failures (B3 "That's", B7 "it"). B8 has a passive "two helper bots merged". "Swamped" and "side by side" are a bit soft for Indian-English ears. |
+| Concreteness | 4 | The versus pictures and the delivery-date catch are concrete. "1 of 2" is the only number, and it is buried in a sentence card (fix 5). |
+| Honesty | 4 | Attribution, hedges and the catch are all there, with no U-turn framing. But "several companies" says more than C2's "several enterprise deployments" (in B7 and the caption), and "1 of 2" invites a "half the time" reading. |
+| Ending | 4 | Dated advice, then a loop back to the hook with a specific prompt. "Add more" doesn't say more of what (minor). |
+| **Total** | **25/35** | Below 28. There is also a small truth tightening (fix 3) and a visual-rule breach: 4 `statement` scenes. |
+
+Verdict: REVISE
+
+### Line-by-line truth check
+- **B1:** OK. This is the approved hook, word for word. "Frequently" and "Anthropic found" fit C0/C2 safe_text. The C0 qualifier "with tools" is on the B2 caption, as Round 5 specified.
+- **B2:** OK. The verdict "Frequently. Not always." matches C2. The caption "grabs tools as needed" matches C0 ("loads skills and tools on demand").
+- **B3:** OK on truth (C0). It fails clarity (see the say-back test).
+- **B4:** OK. "Team still wins when one AI is swamped" is the plain version of C9 "keep subagents when ... measurable performance degradation from context bloat". It's an Anthropic recommendation, attributed by B1 and B6. Don't make it any stronger. The screen verdict "Team wins" is acceptable.
+- **B5:** OK. C9 "tackled in parallel".
+- **B6:** OK. The document quote is verbatim from C2/C0's checked quote (13 words, so ≤24). The date is 22 Oct 2026 (C1), and the URL is the tier-1 checked source. "Teams" outside the quote marks is a fair stand-in for "subagents".
+- **B7:** TIGHTEN (truth). C2/C0 safe_text says "across several enterprise deployments", not several companies. Deployments are not necessarily different companies. "Often cheaper and faster" = C4, OK. "No numbers shared" = C2 "gives no figures", OK.
+- **B8:** OK. C8: a *sample* support agent, with one helper folded into another. "Two helper bots merged" is the wording accepted in Round 4.
+- **B9:** OK in the voice (C8 note: the delivery date was skipped in one of two runs). The screen risk: a bare "1/2" or "1 of 2" card reads as "fails half the time". Label it "test runs" (fix 5).
+- **B10:** OK. The quote card is verbatim C12 minus "Our advice?". The voiceover is dated "from January".
+- **B11:** OK. The sub line matches C2.
+- **Caption:** TIGHTEN. "The comparison covered several companies" has the same problem as B7. Everything else in the caption is within C2/C9.
+- **First comment:** OK. Both URLs are tier-1 checked sources (C1/C2, C12).
+- **Numbers on screen:** 22 Oct 2026 (C1), Jan 2026 (C12), 1 of 2 (C8). Nothing else. 90.2% and 15x are correctly absent.
+
+### Say-back test (each beat, heard once by a non-expert Indian viewer)
+| Beat | My say-back | Result |
+|---|---|---|
+| B1 | "One AI often beats a group of AIs, some company found." | PASS |
+| B2 | "But not always. They'll tell me when." | PASS |
+| B3 | "So... it loses when it grabs tools?" | **FAIL.** "That's" right after "Here's when it doesn't" is heard as the answer. |
+| B4 | "A team is better when one AI has too much to handle." | PASS ("swamped" is OK; "overloaded" is more common in Indian English) |
+| B5 | "Or when jobs happen... next to each other?" | WEAK. "Side by side" sounds physical. "At the same time" is instantly clear. |
+| B6 | "The company itself says teams are still useful." | PASS |
+| B7 | "Something was cheaper and faster... the teams? No numbers." | **FAIL.** After B6 ("teams still have their place"), "it" points to teams, which is the opposite of the claim. |
+| B8 | "In a test chatbot, two helper bots... joined?" | WEAK. Passive voice. Say "they merged two helper bots". |
+| B9 | "It forgot the delivery date half the time." | WEAK. The viewer generalises "1 of 2" into a rate. Say "in one of two *test* runs". |
+| B10 | "Start small, add more only if it's proven." | PASS ("more what?" is a minor gap) |
+| B11 | "One AI or a team: comment." | PASS |
+
+### Statement budget (new visual-direction rule: ≤2 `statement`, pictures over sentences)
+The current plan has **4 statements**: B3, B5, B7 and B9 (B9 defaults to `statement`, and its Kind column says P, which doesn't match). Two must become pictures:
+- **B7 → `versus` (picture).** It's a cost/speed face-off and a natural flip back after B4's "team wins". B6 is `document` and B8 is `catch`, so there's no type repeat. Fields: title "Cost and speed" · left {label "Team of AIs", icon bot, count 5} · right {label "One AI", icon bot, count 1, caption "with tools"} · winner right · verdict "Often. No numbers shared." Change the icon or the caption so it doesn't look like a replay of B2.
+- **B9 → `stat` (picture, mandatory, not optional).** Any number that matters goes on a `stat`. Fields: value 1 · suffix " of 2" · label "test runs: delivery date skipped" · context "Anthropic sample support bot". Don't use a bare "/2".
+- **B3 stays a `statement` (1 of 2).** It has to sit between the B2 and B4 `versus` scenes, because the same type can't run twice in a row. Rewrite it so it can't be heard as the answer (fix 1).
+- **B5 stays a `statement` (2 of 2).** It can't be a `versus` straight after B4's `versus`. Its accent is "same time".
+- Result: hook → versus → statement → versus → statement → document → versus → catch → stat → quote → cta. That's 2 statements, 3 versus scenes with different winners and verdicts, and no type twice in a row.
+
+### Retention map (v2 as written, 2.65 words/s effective)
+```
+0.0–4.2s   HOOK        strong: subject in 3 words, "frequently" weighted, headline slams in
+4.2–5.7s   LOOP        strong: "Here's when it doesn't" + versus stamp "Frequently. Not always."
+5.7–8.3s   CONTEXT     HIGH risk: "That's one AI grabbing tools" heard as the answer; confusion right after the promise (fix 1)
+8.3–12.5s  PAYOFF 1    strong: the versus flips, team wins; best visual reversal in the reel
+12.5–15.5s PAYOFF 2    ok: statement card; "side by side" soft (fix 2). Main loop closes at 15.5 s
+15.5–18.9s PAPER TRAIL ok: real page + highlighter is strong visually, but it repeats B4-B5 with no new info
+18.9–23.4s SCOPE       HIGH risk: biggest drop. No open loop, "it" misreferenced, deflating "no numbers", sentence card (fixes 3-4)
+23.4–27.5s CATCH       strong: "The catch" is a real re-hook
+27.5–32.1s DETAIL      strong content, weak frame: number buried in a sentence card (fix 5)
+32.1–36.2s ADVICE      ok: dated quote card; "add more" vague
+36.2–39.6s CTA         strong: loops back to the frame-1 question
+```
+
+### Fixes (most important first)
+1. **B3 must not sound like the answer.** VO: "The winner: one AI using tools only when needed." (9 words). Screen `statement`: "The winner: one AI + tools when needed" · accent "winner". Uses C0. With "The winner" the viewer hears a description, not the promised "when it doesn't".
+2. **B4/B5, plain Indian-English words.** B4: "swamped" → "overloaded" ("...when one AI is overloaded with information"). B5 VO: "Or when jobs must run at the same time." (C9). Screen: "Or jobs running at the same time" · accent "same time".
+3. **B7 truth + clarity + picture.** VO: "Still, one AI with tools was often cheaper, faster. No numbers shared." (12 words, C2/C4). "Still" turns the energy back after B6. "One AI with tools" fixes the "it", and "several companies" leaves the voice. If scope is needed on screen, put it in the versus title: "Cost and speed · company use", not "several companies". Scene: `versus` as specified above.
+4. **Caption line 2:** "The comparison covered several companies" → "The comparisons covered several enterprise deployments, with no numbers published." (C2 safe_text).
+5. **B9 → `stat` + say "test".** VO: "It skipped checking the delivery date, in one of two test runs." (12 words, C8). Stat as specified above, with "test runs" in the label. Set the Kind column to P with a real picture.
+6. **B8 active voice.** "The catch: in Anthropic's sample support bot, they merged two helper bots." (12 words, C8). Keep "sample". Screen `catch` text: "Sample support bot: two helper bots merged into one".
+7. **ABT honesty in the doc.** Relabel B5→B6 as "and" (it's confirmation, not consequence). With fix 3's "Still", B6→B7 becomes a real "but". Don't call a connector "therefore" when it isn't one.
+8. **Optional, B10.** "Anthropic's January advice: start simple. Add more only with proof." (10 words). The quote card stays verbatim C12.
+9. **Recount and retime.** Fixes 1-8 come to about 108 words, ~40.8 s at 2.65 words/s (43.2 s at the planning rate; inside brand's 50 s, a touch over the 42 s brief at the planning rate, so measure the real TTS). The first payoff (B4) should still land by ~13 s and B5 should close the loop by ~16 s. Then rebuild the storyboard with the scene order above and run `npm run check`. Scene claims: B7 versus C2/C4, B9 stat C8.
+
+If fixes 1-6 are applied as written, my rescore would be about Hook 5 / Momentum 4 / Re-hooks 4 / Clarity 5 / Concreteness 5 / Honesty 5 / Ending 4 = 32/35.
+
+VERDICT: REVISE
+
+## Round 7: script (v2)
+
+Same stranger as Round 6 (India, no AI background, doesn't know "Anthropic", sound on, one hearing). I checked the revised 04-script.md against the same rubric, did a line-by-line truth check against `02-claims.json`, applied the say-back test, and checked the ≤2 `statement` rule. Timing is 2.65 words/s effective.
+
+Scores:
+
+| Criterion | Score | One-line reason |
+|---|---|---|
+| Hook delivery | 5 | B3 now clearly describes the winner, and the promised answer lands at B4 (~13.2 s), closing the loop with B5 by ~16.6 s. |
+| Momentum | 4 | The chain is but / but / and / but / but / and / therefore. "Still," turns the energy back after B6. B6 is still a confirmation rather than new information. Its strong visual carries it. |
+| Re-hooks | 4 | Three different versus outcomes, the document highlight, "The catch" and a counting stat. 16.6-20 s is the softest stretch, but it's short. |
+| Clarity | 5 | Every beat passes the say-back test (below). No jargon in the voiceover. |
+| Concreteness | 5 | The 5-vs-1 pictures, the delivery date, and "1 of 2" on a stat card labelled "test runs". |
+| Honesty | 5 | Every line is within its claim or safe_text. "Several companies" is gone. The hedges ("frequently", "often", "sample", "test") are all in the voice. |
+| Ending | 4 | Dated advice, then a loop back to the frame-1 question. "Add more" is still a little open, but it's faithful to C12. |
+| **Total** | **32/35** | ≥28, and nothing is below 3. |
+
+Verdict: PASS
+
+### Line-by-line truth check
+- **B1-B2:** OK. The approved hook, word for word (C0/C2, C9 promise).
+- **B3:** OK. "One AI using tools only when needed" = C0 "loads skills and tools on demand".
+- **B4:** OK. "Overloaded with information" is the plain version of C9 "measurable performance degradation from context bloat", and no stronger.
+- **B5:** OK. "At the same time" = C9 "tackled in parallel".
+- **B6:** OK. The document quote is verbatim from the checked quote. Date 22 Oct 2026 (C1). The URL is tier 1.
+- **B7:** OK. "Often cheaper, faster" = C4. "No numbers shared" = C2 "gives no figures". The title "company use" is a fair stand-in for "enterprise deployments" and doesn't claim several companies.
+- **B8:** OK. C8: sample support agent, with one helper folded into another ("merged into one").
+- **B9:** OK. C8 note: the delivery date was skipped in one of two runs. "Test runs" in the voice and the label stops it reading as a failure rate.
+- **B10:** OK. **The writer was right to keep "evidence".** My Round 6 "proof" was stronger than C12 ("when evidence supports it"). The quote card is verbatim C12.
+- **B11:** OK. C2.
+- **Caption:** OK. "Several enterprise deployments, with no numbers published" = C2 safe_text.
+- **First comment:** OK. Both are tier-1 checked URLs.
+- **Numbers on screen:** 22 Oct 2026 (C1), Jan 2026 (C12), 1 of 2 (C8). Nothing else.
+
+### Say-back test (non-expert Indian viewer, one hearing)
+| Beat | My say-back | Result |
+|---|---|---|
+| B1 | "One AI often beats a group of AIs, some company found." | PASS |
+| B2 | "But not always. They'll tell me when." | PASS |
+| B3 | "The one that wins uses tools only when it needs them." | PASS. "The winner" removes the Round 6 confusion. |
+| B4 | "A team is better when one AI has too much information." | PASS |
+| B5 | "Or when jobs happen at the same time." | PASS |
+| B6 | "The company itself says teams are still useful." | PASS |
+| B7 | "Still, one AI was often cheaper and faster. No numbers given." | PASS. The subject is explicit. |
+| B8 | "In a test chatbot, they joined two helper bots." | PASS |
+| B9 | "It forgot the delivery date in one of two tests." | PASS |
+| B10 | "Start simple, add more only with evidence." | PASS |
+| B11 | "One AI or a team: comment." | PASS |
+
+### Statement budget
+2 `statement` scenes (B3, B5), so within the rule. The scene order is hook → versus → statement → versus → statement → document → versus → catch → stat → quote → cta, with no type twice in a row and 11 scenes (8-12 allowed).
+
+### Retention map (2.65 words/s effective)
+```
+0.0–4.2s   HOOK        strong: subject in 3 words, "frequently" weighted, headline slam
+4.2–5.7s   LOOP        strong: versus stamp "Frequently. Not always." opens the question
+5.7–9.1s   CONTEXT     ok: "The winner:" reads as description; short; statement card
+9.1–13.2s  PAYOFF 1    strong: versus flips to "Team wins", the answer lands at ~13 s
+13.2–16.6s PAYOFF 2    ok: statement, "same time" accent; loop closed
+16.6–20.0s PAPER TRAIL ok: confirmation, not new info; the real page + highlighter carries it. Softest stretch, keep it tight
+20.0–24.5s RE-HOOK     strong: "Still," + versus flips back to one AI (zap icon), verdict "Often. No numbers shared."
+24.5–29.1s CATCH       strong: "The catch" warning card
+29.1–33.6s DETAIL      strong: 1-of-2 stat counter, "test runs" label
+33.6–37.4s ADVICE      ok: dated verbatim quote card
+37.4–40.8s CTA         strong: loops back to the frame-1 question
+```
+About 40.8 s at +6% (43.2 s at the planning rate). Measure the real TTS against the 42 s brief.
+
+### Notes for the director (not blocking)
+1. **Stat suffix.** `src/schema.ts` allows a suffix up to **6** characters, not 4, and `src/scenes.tsx` already adds a 6 px gap before the suffix. "of 2" will render spaced, and " of 2" is also allowed. Check the frame in visual QA so it doesn't read "1of 2".
+2. **B6 is the softest beat.** Time the highlighter to land exactly on "still have their place". Don't add a pause after it.
+3. **B7 versus.** The right caption "one AI with tools" repeats the label "One AI". "with tools" alone is enough (optional).
+4. If TTS runs long, cut words in the writer's order: "only" (B3), then "So," (B11). Never cut a hedge.
+5. Rebuild the storyboard with the claims as listed (B7: C2/C4, B9: C8) and run `npm run check`.
+
+VERDICT: PASS

@@ -37,13 +37,14 @@ between steps:
 ## Technical implementation
 - **Claude Code subagents + slash command** (`.claude/agents`, `.claude/commands/reel.md`). The same command
   runs headless through the **Claude Agent SDK** (`npm run reel`).
-- **Remotion 4** (React → MP4) with 10 scene types, word-synced captions, chapter bars and a persistent animated
+- **Remotion 4** (React → MP4) with 13 scene types (including icon match-ups, merges and real source-page screenshots), word-synced captions, chapter bars and a persistent animated
   background. Fonts: Inter Tight, Instrument Serif, JetBrains Mono.
-- **edge-tts** neural voices (free, no key) generate speech **per scene with word-boundary timings**, so each
+- **ElevenLabs** (`eleven_v4`, with-timestamps endpoint; free `edge-tts` fallback) generates speech **per scene with word-level timings**, cached per line, silence-trimmed and tempo-adjusted, so each
   scene lasts exactly as long as its narration and captions highlight the spoken word.
 - **Zod schema** (`src/schema.ts`) is the contract between the director and the engine; ffprobe measures real audio length.
 
 ## Testing
+- **Human review is part of the loop.** v1 passed every automated gate, yet a human viewer found it unpublishable: a confusing hook, a flat voice, too much text. Rather than hand-edit the video, I changed the system. The hook rubric got a say-back clarity gate, the director got reference-style research, and the engine got picture-first scenes (`versus`, `merge`, `document`). v2 then went through every gate again. The lesson: automated critics enforce the rules you give them, so a human has to keep improving the rules.
 - **Unit tests (`npm test`, 12 passing)** cover every deterministic gate: unverified claims, numbers with no
   claim, numbers that don't match their claim, invented receipt URLs, a killed story, a false premise, debunk mode,
   missing `C0`, banned phrases, structure and word limits, and real voiced duration.

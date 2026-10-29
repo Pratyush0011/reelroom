@@ -1,47 +1,67 @@
-# Script: Team of AIs or just one? Anthropic says both
-Template: Before / after (2025 team win → 2026 one-AI advice from a different job → when helpers still win → catch), closing with a loop ending
-Hook: R2-H1 (final version in 05-critique.md "## Round 2: hooks"; from 03-hooks.md Round 2)
-Target duration: 49 s (122 words at 2.5 words/s; about 46 s at the +6% voice rate; brand range 20-50 s)  Word count: 122
+# Script: When one AI beats a team (and when it doesn't)
+Template: Myth vs reality, used lightly. Belief: "more AIs = better" → one AI frequently wins → when the team still wins (by ~16.6 s) → Anthropic's own words on the page → cost and speed → catch → January advice → loop question.
+Hook: R3-H6, final tightened version in 05-critique.md "## Round 5: hooks (v2)"
+Target duration: 43 s (108 words at 2.5 words/s; about 40.8 s at the +6% voice rate; brief 32-42 s, brand range 20-50 s)  Word count: 108
 
-| Beat | Purpose (hook / context / reveal / re-hook / catch / payoff / cta) | Voiceover line | On-screen text | Claims |
-|---|---|---|---|---|
-| 1 | hook | Anthropic's AI team beat a solo AI by ninety point two percent. Now Anthropic says one AI *frequently* wins. Both are true. | `hook`: headline "Team of AIs or just one?" · accent "one" · kicker "AI NEWS". (Split visual per critic: left "2025" / "+90.2%" / label "internal research eval"; right "2026" / icons merge / "frequently" stamp.) | C13, C2, C0, C1, C9 |
-| 2 | payoff | That win was on Anthropic's own research test. | `stat`: value 90.2 · prefix "+" · suffix "%" · decimals 1 · label "AI team vs solo AI, 2025" · context "Anthropic internal research eval" | C13 |
-| 3 | payoff (closes "both are true") | The one-AI win came from a different job: several company deployments, with one AI that grabs tools only when needed. | `receipt`: publisher "Anthropic" · headline "Building agents: When to fold subagents into your main agent loop" · date "22 Oct 2026" · url https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop | C1, C2, C0 |
-| 4 | re-hook | Often cheaper and faster too. No figures, though. | `statement`: text "Often cheaper and faster. No figures published." · accent "often" | C4, C2 |
-| 5 | reveal (added value) | Helper AIs still have their place, Anthropic says. When one AI is swamped with information. Or when jobs must run side by side. | `list`: title "Helpers still have their place" · items "One AI swamped with info" / "Jobs must run side by side" | C9, C0 |
-| 6 | catch | The catch: in Anthropic's sample support bot, two helpers merged, and it skipped checking an order's delivery date. One run in two. | `catch`: title "The catch" · text "Sample bot: after a merge, it skipped the delivery date · 1 of 2 runs" | C8 |
-| 7 | cta (loop) | Anthropic's advice back in January: start simple, add more only with evidence. So, team of AIs, or just one? | `cta`: prompt "Team of AIs or one? Comment your pick." · sub "Anthropic, Jan 2026: start simple, add only with evidence" | C12 |
+Beat kind: **P** = picture beat (versus / stat / document / quote / hook / catch scene), **S** = sentence beat (`statement` scene). One scene per beat: 11 beats, 11 scenes (engine max 12). Statement scenes: 2 (B3, B5), within the ≤2 rule.
 
-Word count per beat: 22 / 8 / 20 / 8 / 23 / 22 / 19 = 122 words → 48.8 s at 2.5 words/s (about 46 s at the +6% voice rate). Inside the 50 s max.
-Approximate timeline at 2.5 words/s: B1 0-8.8 s · B2 -12.0 s · B3 -20.0 s · B4 -23.2 s · B5 -32.4 s · B6 -41.2 s · B7 -48.8 s. At the effective 2.65 words/s, "different job" (the answer to "Both are true") lands by about 17-19 s.
+| Beat | Purpose (hook / context / reveal / re-hook / catch / payoff / cta) | Kind | Voiceover line | On-screen text | Claims |
+|---|---|---|---|---|---|
+| 1 | hook | P | One AI frequently beats a team of AI bots, Anthropic found. | `hook`: headline "When one AI beats a team" · accent "one" · kicker "ANTHROPIC". Headline slams in word by word. | C0, C2 |
+| 2 | hook (opens the loop) | P | Here's when it doesn't. | `versus`: left {label "Team of AIs", icon bot, count 5} · right {label "One AI", icon bot, count 1, caption "grabs tools as needed"} · winner right · verdict "Frequently. Not always." | C0, C2, C9 |
+| 3 | context | S | The winner: one AI using tools only when needed. | `statement`: "The winner: one AI + tools when needed" · accent "winner" | C0 |
+| 4 | payoff (loop, part 1) | P | A team still wins when one AI is overloaded with information. | `versus`: title "When the team wins" · left {label "Team of AIs", icon bot, count 5} · right {label "One AI", icon bot, count 1, caption "overloaded with information"} · winner left · verdict "Team wins" | C9 |
+| 5 | payoff (loop, part 2) | S | Or when jobs must run at the same time. | `statement`: "Or jobs running at the same time" · accent "same time" | C9 |
+| 6 | paper trail | P | In Anthropic's own words, teams "still have their place." | `document`: publisher "Anthropic" · quote "To be clear, subagents still have their place, including at the research frontier." · highlight "still have their place" · date "22 Oct 2026" · url https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop | C2, C0, C1 |
+| 7 | re-hook (cost and speed) | P | Still, one AI with tools was often cheaper, faster. No numbers shared. | `versus`: title "Cost and speed · company use" · left {label "Team of AIs", icon bot, count 5} · right {label "One AI", icon zap, count 1, caption "one AI with tools"} · winner right · verdict "Often. No numbers shared." | C2, C4 |
+| 8 | catch (re-hook) | P | The catch: in Anthropic's sample support bot, they merged two helper bots. | `catch`: title "The catch" · text "Sample support bot: two helper bots merged into one" | C8 |
+| 9 | catch (detail) | P | It skipped checking the delivery date, in one of two test runs. | `stat`: value 1 · suffix "of 2" (schema max 4 chars, so no leading space; engine should space it) · decimals 0 · label "test runs: delivery date skipped" · context "Anthropic sample support bot" | C8 |
+| 10 | payoff (advice) | P | Anthropic's January advice: start simple. Add more only with evidence. | `quote`: quote "Start with the simplest approach that works, and add complexity only when evidence supports it." · who "Anthropic" · role "Claude blog, Jan 2026" | C12 |
+| 11 | cta (loop) | S/P | So, one AI or a team? Comment your pick. | `cta`: prompt "One AI or a team? Comment your pick." · sub "Anthropic: one AI frequently wins, not always" | C2 |
+
+Word count per beat: 11 / 4 / 9 / 11 / 9 / 9 / 12 / 12 / 12 / 10 / 9 = 108 words → 43.2 s at 2.5 words/s (about 40.8 s at the +6% voice rate). Every beat ≤ 12 spoken words.
+Approximate timeline at the effective 2.65 words/s: B1 0-4.2 s · B2 -5.7 s · B3 -9.1 s · B4 -13.2 s · B5 -16.6 s · B6 -20.0 s · B7 -24.5 s · B8 -29.1 s · B9 -33.6 s · B10 -37.4 s · B11 -40.8 s.
+Loop payoff: the first answer (B4) lands by ~13 s and B5 closes the loop by ~16.6 s. B6 confirms it in Anthropic's own words (~20 s).
+Duration note: 43.2 s at the planning rate is just over the 42 s brief, but about 40.8 s at the real +6% voice rate, inside the brief and well inside brand's 50 s. Measure the real TTS. If it runs long, cut "only" (B3) first, then "So," (B11). Never cut a hedge ("frequently", "often", "sample", "test").
 
 Notes for the director and voice:
-- Beat 1 is the approved spoken hook word for word (only "90.2%" spelled out for text-to-speech). Read "frequently" with weight; the asterisks are emphasis only, not spoken.
-- 90.2% always sits with "internal research eval" (C13): hook visual label, stat context and caption. Never "one research task". The 15x token figure is not used anywhere. C3 (2x), C14 (266 vs 21) and C16 (false) are not used.
-- B6 is kept in scope for C8: a sample support bot (not production), two helpers merged (one folded into another), a break in 1 of 2 runs. The delivery-date detail comes from C8's verified note ("the main agent answered an order question without asking the shipping specialist for the delivery date; the break appeared in one of two runs"); it is not in C8's quote or safe_text (C8 has no safe_text; status `verified`).
-- No "U-turn" or "contradicted itself" framing. B3 frames the 2026 result as a different job; B5 adds the C9 conditions as extra value.
-- Numbers on screen: 90.2 (C13), 2025 (C13), 2026 / 22 Oct 2026 (C1), Jan 2026 (C12), 1 of 2 runs (C8). Nothing else.
-- Scene types run hook → stat → receipt → statement → list → catch → cta: 7 scenes, no type repeated back to back.
-- "Helper AIs" is the plain-language stand-in for "subagents"; "swamped with information" stands in for C9's "measurable performance degradation from context bloat" (not made stronger).
+- B1 + B2 together are the approved spoken hook word for word: "One AI frequently beats a team of AI bots, Anthropic found. Here's when it doesn't." Read "frequently" with weight (C2's hedge).
+- Scene order (critic's Round 6): hook → versus → statement → versus → statement → document → versus → catch → stat → quote → cta. 2 statements; 3 versus scenes with different outcomes (right "Frequently. Not always." / left "Team wins" / right "Often. No numbers shared."); no type twice in a row.
+- B3 opens on "The winner:" so it is heard as a description of the one AI, not as the promised "when it doesn't".
+- B6 is the paper-trail beat. The `document` quote is verbatim from C2/C0's checked source quote ("To be clear, subagents still have their place, including at the research frontier.", claude.com article, 22 Oct 2026). The voiceover only puts the verbatim words "still have their place" inside quotation marks; "teams" outside the quotes is our plain stand-in for "subagents". Use the real page screenshot; the highlighter lands on "still have their place" as the voice says it.
+- B7: "Still," turns the energy back after B6. "One AI with tools" is the subject, so "it" can't be misheard as the team. "Several companies" is gone from voice and screen; the versus title says "company use" (C2: "across several enterprise deployments"). "Often" = C4; "No numbers shared" = C2 "gives no figures". No cost or speed figure exists; do not invent one. The right group uses the `zap` icon so the frame doesn't look like a replay of B2.
+- B8-B9 keep v1's verified C8 wording, now active voice: sample support bot (not production), they (Anthropic) merged two helper bots (one folded into another), the bot skipped the delivery date, one of two *test* runs. The `stat` label says "test runs" so "1 of 2" is not read as a general failure rate.
+- B10's `quote` is verbatim C12 minus "Our advice?" (Claude blog, 23 Jan 2026). The voiceover shortens it and says "January" so it does not sound new.
+- B4 "overloaded with information" is C9's "measurable performance degradation from context bloat", not made stronger. B5 "at the same time" is C9's "tackled in parallel".
+- Numbers on screen: 22 Oct 2026 (C1), Jan 2026 (C12), 1 of 2 (C8). Nothing else. 90.2% and 15x are not used.
+- No U-turn or "Anthropic contradicted itself" framing anywhere.
+
+Say-back check (a stranger's one-hearing repeat):
+- B1 "One AI often beats a team of AIs." · B2 "But not always." · B3 "The one that wins uses tools when it needs them." · B4 "A team wins if one AI has too much information." · B5 "Or if jobs happen at the same time." · B6 "The company says teams still have a place." · B7 "Still, one AI was often cheaper and faster, no numbers given." · B8 "In a test bot, they joined two helper bots." · B9 "It forgot the delivery date in one of two tests." · B10 "Start simple, add more only with evidence." · B11 "Which do you pick?" Each say-back is no longer or vaguer than the line.
 
 ## ABT check
-Anthropic's AI team beat a solo AI by 90.2%, AND now Anthropic says one AI frequently wins, BUT that win was on Anthropic's own research test, BUT the one-AI win came from a different job, several company deployments with an AI that grabs tools only when needed, often cheaper and faster too, BUT no figures were published. THEREFORE helper AIs still have their place: when one AI is swamped, or jobs must run side by side. BUT merging has a catch: in a sample support bot, two merged helpers skipped a delivery-date check in one run of two. THEREFORE start simple and add more only with evidence. So: team of AIs, or just one?
+One AI frequently beats a team of AI bots, Anthropic found, BUT not always. The winner is one AI using tools only when needed, BUT a team still wins when one AI is overloaded with information, or when jobs must run at the same time. AND in Anthropic's own words, teams "still have their place." BUT still, one AI with tools was often cheaper and faster, though no numbers were shared. BUT there's a catch: in Anthropic's sample support bot, they merged two helper bots, AND it skipped checking the delivery date in one of two test runs. THEREFORE Anthropic's January advice: start simple, add more only with evidence. So, one AI or a team?
 
-Connectors: and, but, but, but, therefore, but, therefore. Only the first link is "and" (the two halves of the hook). No beat in the voiceover now opens on "But" back to back: B4 ends on "though", B5 opens on "Helper AIs". The ending question loops back into the hook's first line.
+Connectors between beats: but (B2), but (B4), and (B6, confirmation, not a consequence), but (B7), but (B8), and (B9, detail of the catch), therefore (B10). Only one "therefore", and it is a real consequence. The two "and" links each sit inside a turn, so there is no "and then" chain. The closing question loops back to the hook headline.
 
 ## Post kit
-Caption: Anthropic's AI team beat a solo AI by 90.2%. Now it says one AI frequently wins. Both are true.
-The 2025 win was on Anthropic's internal research eval. The 2026 advice comes from its comparisons across several company deployments, with no figures published, and it says helper AIs "still have their place".
-Team of AIs or just one? Tell us which you'd trust.
-Hashtags: #AIagents #Anthropic #Claude #MultiAgent #AIexplained #AItools #TechNews
-First comment: Sources: Anthropic, "Building agents: When to fold subagents into your main agent loop" (22 Oct 2026) https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop · Anthropic Engineering, "How we built our multi-agent research system" (13 Jun 2025) https://www.anthropic.com/engineering/multi-agent-research-system · Anthropic, "Building multi-agent systems: When and how to use them" (23 Jan 2026) https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them
+Caption: One AI frequently beats a team of AI bots, Anthropic found. Not always, though.
+A team still wins when one AI is overloaded with information, or when jobs must run at the same time. In Anthropic's words, teams "still have their place". The comparisons covered several enterprise deployments, with no numbers published.
+One AI or a team: which would you trust with your work?
+Hashtags: #AIagents #Anthropic #Claude #AItools #AIexplained #TechNewsIndia #ArtificialIntelligence
+First comment: Sources: Anthropic, "Building agents: When to fold subagents into your main agent loop" (22 Oct 2026) https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop · Anthropic, "Building multi-agent systems: When and how to use them" (23 Jan 2026) https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them
 
 ## Changes in this round
-1. Fix 1 (C13 truth fix): "one research task" removed everywhere. B2 voiceover is now "That win was on Anthropic's own research test." Stat context is now "Anthropic internal research eval", the hook visual label is now "internal research eval", and caption line 2 now says "The 2025 win was on Anthropic's internal research eval."
-2. Fix 2: B3 now says it plainly: "The one-AI win came from a different job: several company deployments...". I kept "several" (C2's "several enterprise deployments") instead of the example's "real".
-3. Fix 3: B5 drops the opening "But" and is now three short sentences: "Helper AIs still have their place, Anthropic says. When one AI is swamped with information. Or when jobs must run side by side." It is 23 words. I kept "with information" so "swamped" stays understandable.
-4. Fix 4: B4 is shortened to "Often cheaper and faster too. No figures, though." (12 → 8 words).
-5. Fix 5: B6 is now concrete and in scope: a sample support bot, two helpers merged, and it skipped checking an order's delivery date in one run of two. "The team" is gone. I checked that the delivery-date detail is in C8's `note` (verified claim, no safe_text). The screen catch is now "Sample bot: after a merge, it skipped the delivery date · 1 of 2 runs". It says "it" rather than the critic's "merged helpers skipped", because in C8 the main agent skipped the check.
-6. Fix 6: B7 voiceover now says "Anthropic's advice back in January: ...".
-7. Recount: 115 → 122 words. That is 48.8 s at 2.5 words/s, about 46 s at +6%, so ≤ 50 s. The timeline above is updated. `npm run check` still needs to run once the storyboard exists.
+This is **v2** of the reel (v1 is saved as 04-script.v1.md, built on R2-H1). This round applies the critic's Round 6 fixes to the first v2 draft.
+1. Fix 1: B3 is now "The winner: one AI using tools only when needed." Screen: "The winner: one AI + tools when needed", accent "winner". It can no longer be heard as the answer to "when it doesn't".
+2. Fix 2: B4 "swamped" → "overloaded" (VO, versus caption, caption). B5 is now "Or when jobs must run at the same time." Screen: "Or jobs running at the same time", accent "same time".
+3. Fix 3: B7 is now "Still, one AI with tools was often cheaper, faster. No numbers shared." The subject is explicit, so "it" can't mean the team, and "several companies" is gone. It changed from `statement` to a `versus` picture beat: title "Cost and speed · company use", right icon `zap` with caption "one AI with tools", winner right, verdict "Often. No numbers shared." (C2, C4).
+4. Fix 4: caption line 2 now says "The comparisons covered several enterprise deployments, with no numbers published." (C2 safe_text).
+5. Fix 5: B9 is now "It skipped checking the delivery date, in one of two test runs." It is a mandatory `stat` picture beat: value 1, suffix "of 2", label "test runs: delivery date skipped", context "Anthropic sample support bot". The suffix has no leading space because the schema caps suffix at 4 characters; the director/engine should space it.
+6. Fix 6: B8 is active voice: "The catch: in Anthropic's sample support bot, they merged two helper bots." Catch text: "Sample support bot: two helper bots merged into one".
+7. Fix 7: ABT relabelled. B5→B6 is now "and" (confirmation). With "Still," B6→B7 is a real "but". The only "therefore" is the January advice.
+8. Fix 8, partly applied: B10 is shortened to "Anthropic's January advice: start simple. Add more only with evidence." (10 words). I kept "evidence" instead of "proof": C12 says "when evidence supports it", and "proof" is stronger than the source. The quote card stays verbatim C12.
+9. Fix 9: recount is 108 words (11 / 4 / 9 / 11 / 9 / 9 / 12 / 12 / 12 / 10 / 9). That is 43.2 s at the planning rate and about 40.8 s at +6%. B4 lands by ~13.2 s and B5 closes the loop by ~16.6 s. The timeline above is updated.
+10. Statement budget: 4 → 2 (B3, B5). Scene order is exactly the critic's: hook → versus → statement → versus → statement → document → versus → catch → stat → quote → cta. Storyboard claims: B7 versus C2/C4, B9 stat C8. Run `npm run check` once the storyboard is rebuilt.
+
+Carried over from the first v2 draft: new R3-H6 hook word for word over B1/B2; Round 5 pay-off order; 90.2%, 15x, "Both are true" and the receipt beat dropped; paper-trail `document` beat (B6) with C2/C0's verbatim quote; v1's verified catch (C8) and dated advice (C12) wording reused; every beat ≤ 12 spoken words; plain words for an Indian non-expert viewer (no "subagent", "deployment", "context" or "latency" in the voiceover; "subagents" only inside the verbatim on-screen quote).

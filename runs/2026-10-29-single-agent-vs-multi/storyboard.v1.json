@@ -1,0 +1,91 @@
+{
+  "title": "Team of AIs or just one? Anthropic says both",
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "hook",
+      "say": "Anthropic's AI team beat a solo AI by ninety point two percent. Now Anthropic says one AI frequently wins.",
+      "headline": "Team of AIs or just one?",
+      "accent": "one",
+      "kicker": "AI NEWS",
+      "claims": [
+        "C13",
+        "C2",
+        "C0"
+      ]
+    },
+    {
+      "id": "s2",
+      "type": "stat",
+      "say": "Both are true. That win was on Anthropic's own research test.",
+      "value": 90.2,
+      "prefix": "+",
+      "suffix": "%",
+      "decimals": 1,
+      "label": "Team vs solo AI, 2025",
+      "context": "Anthropic internal research eval",
+      "claims": [
+        "C13"
+      ]
+    },
+    {
+      "id": "s3",
+      "type": "receipt",
+      "say": "The one-AI win came from a different job: several company deployments, one AI grabbing tools as needed.",
+      "publisher": "Anthropic",
+      "headline": "Building agents: When to fold subagents into your main agent loop",
+      "date": "22 Oct 2026",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "claims": [
+        "C1",
+        "C2",
+        "C0"
+      ]
+    },
+    {
+      "id": "s4",
+      "type": "statement",
+      "say": "Often cheaper and faster. No figures, though.",
+      "text": "Often cheaper. No figures.",
+      "accent": "Often",
+      "claims": [
+        "C4",
+        "C2"
+      ]
+    },
+    {
+      "id": "s5",
+      "type": "list",
+      "say": "Helpers still have their place, Anthropic says. When one AI is swamped. Or when jobs must run side by side.",
+      "title": "Helpers still have their place",
+      "items": [
+        "One AI swamped with info",
+        "Jobs must run side by side"
+      ],
+      "claims": [
+        "C9",
+        "C0"
+      ]
+    },
+    {
+      "id": "s6",
+      "type": "catch",
+      "say": "The catch: in Anthropic's sample support bot, after two helpers merged, it skipped checking the delivery date. One run in two.",
+      "title": "Catch: sample bot",
+      "text": "Skipped the delivery date in 1 of 2 runs",
+      "claims": [
+        "C8"
+      ]
+    },
+    {
+      "id": "s7",
+      "type": "cta",
+      "say": "Anthropic's advice back in January: start simple, add more only with evidence. Team of AIs, or just one?",
+      "prompt": "Team of AIs, or one?",
+      "sub": "Anthropic, Jan 2026: start simple, add only with evidence",
+      "claims": [
+        "C12"
+      ]
+    }
+  ]
+}

@@ -42,13 +42,21 @@ Compress all three into about 2 to 3 seconds of speech. Example shape:
 
 ## 4. Hard rules
 
+- **The say-back test (most important).** After hearing the hook once, a stranger must be able to repeat it in
+  their own words. If they'd ask "wait, what?", it fails. Clarity beats cleverness every time.
+- **One idea per hook.** Never two competing claims ("X won by 90%… now Y wins") in the opening. Pick one.
+- **No number to decode.** A percentage or multiplier must say *of what* in the same breath, in everyday words,
+  or it stays out of the hook. "90.2% better" means nothing; "five AIs beat one" is instantly clear.
+- **No riddles that need context** ("Both are true", "It's complicated", "Here's the twist") as the payoff of the hook.
+  A question is fine if a 12-year-old would understand the question itself.
+- **Everyday words:** "a team of AI bots", "one AI assistant", not "multi-agent system", "subagents", "eval".
 - **Subject in the first 3 words.** The viewer must know what this is about immediately.
 - **No warm-up.** Never start with "Hey guys", "So", "In today's video", "Did you know", "Let's talk about".
 - **Specific beats vague.** "Cut costs by 90%" beats "way cheaper". Names beat "a company".
 - **Promise only what the reel pays off.** Every hook implies a promise; the script must deliver it, ideally within 15 seconds.
 - **Truth gate.** The hook may only rely on claims marked `verified` or `verified_with_wording` in `02-claims.json`, using the safe wording. A hook that overstates the facts is rejected no matter how strong it is. Clickbait that the video doesn't support destroys trust and the comment section.
 - **Text hook: at most 6 words.** If it needs more, the idea isn't sharp enough.
-- **Spoken hook: at most 20 words**, ideally 8 to 14.
+- **Spoken hook: at most 16 words**, ideally 8 to 14 (the code gate hard-stops at 20).
 
 ## 5. Output contract (`03-hooks.md`)
 

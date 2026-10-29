@@ -1,7 +1,8 @@
+import {Bot, Brain, ChartColumn, Clock, Code, Cpu, Database, DollarSign, FileText, Globe, Search, Shield, Smartphone, Sparkles, User, Users, Wrench, Zap} from 'lucide-react';
 import React from 'react';
-import {interpolate, useCurrentFrame} from 'remotion';
+import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {countUp, enter, formatNumber, lerp} from './motion';
-import type {Colors, Scene, Word} from './schema';
+import type {Colors, ICONS, Scene, Word} from './schema';
 import {CONTENT, display, fitSize, mono, serif} from './theme';
 
 type Of<T extends Scene['type']> = Extract<Scene, {type: T}>;
@@ -85,7 +86,7 @@ const markAccent = (text: string, accent?: string) => {
 export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 	const frame = useCurrentFrame();
 	const tokens = markAccent(scene.headline, scene.accent);
-	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: 4, max: 168});
+	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: scene.matchup ? 3 : 4, max: scene.matchup ? 140 : 168});
 	return (
 		<Stage gap={40}>
 			<Label color={colors.accentInk} bg={colors.accent}>
@@ -127,7 +128,36 @@ export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 					);
 				})}
 			</div>
+			{scene.matchup ? <Matchup matchup={scene.matchup} colors={colors} start={8} /> : null}
 		</Stage>
+	);
+};
+
+// A compact "5 vs 1" icon line so the very first frame shows the idea, not just words.
+const Matchup: React.FC<{matchup: NonNullable<Of<'hook'>['matchup']>; colors: Colors; start: number}> = ({matchup, colors, start}) => {
+	const frame = useCurrentFrame();
+	const group = (g: {icon: (typeof ICONS)[number]; count: number}, delay: number, accent: boolean) => {
+		const Icon = ICON[g.icon];
+		const size = g.count === 1 ? 120 : 64;
+		return (
+			<div style={{display: 'flex', flexWrap: 'wrap', gap: 10, maxWidth: 260, alignItems: 'center'}}>
+				{Array.from({length: g.count}, (_, k) => {
+					const p = enter(frame, delay + k * 2, 8);
+					return (
+						<div key={k} style={{opacity: p, scale: String(lerp(p, 0.4, 1))}}>
+							<Icon size={size} color={accent ? colors.accent : colors.text} strokeWidth={1.6} />
+						</div>
+					);
+				})}
+			</div>
+		);
+	};
+	return (
+		<div style={{display: 'flex', alignItems: 'center', gap: 34, marginTop: 10}}>
+			{group(matchup.left, start, false)}
+			<div style={{fontFamily: mono, fontWeight: 700, fontSize: 34, color: colors.muted, opacity: enter(frame, start + 6, 8)}}>VS</div>
+			{group(matchup.right, start + 10, true)}
+		</div>
 	);
 };
 
@@ -190,7 +220,12 @@ export const Stat: React.FC<P<'stat'>> = ({scene, colors, dur}) => {
 			<div style={{fontFamily: display, fontWeight: 900, fontSize: size, lineHeight: 0.9, textWrap: 'balance', letterSpacing: -size * 0.04, color: colors.accent, display: 'flex', alignItems: 'baseline'}}>
 				{scene.prefix ? <span style={{fontSize: size * 0.55, marginRight: 8}}>{scene.prefix}</span> : null}
 				<span style={{fontVariantNumeric: 'tabular-nums'}}>{shown}</span>
-				{scene.suffix ? <span style={{fontSize: size * 0.55, marginLeft: 6}}>{scene.suffix}</span> : null}
+				{/* Word suffixes ("of 2") get a real gap; symbols ("x", "%") sit tight against the number. */}
+				{scene.suffix ? (
+					<span style={{fontSize: size * 0.55, letterSpacing: 0, wordSpacing: size * 0.08, marginLeft: /[a-z]/i.test(scene.suffix.trim()[0] ?? '') && scene.suffix.trim().length > 1 ? size * 0.18 : 6, whiteSpace: 'pre'}}>
+						{scene.suffix.trim()}
+					</span>
+				) : null}
 			</div>
 			<div style={{height: 6, width: `${line * 100}%`, background: `linear-gradient(90deg, ${colors.accent}, transparent)`, borderRadius: 3}} />
 			<div style={{fontFamily: display, fontWeight: 800, fontSize: labelSize, lineHeight: 1.08, textWrap: 'balance', color: colors.text, opacity: enter(frame, 10, 12)}}>
@@ -451,8 +486,235 @@ export const Cta: React.FC<P<'cta'>> = ({scene, colors}) => {
 	);
 };
 
-export const SceneView: React.FC<{scene: Scene; colors: Colors; dur: number; words: Word[]}> = ({scene, colors, dur, words}) => {
+// Documentary paper trail: the real source page drifts behind a pulled quote that gets highlighted on the spoken words.
+export const Document: React.FC<P<'document'> & {asset?: string}> = ({scene, colors, dur, words, asset}) => {
+	const frame = useCurrentFrame();
+	const drop = enter(frame, 0, 16);
+	const [hlAt] = cueFrames(words, [scene.highlight ?? ''], () => Math.round(dur * 0.35));
+	const sweep = enter(frame, Math.max(10, hlAt), 16);
+	const size = fitSize(scene.quote, {maxWidth: CONTENT.width - 110, maxLines: 6, max: 64});
+	const tokens = markAccent(scene.quote, scene.highlight);
+	const domain = scene.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
+	return (
+		<>
+			{asset ? (
+				// The real page, like a printout on the desk: crisp, slightly tilted, slowly pushing in.
+				<div
+					style={{
+						position: 'absolute',
+						left: 70,
+						top: CONTENT.y + 10,
+						width: 920,
+						height: 560,
+						overflow: 'hidden',
+						borderRadius: 16,
+						rotate: '-2deg',
+						opacity: drop,
+						translate: `0px ${lerp(drop, -120, 0)}px`,
+						boxShadow: '0 40px 100px rgba(0,0,0,0.6)',
+					}}
+				>
+					<Img
+						src={staticFile(asset)}
+						style={{width: '100%', scale: String(interpolate(frame, [0, dur], [1.0, 1.1])), transformOrigin: '35% 35%'}}
+					/>
+				</div>
+			) : null}
+			<div
+				style={{
+					position: 'absolute',
+					left: CONTENT.x,
+					width: CONTENT.width,
+					top: asset ? CONTENT.y + 420 : CONTENT.y + 250,
+					padding: '40px 46px',
+					borderRadius: 18,
+					background: '#F4F2EE',
+					color: '#111114',
+					boxShadow: '0 30px 80px rgba(0,0,0,0.55)',
+					opacity: enter(frame, 6, 12),
+					translate: `0px ${lerp(enter(frame, 6, 14), 80, 0)}px`,
+					rotate: '1deg',
+				}}
+			>
+				<div style={{fontFamily: mono, fontWeight: 700, fontSize: 24, letterSpacing: 2, textTransform: 'uppercase', color: '#6B6870', marginBottom: 18}}>
+					{scene.publisher} · {domain}
+					{scene.date ? ` · ${scene.date}` : ''}
+				</div>
+				<div style={{fontFamily: display, fontWeight: 800, fontSize: size, lineHeight: 1.12, textWrap: 'balance'}}>
+					{tokens.map(({w, hit}, i) => (
+						<span key={i} style={{position: 'relative', display: 'inline-block', marginRight: size * 0.24, zIndex: 1}}>
+							{hit ? (
+								<span
+									style={{
+										position: 'absolute',
+										inset: `18% -${size * 0.12}px 4% -${size * 0.12}px`,
+										background: colors.accent,
+										zIndex: -1,
+										scale: `${sweep} 1`,
+										transformOrigin: 'left center',
+									}}
+								/>
+							) : null}
+							{i === 0 ? '“' : ''}
+							{w}
+							{i === tokens.length - 1 ? '”' : ''}
+						</span>
+					))}
+				</div>
+			</div>
+		</>
+	);
+};
+
+const ICON: Record<(typeof ICONS)[number], React.FC<{size?: number; color?: string; strokeWidth?: number}>> = {
+	bot: Bot, user: User, users: Users, brain: Brain, cpu: Cpu, zap: Zap, clock: Clock, dollar: DollarSign, chart: ChartColumn,
+	search: Search, code: Code, file: FileText, shield: Shield, globe: Globe, phone: Smartphone, sparkles: Sparkles, wrench: Wrench, database: Database,
+};
+
+// Visual metaphor: two icon groups face off; the winner glows and a verdict stamp lands on the spoken cue.
+export const Versus: React.FC<P<'versus'>> = ({scene, colors, dur, words}) => {
+	const frame = useCurrentFrame();
+	const sides = [
+		{key: 'left', g: scene.left},
+		{key: 'right', g: scene.right},
+	] as const;
+	const cues = cueFrames(words, [scene.left.label, scene.right.label], (i) => 4 + i * Math.round(dur * 0.3));
+	const stamp = enter(frame, Math.round(dur * 0.62), 8);
+	return (
+		<Stage gap={36}>
+			{scene.title ? (
+				<div style={{fontFamily: display, fontWeight: 900, fontSize: 76, lineHeight: 1.04, textWrap: 'balance', color: colors.text, opacity: enter(frame, 0, 10)}}>{scene.title}</div>
+			) : null}
+			<div style={{display: 'flex', gap: 26, width: '100%', position: 'relative'}}>
+				{sides.map(({key, g}, i) => {
+					const Icon = ICON[g.icon];
+					const win = scene.winner === key;
+					const appear = enter(frame, cues[i], 12);
+					const cols = g.count === 1 ? 1 : g.count <= 4 ? 2 : 3;
+					const iconSize = g.count === 1 ? 190 : g.count <= 4 ? 96 : 76;
+					return (
+						<div
+							key={key}
+							style={{
+								flex: 1,
+								padding: '34px 24px 30px',
+								borderRadius: 28,
+								background: win ? `${colors.accent}14` : colors.surface,
+								border: `3px solid ${win ? colors.accent : `${colors.text}14`}`,
+								opacity: appear,
+								translate: `0px ${lerp(appear, 60, 0)}px`,
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'center',
+								gap: 22,
+							}}
+						>
+							<div style={{display: 'grid', gridTemplateColumns: `repeat(${cols}, auto)`, gap: 14, height: 240, alignContent: 'center'}}>
+								{Array.from({length: g.count}, (_, k) => {
+									const pop = enter(frame, cues[i] + 3 + k * 3, 10);
+									return (
+										<div key={k} style={{scale: String(lerp(pop, 0.3, 1)), opacity: pop}}>
+											<Icon size={iconSize} color={win ? colors.accent : colors.text} strokeWidth={1.6} />
+										</div>
+									);
+								})}
+							</div>
+							<div style={{fontFamily: display, fontWeight: 900, fontSize: 50, lineHeight: 1.05, textAlign: 'center', textWrap: 'balance', color: win ? colors.accent : colors.text}}>{g.label}</div>
+							{g.caption ? <div style={{fontFamily: mono, fontSize: 26, textAlign: 'center', color: colors.muted, textWrap: 'balance'}}>{g.caption}</div> : null}
+						</div>
+					);
+				})}
+				<div
+					style={{
+						position: 'absolute',
+						left: '50%',
+						top: 120,
+						translate: '-50% 0px',
+						width: 84,
+						height: 84,
+						borderRadius: 42,
+						background: colors.bg,
+						border: `3px solid ${colors.text}30`,
+						display: 'grid',
+						placeItems: 'center',
+						fontFamily: mono,
+						fontWeight: 700,
+						fontSize: 30,
+						color: colors.text,
+						opacity: enter(frame, cues[1], 10),
+					}}
+				>
+					VS
+				</div>
+			</div>
+			{scene.verdict ? (
+				<div
+					style={{
+						alignSelf: 'center',
+						padding: '14px 26px',
+						border: `5px solid ${colors.accent}`,
+						borderRadius: 14,
+						fontFamily: mono,
+						fontWeight: 700,
+						fontSize: 38,
+						letterSpacing: 2,
+						textTransform: 'uppercase',
+						color: colors.accent,
+						rotate: '-4deg',
+						opacity: stamp,
+						scale: String(lerp(stamp, 1.8, 1)),
+					}}
+				>
+					{scene.verdict}
+				</div>
+			) : null}
+		</Stage>
+	);
+};
+
+// Several icons fly together and become one bigger icon: "two helper bots merged into one".
+export const Merge: React.FC<P<'merge'>> = ({scene, colors, dur, words}) => {
+	const frame = useCurrentFrame();
+	const From = ICON[scene.from.icon];
+	const To = ICON[scene.to.icon];
+	const [mergeAt] = cueFrames(words, ['merged', 'merge', 'combined', 'one'], () => Math.round(dur * 0.4));
+	const m = enter(frame, Math.max(10, mergeAt), 16);
+	const n = scene.from.count;
+	const tint = scene.tone === 'warn' ? colors.warn : colors.accent;
+	return (
+		<Stage gap={30}>
+			{scene.title ? <div style={{fontFamily: display, fontWeight: 900, fontSize: 76, lineHeight: 1.04, textWrap: 'balance', color: colors.text, opacity: enter(frame, 0, 10)}}>{scene.title}</div> : null}
+			<div style={{position: 'relative', width: '100%', height: 420}}>
+				{Array.from({length: n}, (_, k) => {
+					const x = (k - (n - 1) / 2) * 190;
+					const p = enter(frame, 2 + k * 3, 10);
+					return (
+						<div key={k} style={{position: 'absolute', left: '50%', top: 120, translate: `${lerp(m, x, 0) - 60}px 0px`, opacity: p * (1 - m), scale: String(lerp(m, 1, 0.6))}}>
+							<From size={120} color={colors.text} strokeWidth={1.5} />
+						</div>
+					);
+				})}
+				<div style={{position: 'absolute', left: '50%', top: 60, translate: '-120px 0px', opacity: m, scale: String(lerp(m, 0.4, 1))}}>
+					<To size={240} color={tint} strokeWidth={1.4} />
+				</div>
+			</div>
+			<div style={{display: 'flex', justifyContent: 'space-between', width: '100%', fontFamily: mono, fontWeight: 700, fontSize: 30, letterSpacing: 2, textTransform: 'uppercase'}}>
+				<span style={{color: colors.muted, opacity: 1 - m * 0.6}}>{scene.from.label}</span>
+				<span style={{color: tint, opacity: m}}>→ {scene.to.label}</span>
+			</div>
+			{scene.caption ? <div style={{fontFamily: display, fontWeight: 800, fontSize: 52, lineHeight: 1.1, textWrap: 'balance', color: colors.text, opacity: enter(frame, Math.max(10, mergeAt) + 10, 12)}}>{scene.caption}</div> : null}
+		</Stage>
+	);
+};
+
+export const SceneView: React.FC<{scene: Scene; colors: Colors; dur: number; words: Word[]; asset?: string}> = ({scene, colors, dur, words, asset}) => {
 	switch (scene.type) {
+		case 'document':
+			return <Document scene={scene} colors={colors} dur={dur} words={words} asset={asset} />;
+		case 'merge':
+			return <Merge scene={scene} colors={colors} dur={dur} words={words} />;
+		case 'versus':
+			return <Versus scene={scene} colors={colors} dur={dur} words={words} />;
 		case 'hook':
 			return <Hook scene={scene} colors={colors} dur={dur} words={words} />;
 		case 'statement':

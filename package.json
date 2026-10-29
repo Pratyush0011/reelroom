@@ -12,7 +12,9 @@
     "render": "tsx pipeline/render.ts",
     "stills": "tsx pipeline/stills.ts",
     "test": "tsx --test pipeline/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "voices": "tsx pipeline/voices.ts",
+    "shots": "tsx pipeline/shots.ts"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.539",
@@ -23,6 +25,7 @@
     "@remotion/media-utils": "^4.0.539",
     "@remotion/renderer": "^4.0.539",
     "@remotion/transitions": "^4.0.539",
+    "lucide-react": "^1.64.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "remotion": "^4.0.539",

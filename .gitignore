@@ -8,3 +8,5 @@ public/runs/
 runs/**/qa/
 # Recreated any time with `npx tsx pipeline/make-demo.ts`
 runs/_demo/
+!.env.example
+samples/

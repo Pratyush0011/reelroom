@@ -1,35 +1,32 @@
-# Ready to post
+# Ready to post (v2)
 
-**Video:** `final.mp4` (1080×1920, 49.2 s) · **Cover:** `cover.png`
+**Video:** `final.mp4` (1080×1920, 49.7 s, narrated by ElevenLabs "Daniel") · **Cover:** `cover.png`
 
 ## Caption
-Anthropic's AI team beat a solo AI by 90.2%. Now it says one AI frequently wins. Both are true.
-The 2025 win was on Anthropic's internal research eval. The 2026 advice comes from its comparisons across several company deployments, with no figures published, and it says helper AIs "still have their place".
-Team of AIs or just one? Tell us which you'd trust.
+One AI frequently beats a team of AI bots, Anthropic found. Not always, though.
+A team still wins when one AI is overloaded with information, or when jobs must run at the same time. In Anthropic's words, teams "still have their place". The comparisons covered several enterprise deployments, with no numbers published.
+One AI or a team: which would you trust with your work?
 
 ## Hashtags
-#AIagents #Anthropic #Claude #MultiAgent #AIexplained #AItools #TechNews
+#AIagents #Anthropic #Claude #AItools #AIexplained #TechNewsIndia #ArtificialIntelligence
 
 ## First comment (sources)
 Sources:
 - Anthropic, "Building agents: When to fold subagents into your main agent loop" (22 Oct 2026): https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop
-- Anthropic Engineering, "How we built our multi-agent research system" (13 Jun 2025): https://www.anthropic.com/engineering/multi-agent-research-system
 - Anthropic, "Building multi-agent systems: When and how to use them" (23 Jan 2026): https://www.claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them
 
 ## Every claim shown on screen
-| Scene | Claim | Verdict | Source |
-|---|---|---|---|
-| s1, s2 | C13: 90.2% over single-agent Claude Opus 4, on Anthropic's internal research eval (Jun 2025) | verified | anthropic.com/engineering/multi-agent-research-system |
-| s1, s3 | C0: the headline's premise holds only with qualifiers ("frequently", "several enterprise deployments", "subagents still have their place") | verified with wording | claude.com resources article, 22 Oct 2026 |
-| s1, s3, s4 | C2: a single agent with skills "frequently" outperformed, no figures published | verified with wording | same article |
-| s3 | C1: the article itself, 22 Oct 2026 | verified | same article |
-| s4 | C4: often lower cost and latency per task | verified | same article |
-| s5 | C9: keep subagents for context bloat or parallel work | verified | same article |
-| s6 | C8: sample support agent, merge broke a step in 1 of 2 runs | verified | same article |
-| s7 | C12: "start with the simplest approach that works" (Jan 2026) | verified | claude.com blog, 23 Jan 2026 |
+| Scene | Claim | Verdict |
+|---|---|---|
+| s1, s2, s11 | C0/C2: a single agent with skills "frequently" did better in several enterprise deployments; subagents "still have their place" | verified with wording |
+| s3 | C0: one AI that loads tools and skills when needed | verified with wording |
+| s4, s5 | C9: keep the team when one AI is overloaded, or for parallel work | verified |
+| s6 | C1/C2: the 22 Oct 2026 article and its verbatim quote | verified |
+| s7 | C4: often lower cost and faster per task; C2: no figures published | verified |
+| s8, s9 | C8: in Anthropic's sample support bot, merging two helpers skipped a delivery-date check in 1 of 2 test runs | verified |
+| s10 | C12: "start with the simplest approach that works…" (Jan 2026) | verified |
 
 ## What the room cut or softened
-- **C16 (false):** press coverage said a Vals study found no gains from 10, 30 or 100 agents. The primary study capped teams at 5 agents. Not used.
-- **C3 (2x faster):** true, but one unnamed customer and speed only. Left out to avoid implying a general result.
-- **C14 (266 vs 21 vulnerabilities):** true, but not a like-for-like comparison. Left out, and the hook that used it was disqualified on truth.
-- **The headline itself ("one agent beats many"):** comes from press coverage, not Anthropic. The reel never says it as Anthropic's words.
+- **C16 (false):** press coverage said a Vals study tested 10–100 agents; the primary study capped teams at 5.
+- **The 90.2% figure (v1's hook):** dropped in v2 because viewers couldn't tell "90.2% of what".
+- **The headline "one agent beats many":** comes from press coverage, never shown as Anthropic's words.

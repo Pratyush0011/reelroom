@@ -1,6 +1,6 @@
 import {Audio} from '@remotion/media';
 import React from 'react';
-import {AbsoluteFill, Sequence, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {Background} from './components/Background';
 import {Captions} from './components/Captions';
 import {Chrome} from './components/Chrome';
@@ -54,7 +54,7 @@ export const Reel: React.FC<ReelProps> = (props) => {
 			{placed.map(({scene, t, from}, i) => (
 				<Sequence key={scene.id} name={`${scene.id} · ${scene.type}`} from={from} durationInFrames={t.durationInFrames}>
 					<Cut>
-						<SceneView scene={scene} colors={colors} dur={t.durationInFrames} words={t.words} />
+						<SceneView scene={scene} colors={colors} dur={t.durationInFrames} words={t.words} asset={props.assets?.[scene.id]} />
 					</Cut>
 					<SourceChip colors={colors} sources={scene.claims.map((c) => sources[c]).filter(Boolean)} />
 					{props.cover ? null : <Captions words={t.words} colors={colors} />}
@@ -62,6 +62,13 @@ export const Reel: React.FC<ReelProps> = (props) => {
 					{i > 0 ? <Audio src={staticFile('sfx/whoosh.wav')} volume={0.18} /> : null}
 				</Sequence>
 			))}
+			{props.music ? (
+				<Audio
+					src={staticFile(props.music)}
+					loop
+					volume={(f) => interpolate(f, [0, 20, at - 45, at], [0, 0.1, 0.1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
+				/>
+			) : null}
 			<Chrome colors={colors} handle={handle} starts={starts} total={at} />
 		</AbsoluteFill>
 	);

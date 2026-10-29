@@ -27,13 +27,22 @@ You do not write React code; you write `storyboard.json`, which `src/schema.ts` 
 | `chart` | 3–5 numbers that compare (benchmarks, prices). | `title`, `unit`, `bars`: `[{label, value, highlight?}]` |
 | `catch` | The honest "but". A warning-style card. | `title` (e.g. "The catch"), `text` (≤14 words) |
 | `cta` | Final beat. A comment/save prompt. | `prompt` (≤10 words), `sub` (optional) |
+| `document` | **Paper trail.** The real source page (auto-screenshotted) drifts behind a pulled quote; `highlight` gets marked as it's spoken. Strongest trust moment in the library. | `publisher`, `quote` (≤24 words, **verbatim** from a checked source quote), `highlight` (phrase inside quote), `date`, `url` (a checked source) |
+| `merge` | **Combining, shown.** Several icons fly together and become one bigger icon ("two helper bots merged into one"). The merge lands on the spoken word "merged"/"one". | `title?`, `from`: `{icon, count 2–6, label}`, `to`: `{icon, label}`, `caption?` (≤8 words) |
+| `hook` + `matchup` | The hook can carry a small icon line under the headline (e.g. 5 bots VS 1 bot) so frame 1 shows the idea. | `matchup`: `{left: {icon, count}, right: {icon, count}}` |
+| `versus` | **Visual metaphor.** Two icon groups face off (5 robots vs 1 robot, user vs bot…); the winner glows; a verdict stamp lands. | `title`, `left`/`right`: `{label ≤4 words, icon, count 1–6, caption?}`, `winner`, `verdict` (≤5 words). Icons: bot, user, users, brain, cpu, zap, clock, dollar, chart, search, code, file, shield, globe, phone, sparkles, wrench, database |
 
 Rules of thumb:
+- **Pick your reference style first** (`playbooks/references.md`) and write `05b-direction.md` before the storyboard.
+- **No scene longer than ~5 seconds of voice (about 12 spoken words).** If a script beat is longer, split it across two scenes with different visuals. Long static scenes are the #1 reason a reel feels like a slideshow.
+- **Never reuse the same visual layout for two different ideas.** If `versus` appears twice, the second must look different (different icons/counts, winner on the other side, or a different scene type).
+- **The picture must agree with the voice at that moment.** Don't show a winner while the voice says "here's when it doesn't".
+- **Show, don't write:** prefer `versus`, `stat`, `document`, `compare` (pictures and numbers) over `statement` (sentences). Use at most two `statement` scenes per reel.
 - Start with `hook`. End with `cta`.
 - Put a `receipt` right after the most surprising claim. On-screen receipts are this channel's signature.
 - Use `stat` or `compare` for any number that matters; never bury a big number inside a sentence card.
 - Don't use the same type twice in a row (except `statement` if the beats really are two lines of argument).
-- 5 to 9 scenes for a 25–45 s reel.
+- 8 to 12 scenes for a 25–45 s reel.
 
 ## 3. Voice and timing
 

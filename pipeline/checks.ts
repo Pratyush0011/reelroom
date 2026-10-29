@@ -48,6 +48,12 @@ const screenText = (s: Scene): string[] => {
 			return [s.title, s.text];
 		case 'cta':
 			return [s.prompt, s.sub ?? ''];
+		case 'document':
+			return [s.publisher, s.quote];
+		case 'merge':
+			return [s.title ?? '', s.from.label, s.to.label, s.caption ?? ''];
+		case 'versus':
+			return [s.title ?? '', s.left.label, s.right.label, s.left.caption ?? '', s.right.caption ?? '', s.verdict ?? ''];
 	}
 };
 
@@ -115,7 +121,18 @@ export const checkRun = ({
 				warnings.push(`${s.id}: the number ${n} does not appear in the text of ${s.claims.join(', ')}; check it was derived correctly`);
 		}
 
-		if (s.type === 'receipt' && !knownUrls.has(s.url)) errors.push(`${s.id}: receipt URL is not one of the checked sources (${s.url})`);
+		if ((s.type === 'receipt' || s.type === 'document') && !knownUrls.has(s.url))
+			errors.push(`${s.id}: ${s.type} URL is not one of the checked sources (${s.url})`);
+
+		// A document scene shows words as a quote, so they must appear verbatim in a checked source quote.
+		if (s.type === 'document') {
+			const flat = (t: string) => t.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+			const quotes = s.claims
+				.map((id) => claims.get(id))
+				.flatMap((c) => [...(c?.sources ?? []), ...(c?.checked_sources ?? [])].map((src) => (src as {quote?: string}).quote ?? ''));
+			if (!quotes.some((q) => flat(q).includes(flat(s.quote))))
+				errors.push(`${s.id}: the quote is not found verbatim in the cited claims' source quotes`);
+		}
 
 		const all = [s.say, ...screenText(s)].join(' ').toLowerCase();
 		for (const phrase of BANNED) if (all.includes(phrase)) errors.push(`${s.id}: uses banned phrase "${phrase}"`);

@@ -8,6 +8,8 @@ export const countWords = (s: string) => s.trim().split(/\s+/).filter(Boolean).l
 const words = (max: number) =>
 	z.string().min(1).refine((s) => countWords(s) <= max, {message: `must be ${max} words or fewer`});
 
+export const ICONS = ['bot', 'user', 'users', 'brain', 'cpu', 'zap', 'clock', 'dollar', 'chart', 'search', 'code', 'file', 'shield', 'globe', 'phone', 'sparkles', 'wrench', 'database'] as const;
+
 const base = {
 	id: z.string().regex(/^s\d+$/, 'scene ids look like s1, s2, ...'),
 	say: z.string().min(2).describe('Exact voiceover for this scene, written as spoken'),
@@ -20,6 +22,10 @@ export const HookScene = z.object({
 	headline: words(6),
 	accent: z.string().optional(),
 	kicker: words(4).optional(),
+	// Optional picture under the headline so frame 1 shows the idea, e.g. 5 bots vs 1 bot.
+	matchup: z
+		.object({left: z.object({icon: z.enum(ICONS), count: z.number().int().min(1).max(6)}), right: z.object({icon: z.enum(ICONS), count: z.number().int().min(1).max(6)})})
+		.optional(),
 });
 
 export const StatementScene = z.object({
@@ -34,7 +40,7 @@ export const StatScene = z.object({
 	type: z.literal('stat'),
 	value: z.number(),
 	prefix: z.string().max(3).optional(),
-	suffix: z.string().max(4).optional(),
+	suffix: z.string().max(6).optional(),
 	decimals: z.number().int().min(0).max(2).optional(),
 	label: words(8),
 	context: words(10).optional(),
@@ -105,7 +111,50 @@ export const CtaScene = z.object({
 	sub: words(10).optional(),
 });
 
+// Documentary "paper trail": a real screenshot of the source page, with the key line pulled out and highlighted.
+export const DocumentScene = z.object({
+	...base,
+	type: z.literal('document'),
+	publisher: words(5),
+	quote: words(24).describe('verbatim words from the source'),
+	highlight: z.string().optional().describe('phrase inside quote to mark with the highlighter'),
+	date: z.string().max(20).optional(),
+	url: z.string().url(),
+});
+
+const Group = z.object({
+	label: words(4),
+	icon: z.enum(ICONS),
+	count: z.number().int().min(1).max(6),
+	caption: words(5).optional(),
+});
+
+// Visual metaphor: two groups of icons side by side (a team of AIs vs one AI, old vs new, humans vs bots).
+export const VersusScene = z.object({
+	...base,
+	type: z.literal('versus'),
+	title: words(6).optional(),
+	left: Group,
+	right: Group,
+	winner: z.enum(['left', 'right', 'none']).default('none'),
+	verdict: words(5).optional().describe('stamp that lands at the end, e.g. "Often, not always"'),
+});
+
+// Visual metaphor for combining: several icons fly together and become one.
+export const MergeScene = z.object({
+	...base,
+	type: z.literal('merge'),
+	title: words(6).optional(),
+	from: z.object({icon: z.enum(ICONS), count: z.number().int().min(2).max(6), label: words(4)}),
+	to: z.object({icon: z.enum(ICONS), label: words(4)}),
+	caption: words(8).optional(),
+	tone: z.enum(['good', 'warn']).default('good').describe('warn = the merge went wrong (a catch)'),
+});
+
 export const Scene = z.discriminatedUnion('type', [
+	DocumentScene,
+	MergeScene,
+	VersusScene,
 	HookScene,
 	StatementScene,
 	StatScene,
@@ -178,4 +227,8 @@ export type ReelProps = {
 	sources: Record<string, Source>;
 	// Cover/thumbnail mode: no captions, so the frame reads as a poster.
 	cover?: boolean;
+	// scene id -> image path inside public/ (source screenshots for `document` scenes)
+	assets?: Record<string, string>;
+	// Optional music bed inside public/ (bring a track you're licensed to use)
+	music?: string;
 };

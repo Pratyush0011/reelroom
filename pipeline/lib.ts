@@ -5,6 +5,9 @@ import {Colors, Storyboard, Timing, type ReelProps, type Source} from '../src/sc
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
+// Optional secrets (ElevenLabs key) live in a git-ignored .env at the repo root.
+if (existsSync(path.join(ROOT, '.env'))) process.loadEnvFile(path.join(ROOT, '.env'));
+
 export type Brand = {
 	name: string;
 	handle: string;
@@ -14,6 +17,9 @@ export type Brand = {
 	minSeconds: number;
 	maxSeconds: number;
 	colors: Colors;
+	elevenlabs?: import('./elevenlabs.ts').ElevenConfig;
+	music?: string;
+	tempo?: number;
 };
 
 export const readJson = <T = unknown>(file: string): T => JSON.parse(readFileSync(file, 'utf8')) as T;
@@ -88,5 +94,7 @@ export const propsForRun = (runDir: string): ReelProps => {
 		colors: b.colors,
 		handle: b.handle,
 		sources: sourcesFromLedger(loadLedger(runDir)),
+		assets: existsSync(path.join(runDir, 'assets.json')) ? readJson<Record<string, string>>(path.join(runDir, 'assets.json')) : {},
+		music: b.music && existsSync(path.join(ROOT, 'public', b.music)) ? b.music : undefined,
 	};
 };

@@ -98,6 +98,14 @@ test('a ledger without a premise claim fails', () => {
 	assert.ok(r.errors.some((e) => e.includes('no C0')));
 });
 
+test('a document scene must quote its source verbatim', () => {
+	const withQuote = ledger();
+	withQuote.claims[1] = {...withQuote.claims[1], checked_sources: [{url: 'https://example.com/a', quote: 'The model is 2.5x faster on our benchmark.'} as {url: string}]};
+	const scene = (quote: string) => board([{id: 's2', type: 'document', publisher: 'Example', quote, url: 'https://example.com/a', say: 'Here is what they wrote.', claims: ['C1']}]);
+	assert.deepEqual(checkRun({storyboard: scene('2.5x faster on our benchmark'), ledger: withQuote, timing: null, brand}).errors, []);
+	assert.ok(checkRun({storyboard: scene('ten times faster than everyone'), ledger: withQuote, timing: null, brand}).errors.some((e) => e.includes('not found verbatim')));
+});
+
 test('banned filler phrases fail', () => {
 	const r = checkRun({
 		storyboard: board([{id: 's2', type: 'statement', text: 'This is a game-changer', say: 'Honestly this is a game-changer.', claims: []}]),

@@ -11,7 +11,8 @@
 ## Tools the product uses at runtime
 
 - **Claude (via Claude Code or the Claude Agent SDK)** runs the showrunner and the seven subagents.
-- **edge-tts** (Microsoft Edge's neural voices) generates the voiceover and word-level timings. No key needed.
+- **ElevenLabs** (`eleven_v4`, voice "Daniel") generates the voiceover with character-level timestamps that
+  become word-synced captions. **edge-tts** (Microsoft Edge's neural voices) is the free fallback when no key is set.
 - **Remotion** renders the video locally.
 
 ## How I verified the code and outputs
