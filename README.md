@@ -22,7 +22,7 @@ better in several enterprise deployments, publishes no figures, and says subagen
 The fact-checker also caught press coverage misreporting a study (claiming it tested 10–100 agents; the
 primary source capped teams at 5) and kept that out of the video.
 
-▶ **[final.mp4](runs/2026-10-29-single-agent-vs-multi/final.mp4)** (50 s, v2) · [cover](runs/2026-10-29-single-agent-vs-multi/cover.png) · [POST.md](runs/2026-10-29-single-agent-vs-multi/POST.md) · [run-log.md](runs/2026-10-29-single-agent-vs-multi/run-log.md) · [05b-direction.md](runs/2026-10-29-single-agent-vs-multi/05b-direction.md) (the director's reference research)
+▶ **[final.mp4](runs/2026-10-29-single-agent-vs-multi/final.mp4)** (49 s, v3) · [cover](runs/2026-10-29-single-agent-vs-multi/cover.png) · [POST.md](runs/2026-10-29-single-agent-vs-multi/POST.md) · [run-log.md](runs/2026-10-29-single-agent-vs-multi/run-log.md) · [05b-direction.md](runs/2026-10-29-single-agent-vs-multi/05b-direction.md) (the director's reference research)
 
 **v1 → v2 (after human review).** v1 passed every gate but a human viewer still found it unpublishable. The
 hook ("Anthropic's AI team beat a solo AI by 90.2%… Both are true") was confusing, the voice was flat, and
@@ -32,7 +32,13 @@ it was mostly text on a dark background. The fixes went into the system, not jus
 - **New scenes that show instead of tell:** `versus` (icon match-ups), `merge` (bots combining), `document` (an automatic screenshot of the real source page with the quote highlighted on the spoken words), and an icon match-up on the hook frame.
 - **ElevenLabs voice** with word-level timestamps, a cache so re-renders don't spend credits, silence trimming, and a pitch-preserving tempo control.
 
-How hard the gates pushed back on this story (v1 + v2):
+**v2 → v3 (second human review: "static, nothing is going on on screen").** Again, the fixes went into the system:
+- **A real inspiration skill** (`.claude/skills/reel-inspiration`), preloaded into the director. Before storyboarding it must find and deconstruct at least 5 references, at least 3 of them real short-form reels on the topic, and write a motion recipe. `npm run check` blocks the run otherwise. For this story it studied five AI-agent YouTube Shorts (13k to 876k views) frame by frame, plus Vox and ColdFusion documentaries.
+- **A motion layer on every scene:** whip/zoom/glitch/flash/slide transitions with sound, constant camera drift, punch-ins and caption "pops" exactly on the spoken emphasis words, shake on the catch, and an always-moving background.
+- **Pace is a gate:** at least one visual change every 2 s and no scene over 4.5 s. The reel went from 11 scenes to 18, with a change every ~1.5 s.
+- **Licensed B-roll with no API keys:** Wikimedia Commons and Openverse, commercial-use licenses only, auto-credited in `media-credits.json`. It filters out politicians, brands, money and weapons, rejects near-black clips, and caches each pick per query so QA-approved clips don't change between runs.
+
+How hard the gates pushed back on this story (v1 → v3):
 
 | Gate | Rounds | What it caught |
 |---|---|---|
@@ -40,7 +46,8 @@ How hard the gates pushed back on this story (v1 + v2):
 | Hooks (critic) | 2 (v1) + 1 (v2) | v1: all 12 first-round hooks below 20/25. v2: 3 of 8 failed the say-back test ("AI cooks", "the same problem"). Winner 22/25, clarity 5. |
 | Script (critic) | 2 (v1) + 2 (v2) | v1: caught its own wording error. v2: 25/35 → 32/35. Two lines failed say-back, "several companies" overstated "several enterprise deployments". |
 | `npm run check` | 2 (v1) + 1 (v2) | v1: 52.2 s > 50 s → trimmed. v2: ElevenLabs voice ran 54.7 s → silence trim + tempo 1.1 from cache → 49.7 s, no re-generation cost |
-| Visual QA | 3 (v1) + 2 (v2) | v1: clipped chip, orphans. v2: blank page capture (fixed with reduced-motion screenshots), a picture contradicting the voice, two scenes with the same layout |
+| Visual QA | 3 (v1) + 2 (v2) + 3 (v3) | v1: clipped chip, orphans. v2: blank page capture, a picture contradicting the voice. v3: stale uncredited B-roll (fixed in the pipeline), off-topic footage (a rolling-papers pack, a head of state, a Bible page), stickers covering evidence (moved into the caption band) |
+| Inspiration gate | 1 (v3) | v2's "references" were articles, not reels. The gate now requires real short-form URLs and a motion recipe |
 
 ### 2. The edge case: a fabricated headline → no video ([`runs/2026-10-29-gpt7-conscious-personhood`](runs/2026-10-29-gpt7-conscious-personhood))
 
@@ -109,8 +116,8 @@ and keeps `run-log.md`.
 - **Rules that must never bend** are code: `pipeline/checks.ts` rejects any scene that cites an unverified
   claim, any on-screen number with no claim behind it, any receipt URL that wasn't checked, banned filler
   phrases, and out-of-range durations. It's unit-tested (`npm test`).
-- **Rendering** is deterministic: the director writes JSON, never React. The engine (`src/`, Remotion) has 13
-  designed scene types (hook, statement, stat, compare, list, quote, receipt, chart, catch, cta, versus, merge, document), word-synced
+- **Rendering** is deterministic: the director writes JSON, never React. The engine (`src/`, Remotion) has 14
+  designed scene types (hook, statement, stat, compare, list, quote, receipt, chart, catch, cta, versus, merge, document, broll), word-synced
   captions, story-style chapter bars and a "✓ SOURCE" chip on every factual scene. The same storyboard
   always renders the same video.
 
@@ -175,6 +182,7 @@ npm run studio                      # Remotion Studio with the scene-library dem
 npx tsx pipeline/make-demo.ts       # create runs/_demo (no agents needed)
 npm run check  -- runs/<run>        # the deterministic gate
 npm run shots  -- runs/<run>        # screenshot real source pages for document scenes
+npm run media  -- runs/<run>        # licensed B-roll (Wikimedia Commons + Openverse), credited
 npm run voice  -- runs/<run>        # TTS + word timings (cached per line)
 npm run stills -- runs/<run>        # QA stills
 npm run render -- runs/<run>        # final.mp4 + cover.png
@@ -200,12 +208,13 @@ agent skills: `npx skills add remotion-dev/skills`.
 - **The fact-checker is only as good as what it can open.** Some official pages (openai.com/news, the European
   Commission press corner) block automated fetches. The checker then relies on feeds, release logs and reporting,
   and says so in its notes.
-- **The scene library is fixed (13 types).** That's deliberate, for reliability. New visual ideas become new scene
+- **The scene library is fixed (14 types).** That's deliberate, for reliability. New visual ideas become new scene
   types (that's how `versus`, `merge` and `document` were added after review), not per-video code.
 - **Voice:** the reel uses ElevenLabs "Daniel" (British). An Indian-accent narrator was the goal, but on the free
   ElevenLabs plan the API only allows built-in voices; the Indian library voices need a paid plan.
-- **No B-roll or stock footage**, by design: everything on screen is type, icons, data and real source pages. Music
-  is optional and bring-your-own.
-- **Two text-only scenes remain** in the example reel (s3, s5). Visual QA flagged them as fine but improvable; a
-  "lanes" scene for parallel work would be the next addition.
+- **B-roll relevance depends on what free licensed libraries hold.** Wikimedia and Openverse are thinner than stock
+  sites, and searches sometimes return off-topic pictures (QA caught a heron for "parcel"). Visual QA reviews every pick,
+  and approved picks are cached. Music is optional and bring-your-own.
+- **Inspiration research is limited to what can be fetched:** TikTok refused connections and search found no Instagram
+  reel pages, so the references are YouTube Shorts and documentaries.
 - **Headless mode needs API credentials.** Inside Claude Code it uses your existing login.

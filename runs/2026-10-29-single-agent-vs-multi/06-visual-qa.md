@@ -200,3 +200,130 @@ All three are query/emphasis edits plus a clean media rebuild. No scene structur
 Accuracy: all on-screen facts still match C0/C1/C2/C4/C8/C9/C12. There are no invented numbers, nothing from C16, and the press headline is never shown as Anthropic's claim.
 
 VERDICT: FIX
+
+## Round 7 (v3)
+Verdict: FIX
+
+I re-opened all 36 freshly rendered stills (540x960) and checked them against the updated storyboard.json, media-credits.json and assets.json.
+
+**What Round 6 fixed:**
+- **Stale media: fixed.** assets.json and the public folder now hold only current scene ids. Every `bg-`/media file has a credits entry. s9 and s15 render on the plain background, and s15 no longer copies s16.
+- **Sticker collisions: fixed.** Emphasis words now light up inside the caption band as an accent pill or colour. Nothing covers the receipt date (s2), the One AI card (s6), the Speed tile (s10) or the s5 headline.
+- **s6 rolling papers:** gone. The new backdrop is a desk of printed documents, which fits "overloaded with information" and is dim enough.
+- **s5 head of state:** gone. The new shot is a whiteboard with sticky notes and no people, a good "team" picture, and the headline is legible on it.
+- **s7:** a dark car assembly line, a fair "jobs at the same time" image.
+- **s8:** the caption has no stray quote mark.
+- **s16:** "Jan 2026" no longer collides with the source chip.
+- **s14:** no longer black. It is a real daylight street.
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) |
+|---|---|---|---|---|
+| s17 | s17-mid, s17-end | major | The "magnifying glass on document" pick is a magnifier over a **Portuguese Bible page**. Large, readable lines run behind the list ("Vive o Senhor", and in bold italics "Contra os falsos profetas", i.e. "against the false prophets"). Scripture behind "Anthropic's advice" is off-topic, and "false prophets" reads as an editorial jab. It is also the busiest backdrop in the reel. | `bg.query` → "microscope lab" or "measuring tape". If neither returns a clean object shot, drop `bg` from s17. |
+| s11 | s11-mid, s11-end | major | The "spreadsheet" clip is a real Google Sheet with **visible numbers** (100, 65, 25, 17, 40) and a **real person's name** ("Asaf Bartov"; other rows show "J. K. Something", "Ingrid Something"). Behind the headline "No numbers shared", the screen literally shows numbers, which invites "so what are those?". It also puts a named private person in an AI-news reel. | `media.query` → "padlock" or "locked safe" (the numbers are kept closed), or "blank paper". |
+| s4 | s4-mid, s4-end | minor | The wrench photo includes its museum label. Large serif text "…orged Adjustable W… made in the early 1900's" sits right under the caption and competes with it. | `bg.query` → "wrench" or "toolbox", or keep the query and accept it (it is dim). |
+| s14 | s14-mid, s14-end | minor | The "delivery van" fallback shows a pedestrian street with café umbrellas and a cat, with no van or parcel. It is neutral and readable, but it doesn't say "delivery". | `media.query` → "cardboard boxes" or "parcel". |
+| s12 | s12-mid, s12-end | minor | The headset vector is cropped so far it is just abstract orange/black shapes. It is harmless (it even suits the warning palette), but it doesn't read as "support bot". | Optional: `bg.query` "headset" (a photo), or no `bg`. |
+| s13 | s13-mid, s13-end | minor | Both stills show the same single orange bot. The two-into-one merge is not visible at mid or end, and "TWO HELPER BOTS" is still dim grey. | Optional: check that the merge plays in the first third. If the engine allows it, raise the `from.label` contrast. |
+| s4 | s4-mid | minor | Emphasis "using"/"only" lights up function words ("ONE AI **USING**"). The meaning words are "tools" and "needed". | `emphasis` → ["tools"]. |
+| credits | media-credits.json | minor | The s6 author is URL-encoded garbage ("Ch%E2u%20Th%F4ng%20Phan"). The s16 and s17 rawpixel entries say author "unknown" and title "untitled". CC0 needs no attribution, but the credit line should be clean. | Decode the s6 author ("Châu Thông Phan"). The s17 entry goes away with the new query. |
+
+**B-roll relevance, pick by pick:**
+
+| Scene | Footage | Verdict |
+|---|---|---|
+| s1 | NERSC rack rear | Good (data centre) |
+| s4 | Adjustable wrench | Good, but the label text shows |
+| s5 | Whiteboard with sticky notes | Good (team) |
+| s6 | Desk of documents | Good (information) |
+| s7 | Car assembly line | Good (parallel jobs) |
+| s10 | Stopwatch | Good (faster) |
+| s11 | Real spreadsheet | **Off-message** (shows numbers and a name) |
+| s12 | Cropped vector | Neutral |
+| s14 | Street with a cat | Weak but safe |
+| s16 | Coffee, notebook, pen | Good (advice) |
+| s17 | Bible page | **Off-topic, risky** |
+
+**Legibility over B-roll:** good everywhere. The headlines on the brightest frames (s5 whiteboard, s11 sheet) sit on a dark gradient band and read instantly. Nothing is clipped. Nothing important sits in the top or bottom bands. The only thing past the right edge is the decorative s8 page ("Try Claude" cut off), the same as in v2.
+
+**Emphasis:** emphasis now lives in the caption band and never collides. The "pill" moments (BOTS, INFORMATION, SAME TIME, FASTER, START SIMPLE, EVIDENCE, PICK) give the one-word punch the recipe wanted.
+
+**Overall:** this is now a fast, publishable motion-graphics reel in the mould of the high-view references:
+- 18 cuts with varied transitions
+- footage behind most cards
+- a thumbnail-ready hook
+- a real receipt and a highlighted quote
+- a warning beat on the catch
+- a "1 of 2" stat that lands the failure
+
+Only two footage picks stand between it and SHIP: s17's scripture page and s11's spreadsheet full of numbers and a real name. Both are one-query swaps. With those two fixed (and no new problems in their re-render), I expect SHIP.
+
+Accuracy: all on-screen facts match C0/C1/C2/C4/C8/C9/C12. There are no invented figures, nothing from C16, and the press headline is never shown as Anthropic's claim.
+
+VERDICT: FIX
+
+## Round 8 (v3)
+Verdict: SHIP
+
+I re-opened all 36 freshly rendered stills (540x960) and checked the new media-credits.json. Everything is credited, the credit names are clean (s6 now reads "Châu Thông Phan"), and s12 renders with no backdrop as stated.
+
+**Round 7 majors, both fixed:**
+- **s17:** the Bible page is gone. The backdrop is now a close-up of a yellow measuring tape. That is a literal, on-message picture for "add more only with evidence" (measure first). It is dim, and the list reads cleanly on top.
+- **s11:** the spreadsheet with numbers and a real name is gone. The B-roll is now red and brass padlocks on a bridge cable. It reads as "locked away" behind "No numbers shared", and there are no digits or names. The headline sits on the dark gradient band and reads instantly.
+
+**Round 7 minors:**
+- **s4:** fixed. The wrench set has no museum label in the frame. Only a dim "…anion" brand fragment sits in the top band behind the progress bar.
+- **s14:** fixed. A Korea Post rider carries a big parcel, an exact "delivery" picture, and it is bright and clear.
+- **s12:** fixed. With no backdrop, the hazard stripe and "THE CATCH" tag carry the frame.
+
+**B-roll, pick by pick:**
+
+| Scene | Pick | Fit | Safe |
+|---|---|---|---|
+| s1 | NERSC rack, cables | yes (data centre) | yes |
+| s4 | Wrench set | yes (tools) | yes (dim maker mark only) |
+| s5 | Whiteboard, sticky notes | yes (team planning) | yes, no people |
+| s6 | Desk of papers | yes (information overload) | yes |
+| s7 | Car assembly line | yes (parallel jobs) | yes |
+| s10 | Pocket stopwatch | yes (faster) | yes ("Excelsior Park" dial text is incidental) |
+| s11 | Padlocks | yes (not shared) | yes; heart shape is a small tonal wobble |
+| s14 | Postal rider and parcel | yes (delivery) | see minor below |
+| s16 | Notebook, pen, coffee | yes (advice) | yes |
+| s17 | Measuring tape | yes (evidence/measure) | yes |
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) |
+|---|---|---|---|---|
+| s14 | s14-mid, s14-end | minor | A private postal worker is shown in side profile (glasses visible under the visor). The parcel has a readable company label ("META BIOMED"). The "@REELROOM.AI" handle sits on the white helmet and is low-contrast there. None of this is a political, military or harmful association, and it is CC BY-SA credited. | Optional: `media.query` → "parcel doorstep" for a no-person shot. |
+| s13 | s13-mid, s13-end | minor | Same as before: both stills show the single merged bot, and "TWO HELPER BOTS" is dim grey. The two-to-one merge must happen early in the scene, not at the sampled frames. | Optional: no change needed. s14–s15 land the consequence. |
+| s11 | s11-mid | minor | The heart-shaped "love lock" adds a romantic note that the line doesn't need. | Optional: `media.query` → "rusty padlock". |
+| s5 | s5-mid, s5-end | minor | The whiteboard is the brightest frame in the reel, and the top handle/progress bar are faint on it. The headline and caption are fine. | None required. |
+
+**Checklist, all stills:**
+- **Legibility:** every headline, card and caption reads at phone size, on footage and on the plain background.
+- **Clipping:** no text is clipped. The only thing past the edge is the decorative s8 page ("Try Claude" cut off), as accepted since v2.
+- **Safe zones:** nothing important sits in the top or bottom bands.
+- **Emphasis:** the caption-band emphasis pills (BOTS, INFORMATION, SAME TIME, FASTER, START SIMPLE, EVIDENCE, PICK) never cover content.
+- **Hierarchy:** each frame has one clear focal point.
+- **Pacing:** consecutive scenes all look different.
+- **Hook frame:** s1 works as a thumbnail ("When *one* AI beats a team" over server racks, 5 bots vs 1 green bot).
+
+**Accuracy:**
+- The "frequently / not always" hedge (C0, C2) is on screen.
+- s4 shows "one AI + tools when needed" (C0).
+- s5–s7 show the subagent conditions (C9).
+- s8 shows the verbatim quote with 22 Oct 2026 (C1, C2).
+- s9–s11 show "often lower / often faster / no numbers shared" (C4, C2).
+- s12–s15 show the sample support bot, two helpers merged, and the delivery date skipped in 1 of 2 test runs (C8).
+- s16–s17 show the verbatim January 2026 advice (C12).
+- Nothing from C16 appears, and the press headline is never shown as Anthropic's claim.
+
+**Overall vs the motion recipe:** this is a fast, publishable motion-graphics reel.
+- **Pace and transitions:** 18 cuts in about 49 s, with varied transitions.
+- **Footage:** real, on-topic, licensed footage sits behind 10 scenes.
+- **Recurring picture:** the team-vs-one matchup is rebuilt three times.
+- **Paper trail:** a real receipt and a highlighted source quote.
+- **The catch:** a warning beat on the catch, and a big "1 of 2" that lands the failure.
+- **Ending:** a CTA that loops back to the hook's question.
+
+It now matches the reference Shorts (something new every ~1 s, text over real footage, one-word punch) and avoids the static counter-example's look. There are no blockers or majors.
+
+VERDICT: SHIP

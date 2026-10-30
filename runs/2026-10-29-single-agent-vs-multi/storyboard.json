@@ -75,11 +75,10 @@
       "accent": "winner",
       "transition": "slide",
       "emphasis": [
-        "using",
-        "only"
+        "tools"
       ],
       "bg": {
-        "query": "hand tools wrenches"
+        "query": "wrench set"
       },
       "claims": [
         "C0"
@@ -220,15 +219,13 @@
       "type": "broll",
       "say": "No numbers shared.",
       "media": {
-        "query": "empty spreadsheet on screen"
+        "query": "padlock"
       },
       "kicker": "ANTHROPIC",
       "headline": "No numbers shared",
       "accent": "No",
       "transition": "glitch",
-      "emphasis": [
-        "No numbers"
-      ],
+      "emphasis": [],
       "claims": [
         "C2"
       ]
@@ -242,12 +239,8 @@
       "transition": "flash",
       "shake": true,
       "emphasis": [
-        "catch",
         "sample"
       ],
-      "bg": {
-        "query": "headset customer support"
-      },
       "claims": [
         "C8"
       ]
@@ -281,7 +274,7 @@
       "type": "broll",
       "say": "It skipped checking the delivery date,",
       "media": {
-        "query": "parcel delivery van daytime"
+        "query": "package delivery"
       },
       "kicker": "SAMPLE BOT, TEST",
       "headline": "Delivery date: skipped",
@@ -340,7 +333,7 @@
         "evidence"
       ],
       "bg": {
-        "query": "magnifying glass on document"
+        "query": "measuring tape"
       },
       "claims": [
         "C12"

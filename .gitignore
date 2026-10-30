@@ -10,3 +10,4 @@ runs/**/qa/
 runs/_demo/
 !.env.example
 samples/
+runs/**/media-cache/

@@ -3,7 +3,8 @@
 // Only licenses that allow commercial reuse are accepted; every clip is credited in <run>/media-credits.json.
 // Each run rebuilds from scratch, so nothing stale or uncredited can end up in a render.
 import {execFileSync} from 'node:child_process';
-import {existsSync, mkdirSync, readdirSync, rmSync, writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {loadStoryboard, publicAudioDir, readJson, runDirFromArgs, slugOf} from './lib.ts';
 
@@ -11,7 +12,7 @@ const UA = 'reelroom/0.1 (AI news reel generator; https://github.com/Pratyush001
 const OK_LICENSE = /^(cc0|pdm|public domain|cc[- ]?by(-sa)?([- ][0-9.]+)?|by(-sa)?)$/i;
 // Things that make B-roll a liability on a news page: identifiable politicians, brands and ads, money and stamps, weapons.
 const RISKY =
-	/(president|minister|prime|senator|politic|election|rally|campaign|stamp|banknote|coin|currency|logo|advert|brand|tobacco|cigar|rolling paper|cannabis|weapon|gun|rifle|military|army|\bwar\b|protest|portrait)/i;
+	/(president|minister|prime|senator|politic|election|rally|campaign|stamp|banknote|coin|currency|logo|advert|brand|tobacco|cigar|rolling paper|cannabis|weapon|gun|rifle|military|army|\bwar\b|protest|portrait|air force|navy|marine|soldier|squadron|amazon|walmart|fedex|ups truck|dhl|coca|pepsi|nike|apple store|google|microsoft)/i;
 const MIN_BRIGHTNESS = 45; // average luma 0-255; below this the clip reads as a black screen
 
 type Credit = {scene: string; query: string; title: string; author: string; license: string; source: string; kind: 'video' | 'image'};
@@ -23,6 +24,14 @@ const get = async (url: string) => {
 	return res.json() as Promise<any>;
 };
 const strip = (html = '') => html.replace(/<[^>]+>/g, '').trim();
+// Some sources return percent-encoded author names (sometimes Latin-1); decode them for a clean credit line.
+const decode = (s: string) => {
+	try {
+		return decodeURIComponent(s);
+	} catch {
+		return unescape(s);
+	}
+};
 // Wikimedia search is loose, so a result must name most of the query's words in its title to count.
 const relevant = (title: string, query: string) => {
 	const keys = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2);
@@ -56,7 +65,7 @@ const commons = async (query: string, kind: 'video' | 'image'): Promise<Candidat
 			kind,
 			url: kind === 'image' ? ii.thumburl ?? ii.url : ii.url,
 			title: p.title.replace(/^File:/, ''),
-			author: strip(meta.Artist?.value) || 'unknown',
+			author: decode(strip(meta.Artist?.value)) || 'unknown',
 			license,
 			source: ii.descriptionurl,
 		});
@@ -71,14 +80,16 @@ const openverse = async (query: string): Promise<Candidate[]> => {
 	for (const r of data.results ?? []) {
 		const text = `${r.title ?? ''} ${(r.tags ?? []).map((t: {name: string}) => t.name).join(' ')}`;
 		if ((r.width ?? 0) < 900 || /\.(gif|svg)$/i.test(r.url) || RISKY.test(text)) continue;
-		out.push({kind: 'image', url: r.url, title: r.title ?? 'untitled', author: r.creator ?? 'unknown', license: `${r.license} ${r.license_version ?? ''}`.trim(), source: r.foreign_landing_url ?? r.url});
+		out.push({kind: 'image', url: r.url, title: decode(r.title ?? 'untitled'), author: decode(r.creator ?? 'unknown'), license: `${r.license} ${r.license_version ?? ''}`.trim(), source: r.foreign_landing_url ?? r.url});
 	}
 	return out;
 };
 
 // Average luma of the file, by shrinking every sampled frame to one grey pixel.
 const brightness = (file: string) => {
-	const raw = execFileSync('ffmpeg', ['-v', 'error', '-i', file, '-t', '4', '-vf', 'fps=2,scale=1:1,format=gray', '-f', 'rawvideo', '-'], {maxBuffer: 1 << 20});
+	// A still image has a single frame, so sampling it at 2 fps would yield nothing.
+	const sample = /\.jpg$/i.test(file) ? ['-frames:v', '1', '-vf', 'scale=1:1,format=gray'] : ['-t', '4', '-vf', 'fps=2,scale=1:1,format=gray'];
+	const raw = execFileSync('ffmpeg', ['-v', 'error', '-i', file, ...sample, '-f', 'rawvideo', '-'], {maxBuffer: 1 << 20});
 	return raw.length ? raw.reduce((a, b) => a + b, 0) / raw.length : 0;
 };
 
@@ -105,11 +116,32 @@ for (const scene of sb.scenes) {
 	const query = scene.type === 'broll' ? scene.media.query : scene.bg?.query;
 	if (!query) continue;
 	const key = scene.type === 'broll' ? scene.id : `bg-${scene.id}`;
+
+	// Same query as last time → reuse the clip QA already saw, instead of re-rolling the search.
+	const cacheDir = path.join(runDir, 'media-cache');
+	const hash = createHash('sha1').update(query.toLowerCase().trim()).digest('hex').slice(0, 12);
+	const cachedMeta = path.join(cacheDir, `${hash}.json`);
+	if (existsSync(cachedMeta)) {
+		const meta = JSON.parse(readFileSync(cachedMeta, 'utf8')) as Omit<Credit, 'scene' | 'query'> & {file: string};
+		const out = path.join(outDir, `media-${key}${path.extname(meta.file)}`);
+		copyFileSync(path.join(cacheDir, meta.file), out);
+		assets[key] = `runs/${slugOf(runDir)}/${path.basename(out)}`;
+		const {file: _f, ...credit} = meta;
+		credits.push({scene: scene.id, query, ...credit});
+		console.log(`${scene.id}  ✓ ${meta.kind}  ${meta.title.slice(0, 60)}  (cached)`);
+		continue;
+	}
+	// Long, specific queries often match nothing in Openverse; fall back to shorter versions of the same idea.
+	const w = query.split(/\s+/).filter((x) => x.length > 2);
+	const shorter = [...new Set([w.slice(-2).join(' '), w.slice(0, 2).join(' ')])].filter((q) => q && q !== query);
+	// Openverse photos match plain-language queries best; Wikimedia video titles are often events or names.
 	const candidates = [
-		...(await commons(query, 'video').catch(() => [])),
 		...(await openverse(query).catch(() => [])),
+		...(await commons(query, 'video').catch(() => [])),
 		...(await commons(query, 'image').catch(() => [])),
-	].slice(0, 8);
+	];
+	for (const q of shorter) if (candidates.length < 4) candidates.push(...(await openverse(q).catch(() => [])));
+	candidates.splice(8);
 
 	let done = false;
 	for (const c of candidates) {
@@ -129,6 +161,9 @@ for (const scene of sb.scenes) {
 			assets[key] = `runs/${slugOf(runDir)}/${path.basename(out)}`;
 			const {url: _url, ...meta} = c;
 			credits.push({scene: scene.id, query, ...meta});
+			mkdirSync(cacheDir, {recursive: true});
+			copyFileSync(out, path.join(cacheDir, `${hash}${path.extname(out)}`));
+			writeFileSync(cachedMeta, JSON.stringify({...meta, file: `${hash}${path.extname(out)}`}));
 			console.log(`${scene.id}  ✓ ${c.kind}  ${c.title.slice(0, 60)}  (${c.license})`);
 			done = true;
 			break;

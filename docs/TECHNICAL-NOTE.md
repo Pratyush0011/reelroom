@@ -45,6 +45,7 @@ between steps:
 
 ## Testing
 - **Human review is part of the loop.** v1 passed every automated gate, yet a human viewer found it unpublishable: a confusing hook, a flat voice, too much text. Rather than hand-edit the video, I changed the system. The hook rubric got a say-back clarity gate, the director got reference-style research, and the engine got picture-first scenes (`versus`, `merge`, `document`). v2 then went through every gate again. The lesson: automated critics enforce the rules you give them, so a human has to keep improving the rules.
+- **Second human review (v3): "static".** I made motion something the system has to deliver, not something it may add. There's an inspiration skill whose output is gated (real short-form references plus a motion recipe), a motion layer on every scene, pace gates (≤ 2 s per visual change, ≤ 4.5 s per scene), and licensed B-roll. Visual QA then caught problems no unit test would: stale uncredited clips from an earlier scene numbering, footage of a head of state, a rolling-papers ad, a Bible page and a heron behind news text. Each became a pipeline rule (clean rebuilds, a risky-subject filter, a brightness check, a per-query cache), not a one-off edit.
 - **Unit tests (`npm test`, 12 passing)** cover every deterministic gate: unverified claims, numbers with no
   claim, numbers that don't match their claim, invented receipt URLs, a killed story, a false premise, debunk mode,
   missing `C0`, banned phrases, structure and word limits, and real voiced duration.

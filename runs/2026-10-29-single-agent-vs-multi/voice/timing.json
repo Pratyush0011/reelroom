@@ -227,8 +227,8 @@
     {
       "id": "s7",
       "audio": "runs/2026-10-29-single-agent-vs-multi/s7.mp3",
-      "audioMs": 2695,
-      "durationInFrames": 83,
+      "audioMs": 2767,
+      "durationInFrames": 85,
       "words": [
         {
           "text": "Or",
@@ -242,7 +242,7 @@
         },
         {
           "text": "jobs",
-          "startMs": 545,
+          "startMs": 436,
           "endMs": 727
         },
         {
@@ -273,43 +273,43 @@
         {
           "text": "time.",
           "startMs": 1818,
-          "endMs": 2764
+          "endMs": 2836
         }
       ]
     },
     {
       "id": "s8",
       "audio": "runs/2026-10-29-single-agent-vs-multi/s8.mp3",
-      "audioMs": 4135,
+      "audioMs": 4136,
       "durationInFrames": 126,
       "words": [
         {
           "text": "In",
           "startMs": 0,
-          "endMs": 73
+          "endMs": 145
         },
         {
           "text": "Anthropic's",
-          "startMs": 145,
-          "endMs": 655
+          "startMs": 255,
+          "endMs": 800
         },
         {
           "text": "own",
-          "startMs": 727,
-          "endMs": 945
+          "startMs": 909,
+          "endMs": 1018
         },
         {
           "text": "words,",
-          "startMs": 1164,
-          "endMs": 1745
+          "startMs": 1091,
+          "endMs": 1818
         },
         {
           "text": "teams",
           "startMs": 2073,
-          "endMs": 2400
+          "endMs": 2327
         },
         {
-          "text": "\"still",
+          "text": "still",
           "startMs": 2473,
           "endMs": 2764
         },
@@ -324,9 +324,9 @@
           "endMs": 3200
         },
         {
-          "text": "place.\"",
-          "startMs": 3673,
-          "endMs": 4218
+          "text": "place.",
+          "startMs": 3418,
+          "endMs": 4145
         }
       ]
     },
@@ -353,7 +353,7 @@
         },
         {
           "text": "with",
-          "startMs": 1673,
+          "startMs": 1709,
           "endMs": 1818
         },
         {
