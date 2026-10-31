@@ -137,7 +137,7 @@ and keeps `run-log.md`.
 Requirements: Node 20+, Python 3.10+, ffmpeg on PATH, [Claude Code](https://claude.com/claude-code).
 
 ```bash
-git clone <this repo> && cd reelroom
+git clone https://github.com/Pratyush0011/reelroom.git && cd reelroom
 npm install
 pip install edge-tts
 npx remotion browser ensure     # one-time headless Chrome download (~120 MB)
@@ -232,3 +232,9 @@ agent skills: `npx skills add remotion-dev/skills`.
 - **No human presenter.** Faces carry most top Shorts. The robot character is the faceless alternative, but a real presenter would likely perform better.
 - **Motion is 2D.** The market has 3D and real footage this engine can't match; illustrated set pieces are the closest automatic option.
 - **Headless mode needs API credentials.** Inside Claude Code it uses your existing login.
+
+## Credits
+
+- Music in the example reel: "Super Power Cool Dude" by Kevin MacLeod (incompetech.com), licensed CC BY 3.0.
+- B-roll in example runs: credited per clip in each run's `media-credits.json` and `POST.md`.
+- Built with [Remotion](https://www.remotion.dev), which has its own license terms for companies.
