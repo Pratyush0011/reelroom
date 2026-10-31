@@ -22,7 +22,7 @@ better in several enterprise deployments, publishes no figures, and says subagen
 The fact-checker also caught press coverage misreporting a study (claiming it tested 10–100 agents; the
 primary source capped teams at 5) and kept that out of the video.
 
-▶ **[final.mp4](runs/2026-10-29-single-agent-vs-multi/final.mp4)** (49 s, v3) · [cover](runs/2026-10-29-single-agent-vs-multi/cover.png) · [POST.md](runs/2026-10-29-single-agent-vs-multi/POST.md) · [run-log.md](runs/2026-10-29-single-agent-vs-multi/run-log.md) · [05b-direction.md](runs/2026-10-29-single-agent-vs-multi/05b-direction.md) (the director's reference research)
+▶ **[final.mp4](runs/2026-10-29-single-agent-vs-multi/final.mp4)** (49 s, v4) · [cover](runs/2026-10-29-single-agent-vs-multi/cover.png) · [POST.md](runs/2026-10-29-single-agent-vs-multi/POST.md) · [run-log.md](runs/2026-10-29-single-agent-vs-multi/run-log.md) · [05b-direction.md](runs/2026-10-29-single-agent-vs-multi/05b-direction.md) (the director's reference research)
 
 **v1 → v2 (after human review).** v1 passed every gate but a human viewer still found it unpublishable. The
 hook ("Anthropic's AI team beat a solo AI by 90.2%… Both are true") was confusing, the voice was flat, and
@@ -38,7 +38,18 @@ it was mostly text on a dark background. The fixes went into the system, not jus
 - **Pace is a gate:** at least one visual change every 2 s and no scene over 4.5 s. The reel went from 11 scenes to 18, with a change every ~1.5 s.
 - **Licensed B-roll with no API keys:** Wikimedia Commons and Openverse, commercial-use licenses only, auto-credited in `media-credits.json`. It filters out politicians, brands, money and weapons, rejects near-black clips, and caches each pick per query so QA-approved clips don't change between runs.
 
-How hard the gates pushed back on this story (v1 → v3):
+**v3 → v4 (third human review: "monotonous, not up to market quality").** Rather than guess, I measured it against Shorts from 12 top channels:
+
+| | Market median | v3 | v4 |
+|---|---|---|---|
+| Brightness | 107 | 45 | 141 |
+| Colourfulness | 47 | 21 | 103 |
+| Mostly-dark share | 22% | 76% | 5% |
+| Frame-to-frame variety | 0.57 | 0.16 | 0.84 |
+
+v3 was fast, but it was the same dark card 18 times. v4 gives every scene its own full-frame colour world, replaces text cards with illustrated set pieces starring a robot character (`src/sets.tsx`), keeps titles under six words, wipes colour on every cut, and adds a licensed music bed. `npm run look` now fails any reel that drifts back. These numbers measure visual variety, not how good a video is, and the benchmark uses frames sampled from public thumbnails.
+
+How hard the gates pushed back on this story (v1 → v4):
 
 | Gate | Rounds | What it caught |
 |---|---|---|
@@ -116,8 +127,8 @@ and keeps `run-log.md`.
 - **Rules that must never bend** are code: `pipeline/checks.ts` rejects any scene that cites an unverified
   claim, any on-screen number with no claim behind it, any receipt URL that wasn't checked, banned filler
   phrases, and out-of-range durations. It's unit-tested (`npm test`).
-- **Rendering** is deterministic: the director writes JSON, never React. The engine (`src/`, Remotion) has 14
-  designed scene types (hook, statement, stat, compare, list, quote, receipt, chart, catch, cta, versus, merge, document, broll), word-synced
+- **Rendering** is deterministic: the director writes JSON, never React. The engine (`src/`, Remotion) has 15
+  designed scene types (hook, statement, stat, compare, list, quote, receipt, chart, catch, cta, versus, merge, document, broll, show), word-synced
   captions, story-style chapter bars and a "✓ SOURCE" chip on every factual scene. The same storyboard
   always renders the same video.
 
@@ -186,6 +197,7 @@ npm run media  -- runs/<run>        # licensed B-roll (Wikimedia Commons + Openv
 npm run voice  -- runs/<run>        # TTS + word timings (cached per line)
 npm run stills -- runs/<run>        # QA stills
 npm run render -- runs/<run>        # final.mp4 + cover.png
+npm run look   -- runs/<run>        # measure the finished video against the market benchmark
 npm test                            # gate unit tests
 ```
 
@@ -208,7 +220,7 @@ agent skills: `npx skills add remotion-dev/skills`.
 - **The fact-checker is only as good as what it can open.** Some official pages (openai.com/news, the European
   Commission press corner) block automated fetches. The checker then relies on feeds, release logs and reporting,
   and says so in its notes.
-- **The scene library is fixed (14 types).** That's deliberate, for reliability. New visual ideas become new scene
+- **The scene library is fixed (15 types, 10 illustrated sets).** That's deliberate, for reliability. New visual ideas become new scene
   types (that's how `versus`, `merge` and `document` were added after review), not per-video code.
 - **Voice:** the reel uses ElevenLabs "Daniel" (British). An Indian-accent narrator was the goal, but on the free
   ElevenLabs plan the API only allows built-in voices; the Indian library voices need a paid plan.
@@ -217,4 +229,6 @@ agent skills: `npx skills add remotion-dev/skills`.
   and approved picks are cached. Music is optional and bring-your-own.
 - **Inspiration research is limited to what can be fetched:** TikTok refused connections and search found no Instagram
   reel pages, so the references are YouTube Shorts and documentaries.
+- **No human presenter.** Faces carry most top Shorts. The robot character is the faceless alternative, but a real presenter would likely perform better.
+- **Motion is 2D.** The market has 3D and real footage this engine can't match; illustrated set pieces are the closest automatic option.
 - **Headless mode needs API credentials.** Inside Claude Code it uses your existing login.

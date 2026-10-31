@@ -21,6 +21,7 @@ const base = {
 	transition: z.enum(TRANSITIONS).optional(),
 	shake: z.boolean().optional(),
 	bg: z.object({query: z.string().min(2)}).optional().describe('licensed B-roll behind this scene, fetched by npm run media'),
+	world: z.enum(['blue', 'coral', 'yellow', 'teal', 'paper', 'violet', 'pink', 'sky', 'ink']).optional().describe('full-frame colour world; cycles if omitted'),
 };
 
 export const HookScene = z.object({
@@ -168,7 +169,22 @@ export const BrollScene = z.object({
 	accent: z.string().optional(),
 });
 
+export const SETS = ['versus', 'tools', 'overload', 'lanes', 'meters', 'locked', 'crash', 'parcel', 'runs', 'blocks'] as const;
+
+// An illustrated set piece: one giant animated idea with the robot character, almost no text.
+export const ShowScene = z.object({
+	...base,
+	type: z.literal('show'),
+	set: z.enum(SETS),
+	title: words(5).optional(),
+	verdict: words(5).optional(),
+	left: z.number().int().min(1).max(6).optional().describe('versus: size of the crowd; blocks: how many blocks'),
+	winner: z.enum(['left', 'right', 'none']).optional(),
+	labels: z.array(words(2)).max(2).optional().describe('meters: the two gauge labels'),
+});
+
 export const Scene = z.discriminatedUnion('type', [
+	ShowScene,
 	BrollScene,
 	DocumentScene,
 	MergeScene,
@@ -198,7 +214,7 @@ export const Storyboard = z
 		if (sb.scenes[0]?.type !== 'hook') ctx.addIssue({code: 'custom', message: 'the first scene must be a hook'});
 		if (sb.scenes.at(-1)?.type !== 'cta') ctx.addIssue({code: 'custom', message: 'the last scene must be a cta'});
 		sb.scenes.forEach((s, i) => {
-			if (i > 0 && !['statement', 'broll'].includes(s.type) && sb.scenes[i - 1].type === s.type)
+			if (i > 0 && !['statement', 'broll', 'show'].includes(s.type) && sb.scenes[i - 1].type === s.type)
 				ctx.addIssue({code: 'custom', message: `${s.id}: same scene type twice in a row (${s.type})`});
 		});
 	});

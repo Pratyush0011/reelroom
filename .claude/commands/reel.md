@@ -54,6 +54,7 @@ If it fails on duration, send the director back to shorten `say` lines (with the
 
 ## 8. Render
 Run `npm run render -- <run_dir>`. Output: `<run_dir>/final.mp4` and `<run_dir>/cover.png`.
+Then run `npm run look -- <run_dir>` (GATE). It compares the finished video with the market benchmark. If it fails, the reel is monotonous: send the director back to change colour worlds and scene types, then re-render.
 
 ## 9. Publish kit and report
 Write `<run_dir>/POST.md` with: the caption, hashtags and sources comment from the script's post kit, plus the

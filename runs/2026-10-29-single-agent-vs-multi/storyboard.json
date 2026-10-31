@@ -3,11 +3,20 @@
   "scenes": [
     {
       "id": "s1",
-      "type": "hook",
       "say": "One AI frequently beats a team of AI bots,",
+      "claims": [
+        "C0",
+        "C2"
+      ],
+      "emphasis": [
+        "frequently",
+        "bots"
+      ],
+      "type": "hook",
+      "world": "blue",
+      "kicker": "AI NEWS",
       "headline": "When one AI beats a team",
       "accent": "one",
-      "kicker": "ANTHROPIC",
       "matchup": {
         "left": {
           "icon": "bot",
@@ -17,18 +26,7 @@
           "icon": "bot",
           "count": 1
         }
-      },
-      "emphasis": [
-        "frequently",
-        "bots"
-      ],
-      "bg": {
-        "query": "server racks data center"
-      },
-      "claims": [
-        "C0",
-        "C2"
-      ]
+      }
     },
     {
       "id": "s2",
@@ -41,48 +39,40 @@
       "transition": "flash",
       "claims": [
         "C1"
-      ]
+      ],
+      "world": "yellow"
     },
     {
       "id": "s3",
-      "type": "versus",
       "say": "Here's when it doesn't.",
-      "title": "Who wins?",
-      "left": {
-        "label": "Team of AIs",
-        "icon": "bot",
-        "count": 5
-      },
-      "right": {
-        "label": "One AI",
-        "icon": "bot",
-        "count": 1
-      },
-      "winner": "none",
-      "verdict": "Not always",
-      "transition": "glitch",
       "claims": [
         "C0",
         "C2",
         "C9"
-      ]
+      ],
+      "transition": "glitch",
+      "type": "show",
+      "set": "versus",
+      "world": "coral",
+      "title": "Who wins?",
+      "left": 5,
+      "winner": "none",
+      "verdict": "Not always"
     },
     {
       "id": "s4",
-      "type": "statement",
       "say": "The winner: one AI using tools only when needed.",
-      "text": "The winner: one AI + tools when needed",
-      "accent": "winner",
-      "transition": "slide",
+      "claims": [
+        "C0"
+      ],
       "emphasis": [
         "tools"
       ],
-      "bg": {
-        "query": "wrench set"
-      },
-      "claims": [
-        "C0"
-      ]
+      "transition": "slide",
+      "type": "show",
+      "set": "tools",
+      "world": "teal",
+      "title": "One AI + tools"
     },
     {
       "id": "s5",
@@ -97,53 +87,39 @@
       "transition": "whip",
       "claims": [
         "C9"
-      ]
+      ],
+      "world": "violet"
     },
     {
       "id": "s6",
-      "type": "versus",
       "say": "when one AI is overloaded with information.",
-      "title": "When the team wins",
-      "left": {
-        "label": "Team of AIs",
-        "icon": "bot",
-        "count": 5
-      },
-      "right": {
-        "label": "One AI",
-        "icon": "bot",
-        "count": 1,
-        "caption": "overloaded"
-      },
-      "winner": "left",
-      "verdict": "Overloaded? Team wins.",
-      "transition": "zoom",
+      "claims": [
+        "C9"
+      ],
       "emphasis": [
         "information"
       ],
-      "bg": {
-        "query": "stack of documents office desk"
-      },
-      "claims": [
-        "C9"
-      ]
+      "transition": "zoom",
+      "type": "show",
+      "set": "overload",
+      "world": "pink",
+      "title": "Overloaded?",
+      "verdict": "Team wins"
     },
     {
       "id": "s7",
-      "type": "statement",
       "say": "Or when jobs must run at the same time.",
-      "text": "Or jobs running at the same time",
-      "accent": "same time",
-      "transition": "slide",
+      "claims": [
+        "C9"
+      ],
       "emphasis": [
         "same time"
       ],
-      "bg": {
-        "query": "industrial robot arms assembly line"
-      },
-      "claims": [
-        "C9"
-      ]
+      "transition": "slide",
+      "type": "show",
+      "set": "lanes",
+      "world": "sky",
+      "title": "All at the same time"
     },
     {
       "id": "s8",
@@ -162,73 +138,55 @@
         "C2",
         "C0",
         "C1"
-      ]
+      ],
+      "world": "paper"
     },
     {
       "id": "s9",
-      "type": "versus",
       "say": "Still, one AI with tools",
-      "title": "Cost and speed",
-      "left": {
-        "label": "Team of AIs",
-        "icon": "users",
-        "count": 4
-      },
-      "right": {
-        "label": "One AI + tools",
-        "icon": "wrench",
-        "count": 1
-      },
-      "winner": "right",
-      "verdict": "Often",
-      "transition": "whip",
       "claims": [
         "C2",
         "C4"
-      ]
+      ],
+      "transition": "whip",
+      "type": "show",
+      "set": "versus",
+      "world": "blue",
+      "title": "But one AI…",
+      "left": 5,
+      "winner": "right"
     },
     {
       "id": "s10",
-      "type": "compare",
       "say": "was often cheaper, faster.",
-      "metric": "Cost and speed",
-      "left": {
-        "label": "Cost",
-        "value": "Often lower",
-        "note": "one AI with tools"
-      },
-      "right": {
-        "label": "Speed",
-        "value": "Often faster",
-        "note": "one AI with tools"
-      },
-      "winner": "none",
-      "transition": "slide",
+      "claims": [
+        "C4"
+      ],
       "emphasis": [
         "faster"
       ],
-      "bg": {
-        "query": "stopwatch"
-      },
-      "claims": [
-        "C4"
-      ]
+      "transition": "slide",
+      "type": "show",
+      "set": "meters",
+      "world": "yellow",
+      "labels": [
+        "Cheaper",
+        "Faster"
+      ],
+      "verdict": "Often"
     },
     {
       "id": "s11",
-      "type": "broll",
       "say": "No numbers shared.",
-      "media": {
-        "query": "padlock"
-      },
-      "kicker": "ANTHROPIC",
-      "headline": "No numbers shared",
-      "accent": "No",
-      "transition": "glitch",
-      "emphasis": [],
       "claims": [
         "C2"
-      ]
+      ],
+      "emphasis": [],
+      "transition": "glitch",
+      "type": "show",
+      "set": "locked",
+      "world": "violet",
+      "title": "No numbers shared"
     },
     {
       "id": "s12",
@@ -243,101 +201,84 @@
       ],
       "claims": [
         "C8"
-      ]
+      ],
+      "world": "ink"
     },
     {
       "id": "s13",
-      "type": "merge",
       "say": "they merged two helper bots.",
-      "title": "Sample support bot",
-      "from": {
-        "icon": "bot",
-        "count": 2,
-        "label": "Two helper bots"
-      },
-      "to": {
-        "icon": "bot",
-        "label": "One bot"
-      },
-      "caption": "Merged into one",
-      "tone": "warn",
-      "transition": "zoom",
+      "claims": [
+        "C8"
+      ],
       "emphasis": [
         "merged"
       ],
-      "claims": [
-        "C8"
-      ]
+      "transition": "zoom",
+      "type": "show",
+      "set": "crash",
+      "world": "coral",
+      "title": "Two bots merged",
+      "verdict": "Sample test"
     },
     {
       "id": "s14",
-      "type": "broll",
       "say": "It skipped checking the delivery date,",
-      "media": {
-        "query": "package delivery"
-      },
-      "kicker": "SAMPLE BOT, TEST",
-      "headline": "Delivery date: skipped",
-      "accent": "skipped",
-      "transition": "whip",
+      "claims": [
+        "C8"
+      ],
       "emphasis": [
         "skipped"
       ],
-      "claims": [
-        "C8"
-      ]
+      "transition": "whip",
+      "type": "show",
+      "set": "parcel",
+      "world": "teal",
+      "title": "Delivery date",
+      "verdict": "Skipped"
     },
     {
       "id": "s15",
-      "type": "stat",
       "say": "in one of two test runs.",
-      "value": 1,
-      "suffix": " of 2",
-      "decimals": 0,
-      "label": "test runs: delivery date skipped",
-      "context": "Anthropic sample support bot",
-      "transition": "slide",
       "claims": [
         "C8"
-      ]
+      ],
+      "transition": "slide",
+      "type": "show",
+      "set": "runs",
+      "world": "pink",
+      "title": "1 of 2 test runs"
     },
     {
       "id": "s16",
-      "type": "quote",
       "say": "Anthropic's January advice: start simple.",
-      "quote": "Start with the simplest approach that works, and add complexity only when evidence supports it.",
-      "who": "Anthropic",
-      "role": "Jan 2026",
-      "transition": "zoom",
+      "claims": [
+        "C12"
+      ],
       "emphasis": [
         "start simple"
       ],
-      "bg": {
-        "query": "notebook and pen"
-      },
-      "claims": [
-        "C12"
-      ]
+      "transition": "zoom",
+      "type": "show",
+      "set": "blocks",
+      "world": "paper",
+      "title": "Start simple",
+      "left": 1
     },
     {
       "id": "s17",
-      "type": "list",
       "say": "Add more only with evidence.",
-      "title": "Anthropic's advice, Jan 2026",
-      "items": [
-        "Start simple",
-        "Add more only with evidence"
+      "claims": [
+        "C12"
       ],
-      "transition": "slide",
       "emphasis": [
         "evidence"
       ],
-      "bg": {
-        "query": "measuring tape"
-      },
-      "claims": [
-        "C12"
-      ]
+      "transition": "slide",
+      "type": "show",
+      "set": "blocks",
+      "world": "sky",
+      "title": "Add only with evidence",
+      "left": 3
     },
     {
       "id": "s18",
@@ -351,7 +292,8 @@
       ],
       "claims": [
         "C2"
-      ]
+      ],
+      "world": "blue"
     }
   ]
 }

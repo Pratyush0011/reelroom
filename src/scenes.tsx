@@ -2,7 +2,9 @@ import {Bot, Brain, ChartColumn, Clock, Code, Cpu, Database, DollarSign, FileTex
 import {Video} from '@remotion/media';
 import React from 'react';
 import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
+import {Robot} from './components/Robot';
 import {countUp, enter, formatNumber, lerp} from './motion';
+import {SetPiece} from './sets';
 import type {Colors, ICONS, Scene, Word} from './schema';
 import {CONTENT, display, fitSize, mono, serif} from './theme';
 
@@ -87,7 +89,7 @@ const markAccent = (text: string, accent?: string) => {
 export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 	const frame = useCurrentFrame();
 	const tokens = markAccent(scene.headline, scene.accent);
-	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: scene.matchup ? 3 : 4, max: scene.matchup ? 140 : 168});
+	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: scene.matchup ? 3 : 4, max: scene.matchup ? 126 : 168});
 	return (
 		<Stage gap={40}>
 			<Label color={colors.accentInk} bg={colors.accent}>
@@ -134,30 +136,19 @@ export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 	);
 };
 
-// A compact "5 vs 1" icon line so the very first frame shows the idea, not just words.
+// The channel's core image on frame 1: a crowd of bots against one.
 const Matchup: React.FC<{matchup: NonNullable<Of<'hook'>['matchup']>; colors: Colors; start: number}> = ({matchup, colors, start}) => {
 	const frame = useCurrentFrame();
-	const group = (g: {icon: (typeof ICONS)[number]; count: number}, delay: number, accent: boolean) => {
-		const Icon = ICON[g.icon];
-		const size = g.count === 1 ? 120 : 64;
-		return (
-			<div style={{display: 'flex', flexWrap: 'wrap', gap: 10, maxWidth: 260, alignItems: 'center'}}>
-				{Array.from({length: g.count}, (_, k) => {
-					const p = enter(frame, delay + k * 2, 8);
-					return (
-						<div key={k} style={{opacity: p, scale: String(lerp(p, 0.4, 1))}}>
-							<Icon size={size} color={accent ? colors.accent : colors.text} strokeWidth={1.6} />
-						</div>
-					);
-				})}
-			</div>
-		);
-	};
+	const p = (d: number) => enter(frame, start + d, 8);
 	return (
-		<div style={{display: 'flex', alignItems: 'center', gap: 34, marginTop: 10}}>
-			{group(matchup.left, start, false)}
-			<div style={{fontFamily: mono, fontWeight: 700, fontSize: 34, color: colors.muted, opacity: enter(frame, start + 6, 8)}}>VS</div>
-			{group(matchup.right, start + 10, true)}
+		<div style={{display: 'flex', alignItems: 'center', gap: 26, marginTop: 6}}>
+			<div style={{display: 'flex', flexWrap: 'wrap', gap: 6, width: 400}}>
+				{Array.from({length: matchup.left.count}, (_, k) => (
+					<div key={k} style={{opacity: p(k * 2), scale: String(lerp(p(k * 2), 0.3, 1))}}><Robot size={118} seed={k} /></div>
+				))}
+			</div>
+			<div style={{fontFamily: display, fontWeight: 900, fontSize: 64, color: colors.accent, opacity: p(6)}}>VS</div>
+			<div style={{opacity: p(10), scale: String(lerp(p(10), 0.3, 1))}}><Robot size={230} color={colors.accent} mood="cool" seed={3} /></div>
 		</div>
 	);
 };
@@ -689,10 +680,9 @@ export const Broll: React.FC<P<'broll'> & {asset?: string}> = ({scene, colors, d
 					<Img src={staticFile(asset)} style={{...media, translate: `${interpolate(frame, [0, dur], [-30, 30])}px 0px`}} />
 				)
 			) : null}
-			<div style={{position: 'absolute', inset: 0, background: `linear-gradient(180deg, ${colors.bg}55 0%, transparent 30%, ${colors.bg}DD 72%)`}} />
-			<div style={{position: 'absolute', left: CONTENT.x, width: CONTENT.width, top: CONTENT.y + 470, display: 'flex', flexDirection: 'column', gap: 22}}>
+			<div style={{position: 'absolute', left: CONTENT.x, width: CONTENT.width, top: CONTENT.y + 520, display: 'flex', flexDirection: 'column', gap: 16, padding: '26px 30px', borderRadius: 26, background: colors.bg, boxShadow: '0 14px 0 rgba(0,0,0,.25)', rotate: '-1.5deg'}}>
 				{scene.kicker ? <Label color={colors.accentInk} bg={colors.accent}>{scene.kicker}</Label> : null}
-				<div style={{fontFamily: display, fontWeight: 900, fontSize: size, lineHeight: 1.0, letterSpacing: -size * 0.03, color: colors.text, textWrap: 'balance', textShadow: '0 6px 30px rgba(0,0,0,0.6)'}}>
+				<div style={{fontFamily: display, fontWeight: 900, fontSize: size, lineHeight: 1.0, letterSpacing: -size * 0.03, color: colors.text, textWrap: 'balance'}}>
 					{tokens.map(({w, hit}, i) => {
 						const p = enter(frame, 3 + i * 3, 8);
 						return (
@@ -746,6 +736,8 @@ export const SceneView: React.FC<{scene: Scene; colors: Colors; dur: number; wor
 	switch (scene.type) {
 		case 'document':
 			return <Document scene={scene} colors={colors} dur={dur} words={words} asset={asset} />;
+		case 'show':
+			return <SetPiece scene={scene} colors={colors} dur={dur} />;
 		case 'broll':
 			return <Broll scene={scene} colors={colors} dur={dur} words={words} asset={asset} />;
 		case 'merge':

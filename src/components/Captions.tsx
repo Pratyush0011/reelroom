@@ -49,7 +49,7 @@ export const Captions: React.FC<{words: Word[]; colors: Colors; emphasis?: strin
 				gap: '0 18px',
 				fontFamily: display,
 				fontWeight: 900,
-				fontSize: 66,
+				fontSize: 60,
 				lineHeight: 1.1,
 				textTransform: 'uppercase',
 				scale: String(lerp(p, 0.86, 1)),
@@ -66,8 +66,8 @@ export const Captions: React.FC<{words: Word[]; colors: Colors; emphasis?: strin
 						style={
 							isHot && ms >= w.startMs - 40
 								? {
-										color: colors.accentInk,
-										background: colors.accent,
+										color: '#111',
+										background: '#FFE14A',
 										padding: '0 14px',
 										borderRadius: 12,
 										display: 'inline-block',
@@ -76,8 +76,8 @@ export const Captions: React.FC<{words: Word[]; colors: Colors; emphasis?: strin
 										boxShadow: '0 12px 30px rgba(0,0,0,0.45)',
 									}
 								: {
-										color: active ? colors.accent : colors.text,
-										WebkitTextStroke: `10px ${colors.bg}`,
+										color: active ? '#FFE14A' : '#FFFFFF',
+										WebkitTextStroke: '11px #111',
 										paintOrder: 'stroke fill',
 									}
 						}

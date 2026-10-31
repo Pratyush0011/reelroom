@@ -18,7 +18,7 @@ export const SourceChip: React.FC<{colors: Colors; sources: Source[]}> = ({color
 			style={{
 				position: 'absolute',
 				left: SAFE.left,
-				top: CAPTION_Y - 96,
+				top: CAPTION_Y + 142,
 				opacity: p,
 				translate: `${lerp(p, -30, 0)}px 0px`,
 				display: 'flex',
@@ -26,20 +26,19 @@ export const SourceChip: React.FC<{colors: Colors; sources: Source[]}> = ({color
 				gap: 14,
 				padding: '12px 20px',
 				borderRadius: 999,
-				background: `${colors.surface}E6`,
-				border: `1.5px solid ${colors.text}22`,
+				background: 'rgba(0,0,0,0.62)',
+				
 				fontFamily: mono,
-				fontSize: 24,
+				fontSize: 22,
 				fontWeight: 500,
-				color: colors.muted,
-				maxWidth: 780,
+								maxWidth: 780,
 				whiteSpace: 'nowrap',
 				overflow: 'hidden',
 				textOverflow: 'ellipsis',
 			}}
 		>
-			<span style={{color: colors.good, fontWeight: 700}}>✓ SOURCE</span>
-			<span style={{color: colors.text}}>{names}</span>
+			<span style={{color: '#6DFFC4', fontWeight: 700}}>✓ SOURCE</span>
+			<span style={{color: '#fff'}}>{names}</span>
 		</div>
 	);
 };

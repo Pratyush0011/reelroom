@@ -1,14 +1,4 @@
 {
-  "s6": "runs/2026-10-29-single-agent-vs-multi/doc-s6.png",
   "s8": "runs/2026-10-29-single-agent-vs-multi/doc-s8.png",
-  "bg-s1": "runs/2026-10-29-single-agent-vs-multi/media-bg-s1.jpg",
-  "bg-s4": "runs/2026-10-29-single-agent-vs-multi/media-bg-s4.jpg",
-  "s5": "runs/2026-10-29-single-agent-vs-multi/media-s5.jpg",
-  "bg-s6": "runs/2026-10-29-single-agent-vs-multi/media-bg-s6.jpg",
-  "bg-s7": "runs/2026-10-29-single-agent-vs-multi/media-bg-s7.jpg",
-  "bg-s10": "runs/2026-10-29-single-agent-vs-multi/media-bg-s10.jpg",
-  "s11": "runs/2026-10-29-single-agent-vs-multi/media-s11.jpg",
-  "s14": "runs/2026-10-29-single-agent-vs-multi/media-s14.jpg",
-  "bg-s16": "runs/2026-10-29-single-agent-vs-multi/media-bg-s16.jpg",
-  "bg-s17": "runs/2026-10-29-single-agent-vs-multi/media-bg-s17.jpg"
+  "s5": "runs/2026-10-29-single-agent-vs-multi/media-s5.jpg"
 }

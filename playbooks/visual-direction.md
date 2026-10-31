@@ -32,6 +32,18 @@ You do not write React code; you write `storyboard.json`, which `src/schema.ts` 
 | `hook` + `matchup` | The hook can carry a small icon line under the headline (e.g. 5 bots VS 1 bot) so frame 1 shows the idea. | `matchup`: `{left: {icon, count}, right: {icon, count}}` |
 | `versus` | **Visual metaphor.** Two icon groups face off (5 robots vs 1 robot, user vs bot…); the winner glows; a verdict stamp lands. | `title`, `left`/`right`: `{label ≤4 words, icon, count 1–6, caption?}`, `winner`, `verdict` (≤5 words). Icons: bot, user, users, brain, cpu, zap, clock, dollar, chart, search, code, file, shield, globe, phone, sparkles, wrench, database |
 
+## Look: colour worlds and illustrated ideas (read this first)
+
+Measured against 12 top channels, a dark template with text cards is what "monotonous" looks like: brightness 45 vs 107,
+variety 0.16 vs 0.57, 76% dark vs 22%. So:
+- **Every scene is its own full-frame colour world** (`world`: blue, coral, yellow, teal, paper, violet, pink, sky, ink). Never the same world twice in a row. `ink` (near-black) only for the catch.
+- **One giant idea per frame, almost no text.** The default scene type is `show`, an illustrated set piece with the robot character. Use `statement` rarely. Titles are 5 words or fewer; the voice does the explaining.
+- `show` sets: `versus` (crowd vs one; `left`, `winner`, `verdict`), `tools` (AI with orbiting tools), `overload` (buried in paper), `lanes` (racing at the same time), `meters` (two gauges; `labels`), `locked` (padlock over hidden numbers), `crash` (two robots merge), `parcel` (box + crossed-out calendar), `runs` (pass/fail tickets), `blocks` (stack; `left` = how many).
+- Real photos stay at full brightness (`broll`), never dimmed behind text.
+- If no set fits a new story, add a new set in `src/sets.tsx` instead of falling back to a text card.
+
+`npm run look` measures the finished MP4 against the benchmark and must pass.
+
 ## Motion layer (applies to every scene)
 
 Every scene can also set:

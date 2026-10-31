@@ -58,6 +58,7 @@ between steps:
   held true statements *about* the rumour, so the story passed as an unrequested debunk. **Fix:** a mandatory `C0`
   premise claim judged word for word, a stop unless the input says `debunk:`, and a code gate plus tests. **Second
   attempt:** stopped correctly, with `STOPPED.md` explaining why.
+- **Third human review (v4): "monotonous".** Fast cuts hadn't fixed it, so I measured the gap against Shorts from 12 top channels: v3 scored brightness 45 vs 107 and variety 0.16 vs 0.57. The fix was a new look (a colour world per scene, illustrated set pieces, minimal text, music) plus `npm run look`, which fails monotonous reels. v4 scores 141 and 0.84. YouTube rate-limited my frame collection, so the benchmark uses public thumbnail frames, not exact cut timings.
 - **Visual verification:** I reviewed stills of every scene type as contact sheets. That's where I found the
   `20$` currency bug and the orphan-word problem, and fixed the latter in the engine with balanced wrapping, not
   per video. List items and accent highlights are timed to the spoken words using TTS word boundaries.

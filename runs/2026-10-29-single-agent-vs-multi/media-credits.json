@@ -1,23 +1,5 @@
 [
   {
-    "scene": "s1",
-    "query": "server racks data center",
-    "kind": "image",
-    "title": "File:Rear of rack at NERSC data center - closeup.jpg",
-    "author": "Derrick Coetzee from Berkeley, CA, USA",
-    "license": "cc0 1.0",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=17460421"
-  },
-  {
-    "scene": "s4",
-    "query": "wrench set",
-    "kind": "image",
-    "title": "Companion wrench set",
-    "author": "J.C. Fields (Talk) (Uploads)",
-    "license": "by-sa 3.0",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=61976869"
-  },
-  {
     "scene": "s5",
     "query": "team working at whiteboard",
     "kind": "image",
@@ -25,68 +7,5 @@
     "author": "Startup Stock Photos",
     "license": "cc0 1.0",
     "source": "https://stocksnap.io/photo/whiteboard-post-itnotes-YR89OQFMT1"
-  },
-  {
-    "scene": "s6",
-    "query": "stack of documents office desk",
-    "kind": "image",
-    "title": "Office Work",
-    "author": "Châu Thông Phan",
-    "license": "cc0 1.0",
-    "source": "https://stocksnap.io/photo/office-work-UP9J4EZYNJ"
-  },
-  {
-    "scene": "s7",
-    "query": "industrial robot arms assembly line",
-    "kind": "image",
-    "title": "Hyundai car assembly line",
-    "author": "User: Anonyme",
-    "license": "by 2.5",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=1987247"
-  },
-  {
-    "scene": "s10",
-    "query": "stopwatch",
-    "kind": "image",
-    "title": "Stopwatch A",
-    "author": "Wouterhagens",
-    "license": "by-sa 3.0",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=18298618"
-  },
-  {
-    "scene": "s11",
-    "query": "padlock",
-    "kind": "image",
-    "title": "Love padlocks on the Butchers' Bridge (Ljubljana)",
-    "author": "Petar Milošević",
-    "license": "by-sa 4.0",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=41501847"
-  },
-  {
-    "scene": "s14",
-    "query": "package delivery",
-    "kind": "image",
-    "title": "Koreapost delivery motorcycle package delivery",
-    "author": "Roadgo",
-    "license": "by-sa 3.0",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=52780126"
-  },
-  {
-    "scene": "s16",
-    "query": "notebook and pen",
-    "kind": "image",
-    "title": "Coffee, Notebook and Pen",
-    "author": "unknown",
-    "license": "cc0 1.0",
-    "source": "https://www.rawpixel.com/image/5966055/coffee-notebook-and-pen"
-  },
-  {
-    "scene": "s17",
-    "query": "measuring tape",
-    "kind": "image",
-    "title": "Measuring tape ubt 203",
-    "author": "© 2010 by Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]",
-    "license": "by 3.0",
-    "source": "https://commons.wikimedia.org/w/index.php?curid=8893134"
   }
 ]

@@ -50,6 +50,8 @@ const screenText = (s: Scene): string[] => {
 			return [s.prompt, s.sub ?? ''];
 		case 'document':
 			return [s.publisher, s.quote];
+		case 'show':
+			return [s.title ?? '', s.verdict ?? '', ...(s.labels ?? [])];
 		case 'broll':
 			return [s.kicker ?? '', s.headline];
 		case 'merge':

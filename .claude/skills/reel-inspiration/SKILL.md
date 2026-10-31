@@ -8,6 +8,14 @@ description: Research what is trending and working for a topic before storyboard
 A reel nobody watches is usually a reel where nothing happens on screen. Before you storyboard, you study what's
 actually working **for this topic, right now**, and steal the *techniques* (never the footage, voice or identity).
 
+## 0. What the market actually looks like (measured Oct 2026)
+
+Frames from Shorts by Fireship, Kurzgesagt, Zack D Films, Cleo Abram, Johnny Harris, Vox, Varun Mayya, Dhruv Rathee,
+Mrwhosetheboss, Veritasium, Jeff Su and NileRed. Median: brightness 107, colourfulness 47, 22% dark pixels, frame-to-frame
+variety 0.57. Patterns: bright full-frame images, one giant subject, very little on-screen text, small captions. Faces carry
+most of them; the faceless winners use vivid illustration or 3D characters. Dark cards full of text are the opposite of this.
+Fast cuts alone don't fix a reel that looks the same on every cut.
+
 ## 1. Search (run at least 6 searches)
 
 Use the story's plain-language topic (e.g. "one AI vs team of AI agents"), not jargon.
@@ -50,6 +58,8 @@ For every reference, note:
 | Visual metaphor | `versus` (icon match-up), `merge` (icons combining) |
 | Numbers that move | `stat` (count-up), `chart`, `compare` |
 | Warning beat | `catch` |
+| Illustrated idea with the robot character | `show` scene (`set`: versus, tools, overload, lanes, meters, locked, crash, parcel, runs, blocks) |
+| Colour change on every cut | scene `world` |
 
 ## 5. Write the motion recipe → `<run_dir>/05b-direction.md`
 

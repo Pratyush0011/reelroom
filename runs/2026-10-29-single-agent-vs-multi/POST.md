@@ -1,6 +1,6 @@
-# Ready to post (v3)
+# Ready to post (v4)
 
-**Video:** `final.mp4` (1080×1920, 49.2 s, 18 scenes, ElevenLabs "Daniel") · **Cover:** `cover.png`
+**Video:** `final.mp4` (1080×1920, 49.2 s, 18 scenes, narrated by ElevenLabs "Daniel") · **Cover:** `cover.png`
 
 ## Caption
 One AI frequently beats a team of AI bots, Anthropic found. Not always, though.
@@ -31,14 +31,6 @@ Sources:
 - **The 90.2% figure (v1's hook):** dropped in v2 because viewers couldn't tell "90.2% of what".
 - **The headline "one agent beats many":** comes from press coverage, never shown as Anthropic's words.
 
-## B-roll credits (licensed for reuse; include in the post description)
-- s1: "File:Rear of rack at NERSC data center - closeup.jpg" by Derrick Coetzee from Berkeley, CA, USA (cc0 1.0), https://commons.wikimedia.org/w/index.php?curid=17460421
-- s4: "Companion wrench set" by J.C. Fields (Talk) (Uploads) (by-sa 3.0), https://commons.wikimedia.org/w/index.php?curid=61976869
-- s5: "Whiteboard Post-Itnotes" by Startup Stock Photos (cc0 1.0), https://stocksnap.io/photo/whiteboard-post-itnotes-YR89OQFMT1
-- s6: "Office Work" by Châu Thông Phan (cc0 1.0), https://stocksnap.io/photo/office-work-UP9J4EZYNJ
-- s7: "Hyundai car assembly line" by User: Anonyme (by 2.5), https://commons.wikimedia.org/w/index.php?curid=1987247
-- s10: "Stopwatch A" by Wouterhagens (by-sa 3.0), https://commons.wikimedia.org/w/index.php?curid=18298618
-- s11: "Love padlocks on the Butchers' Bridge (Ljubljana)" by Petar Milošević (by-sa 4.0), https://commons.wikimedia.org/w/index.php?curid=41501847
-- s14: "Koreapost delivery motorcycle package delivery" by Roadgo (by-sa 3.0), https://commons.wikimedia.org/w/index.php?curid=52780126
-- s16: "Coffee, Notebook and Pen" by unknown (cc0 1.0), https://www.rawpixel.com/image/5966055/coffee-notebook-and-pen
-- s17: "Measuring tape ubt 203" by © 2010 by Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com] (by 3.0), https://commons.wikimedia.org/w/index.php?curid=8893134
+## Credits (required; include in the post description)
+- Music: "Super Power Cool Dude" by Kevin MacLeod (incompetech.com), CC BY 3.0, https://commons.wikimedia.org/wiki/File:Super_Power_Cool_Dude_(ISRC_USUAN1600036).mp3
+- Photo: "Whiteboard Post-Itnotes" by Startup Stock Photos (cc0 1.0), https://stocksnap.io/photo/whiteboard-post-itnotes-YR89OQFMT1

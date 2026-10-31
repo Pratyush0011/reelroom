@@ -5,10 +5,10 @@ import {enter, lerp, OUT} from '../motion';
 import type {Colors, Scene, Word} from '../schema';
 import {H, W} from '../theme';
 
-// The motion layer every scene sits in: entrance transition, constant camera drift, punch-ins on emphasis words,
-// optional shake, and a B-roll backdrop. This is what keeps something moving on screen at all times.
+// The motion layer: every scene is its own colour world that wipes in over the previous one, on a camera that never
+// stops moving, with punch-ins exactly on the spoken emphasis words.
 
-const CYCLE = ['whip', 'zoom', 'slide', 'glitch', 'flash'] as const;
+const CYCLE = ['zoom', 'whip', 'slide', 'flash', 'glitch'] as const;
 const SFX: Record<(typeof CYCLE)[number], string> = {whip: 'whip.wav', zoom: 'whoosh.wav', slide: 'whoosh.wav', glitch: 'switch.wav', flash: 'shutter-modern.wav'};
 const norm = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 
@@ -24,17 +24,26 @@ export const emphasisCues = (scene: Scene, words: Word[], fps: number) =>
 
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 
-// Darkened, slowly zooming B-roll behind the scene's graphics.
-export const Backdrop: React.FC<{src: string; dur: number; colors: Colors; strength?: number}> = ({src, dur, colors, strength = 0.42}) => {
+// Moving pattern inside a colour world, so flat colour is never static.
+const Pattern: React.FC<{colors: Colors; index: number}> = ({colors, index}) => {
 	const frame = useCurrentFrame();
-	const zoom = interpolate(frame, [0, dur], [1.08, 1.2]);
-	const style: React.CSSProperties = {width: '100%', height: '100%', objectFit: 'cover', scale: String(zoom)};
-	return (
-		<AbsoluteFill style={{opacity: interpolate(frame, [0, 6], [0, strength], {extrapolateRight: 'clamp'})}}>
-			{isVideo(src) ? <Video src={staticFile(src)} muted loop style={style} /> : <Img src={staticFile(src)} style={style} />}
-			<AbsoluteFill style={{background: `linear-gradient(180deg, ${colors.bg}88, ${colors.bg}CC 70%)`}} />
-		</AbsoluteFill>
-	);
+	const tint = `${colors.text}14`;
+	const kind = index % 3;
+	if (kind === 0)
+		return (
+			<AbsoluteFill style={{overflow: 'hidden'}}>
+				<div style={{position: 'absolute', left: W / 2 - H, top: H * 0.42 - H, width: H * 2, height: H * 2, rotate: `${frame * 0.5}deg`, background: `repeating-conic-gradient(${tint} 0 12deg, transparent 12deg 24deg)`}} />
+			</AbsoluteFill>
+		);
+	if (kind === 1)
+		return <AbsoluteFill style={{backgroundImage: `radial-gradient(${tint} 12px, transparent 13px)`, backgroundSize: '84px 84px', backgroundPosition: `${frame * 1.4}px ${frame * 2.2}px`}} />;
+	return <AbsoluteFill style={{backgroundImage: `repeating-linear-gradient(-45deg, ${tint} 0 40px, transparent 40px 90px)`, backgroundPosition: `${frame * 2}px 0px`}} />;
+};
+
+export const Backdrop: React.FC<{src: string; dur: number}> = ({src, dur}) => {
+	const frame = useCurrentFrame();
+	const style: React.CSSProperties = {width: '100%', height: '100%', objectFit: 'cover', scale: String(interpolate(frame, [0, dur], [1.08, 1.22]))};
+	return <AbsoluteFill>{isVideo(src) ? <Video src={staticFile(src)} muted loop style={style} /> : <Img src={staticFile(src)} style={style} />}</AbsoluteFill>;
 };
 
 export const MotionScene: React.FC<{
@@ -43,64 +52,45 @@ export const MotionScene: React.FC<{
 	words: Word[];
 	dur: number;
 	colors: Colors;
+	prev: string;
 	bg?: string;
 	children: React.ReactNode;
-}> = ({scene, index, words, dur, colors, bg, children}) => {
+}> = ({scene, index, words, dur, colors, prev, bg, children}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const kind = scene.transition ?? CYCLE[index % CYCLE.length];
 	const t = enter(frame, 0, 8, OUT);
 	const cues = emphasisCues(scene, words, fps);
 
-	// Entrance
+	// How the new colour world arrives over the previous one.
 	let translate = '0px 0px';
-	let scale = 1;
-	let blur = 0;
-	if (kind === 'whip') (translate = `${lerp(t, W * 0.9, 0)}px 0px`), (blur = lerp(t, 40, 0));
-	if (kind === 'slide') translate = `0px ${lerp(t, H * 0.6, 0)}px`;
-	if (kind === 'zoom') (scale = lerp(t, 1.7, 1)), (blur = lerp(t, 24, 0));
-	if (kind === 'flash') scale = lerp(t, 1.12, 1);
+	let clipPath: string | undefined;
+	if (kind === 'zoom' || kind === 'flash') clipPath = `circle(${lerp(t, 0, 125)}% at 50% 44%)`;
+	if (kind === 'whip') translate = `${lerp(t, W, 0)}px 0px`;
+	if (kind === 'slide') translate = `0px ${lerp(t, H, 0)}px`;
+	if (kind === 'glitch') clipPath = frame < 7 ? `inset(${(random(`a${frame}`) * 30).toFixed(0)}% 0 ${(random(`b${frame}`) * 30).toFixed(0)}% 0)` : undefined;
 
-	// Camera: slow push-in + drift, punch-in on every emphasis word, and an exit push into the next cut.
-	const push = interpolate(frame, [0, dur], [1, 1.06]);
-	const punch = cues.reduce((acc, c) => acc + 0.09 * Math.max(0, 1 - Math.abs(frame - c.frame - 3) / 9), 0);
-	const exit = interpolate(frame, [dur - 5, dur], [0, 0.08], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-	const drift = Math.sin((frame + index * 20) / 40) * 0.6;
-	const shake = scene.shake ? (random(`x${frame}`) - 0.5) * 14 : 0;
-	const glitch = kind === 'glitch' && frame < 8 ? (random(`g${frame}`) - 0.5) * 60 : 0;
+	// Camera: continuous push + drift, a hard punch on every emphasis word, and a push into the next cut.
+	const push = interpolate(frame, [0, dur], [1, 1.07]);
+	const punch = cues.reduce((acc, c) => acc + 0.11 * Math.max(0, 1 - Math.abs(frame - c.frame - 2) / 8), 0);
+	const exit = interpolate(frame, [dur - 4, dur], [0, 0.1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+	const drift = Math.sin((frame + index * 20) / 26) * 1.1;
+	const shake = scene.shake ? (random(`x${frame}`) - 0.5) * 18 : 0;
 
 	return (
-		<AbsoluteFill>
-			{bg ? <Backdrop src={bg} dur={dur} colors={colors} /> : null}
-			<AbsoluteFill
-				style={{
-					translate,
-					scale: String(scale * (push + punch + exit)),
-					rotate: `${drift}deg`,
-					filter: blur > 0.5 ? `blur(${blur}px)` : undefined,
-					marginLeft: shake + glitch,
-					marginTop: shake * 0.6,
-				}}
-			>
-				{children}
+		<AbsoluteFill style={{background: prev}}>
+			<AbsoluteFill style={{translate, clipPath, background: colors.bg, overflow: 'hidden'}}>
+				<Pattern colors={colors} index={index} />
+				{bg ? <Backdrop src={bg} dur={dur} /> : null}
+				<AbsoluteFill style={{scale: String(push + punch + exit), rotate: `${drift}deg`, marginLeft: shake, marginTop: shake * 0.6}}>{children}</AbsoluteFill>
 			</AbsoluteFill>
-			{kind === 'glitch' && frame < 8 ? (
-				<AbsoluteFill style={{mixBlendMode: 'screen', opacity: 0.6, translate: `${-glitch}px 0px`, background: `linear-gradient(90deg, transparent 40%, ${colors.warn}55 50%, transparent 60%)`}} />
-			) : null}
-			{kind === 'flash' ? <AbsoluteFill style={{background: '#fff', opacity: interpolate(frame, [0, 4], [0.85, 0], {extrapolateRight: 'clamp'})}} /> : null}
-			{/* a light sweep across every cut keeps the eye moving */}
-			<AbsoluteFill
-				style={{
-					background: `linear-gradient(100deg, transparent 35%, ${colors.text}18 50%, transparent 65%)`,
-					translate: `${interpolate(frame, [0, 14], [-W, W], {extrapolateRight: 'clamp'})}px 0px`,
-				}}
-			/>
+			{kind === 'flash' ? <AbsoluteFill style={{background: '#fff', opacity: interpolate(frame, [0, 4], [0.9, 0], {extrapolateRight: 'clamp'})}} /> : null}
 			{cues.map((c, i) => (
-				<Sequence key={c.word + i} from={Math.max(0, c.frame)} durationInFrames={24} layout="none">
-					<Audio src={staticFile('sfx/mouse-click.wav')} volume={0.35} />
+				<Sequence key={c.word + i} from={Math.max(0, c.frame)} durationInFrames={20} layout="none">
+					<Audio src={staticFile('sfx/mouse-click.wav')} volume={0.4} />
 				</Sequence>
 			))}
-			{index > 0 ? <Audio src={staticFile(`sfx/${SFX[kind]}`)} volume={0.22} /> : null}
+			{index > 0 ? <Audio src={staticFile(`sfx/${SFX[kind]}`)} volume={0.3} /> : null}
 		</AbsoluteFill>
 	);
 };

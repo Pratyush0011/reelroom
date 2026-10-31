@@ -44,3 +44,8 @@ Started: 2026-10-29
 - [v3 visual-qa r6] visual-qa → FIX: 3 blockers (stale uncredited B-roll from old scene ids; rolling-papers pack; sticker hiding headline), majors (head-of-state footage, Reichsmark stamp, black clip, 4 sticker collisions). Engine: clean media rebuild, 8 candidates/query, risky-subject filter, brightness check, emphasis moved into caption band.
 - [v3 fixes] engine: brightness check fixed for stills, shorter-query fallback, brand filter, decoded credits; storyboard: QA r6/r7 query + emphasis fixes
 - [v3 final] media fixed (brightness bug, query fallback, brand/military filter, per-query cache); visual-qa r7 FIX (Bible page, real spreadsheet) → r8 SHIP; final.mp4 49.2 s, 18 scenes, 1.54 s/visual change, re-encoded 18.8 MB; POST.md with B-roll credits. DONE.
+
+## Version 4 (2026-10-31), after user feedback: 'monotonous, not market quality'
+- measured 12 top channels vs v3 (brightness 45 vs 107, variety 0.16 vs 0.57); YouTube rate-limited page fetches, so public thumbnail frames were used
+- rebuilt look: colour worlds, robot character, 10 illustrated set pieces, minimal text, CC BY music; voice reused from cache (ElevenLabs quota 9,850/10,000)
+- look gate PASS: brightness 141, colourfulness 103, dark 5%, variety 0.84; final.mp4 49.2 s

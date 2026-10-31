@@ -15,7 +15,8 @@
     "typecheck": "tsc --noEmit",
     "voices": "tsx pipeline/voices.ts",
     "shots": "tsx pipeline/shots.ts",
-    "media": "tsx pipeline/media.ts"
+    "media": "tsx pipeline/media.ts",
+    "look": "tsx pipeline/look.ts"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.539",

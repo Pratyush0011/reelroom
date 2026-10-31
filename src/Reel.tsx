@@ -1,13 +1,12 @@
 import {Audio} from '@remotion/media';
 import React from 'react';
 import {AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
-import {Background} from './components/Background';
 import {Captions} from './components/Captions';
-import {Chrome} from './components/Chrome';
 import {MotionScene} from './components/Motion';
 import {SourceChip} from './components/SourceChip';
 import {enter, lerp} from './motion';
 import {SceneView} from './scenes';
+import {WORLD_CYCLE, WORLDS} from './worlds';
 import {countWords, type ReelProps, type Scene, type Timing, type Word} from './schema';
 
 export const FPS = 30;
@@ -29,7 +28,7 @@ export const resolveTiming = (props: ReelProps): Timing => {
 };
 
 export const Reel: React.FC<ReelProps> = (props) => {
-	const {storyboard, colors, handle, sources} = props;
+	const {storyboard, sources} = props;
 	const timing = resolveTiming(props);
 	const byId = new Map(timing.scenes.map((t) => [t.id, t]));
 	const starts: number[] = [];
@@ -42,16 +41,17 @@ export const Reel: React.FC<ReelProps> = (props) => {
 		return {scene, t, from};
 	});
 
+	const worldOf = (i: number) => WORLDS[storyboard.scenes[i].world ?? WORLD_CYCLE[i % WORLD_CYCLE.length]];
+
 	return (
 		<AbsoluteFill>
-			<Background colors={colors} />
 			{placed.map(({scene, t, from}, i) => (
 				<Sequence key={scene.id} name={`${scene.id} · ${scene.type}`} from={from} durationInFrames={t.durationInFrames}>
-					<MotionScene scene={scene} index={i} words={t.words} dur={t.durationInFrames} colors={colors} bg={props.assets?.[`bg-${scene.id}`]}>
-						<SceneView scene={scene} colors={colors} dur={t.durationInFrames} words={t.words} asset={props.assets?.[scene.id]} />
+					<MotionScene scene={scene} index={i} words={t.words} dur={t.durationInFrames} colors={worldOf(i)} prev={i ? worldOf(i - 1).bg : worldOf(i).bg} bg={props.assets?.[`bg-${scene.id}`]}>
+						<SceneView scene={scene} colors={worldOf(i)} dur={t.durationInFrames} words={t.words} asset={props.assets?.[scene.id]} />
 					</MotionScene>
-					<SourceChip colors={colors} sources={scene.claims.map((c) => sources[c]).filter(Boolean)} />
-					{props.cover ? null : <Captions words={t.words} colors={colors} emphasis={scene.emphasis} />}
+					<SourceChip colors={worldOf(i)} sources={scene.claims.map((c) => sources[c]).filter(Boolean)} />
+					{props.cover ? null : <Captions words={t.words} colors={worldOf(i)} emphasis={scene.emphasis} />}
 					{t.audio ? <Audio src={staticFile(t.audio)} /> : null}
 				</Sequence>
 			))}
@@ -59,10 +59,9 @@ export const Reel: React.FC<ReelProps> = (props) => {
 				<Audio
 					src={staticFile(props.music)}
 					loop
-					volume={(f) => interpolate(f, [0, 20, at - 45, at], [0, 0.1, 0.1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
+					volume={(f) => interpolate(f, [0, 20, at - 45, at], [0, 0.17, 0.17, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}
 				/>
 			) : null}
-			<Chrome colors={colors} handle={handle} starts={starts} total={at} />
 		</AbsoluteFill>
 	);
 };
