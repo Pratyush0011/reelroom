@@ -16,11 +16,10 @@ const base = {
 	id: z.string().regex(/^s\d+$/, 'scene ids look like s1, s2, ...'),
 	say: z.string().min(2).describe('Exact voiceover for this scene, written as spoken'),
 	claims: z.array(z.string().regex(/^C\d+$/)).default([]),
-	// Motion layer (see .claude/skills/reel-inspiration): punch-ins on spoken words, entrance transition, shake, B-roll backdrop.
+	// Motion layer (see .claude/skills/reel-inspiration): punch-ins on spoken words, entrance transition, shake.
 	emphasis: z.array(z.string()).max(3).optional().describe('words from `say` that get a camera punch-in + pop sticker + SFX'),
 	transition: z.enum(TRANSITIONS).optional(),
 	shake: z.boolean().optional(),
-	bg: z.object({query: z.string().min(2)}).optional().describe('licensed B-roll behind this scene, fetched by npm run media'),
 	world: z.enum(['blue', 'coral', 'yellow', 'teal', 'paper', 'violet', 'pink', 'sky', 'ink']).optional().describe('full-frame colour world; cycles if omitted'),
 };
 
@@ -169,7 +168,7 @@ export const BrollScene = z.object({
 	accent: z.string().optional(),
 });
 
-export const SETS = ['versus', 'tools', 'overload', 'lanes', 'meters', 'locked', 'crash', 'parcel', 'runs', 'blocks'] as const;
+export const SETS = ['versus', 'tools', 'overload', 'lanes', 'meters', 'locked', 'combine', 'parcel', 'runs', 'blocks'] as const;
 
 // An illustrated set piece: one giant animated idea with the robot character, almost no text.
 export const ShowScene = z.object({

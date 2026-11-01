@@ -49,3 +49,14 @@ Started: 2026-10-29
 - measured 12 top channels vs v3 (brightness 45 vs 107, variety 0.16 vs 0.57); YouTube rate-limited page fetches, so public thumbnail frames were used
 - rebuilt look: colour worlds, robot character, 10 illustrated set pieces, minimal text, CC BY music; voice reused from cache (ElevenLabs quota 9,850/10,000)
 - look gate PASS: brightness 141, colourfulness 103, dark 5%, variety 0.84; final.mp4 49.2 s
+- not run through the agents: storyboard rebuilt by hand in the main session (no director, no critic). Compared with storyboard.v3.json: no `say` line or claim changed; voiceover still matches 04-script.md word for word
+
+## v4 audit (2026-11-01), no video produced and no voice credits spent
+- [v4 visual-qa r9] visual-qa → FIX: 0 blockers, 7 majors, 14 minors, on 37 frames taken from final.mp4 plus cover.png. Pictures overstate hedged claims (s6, s9, s13), s6 title lost on white sheets, 'No numbers shared' broader than C3 (s11), blank first frame, caption on the cover. No major needs a `say` change
+- [v4 engine] cover bug fixed in pipeline/render.ts (the flag never reached the composition's props), proved on a test still; `npm run stills` now captures the first frame; QA and direction playbooks now check pictures against the hedge
+
+## Version 4.1 (2026-11-01), QA round 9 fixes, no voice credits spent
+- [v4.1 fixes] applied by hand in the main session from the QA notes (no director round); v4 archived as storyboard.v4.json. 12 scenes edited, no `say` line changed. Engine: hook on screen from frame 0, no entrance wipe on the first scene, 'stressed' robot no longer has X eyes, `crash` set replaced by a calm `combine` set (departs from QA's `merge` advice, because that scene's line icons don't match the reel's look)
+- [v4.1 preview] own stills caught 2 faults in those fixes before rendering (hook words run together on frame 0, s13 still empty mid-scene); both fixed
+- [v4.1 render] npm run check PASS; final.mp4 49.2 s, re-encoded 18 MB; look gate PASS: brightness 141, colourfulness 105, dark 5%, variety 0.84
+- [v4.1 visual-qa r10] visual-qa → SHIP: 0 blockers, 0 majors, 13 minors; 6 of 7 round 9 majors fixed. The 7th is a judgment call: s11's title is now accurate ("No cost figures") but the voice and caption still say "No numbers shared", broader than C3. QA rated this minor; a stricter reading keeps it major. `say` "No overall numbers shared." would close it for one voice line. Same-agent re-check, not a fresh one; two stills per scene, so motion and audio sync were not reviewed by QA

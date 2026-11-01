@@ -47,7 +47,7 @@ export const Reel: React.FC<ReelProps> = (props) => {
 		<AbsoluteFill>
 			{placed.map(({scene, t, from}, i) => (
 				<Sequence key={scene.id} name={`${scene.id} · ${scene.type}`} from={from} durationInFrames={t.durationInFrames}>
-					<MotionScene scene={scene} index={i} words={t.words} dur={t.durationInFrames} colors={worldOf(i)} prev={i ? worldOf(i - 1).bg : worldOf(i).bg} bg={props.assets?.[`bg-${scene.id}`]}>
+					<MotionScene scene={scene} index={i} words={t.words} dur={t.durationInFrames} colors={worldOf(i)} prev={i ? worldOf(i - 1).bg : worldOf(i).bg}>
 						<SceneView scene={scene} colors={worldOf(i)} dur={t.durationInFrames} words={t.words} asset={props.assets?.[scene.id]} />
 					</MotionScene>
 					<SourceChip colors={worldOf(i)} sources={scene.claims.map((c) => sources[c]).filter(Boolean)} />

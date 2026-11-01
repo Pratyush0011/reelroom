@@ -52,13 +52,12 @@ For every reference, note:
 | Punch-in zoom on a key word | scene `emphasis: ["word"]`: camera punches in, the word pops as a sticker, a click SFX plays |
 | Whip pan / zoom-through / glitch / flash transitions | scene `transition: "whip" \| "zoom" \| "glitch" \| "flash" \| "slide"` (with whoosh SFX) |
 | Camera shake for tension | scene `shake: true` |
-| Real-world B-roll behind graphics | scene `bg: {query: "..."}` (auto-fetched, licensed, darkened, Ken Burns) |
-| Full-screen B-roll moment | scene type `broll` with `media: {query}`, `kicker`, `headline` |
+| Full-screen B-roll moment | scene type `broll` with `media: {query}`, `kicker`, `headline` (auto-fetched, licensed, full brightness) |
 | Paper trail / receipt | `document` (real page screenshot + highlighter), `receipt` |
 | Visual metaphor | `versus` (icon match-up), `merge` (icons combining) |
 | Numbers that move | `stat` (count-up), `chart`, `compare` |
 | Warning beat | `catch` |
-| Illustrated idea with the robot character | `show` scene (`set`: versus, tools, overload, lanes, meters, locked, crash, parcel, runs, blocks) |
+| Illustrated idea with the robot character | `show` scene (`set`: versus, tools, overload, lanes, meters, locked, combine, parcel, runs, blocks) |
 | Colour change on every cut | scene `world` |
 
 ## 5. Write the motion recipe → `<run_dir>/05b-direction.md`
@@ -72,7 +71,7 @@ For every reference, note:
 - Signature moves (3): ...
 - Transitions: which, where
 - Emphasis words per scene: rule (1–2 per scene)
-- B-roll plan: which scenes get `bg` or `broll`, with search queries (concrete nouns: "server room", "office team meeting", "robot arm")
+- B-roll plan: which scenes are `broll`, with search queries (concrete nouns: "server room", "office team meeting", "robot arm")
 - Sound: where SFX land
 - Hook frame (0–1.5 s): exactly what moves
 

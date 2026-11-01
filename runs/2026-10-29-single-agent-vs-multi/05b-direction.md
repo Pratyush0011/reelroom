@@ -1,5 +1,10 @@
 # 05b Direction (v3): motion-first
 
+> **v4 note (added 2026-11-01).** This file is the director agent's research for v3, and v4 did not redo it. The v4
+> storyboard was rebuilt by hand in the main Claude Code session, not by the director agent, after a reviewer called v3
+> monotonous. It kept every `say` line and claim and replaced the look (colour worlds, `show` set pieces). v4's new input
+> was the 12-channel measurement in `.claude/skills/reel-inspiration/SKILL.md`, section 0.
+
 Reviewer note on v2: "not much is going on on the screen", and the v2 references were articles, not reels.
 This round's research looked at real, popular short-form videos on AI agents / multi-agent AI, plus two documentary
 explainers, and turns what they do on screen into a motion recipe for the engine.

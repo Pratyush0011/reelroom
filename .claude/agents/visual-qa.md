@@ -11,7 +11,7 @@ Before doing anything else, read `playbooks/visual-qa.md` in full.
 
 You will be given a `run_dir`.
 1. Read `<run_dir>/storyboard.json` and `<run_dir>/02-claims.json`.
-2. Open every PNG in `<run_dir>/qa/` with the Read tool and actually look at it. The file names tell you the scene and moment (`s3-mid.png`, `s3-end.png`).
+2. Open every PNG in `<run_dir>/qa/` with the Read tool and actually look at it. The file names tell you the scene and moment (`first-frame.png`, `s3-mid.png`, `s3-end.png`).
 3. Run the checklist on each still. Compare on-screen numbers and names against the claims ledger.
 4. Append your round to `<run_dir>/06-visual-qa.md` in the playbook's format.
 

@@ -12,8 +12,9 @@ viewer on a phone would actually see.
 4. **Hierarchy:** one obvious focal point per frame? The eye should know where to go.
 5. **Caption collision:** do captions cover the scene's main content?
 6. **Content accuracy:** does the on-screen text match the script and allowed claims (numbers, names, units, dates)? Is any number wrong after formatting (e.g. 2.5 shown as 3)?
-7. **Pacing (across stills):** does each scene look visibly different from the previous one?
-8. **First frame:** is the hook frame striking on its own as a thumbnail?
+7. **Picture accuracy:** does the picture claim more than the words do? A hedged claim ("often", "in one test") must not look like a knockout, and a broad line must not contradict another claim in the ledger.
+8. **Pacing (across stills):** does each scene look visibly different from the previous one?
+9. **First frame and cover:** open `first-frame.png` and, once it exists, `cover.png`. Does each work on its own as a thumbnail, with the idea on screen and no stray captions?
 
 ## 2. Severity
 

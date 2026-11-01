@@ -168,7 +168,7 @@ const Meters: React.FC<P> = ({scene, colors, dur}) => (
 		<Title text={scene.title} colors={colors} />
 		<Gauge x={262} label={scene.labels?.[0] ?? ''} at={4} colors={colors} />
 		<Gauge x={700} label={scene.labels?.[1] ?? ''} at={10} colors={colors} />
-		<Stamp text={scene.verdict} at={Math.round(dur * 0.5)} colors={colors} y={1150} />
+		<Stamp text={scene.verdict} at={Math.round(dur * 0.5)} colors={colors} y={1125} />
 	</>
 );
 
@@ -188,26 +188,23 @@ const Locked: React.FC<P> = ({scene, colors, dur}) => {
 	);
 };
 
-// Two robots fly in, crash, and one dizzy robot remains.
-const Crash: React.FC<P> = ({scene, colors, dur}) => {
+// Two robots slide together and become one. Calm on purpose: this shows a design change, not a disaster.
+const Combine: React.FC<P> = ({scene, colors, dur}) => {
 	const frame = useCurrentFrame();
-	const hit = Math.round(dur * 0.45);
-	const t = interpolate(frame, [0, hit], [0, 1], {...clamp, easing: Easing.in(Easing.cubic)});
+	const meet = Math.round(dur * 0.45);
+	const t = interpolate(frame, [0, meet], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
 	return (
 		<>
 			<Title text={scene.title} colors={colors} />
-			{frame < hit ? (
+			{/* Pop stays at zero scale for its first 7 frames, so start early: the merged robot must be there when the pair disappears. */}
+			<Pop at={meet - 9} x={480} y={810}><Robot size={400} color={colors.accent} seed={3} /></Pop>
+			{frame < meet + 3 ? (
 				<>
-					<div style={{position: 'absolute', left: lerp(t, -40, 310), top: 640, rotate: `${t * 30}deg`}}><Robot size={300} color="#FFFFFF" /></div>
-					<div style={{position: 'absolute', left: lerp(t, 760, 330), top: 640, rotate: `${-t * 30}deg`}}><Robot size={300} color={colors.accent} seed={3} /></div>
+					<div style={{position: 'absolute', left: lerp(t, 10, 330), top: 640}}><Robot size={300} color="#FFFFFF" /></div>
+					<div style={{position: 'absolute', left: lerp(t, 650, 330), top: 640}}><Robot size={300} color={colors.accent} seed={3} /></div>
 				</>
-			) : (
-				<>
-					<Burst x={480} y={800} at={hit} color="#FFE14A" size={760} />
-					<Pop at={hit + 2} x={480} y={810}><Robot size={380} color="#FFFFFF" mood="dizzy" /></Pop>
-				</>
-			)}
-			<Stamp text={scene.verdict} at={hit + 6} colors={colors} y={1160} />
+			) : null}
+			<Stamp text={scene.verdict} at={meet + 6} colors={colors} y={1110} />
 		</>
 	);
 };
@@ -277,8 +274,8 @@ export const SetPiece: React.FC<P> = (props) => {
 			return <Meters {...props} />;
 		case 'locked':
 			return <Locked {...props} />;
-		case 'crash':
-			return <Crash {...props} />;
+		case 'combine':
+			return <Combine {...props} />;
 		case 'parcel':
 			return <Parcel {...props} />;
 		case 'runs':

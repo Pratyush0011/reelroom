@@ -40,7 +40,10 @@
       "claims": [
         "C1"
       ],
-      "world": "yellow"
+      "world": "yellow",
+      "emphasis": [
+        "found"
+      ]
     },
     {
       "id": "s3",
@@ -57,7 +60,7 @@
       "title": "Who wins?",
       "left": 5,
       "winner": "none",
-      "verdict": "Not always"
+      "verdict": "Not always one AI"
     },
     {
       "id": "s4",
@@ -72,7 +75,7 @@
       "type": "show",
       "set": "tools",
       "world": "teal",
-      "title": "One AI + tools"
+      "title": "Tools on demand"
     },
     {
       "id": "s5",
@@ -81,7 +84,6 @@
       "media": {
         "query": "team working at whiteboard"
       },
-      "kicker": "BUT",
       "headline": "A team still wins",
       "accent": "team",
       "transition": "whip",
@@ -102,9 +104,9 @@
       "transition": "zoom",
       "type": "show",
       "set": "overload",
-      "world": "pink",
+      "world": "sky",
       "title": "Overloaded?",
-      "verdict": "Team wins"
+      "verdict": "Keep the team"
     },
     {
       "id": "s7",
@@ -118,7 +120,7 @@
       "transition": "slide",
       "type": "show",
       "set": "lanes",
-      "world": "sky",
+      "world": "pink",
       "title": "All at the same time"
     },
     {
@@ -154,15 +156,18 @@
       "world": "blue",
       "title": "But one AI…",
       "left": 5,
-      "winner": "right"
+      "winner": "right",
+      "verdict": "Often, not always"
     },
     {
       "id": "s10",
       "say": "was often cheaper, faster.",
       "claims": [
+        "C2",
         "C4"
       ],
       "emphasis": [
+        "cheaper",
         "faster"
       ],
       "transition": "slide",
@@ -173,20 +178,21 @@
         "Cheaper",
         "Faster"
       ],
-      "verdict": "Often"
+      "verdict": "Often, in company use"
     },
     {
       "id": "s11",
       "say": "No numbers shared.",
       "claims": [
-        "C2"
+        "C2",
+        "C4"
       ],
       "emphasis": [],
       "transition": "glitch",
       "type": "show",
       "set": "locked",
       "world": "violet",
-      "title": "No numbers shared"
+      "title": "No cost figures"
     },
     {
       "id": "s12",
@@ -215,7 +221,7 @@
       ],
       "transition": "zoom",
       "type": "show",
-      "set": "crash",
+      "set": "combine",
       "world": "coral",
       "title": "Two bots merged",
       "verdict": "Sample test"
@@ -278,14 +284,14 @@
       "set": "blocks",
       "world": "sky",
       "title": "Add only with evidence",
-      "left": 3
+      "left": 2
     },
     {
       "id": "s18",
       "type": "cta",
       "say": "So, one AI or a team? Comment your pick.",
       "prompt": "One AI or a team?",
-      "sub": "Anthropic: frequently, not always",
+      "sub": "One AI frequently, not always",
       "transition": "flash",
       "emphasis": [
         "pick"

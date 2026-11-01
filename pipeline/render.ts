@@ -10,7 +10,9 @@ const inputProps = propsForRun(runDir);
 const {serveUrl, composition} = await prepare(inputProps);
 
 const hook = resolveTiming(inputProps).scenes[0];
-await renderStill({serveUrl, composition, inputProps: {...inputProps, cover: true}, frame: hook.durationInFrames - 2, output: path.join(runDir, 'cover.png')});
+// The props live on the selected composition, so the cover flag has to go there too or captions stay on.
+const cover = {...composition, props: {...composition.props, cover: true}};
+await renderStill({serveUrl, composition: cover, inputProps: {...inputProps, cover: true}, frame: hook.durationInFrames - 2, output: path.join(runDir, 'cover.png')});
 
 let last = -1;
 await renderMedia({

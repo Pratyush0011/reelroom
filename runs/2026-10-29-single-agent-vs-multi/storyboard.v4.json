@@ -1,0 +1,299 @@
+{
+  "title": "When one AI beats a team (and when it doesn't)",
+  "scenes": [
+    {
+      "id": "s1",
+      "say": "One AI frequently beats a team of AI bots,",
+      "claims": [
+        "C0",
+        "C2"
+      ],
+      "emphasis": [
+        "frequently",
+        "bots"
+      ],
+      "type": "hook",
+      "world": "blue",
+      "kicker": "AI NEWS",
+      "headline": "When one AI beats a team",
+      "accent": "one",
+      "matchup": {
+        "left": {
+          "icon": "bot",
+          "count": 5
+        },
+        "right": {
+          "icon": "bot",
+          "count": 1
+        }
+      }
+    },
+    {
+      "id": "s2",
+      "type": "receipt",
+      "say": "Anthropic found.",
+      "publisher": "Anthropic",
+      "headline": "Building agents: When to fold subagents into your main agent loop",
+      "date": "22 Oct 2026",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "transition": "flash",
+      "claims": [
+        "C1"
+      ],
+      "world": "yellow"
+    },
+    {
+      "id": "s3",
+      "say": "Here's when it doesn't.",
+      "claims": [
+        "C0",
+        "C2",
+        "C9"
+      ],
+      "transition": "glitch",
+      "type": "show",
+      "set": "versus",
+      "world": "coral",
+      "title": "Who wins?",
+      "left": 5,
+      "winner": "none",
+      "verdict": "Not always"
+    },
+    {
+      "id": "s4",
+      "say": "The winner: one AI using tools only when needed.",
+      "claims": [
+        "C0"
+      ],
+      "emphasis": [
+        "tools"
+      ],
+      "transition": "slide",
+      "type": "show",
+      "set": "tools",
+      "world": "teal",
+      "title": "One AI + tools"
+    },
+    {
+      "id": "s5",
+      "type": "broll",
+      "say": "A team still wins",
+      "media": {
+        "query": "team working at whiteboard"
+      },
+      "kicker": "BUT",
+      "headline": "A team still wins",
+      "accent": "team",
+      "transition": "whip",
+      "claims": [
+        "C9"
+      ],
+      "world": "violet"
+    },
+    {
+      "id": "s6",
+      "say": "when one AI is overloaded with information.",
+      "claims": [
+        "C9"
+      ],
+      "emphasis": [
+        "information"
+      ],
+      "transition": "zoom",
+      "type": "show",
+      "set": "overload",
+      "world": "pink",
+      "title": "Overloaded?",
+      "verdict": "Team wins"
+    },
+    {
+      "id": "s7",
+      "say": "Or when jobs must run at the same time.",
+      "claims": [
+        "C9"
+      ],
+      "emphasis": [
+        "same time"
+      ],
+      "transition": "slide",
+      "type": "show",
+      "set": "lanes",
+      "world": "sky",
+      "title": "All at the same time"
+    },
+    {
+      "id": "s8",
+      "type": "document",
+      "say": "In Anthropic's own words, teams still have their place.",
+      "publisher": "Anthropic",
+      "quote": "To be clear, subagents still have their place, including at the research frontier.",
+      "highlight": "still have their place",
+      "date": "22 Oct 2026",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "transition": "zoom",
+      "emphasis": [
+        "own words"
+      ],
+      "claims": [
+        "C2",
+        "C0",
+        "C1"
+      ],
+      "world": "paper"
+    },
+    {
+      "id": "s9",
+      "say": "Still, one AI with tools",
+      "claims": [
+        "C2",
+        "C4"
+      ],
+      "transition": "whip",
+      "type": "show",
+      "set": "versus",
+      "world": "blue",
+      "title": "But one AI…",
+      "left": 5,
+      "winner": "right"
+    },
+    {
+      "id": "s10",
+      "say": "was often cheaper, faster.",
+      "claims": [
+        "C4"
+      ],
+      "emphasis": [
+        "faster"
+      ],
+      "transition": "slide",
+      "type": "show",
+      "set": "meters",
+      "world": "yellow",
+      "labels": [
+        "Cheaper",
+        "Faster"
+      ],
+      "verdict": "Often"
+    },
+    {
+      "id": "s11",
+      "say": "No numbers shared.",
+      "claims": [
+        "C2"
+      ],
+      "emphasis": [],
+      "transition": "glitch",
+      "type": "show",
+      "set": "locked",
+      "world": "violet",
+      "title": "No numbers shared"
+    },
+    {
+      "id": "s12",
+      "type": "catch",
+      "say": "The catch: in Anthropic's sample support bot,",
+      "title": "The catch",
+      "text": "Anthropic's sample support bot, in a test",
+      "transition": "flash",
+      "shake": true,
+      "emphasis": [
+        "sample"
+      ],
+      "claims": [
+        "C8"
+      ],
+      "world": "ink"
+    },
+    {
+      "id": "s13",
+      "say": "they merged two helper bots.",
+      "claims": [
+        "C8"
+      ],
+      "emphasis": [
+        "merged"
+      ],
+      "transition": "zoom",
+      "type": "show",
+      "set": "crash",
+      "world": "coral",
+      "title": "Two bots merged",
+      "verdict": "Sample test"
+    },
+    {
+      "id": "s14",
+      "say": "It skipped checking the delivery date,",
+      "claims": [
+        "C8"
+      ],
+      "emphasis": [
+        "skipped"
+      ],
+      "transition": "whip",
+      "type": "show",
+      "set": "parcel",
+      "world": "teal",
+      "title": "Delivery date",
+      "verdict": "Skipped"
+    },
+    {
+      "id": "s15",
+      "say": "in one of two test runs.",
+      "claims": [
+        "C8"
+      ],
+      "transition": "slide",
+      "type": "show",
+      "set": "runs",
+      "world": "pink",
+      "title": "1 of 2 test runs"
+    },
+    {
+      "id": "s16",
+      "say": "Anthropic's January advice: start simple.",
+      "claims": [
+        "C12"
+      ],
+      "emphasis": [
+        "start simple"
+      ],
+      "transition": "zoom",
+      "type": "show",
+      "set": "blocks",
+      "world": "paper",
+      "title": "Start simple",
+      "left": 1
+    },
+    {
+      "id": "s17",
+      "say": "Add more only with evidence.",
+      "claims": [
+        "C12"
+      ],
+      "emphasis": [
+        "evidence"
+      ],
+      "transition": "slide",
+      "type": "show",
+      "set": "blocks",
+      "world": "sky",
+      "title": "Add only with evidence",
+      "left": 3
+    },
+    {
+      "id": "s18",
+      "type": "cta",
+      "say": "So, one AI or a team? Comment your pick.",
+      "prompt": "One AI or a team?",
+      "sub": "Anthropic: frequently, not always",
+      "transition": "flash",
+      "emphasis": [
+        "pick"
+      ],
+      "claims": [
+        "C2"
+      ],
+      "world": "blue"
+    }
+  ]
+}

@@ -14,13 +14,16 @@
 - **ElevenLabs** (`eleven_v4`, voice "Daniel") generates the voiceover with character-level timestamps that
   become word-synced captions. **edge-tts** (Microsoft Edge's neural voices) is the free fallback when no key is set.
 - **Remotion** renders the video locally.
+- **Wikimedia Commons and Openverse** supply licensed B-roll. No AI generates the pictures or the music: the example
+  reel's music is "Super Power Cool Dude" by Kevin MacLeod (CC BY 3.0), credited in the README and `POST.md`.
 
 ## How I verified the code and outputs
 
-- **Deterministic gates are unit-tested.** `npm test` covers every rule in `pipeline/checks.ts`:
+- **Deterministic gates are unit-tested.** `npm test` (18 tests) covers the rules in `pipeline/checks.ts`:
   unverified claims, numbers with no source, numbers that don't match their claim, invented receipt URLs,
-  a killed story, banned phrases, structure and word limits, and real voiced duration. One test failed
-  on the first run because the test itself built an invalid storyboard; I fixed the test, not the rule.
+  a killed story, banned phrases, structure and word limits, and real voiced duration. It also covers the
+  measurements behind `npm run look`. One test failed on the first run because the test itself built an
+  invalid storyboard; I fixed the test, not the rule.
 - **Type safety:** `tsc --noEmit` passes for the engine, the pipeline and the Agent SDK runner.
 - **Visual checks:** I rendered stills of every scene type and reviewed them as a contact sheet. That's how
   I caught the compare card printing `20$` instead of `$20`, which I fixed.
@@ -37,3 +40,32 @@
   Kallaway's hook structure, Olson's ABT, Parker & Stone's "but/therefore", the Heath brothers, Caulfield's SIFT).
   Where public numbers disagreed (platform safe zones, retention benchmarks), I designed to the most
   conservative values and said so instead of quoting a single figure.
+
+## What was different about v4
+
+I reviewed v3 and called it monotonous. v4 didn't go through the agent room the way the earlier versions did:
+
+- **The storyboard was rebuilt by hand.** Claude Code rewrote `storyboard.json` and the engine directly in the main
+  session. The director agent didn't do it, and the critic didn't score it. The hook, script and claims weren't
+  regenerated: comparing `storyboard.v3.json` with `storyboard.json` shows no spoken line or claim changed, and the
+  voiceover still matches the approved `04-script.md` word for word. `05b-direction.md` is still v3's research.
+- **The benchmark is approximate.** Claude Code measured Shorts from 12 top channels (brightness, colourfulness, dark
+  share, variety). YouTube blocked further page requests from this PC, so the numbers come from about 140 frames in
+  public thumbnails, not from the videos. They say nothing about cut timing or real retention. I chose to treat them
+  as a pass mark for looking monotonous, not as a measure of quality.
+- **Music and photos were checked by licence.** The music is a CC BY 3.0 track, and the one photo left in the reel is
+  CC0 (credited in `POST.md`). The reel still uses the original Daniel voice from the cache, so v4 spent no voice credits.
+- **Visual QA found problems every gate had passed.** On 1 Nov 2026 a fresh subagent briefed from `visual-qa.md`
+  reviewed 37 frames taken from `final.mp4`, plus the cover. Its verdict was FIX: no blockers, 7 majors and 14 minors
+  (`06-visual-qa.md`, round 9). The main ones were pictures that overstate hedged claims, a blank first frame, and a
+  caption on the cover caused by a real render bug. They were confirmed against the frames and the claims ledger.
+- **v4.1 applied those fixes.** Claude Code made them by hand from the QA notes, again without the director agent, and
+  no spoken line changed. It rejected one QA suggestion (the older `merge` scene for s13) because that scene doesn't
+  match the look, and built a calm `combine` set piece instead. Previewing stills before the render caught two faults
+  in its own fixes. The same QA subagent then reviewed frames from the new video and returned SHIP: no blockers, no
+  majors, 13 minors (round 10). That was a re-check by the same agent, not a fresh review, and it saw two stills per scene.
+- **One call stays open.** In s11 the title now says "No cost figures", which is accurate, but the voice and caption
+  still say "No numbers shared". That's broader than the ledger, which records roughly 2x faster runtime for one
+  customer (C3). QA rated it minor; a stricter reading would keep it major. Fixing it needs a new voice line.
+- **`npm run look` was re-run** on the finished v4.1 `final.mp4` and passed: brightness 141, colourfulness 105, 5% dark,
+  variety 0.84. `npm test` and `npm run check` passed too.

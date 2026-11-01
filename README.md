@@ -22,7 +22,7 @@ better in several enterprise deployments, publishes no figures, and says subagen
 The fact-checker also caught press coverage misreporting a study (claiming it tested 10–100 agents; the
 primary source capped teams at 5) and kept that out of the video.
 
-▶ **[final.mp4](runs/2026-10-29-single-agent-vs-multi/final.mp4)** (49 s, v4) · [cover](runs/2026-10-29-single-agent-vs-multi/cover.png) · [POST.md](runs/2026-10-29-single-agent-vs-multi/POST.md) · [run-log.md](runs/2026-10-29-single-agent-vs-multi/run-log.md) · [05b-direction.md](runs/2026-10-29-single-agent-vs-multi/05b-direction.md) (the director's reference research)
+▶ **[final.mp4](runs/2026-10-29-single-agent-vs-multi/final.mp4)** (49 s, v4.1) · [cover](runs/2026-10-29-single-agent-vs-multi/cover.png) · [POST.md](runs/2026-10-29-single-agent-vs-multi/POST.md) · [run-log.md](runs/2026-10-29-single-agent-vs-multi/run-log.md) · [05b-direction.md](runs/2026-10-29-single-agent-vs-multi/05b-direction.md) (the director's reference research)
 
 **v1 → v2 (after human review).** v1 passed every gate but a human viewer still found it unpublishable. The
 hook ("Anthropic's AI team beat a solo AI by 90.2%… Both are true") was confusing, the voice was flat, and
@@ -43,11 +43,15 @@ it was mostly text on a dark background. The fixes went into the system, not jus
 | | Market median | v3 | v4 |
 |---|---|---|---|
 | Brightness | 107 | 45 | 141 |
-| Colourfulness | 47 | 21 | 103 |
+| Colourfulness | 47 | 21 | 105 |
 | Mostly-dark share | 22% | 76% | 5% |
 | Frame-to-frame variety | 0.57 | 0.16 | 0.84 |
 
 v3 was fast, but it was the same dark card 18 times. v4 gives every scene its own full-frame colour world, replaces text cards with illustrated set pieces starring a robot character (`src/sets.tsx`), keeps titles under six words, wipes colour on every cut, and adds a licensed music bed. `npm run look` now fails any reel that drifts back. These numbers measure visual variety, not how good a video is, and the benchmark uses frames sampled from public thumbnails.
+
+v4's storyboard was rebuilt by hand in Claude Code, not by the director agent. Every spoken line is unchanged from v3, and the director's instructions now describe this look, so future runs can aim for it themselves.
+
+**v4 → v4.1 (first full visual-QA round on the new look).** Every automated gate had passed v4, but visual QA still returned FIX with 7 majors. The main problem was pictures claiming more than the words: a hedged "often" shown as a knockout, and an explosion for one failed sample test. The fixes re-rendered without spending voice credits, QA then returned SHIP, and the rule went into the playbooks: the picture has to keep the hedge. One call stays open: s11's title now reads "No cost figures", but its voice line still says "No numbers shared", which is broader than a customer figure in the same article.
 
 How hard the gates pushed back on this story (v1 → v4):
 
@@ -57,7 +61,7 @@ How hard the gates pushed back on this story (v1 → v4):
 | Hooks (critic) | 2 (v1) + 1 (v2) | v1: all 12 first-round hooks below 20/25. v2: 3 of 8 failed the say-back test ("AI cooks", "the same problem"). Winner 22/25, clarity 5. |
 | Script (critic) | 2 (v1) + 2 (v2) | v1: caught its own wording error. v2: 25/35 → 32/35. Two lines failed say-back, "several companies" overstated "several enterprise deployments". |
 | `npm run check` | 2 (v1) + 1 (v2) | v1: 52.2 s > 50 s → trimmed. v2: ElevenLabs voice ran 54.7 s → silence trim + tempo 1.1 from cache → 49.7 s, no re-generation cost |
-| Visual QA | 3 (v1) + 2 (v2) + 3 (v3) | v1: clipped chip, orphans. v2: blank page capture, a picture contradicting the voice. v3: stale uncredited B-roll (fixed in the pipeline), off-topic footage (a rolling-papers pack, a head of state, a Bible page), stickers covering evidence (moved into the caption band) |
+| Visual QA | 3 (v1) + 2 (v2) + 3 (v3) + 2 (v4) | v1: clipped chip, orphans. v2: blank page capture, a picture contradicting the voice. v3: stale uncredited B-roll (fixed in the pipeline), off-topic footage (a rolling-papers pack, a head of state, a Bible page), stickers covering evidence (moved into the caption band). v4: 7 majors, mainly pictures that overstate hedged claims, a blank first frame and a caption on the cover (a real render bug) |
 | Inspiration gate | 1 (v3) | v2's "references" were articles, not reels. The gate now requires real short-form URLs and a motion recipe |
 
 ### 2. The edge case: a fabricated headline → no video ([`runs/2026-10-29-gpt7-conscious-personhood`](runs/2026-10-29-gpt7-conscious-personhood))
@@ -105,7 +109,11 @@ gates between the steps.
  npm run stills ──► visual-qa ──(FIX → director, max 2 loops)
    │ PNGs of every scene   looks at the real frames: clipping, safe zones, wrong numbers
    ▼
- npm run render  → final.mp4, cover.png, POST.md (caption, hashtags, sources)
+ npm run render  → final.mp4, cover.png
+   ▼
+ npm run look    (measures the finished video: fails a reel that looks monotonous)
+   ▼
+ POST.md  (caption, hashtags, sources)
 ```
 
 | Agent | Job | Craft it brings (see `playbooks/`) |
@@ -214,6 +222,7 @@ agent skills: `npx skills add remotion-dev/skills`.
 
 ## Limitations
 
+- **`/reel` hasn't been proven cold.** The example runs followed its steps with subagents briefed from the agent files. The command hasn't been run in a fresh Claude Code session, and the headless runner was tested only up to authentication. See [`docs/AI-USAGE.md`](docs/AI-USAGE.md).
 - **One run is slow and costs tokens:** about 20–30 minutes and roughly a dozen subagent turns for the real
   story above, most of it in research and fact-checking. That's the price of the gates. A "fast mode" that skips
   the critic loops would be easy to add, but hasn't been.

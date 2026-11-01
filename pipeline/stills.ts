@@ -1,4 +1,4 @@
-// Renders two PNGs per scene (mid and end) into <run>/qa/ for the visual-QA agent to look at.
+// Renders the first frame plus two PNGs per scene (mid and end) into <run>/qa/ for the visual-QA agent to look at.
 import {renderStill} from '@remotion/renderer';
 import {mkdirSync, readdirSync, rmSync} from 'node:fs';
 import path from 'node:path';
@@ -15,6 +15,7 @@ for (const f of readdirSync(qaDir)) rmSync(path.join(qaDir, f), {force: true});
 
 const {serveUrl, composition} = await prepare(inputProps);
 const timing = resolveTiming(inputProps);
+await renderStill({serveUrl, composition, inputProps, frame: 0, output: path.join(qaDir, 'first-frame.png'), scale: 0.5});
 let at = 0;
 for (const t of timing.scenes) {
 	const shots = {mid: at + Math.floor(t.durationInFrames / 2), end: at + t.durationInFrames - 3};

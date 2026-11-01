@@ -1,4 +1,9 @@
 # Script: When one AI beats a team (and when it doesn't)
+
+> **v4 note (added 2026-11-01).** The voiceover below is still exact: v4 speaks these words unchanged, split across 18
+> scenes. The on-screen text and scene notes describe v2's 11 scenes and no longer match the video. For what appears on
+> screen, read `storyboard.json`.
+
 Template: Myth vs reality, used lightly. Belief: "more AIs = better" → one AI frequently wins → when the team still wins (by ~16.6 s) → Anthropic's own words on the page → cost and speed → catch → January advice → loop question.
 Hook: R3-H6, final tightened version in 05-critique.md "## Round 5: hooks (v2)"
 Target duration: 43 s (108 words at 2.5 words/s; about 40.8 s at the +6% voice rate; brief 32-42 s, brand range 20-50 s)  Word count: 108

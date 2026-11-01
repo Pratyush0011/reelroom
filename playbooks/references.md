@@ -63,6 +63,6 @@ Why this fits the story: ...
 2. ...
 
 ## Pacing plan
-Target scene length ≤ 5 s; total N scenes; where the big visual moments land (seconds).
+Target scene length ≤ 4.5 s; total N scenes; where the big visual moments land (seconds).
 ```
 4. Then storyboard with the scene library, applying those techniques.

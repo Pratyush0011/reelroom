@@ -90,9 +90,10 @@ export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 	const frame = useCurrentFrame();
 	const tokens = markAccent(scene.headline, scene.accent);
 	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: scene.matchup ? 3 : 4, max: scene.matchup ? 126 : 168});
+	// Frame 0 is the thumbnail, so the whole hook is already on screen and the words only settle in.
 	return (
 		<Stage gap={40}>
-			<Label color={colors.accentInk} bg={colors.accent}>
+			<Label color={colors.accentInk} bg={colors.accent} delay={-10}>
 				{scene.kicker ?? 'AI news'}
 			</Label>
 			<div
@@ -116,9 +117,7 @@ export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 							style={{
 								display: 'inline-block',
 								marginRight: size * 0.24,
-								opacity: lerp(p, 0.15, 1),
-								scale: String(lerp(p, 1.35, 1)),
-								filter: `blur(${lerp(p, 14, 0)}px)`,
+								translate: `0px ${lerp(p, 18, 0)}px`,
 								color: hit ? colors.accent : colors.text,
 								fontFamily: hit ? serif : display,
 								fontWeight: hit ? 400 : 900,
@@ -144,11 +143,11 @@ const Matchup: React.FC<{matchup: NonNullable<Of<'hook'>['matchup']>; colors: Co
 		<div style={{display: 'flex', alignItems: 'center', gap: 26, marginTop: 6}}>
 			<div style={{display: 'flex', flexWrap: 'wrap', gap: 6, width: 400}}>
 				{Array.from({length: matchup.left.count}, (_, k) => (
-					<div key={k} style={{opacity: p(k * 2), scale: String(lerp(p(k * 2), 0.3, 1))}}><Robot size={118} seed={k} /></div>
+					<div key={k} style={{scale: String(lerp(p(k * 2), 0.82, 1))}}><Robot size={118} seed={k} /></div>
 				))}
 			</div>
-			<div style={{fontFamily: display, fontWeight: 900, fontSize: 64, color: colors.accent, opacity: p(6)}}>VS</div>
-			<div style={{opacity: p(10), scale: String(lerp(p(10), 0.3, 1))}}><Robot size={230} color={colors.accent} mood="cool" seed={3} /></div>
+			<div style={{fontFamily: display, fontWeight: 900, fontSize: 64, color: colors.accent}}>VS</div>
+			<div style={{scale: String(lerp(p(10), 0.82, 1))}}><Robot size={230} color={colors.accent} mood="cool" seed={3} /></div>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-# Ready to post (v4)
+# Ready to post (v4.1)
 
 **Video:** `final.mp4` (1080×1920, 49.2 s, 18 scenes, narrated by ElevenLabs "Daniel") · **Cover:** `cover.png`
 
@@ -22,7 +22,7 @@ Sources:
 | C0: one AI that loads tools and skills when needed | verified with wording |
 | C9: keep the team when one AI is overloaded, or for parallel work | verified |
 | C1/C2: the 22 Oct 2026 article and its verbatim quote | verified |
-| C4: often lower cost and faster per task; C2: no figures published | verified |
+| C4: often lower cost and faster per task, no cost figures; C2: no figures published for the comparisons | verified |
 | C8: in Anthropic's sample support bot, merging two helpers skipped a delivery-date check in 1 of 2 test runs | verified |
 | C12: "start with the simplest approach that works…" (Jan 2026) | verified |
 

@@ -1,6 +1,6 @@
-import {Audio, Video} from '@remotion/media';
+import {Audio} from '@remotion/media';
 import React from 'react';
-import {AbsoluteFill, Img, interpolate, random, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, interpolate, random, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {enter, lerp, OUT} from '../motion';
 import type {Colors, Scene, Word} from '../schema';
 import {H, W} from '../theme';
@@ -22,8 +22,6 @@ export const emphasisCues = (scene: Scene, words: Word[], fps: number) =>
 		})
 		.filter((x): x is {word: string; frame: number} => x !== null);
 
-const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
-
 // Moving pattern inside a colour world, so flat colour is never static.
 const Pattern: React.FC<{colors: Colors; index: number}> = ({colors, index}) => {
 	const frame = useCurrentFrame();
@@ -40,12 +38,6 @@ const Pattern: React.FC<{colors: Colors; index: number}> = ({colors, index}) => 
 	return <AbsoluteFill style={{backgroundImage: `repeating-linear-gradient(-45deg, ${tint} 0 40px, transparent 40px 90px)`, backgroundPosition: `${frame * 2}px 0px`}} />;
 };
 
-export const Backdrop: React.FC<{src: string; dur: number}> = ({src, dur}) => {
-	const frame = useCurrentFrame();
-	const style: React.CSSProperties = {width: '100%', height: '100%', objectFit: 'cover', scale: String(interpolate(frame, [0, dur], [1.08, 1.22]))};
-	return <AbsoluteFill>{isVideo(src) ? <Video src={staticFile(src)} muted loop style={style} /> : <Img src={staticFile(src)} style={style} />}</AbsoluteFill>;
-};
-
 export const MotionScene: React.FC<{
 	scene: Scene;
 	index: number;
@@ -53,22 +45,23 @@ export const MotionScene: React.FC<{
 	dur: number;
 	colors: Colors;
 	prev: string;
-	bg?: string;
 	children: React.ReactNode;
-}> = ({scene, index, words, dur, colors, prev, bg, children}) => {
+}> = ({scene, index, words, dur, colors, prev, children}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const kind = scene.transition ?? CYCLE[index % CYCLE.length];
 	const t = enter(frame, 0, 8, OUT);
 	const cues = emphasisCues(scene, words, fps);
 
-	// How the new colour world arrives over the previous one.
+	// How the new colour world arrives over the previous one. The first scene has nothing to wipe over, and its frame 0 is the thumbnail.
 	let translate = '0px 0px';
 	let clipPath: string | undefined;
-	if (kind === 'zoom' || kind === 'flash') clipPath = `circle(${lerp(t, 0, 125)}% at 50% 44%)`;
-	if (kind === 'whip') translate = `${lerp(t, W, 0)}px 0px`;
-	if (kind === 'slide') translate = `0px ${lerp(t, H, 0)}px`;
-	if (kind === 'glitch') clipPath = frame < 7 ? `inset(${(random(`a${frame}`) * 30).toFixed(0)}% 0 ${(random(`b${frame}`) * 30).toFixed(0)}% 0)` : undefined;
+	if (index > 0) {
+		if (kind === 'zoom' || kind === 'flash') clipPath = `circle(${lerp(t, 0, 125)}% at 50% 44%)`;
+		if (kind === 'whip') translate = `${lerp(t, W, 0)}px 0px`;
+		if (kind === 'slide') translate = `0px ${lerp(t, H, 0)}px`;
+		if (kind === 'glitch') clipPath = frame < 7 ? `inset(${(random(`a${frame}`) * 30).toFixed(0)}% 0 ${(random(`b${frame}`) * 30).toFixed(0)}% 0)` : undefined;
+	}
 
 	// Camera: continuous push + drift, a hard punch on every emphasis word, and a push into the next cut.
 	const push = interpolate(frame, [0, dur], [1, 1.07]);
@@ -81,10 +74,9 @@ export const MotionScene: React.FC<{
 		<AbsoluteFill style={{background: prev}}>
 			<AbsoluteFill style={{translate, clipPath, background: colors.bg, overflow: 'hidden'}}>
 				<Pattern colors={colors} index={index} />
-				{bg ? <Backdrop src={bg} dur={dur} /> : null}
 				<AbsoluteFill style={{scale: String(push + punch + exit), rotate: `${drift}deg`, marginLeft: shake, marginTop: shake * 0.6}}>{children}</AbsoluteFill>
 			</AbsoluteFill>
-			{kind === 'flash' ? <AbsoluteFill style={{background: '#fff', opacity: interpolate(frame, [0, 4], [0.9, 0], {extrapolateRight: 'clamp'})}} /> : null}
+			{index > 0 && kind === 'flash' ? <AbsoluteFill style={{background: '#fff', opacity: interpolate(frame, [0, 4], [0.9, 0], {extrapolateRight: 'clamp'})}} /> : null}
 			{cues.map((c, i) => (
 				<Sequence key={c.word + i} from={Math.max(0, c.frame)} durationInFrames={20} layout="none">
 					<Audio src={staticFile('sfx/mouse-click.wav')} volume={0.4} />

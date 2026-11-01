@@ -327,3 +327,99 @@ I re-opened all 36 freshly rendered stills (540x960) and checked the new media-c
 It now matches the reference Shorts (something new every ~1 s, text over real footage, one-word punch) and avoids the static counter-example's look. There are no blockers or majors.
 
 VERDICT: SHIP
+
+## Round 9 (v4, frames from final.mp4)
+Verdict: FIX
+
+I opened all 37 frames from final.mp4 (540x960, zones halved) and cover.png (1080x1920), and checked every on-screen text and picture against 02-claims.json and each scene's `say`. I also read `src/schema.ts`, `src/sets.tsx` and `src/worlds.ts`, so the fixes below use fields that exist. This look was judged fresh, and no earlier pass was carried over.
+
+Result: 0 blockers, 7 majors, 14 minors. **No major needs a `say` change, so none costs voice credits.** Five majors are storyboard edits that only need a re-render. Two are not storyboard fixes: the first frame needs an engine change for a full fix, and the cover needs a pipeline fix.
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) | Changes `say`? |
+|---|---|---|---|---|---|
+| s1 | first-frame.png | major | Frame 0 is flat blue with only the caption "ONE AI FREQUENTLY": no headline and no bots, so it fails as a hook frame. s1 has no `transition`, so it gets the default zoom wipe, which starts as a zero-size circle. | Partial: set s1 `transition` to "glitch" to remove the wipe. The headline would still start at 15% opacity. Full fix: no storyboard field does this; the engine must start the hook fully built on frame 0. | No |
+| s1 | cover.png | major | The cover shows the caption fragment "OF AI BOTS" under the matchup, and this is the frame people see on the profile grid. `pipeline/render.ts` asks for `cover: true`, which should hide captions, so the flag is not reaching the render. I did not trace why. | Not a storyboard fix: re-render the cover with captions off. | No |
+| s6 | s6-mid, s6-end | major | Stated more strongly than the claim. C9 says keep subagents when a single loop hits "measurable performance degradation". The frame shows an X-eyed bot and a flat "TEAM WINS" stamp, which reads as a measured result and a dead AI. | Set `verdict` to "Keep the team" (C9's own wording). The X eyes are fixed in the `overload` set, so they stay unless the engine changes. The s5 voice line "A team still wins" has the same lean; leave it, since it runs into the condition in s6. | No |
+| s6 | s6-mid, s6-end | major | The white title sits on falling white sheets, so letters vanish. In s6-mid the "de" of "Overloaded?" is lost, and sheets keep crossing the title all scene. | Swap worlds: s6 `world` "sky" (dark title text) and s7 `world` "pink". | No |
+| s9 | s9-mid, s9-end | major | Winner shown more strongly than the wording. All five team bots frown, the one AI wears the cool face, and nothing on screen hedges. C4 and C2 say "often" and "frequently". The hedge only arrives in s10, and s9 runs about 2.4 s. | Add `verdict`: "Often, not always". Keep `winner` "right", because "none" would clone s3. | No |
+| s11 | s11-mid, s11-end | major | "No numbers shared", straight after a "Faster" gauge, is broader than the ledger. C3 records a roughly 2x faster runtime for one customer in the same article. C2's "gives no figures" covers the comparisons, not that customer. Leaving C3 out is fine; implying no number exists is not. Earlier checks passed this on C2 alone. I rate it major, not blocker, because C2's safe_text does use that wording. | Set `title` to "No cost figures" (the C4 note says no cost figure exists). The caption and voice stay broader. The full fix is s11 `say` "No overall numbers shared." | Not for the title fix. The full fix changes 1 line (s11). |
+| s13 | s13-end | major | Failure shown more strongly than the claim. C8 is a sample test where the merge lowered latency and broke one process, in one of two runs. The frame is a giant explosion with an X-eyed bot, which reads as a catastrophe. | Change s13 to type `merge`: `tone` "warn", `title` "Two bots merged", `from` {icon bot, count 2, label "Helper bots"}, `to` {icon bot, label "One bot"}, `caption` "Sample test", `world` "paper" (the warn red is invisible on coral). This uses plainer line icons, so check it on the re-render. | No |
+| s13 | s13-mid | minor | Title on an empty stage. From the set code this is a gap of about 8 frames at the impact moment, between the two bots flying in and the burst popping. No still shows the two bots, so I could not confirm they read. | Goes away with the `merge` fix above. | No |
+| s13 | s13-end | minor | The "SAMPLE TEST" stamp touches the caption, so the two labels read as one block ("SAMPLE TEST HELPER BOTS"). | Goes away with the `merge` fix above. | No |
+| s11 | s11-mid, s11-end | minor | The second title line sits flush on the lock card with no gap. | The one-line `title` above fixes it ("No cost figures" fits on one line). | No |
+| s3 | s3-mid, s3-end | minor | "Who wins?" answered by "NOT ALWAYS" does not parse, because "who" needs a name. | Set `verdict` to "Not always one AI". | No |
+| s3, s4 | s3-end, s4-mid | minor | The voice promises "Here's when it doesn't", then s4 opens with "The winner: one AI". The promise pays off only at s5. | Leave it; a fix would spend credits. | A fix would change 1 line; recommended: leave |
+| s4 | s4-mid, s4-end | minor | All five tools orbit at once, so the picture says "lots of tools", not "only when needed". That is C0's key qualifier. The spoken "The winner:" also has no hedge, though s3's "NOT ALWAYS" comes right before it. | Set `title` to "Tools on demand" (one line, so it clears the orbit). | No |
+| s2, s10 | s2-mid, s2-end, s10-mid | minor | The active caption word is yellow on a yellow world, so "FOUND" and "CHEAPER" read as hollow outlines. | Add `emphasis` "found" to s2 and "cheaper" to s10; both become solid black pill words. | No |
+| s5 | s5-mid, s5-end | minor | The only photo is visibly soft from the crop and zoom. It shows a human planning board, while "team" means AI bots everywhere else. The "BUT" kicker stretches into a full-width green bar. | Remove `kicker`. The photo is acceptable; replace it only if the media budget allows. | No |
+| s8 | s8-mid, s8-end | minor | The voice says "In Anthropic's own words, teams…" while the quote says "subagents". The on-screen quote is verbatim (C2), so only the spoken lead-in is loose. | Leave it; a fix would spend credits. | A fix would change 1 line; recommended: leave |
+| s10 | s10-mid, s10-end | minor | Two identical needles land in the green, which suggests a measured reading that does not exist (C4: no figure). There are no scale numbers, and s11 follows within 2 s. | Leave the gauges; the `meters` set has no needle control. | No |
+| reel-wide | s1 through s11 | minor | "Several enterprise deployments" (C0, C2 scope) never reaches the screen or the voice, so "Anthropic found" has no scope. | Set s10 `verdict` to "Often, in company use". | No |
+| s15 | s15-end | minor | "RUN 1 pass, RUN 2 fail" fixes an order. The C8 note says only that the break appeared in one of two runs. | Leave it; no storyboard field controls this, and the count is right. | No |
+| s16, s17 | s16-mid, s17-end | minor | The "ADVICE" caption wraps alone and nearly touches the source chip in s16. In s17 the title sits almost on the top block. The blank blocks say little without the voice. | s17: set `left` to 2. s16 caption: leave it, because a fix means cutting "January" from `say`. | No for s17. The s16 caption fix would change 1 line; recommended: leave |
+| s18 | s18-mid, s18-end | minor | "Anthropic: frequently, not always" does not answer "One AI or a team?" because it has no subject. | Set `sub` to "One AI frequently, not always". The source chip keeps the attribution. | No |
+
+Stills with no findings beyond those above: s7 and s14 are clean, and both pictures match their claims (C9, C8).
+
+Checks passed:
+- **Accuracy:** the receipt title and 22 Oct 2026 match C1. The s8 quote is verbatim (C2). "Sample test", "Delivery date / Skipped" and "1 of 2 test runs" match C8 and its note. "Start simple" and "Add only with evidence" match C12. The s16 and s17 chip correctly changes to "Anthropic (Claude blog)". Nothing from C16 appears, and the press headline is never shown as Anthropic's claim. "When one AI beats a team" on the hook and cover is conditional, so it is fine unhedged.
+- **Clipping:** no text runs off-screen. The only cut-off elements are the decorative page edges behind the s8 card.
+- **Safe zones:** nothing sits in the bottom band; the chip ends at about 1496 px full-res. No text enters the right-edge zone. Titles reach about 230 px in some `-end` frames, slightly inside the top zone, but that comes from the push-in on the last 4 frames of a scene. They rest near 300 px, so I did not list this as a finding.
+- **Caption collision:** captions cover no main content.
+- **Pacing:** every consecutive pair of scenes looks different. s3 and s9 share a layout on purpose, six scenes apart, in different worlds and moods. s16 and s17 share a set as a deliberate build.
+
+Limits of this round: these are two stills per scene, so motion between them, audio sync and the bots' approach in s13 were not seen. The timing notes for s1 and s13 come from reading the code, not from frames. The fixes have not been rendered, so each needs a look after the re-render.
+
+Overall: this is the strongest look so far. The robot character, colour worlds and set pieces carry the ideas with very little text, and s7, s8, s14 and s15 are good enough to post as they are. It does not ship yet for two reasons. The opening is weak on the two frames people judge first, and the pictures in s6, s9 and s13 turn hedged claims into a knockout. All three pictures, plus the s6 title and the s11 scope, can be fixed for the cost of a re-render.
+
+VERDICT: FIX
+
+## Round 10 (v4.1, frames from final.mp4)
+Verdict: SHIP
+
+I opened all 37 new frames (540x960, zones halved) and the new cover.png (1080x1920), and checked them against the current storyboard.json, 02-claims.json and each scene's `say`. I also read the new `combine` set and the Robot moods in the source. Every frame was judged fresh, including for anything the Round 9 fixes broke.
+
+Result: 0 blockers, 0 majors, 13 minors. **The closest call is s11, and the SHIP depends on it.** See the first table row and the note under the table.
+
+Round 9 majors:
+- **s1 first frame: fixed.** Frame 0 now shows the headline, the 5-vs-1 matchup and the caption "ONE AI FREQUENTLY". It works as a thumbnail, and the hedge is on it.
+- **s1 cover: fixed.** There is no stray caption; only the headline, matchup, tag and source chip remain.
+- **s6 picture: fixed.** A frowning bot with a sweat drop and "KEEP THE TEAM" now matches C9's advice. "Overloaded? Keep the team." reads cleanly.
+- **s6 title: fixed.** The dark title stays readable where white sheets pass behind it.
+- **s9: fixed.** "OFTEN, NOT ALWAYS" lands on screen. The team still frowns, but the hedge now sits on the same frame.
+- **s11: downgraded to minor, not fully fixed.** See below.
+- **s13: fixed.** On the Round 9 test, the `combine` picture does not claim more than C8: no explosion and no damage, plus a clear "SAMPLE TEST" stamp. It claims slightly less, which is the safe direction (see the s13 row). The stamp now clears the caption.
+
+Round 9 minors also fixed: "Not always one AI" (s3), "Tools on demand" (s4), the solid "FOUND" and "CHEAPER" pills (s2, s10), the "BUT" bar (s5), the s11 title gap, the "in company use" scope (s10), the s17 crowding, and the s18 subject.
+
+| Scene | Still | Severity | Problem | Fix (in storyboard terms) | Changes `say`? |
+|---|---|---|---|---|---|
+| s11 | s11-mid, s11-end | minor | Title "No cost figures" and caption "NO NUMBERS SHARED" share the frame and say different things. They do not contradict each other, and the title is true (C4 note). The caption and voice are unchanged, so they still run wider than C3's roughly 2x faster for one customer. Someone who reads the source could point that out. | None without credits. If credits appear, set s11 `say` to "No overall numbers shared." | Only if fixed: 1 line (s11) |
+| s13 | s13-mid, s13-end | minor | Both stills show one smiling bot under "The catch", so the scene reads as a success for about 2 s. That is not false (C8: latency did drop), and s14 lands the failure straight after. | None needed. | No |
+| s10 | s10-mid | minor | The wider stamp is caught mid-slam, cut off at both edges ("OFTEN" loses its O). This is a few frames of entrance, and s10-end is clean. Once settled it has about 0.9 s on screen for 4 words, which is tight but readable. | None needed. | No |
+| s17 | s17-mid | minor | The second block is caught mid-pop as a tiny white sliver. It is a few frames only, and s17-end is clean. | None needed. | No |
+| s2, s10, s17 | s2-mid, s2-end, s10-mid, s17-end | minor | Tilted caption pills touch the end of the word before them ("ANTHROPIC", "OFTEN", "WITH"). All are still readable. | None in the storyboard. | No |
+| s6 | s6-mid, s6-end | minor | The sweat drop is the same blue as the sky world, so only its outline shows. | None needed. | No |
+| s12 | s12-mid, s12-end | minor | The hazard stripe has a small notch near its left end. | None in the storyboard. | No |
+| s5 | s5-mid, s5-end | minor | The photo is still soft and shows a human planning board, and more of it shows now the card is shorter. "A team still wins" also leans past C9's "keep subagents", though "KEEP THE TEAM" follows at once. | Leave it. | A headline-matching fix would change 1 line; recommended: leave |
+| s3, s4 | s3-end, s4-mid | minor | The voice promises "Here's when it doesn't", then says "The winner: one AI", which also has no hedge. "NOT ALWAYS ONE AI" and "Tools on demand" now soften this on screen. | Leave it. | A fix would change 1 line; recommended: leave |
+| s8 | s8-mid, s8-end | minor | "Own words" in the voice, but it says "teams" where the verbatim on-screen quote says "subagents". | Leave it. | A fix would change 1 line; recommended: leave |
+| s10 | s10-mid, s10-end | minor | Two identical needles suggest a reading that does not exist (C4: no figure). The new stamp and s11 limit this. | Leave it; no field controls the needles. | No |
+| s15 | s15-end | minor | "RUN 1 pass, RUN 2 fail" fixes an order the source does not give. The count is right. | Leave it; no field controls this. | No |
+| s16 | s16-mid | minor | "ADVICE" wraps alone and nearly touches the source chip. | Leave it; a fix means cutting "January" from `say`. | A fix would change 1 line; recommended: leave |
+
+**Why s11 moved from major to minor:** two things changed on screen. The title is now the accurate version, and the s10 stamp right before it says "in company use", so "No numbers shared" now reads as being about that comparison. That is what C2's "gives no figures" covers. The voice and caption remain loose, and this is not a fix; it is a smaller exposure in wording the ledger allows. The lack of voice credits played no part in the rating. Someone holding Round 9's stricter line would call this major, and that alone would make this round FIX. Only a `say` change closes it fully.
+
+Checks passed:
+- **Accuracy:** s1 and s18 keep "frequently" (C0, C2). s6 and s7 match C9. s9 and s10 match C4, and "in company use" is the wording the critic accepted for C2's deployments. s13 to s15 match C8 and its note. s16 and s17 match C12 with the correct chip. The receipt and quote are unchanged and verbatim. No new number appears, nothing from C16 appears, and the press headline is never shown as Anthropic's claim.
+- **Clipping:** no settled text is cut off. Only the s10 stamp's entrance and the decorative s8 page edges leave the frame.
+- **Safe zones:** nothing sits in the bottom band. Titles reach about 230 px only in the last 4 frames of a scene, as before. "Tools on demand" touches about 960 px in s4-end and the s2 SOURCE stamp reaches about 996 px during the "found" punch-in. Both last only a few frames, and the stamp repeats the source chip, so I did not list them.
+- **Caption collision:** none. Stamps in s3, s9, s10 and s13 all clear the caption once settled.
+- **World swaps:** s6 sky and s7 pink both work, and no neighbouring scenes share a world.
+- **Pacing:** every consecutive pair looks different. s3 and s9 now look closer because both have a yellow stamp, but they are six scenes apart in different worlds and moods.
+
+Limits of this round: these are two stills per scene, so motion, transitions and audio sync were not seen. No still shows the two bots in s13. From the code they slide together over about the first second, so check that on one playthrough of final.mp4 with sound. I ran no commands, so `npm run check` is not part of this verdict.
+
+Overall: this is ready to post. The hook now works from the first frame, the hedges sit on the same frames as the wins, and the catch stays in proportion to a sample test. What remains is polish, plus the one voice line in s11 that would be worth fixing if credits appear.
+
+VERDICT: SHIP

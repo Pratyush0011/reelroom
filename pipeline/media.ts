@@ -1,4 +1,4 @@
-// Fetches licensed B-roll for scenes with `bg` or type `broll`, with no API keys:
+// Fetches licensed B-roll for `broll` scenes, with no API keys:
 // Wikimedia Commons (video first, then images) and Openverse (Creative Commons images).
 // Only licenses that allow commercial reuse are accepted; every clip is credited in <run>/media-credits.json.
 // Each run rebuilds from scratch, so nothing stale or uncredited can end up in a render.
@@ -113,9 +113,9 @@ const assets = Object.fromEntries(Object.entries(previous).filter(([, v]) => !pa
 const credits: Credit[] = [];
 
 for (const scene of sb.scenes) {
-	const query = scene.type === 'broll' ? scene.media.query : scene.bg?.query;
-	if (!query) continue;
-	const key = scene.type === 'broll' ? scene.id : `bg-${scene.id}`;
+	if (scene.type !== 'broll') continue;
+	const query = scene.media.query;
+	const key = scene.id;
 
 	// Same query as last time → reuse the clip QA already saw, instead of re-rolling the search.
 	const cacheDir = path.join(runDir, 'media-cache');
