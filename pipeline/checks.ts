@@ -26,10 +26,14 @@ export const BANNED = [
 
 export type Report = {errors: string[]; warnings: string[]; stats: Record<string, number | string>};
 
+type Row = {label: string; value?: number | string; tag?: string};
+const rowText = (rows?: Row[]) => (rows ?? []).flatMap((r) => [r.label, r.tag ?? '', typeof r.value === 'string' ? r.value : '']);
+const rowNumbers = (rows?: Row[]) => (rows ?? []).map((r) => r.value).filter((v): v is number => typeof v === 'number');
+
 const screenText = (s: Scene): string[] => {
 	switch (s.type) {
 		case 'hook':
-			return [s.headline, s.kicker ?? ''];
+			return [s.headline, s.kicker ?? '', s.note ?? '', ...rowText(s.rows)];
 		case 'statement':
 			return [s.text];
 		case 'stat':
@@ -51,7 +55,7 @@ const screenText = (s: Scene): string[] => {
 		case 'document':
 			return [s.publisher, s.quote];
 		case 'show':
-			return [s.title ?? '', s.verdict ?? '', ...(s.labels ?? [])];
+			return [s.title ?? '', s.verdict ?? '', ...(s.labels ?? []), s.note ?? '', ...rowText(s.rows)];
 		case 'broll':
 			return [s.kicker ?? '', s.headline];
 		case 'merge':
@@ -65,6 +69,7 @@ const numbersOnScreen = (s: Scene): number[] => {
 	if (s.type === 'stat') return [s.value];
 	if (s.type === 'chart') return s.bars.map((b) => b.value);
 	if (s.type === 'compare') return [s.left.value, s.right.value].filter((v): v is number => typeof v === 'number');
+	if (s.type === 'hook' || s.type === 'show') return rowNumbers(s.rows);
 	return [];
 };
 
@@ -143,7 +148,8 @@ export const checkRun = ({
 				warnings.push(`${s.id}: the number ${n} does not appear in the text of ${s.claims.join(', ')}; check it was derived correctly`);
 		}
 
-		if ((s.type === 'receipt' || s.type === 'document') && !knownUrls.has(s.url))
+		// A text fragment (#:~:text=...) only scrolls the page to the quoted line; the page itself must still be a checked source.
+		if ((s.type === 'receipt' || s.type === 'document') && !knownUrls.has(s.url.replace(/#:~:.*$/, '')))
 			errors.push(`${s.id}: ${s.type} URL is not one of the checked sources (${s.url})`);
 
 		// A document scene shows words as a quote, so they must appear verbatim in a checked source quote.

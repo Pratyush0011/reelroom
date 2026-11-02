@@ -11,7 +11,7 @@ fact-checking, the room refuses to make the video and tells you why.
 /reel https://example.com/some-ai-announcement
 ```
 
-## See it work: two real runs
+## See it work: three real runs
 
 ### 1. A real story → a reel ([`runs/2026-10-29-single-agent-vs-multi`](runs/2026-10-29-single-agent-vs-multi))
 
@@ -64,7 +64,22 @@ How hard the gates pushed back on this story (v1 → v4):
 | Visual QA | 3 (v1) + 2 (v2) + 3 (v3) + 2 (v4) | v1: clipped chip, orphans. v2: blank page capture, a picture contradicting the voice. v3: stale uncredited B-roll (fixed in the pipeline), off-topic footage (a rolling-papers pack, a head of state, a Bible page), stickers covering evidence (moved into the caption band). v4: 7 majors, mainly pictures that overstate hedged claims, a blank first frame and a caption on the cover (a real render bug) |
 | Inspiration gate | 1 (v3) | v2's "references" were articles, not reels. The gate now requires real short-form URLs and a motion recipe |
 
-### 2. The edge case: a fabricated headline → no video ([`runs/2026-10-29-gpt7-conscious-personhood`](runs/2026-10-29-gpt7-conscious-personhood))
+### 2. A cold run: `/reel` in a fresh session ([`runs/2026-11-02-gemini-4-carbon-index`](runs/2026-11-02-gemini-4-carbon-index))
+
+**Input:** `/reel Google launched Gemini 4 Carbon on 28 October 2026 and says it ranks first on the Artificial Analysis Intelligence Index`, typed into a fresh Claude Code session with no help from me beyond approving tool prompts.
+
+**What the room did:**
+- **Fact-check:** it checked 19 claims and corrected "launched" to "announced": only a small group of cyber defenders can use the model so far.
+- **Script:** the critic sent the script back once for a wording problem (27/35 → 34/35).
+- **Engine:** the director added a new set piece to the engine for a ranking board.
+- **QA:** visual QA failed the first cut with 3 blockers, including source chips cut off.
+- **The angle:** Carbon is #1 by one point on one ranking, #2 on another, and not public yet.
+
+When the ElevenLabs credits ran out mid-run, the room stopped and asked instead of crashing. I supplied a new key, and that was the only decision I made.
+
+▶ **[final.mp4](runs/2026-11-02-gemini-4-carbon-index/final.mp4)** (42 s) · [POST.md](runs/2026-11-02-gemini-4-carbon-index/POST.md) · [run-log.md](runs/2026-11-02-gemini-4-carbon-index/run-log.md)
+
+### 3. The edge case: a fabricated headline → no video ([`runs/2026-10-29-gpt7-conscious-personhood`](runs/2026-10-29-gpt7-conscious-personhood))
 
 **Input:** "BREAKING: OpenAI confirmed on 27 October 2026 that GPT-7 is conscious and the EU has granted it legal personhood."
 
@@ -222,9 +237,9 @@ agent skills: `npx skills add remotion-dev/skills`.
 
 ## Limitations
 
-- **`/reel` hasn't been proven cold.** The example runs followed its steps with subagents briefed from the agent files. The command hasn't been run in a fresh Claude Code session, and the headless runner was tested only up to authentication. See [`docs/AI-USAGE.md`](docs/AI-USAGE.md).
-- **One run is slow and costs tokens:** about 20–30 minutes and roughly a dozen subagent turns for the real
-  story above, most of it in research and fact-checking. That's the price of the gates. A "fast mode" that skips
+- **Proven cold once, not many times.** `/reel` has finished one run in a fresh session (the Gemini run above). The earlier runs followed its steps with subagents briefed from the agent files. The headless runner (`npm run reel`) is still tested only up to authentication. See [`docs/AI-USAGE.md`](docs/AI-USAGE.md).
+- **One run is slow and costs tokens:** the cold Gemini run took about an hour, including a pause for voice credits.
+  The earlier runs took about 20–30 minutes and roughly a dozen subagent turns, most of it in research and fact-checking. That's the price of the gates. A "fast mode" that skips
   the critic loops would be easy to add, but hasn't been.
 - **The fact-checker is only as good as what it can open.** Some official pages (openai.com/news, the European
   Commission press corner) block automated fetches. The checker then relies on feeds, release logs and reporting,

@@ -24,22 +24,20 @@ A showrunner command (`/reel`) runs seven Claude subagents with hard gates betwe
   Openverse** supply credited, licensed B-roll with no keys.
 
 ## Testing
-- **Automated:** 18 unit tests cover the gates, which also run on every real output.
+- **Automated:** 19 unit tests cover the gates, which also run on every real output.
 - **Real story** (Anthropic, "single vs multi-agent"): the fact-checker caught press coverage misreporting a study, and
   the critic rejected all 12 first-round hooks.
+- **Cold run** (Gemini 4 Carbon, fresh session): it finished on its own. "Launched" became "announced", and QA failed the
+  first cut with 3 blockers. When voice credits ran out, it stopped and asked rather than crashing.
 - **Edge case, fabricated headline** (GPT-7 "conscious"). **It failed first:** true statements *about* the rumour passed
   as an unrequested debunk. A mandatory `C0` premise claim, a code gate and tests fixed it, and the retest stopped correctly.
-- **Human review found what gates couldn't.** v1 passed every gate but was unpublishable, so hooks got a say-back test.
-  v2 was "static", so I added motion and pace gates. v3 was "monotonous", so I measured it against 12 top channels
-  (brightness 45 vs 107, variety 0.16 vs 0.57), rebuilt the look and added `npm run look`. v4 scores 141 and 0.84.
+- **Human review found what gates couldn't.** v1 was unpublishable, so hooks got a say-back test. v2 was "static", so
+  I added pace gates. v3 was "monotonous", so I benchmarked 12 top channels and added `npm run look`.
 - **Visual QA** caught what no unit test would. v4 passed every gate, yet QA found 7 majors, mostly pictures overstating
   hedged claims. I fixed them, QA returned SHIP, and the playbooks now require it. One wording call on s11 stays open.
 
 ## Limitations and next steps
-- **Not fully proven:** the example runs followed `/reel`'s steps with subagents briefed from the agent files. The command
-  hasn't run in a fresh session, the headless runner was tested only up to authentication, and v4's storyboard and
-  fixes were done by hand, not by the director agent.
-- **Other limits:** a reel takes 20–30 minutes, the fact-checker can only use pages it can open, and `look` measures
-  visual variety from thumbnail frames, not retention or quality.
-- **Chose not to build:** a web UI, auto-posting and a real presenter.
-- **With another day:** run `/reel` cold end to end, then build an eval set of past stories to measure fact-check recall.
+- **Thinly proven:** `/reel` has run cold once. The headless runner was tested only up to authentication, and v4's
+  storyboard and fixes were done by hand, not by the director agent.
+- **Other limits:** a reel takes up to an hour, the fact-checker only sees pages it can open, and `look` measures variety, not quality.
+- **Not built:** a web UI, auto-posting, a presenter. **Next:** an eval set of past stories to measure fact-check recall.

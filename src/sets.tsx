@@ -1,10 +1,10 @@
-import {Calendar, Check, Code, Lock, Package, Search, Wrench, X, Zap} from 'lucide-react';
+import {Calendar, Check, Code, Crown, Lock, Package, Search, Wrench, X, Zap} from 'lucide-react';
 import React from 'react';
 import {Easing, interpolate, random, useCurrentFrame} from 'remotion';
 import {Robot, type Mood} from './components/Robot';
-import {enter, lerp} from './motion';
+import {countUp, enter, formatNumber, lerp} from './motion';
 import type {Colors, Scene} from './schema';
-import {display, H, mono} from './theme';
+import {CONTENT, display, H, mono} from './theme';
 
 // Illustrated set pieces: one giant animated idea filling the frame, in the spirit of Kurzgesagt-style explainers.
 type Show = Extract<Scene, {type: 'show'}>;
@@ -260,7 +260,97 @@ const Blocks: React.FC<P> = ({scene, colors, dur}) => {
 	);
 };
 
-export const SetPiece: React.FC<P> = (props) => {
+
+// ---- Leaderboard: ranked rows with a crown, a highlighted subject and an optional dimmed (still readable) row. ----
+type Row = NonNullable<Show['rows']>[number];
+
+// Small permanent label that says which ranking and as of when. Never fades, so a paused frame still carries it.
+export const NoteTag: React.FC<{text?: string; colors: Colors; y?: number; align?: 'center' | 'left'}> = ({text, colors, y, align = 'center'}) => {
+	if (!text) return null;
+	const tag = (
+		<div style={{display: 'inline-block', padding: '12px 22px', borderRadius: 14, background: colors.surface, color: colors.text, border: '4px solid #14141C', fontFamily: mono, fontWeight: 700, fontSize: text.length > 34 ? 27 : 30, lineHeight: 1.25, textAlign: 'center', textWrap: 'balance', maxWidth: CONTENT.width}}>
+			{text}
+		</div>
+	);
+	if (y === undefined) return tag;
+	return <div style={{position: 'absolute', left: CONTENT.x, width: CONTENT.width, top: y, display: 'flex', justifyContent: align === 'center' ? 'center' : 'flex-start'}}>{tag}</div>;
+};
+
+// `still`: show the final value from the first frame (the hook's frame 0 is the thumbnail, so it must never show a mid-count number).
+export const BoardRow: React.FC<{row: Row; i: number; at: number; colors: Colors; compact?: boolean; still?: boolean}> = ({row, i, at, colors, compact, still}) => {
+	const frame = useCurrentFrame();
+	const p = interpolate(frame, [at, at + 10], [0, 1], {...clamp, easing: Easing.back(1.8)});
+	const ink = '#14141C';
+	// Highlight: white card, dark ink. Dim: the world's surface with muted text (lower contrast, never transparent).
+	const bg = row.highlight ? '#FFFFFF' : colors.surface;
+	const fg = row.highlight ? ink : row.dim ? colors.muted : colors.text;
+	const value =
+		typeof row.value === 'number' ? formatNumber(still ? row.value : countUp(frame, at + 2, 16, row.value), Number.isInteger(row.value) ? 0 : 1) : row.value;
+	const h = compact ? 128 : 178;
+	const crownP = enter(frame, at + 8, 10);
+	return (
+		<div
+			style={{
+				position: 'relative',
+				width: '100%',
+				height: h,
+				display: 'flex',
+				alignItems: 'center',
+				gap: compact ? 20 : 26,
+				padding: compact ? '0 26px' : '0 32px',
+				borderRadius: 26,
+				background: bg,
+				border: `${row.highlight ? 8 : 5}px solid ${ink}`,
+				boxShadow: row.dim ? 'none' : '0 12px 0 rgba(0,0,0,.25)',
+				scale: String(Math.max(0, p) * (row.dim ? 0.96 : 1)),
+				opacity: frame >= at ? 1 : 0,
+			}}
+		>
+			<div style={{flex: '0 0 auto', padding: compact ? '8px 14px' : '10px 18px', borderRadius: 14, background: row.highlight ? colors.accent : ink, color: row.highlight ? colors.accentInk : '#FFFFFF', fontFamily: mono, fontWeight: 700, fontSize: compact ? 30 : 36, whiteSpace: 'nowrap'}}>
+				{row.tag ?? `#${i + 1}`}
+			</div>
+			<div style={{flex: 1, fontFamily: display, fontWeight: 800, fontSize: compact ? 40 : 50, lineHeight: 1.04, textWrap: 'balance', color: fg}}>{row.label}</div>
+			{value !== undefined ? (
+				<div style={{fontFamily: display, fontWeight: 900, fontSize: compact ? 84 : 112, letterSpacing: -3, color: fg, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap'}}>{value}</div>
+			) : null}
+			{row.crown ? (
+				<div style={{position: 'absolute', left: compact ? -14 : -22, top: compact ? -62 : -78, rotate: '-16deg', opacity: crownP, translate: `0px ${lerp(crownP, -160, 0)}px`}}>
+					<Crown size={compact ? 92 : 116} color={ink} fill="#FFD21F" strokeWidth={2.2} />
+				</div>
+			) : null}
+		</div>
+	);
+};
+
+const Board: React.FC<P> = ({scene, colors, dur}) => {
+	const frame = useCurrentFrame();
+	const rows = scene.rows ?? [];
+	const top = scene.title ? 590 : 500;
+	const gap = 34;
+	const end = top + rows.length * 178 + (rows.length - 1) * gap;
+	// Rows land one after another across the first half of the scene, so the eye has something new every ~0.5 s.
+	const step = Math.max(7, Math.min(16, Math.round((dur * 0.45) / Math.max(rows.length, 1))));
+	const mood: Mood = scene.winner === 'left' ? 'cool' : scene.winner === 'right' ? 'stressed' : 'happy';
+	return (
+		<>
+			<NoteTag text={scene.note} colors={colors} y={360} />
+			{scene.title ? (
+				<div style={{position: 'absolute', left: 70, right: 130, top: 400, textAlign: 'center', fontFamily: display, fontWeight: 900, fontSize: 84, lineHeight: 1, color: colors.text, scale: String(Math.max(0, pop(frame, 0, 9)))}}>{scene.title}</div>
+			) : null}
+			<div style={{position: 'absolute', left: CONTENT.x, width: CONTENT.width, top, display: 'flex', flexDirection: 'column', gap}}>
+				{rows.map((r, i) => (
+					<BoardRow key={i} row={r} i={i} at={3 + i * step} colors={colors} />
+				))}
+			</div>
+			<Pop at={6} x={830} y={Math.min(end + 120, 1150)}>
+				<div style={{translate: `0px ${Math.sin(frame / 6) * 8}px`}}><Robot size={170} color={colors.accent} mood={mood} seed={5} /></div>
+			</Pop>
+			<Stamp text={scene.verdict} at={Math.round(dur * 0.5)} colors={colors} y={Math.min(end + 60, 1110)} />
+		</>
+	);
+};
+
+const Piece: React.FC<P> = (props) => {
 	switch (props.scene.set) {
 		case 'versus':
 			return <Versus {...props} />;
@@ -282,6 +372,16 @@ export const SetPiece: React.FC<P> = (props) => {
 			return <Runs {...props} />;
 		case 'blocks':
 			return <Blocks {...props} />;
+		case 'board':
+			return <Board {...props} />;
 	}
 };
+
+// Any set can carry a `note` (which ranking, as of when); the board places its own at the top.
+export const SetPiece: React.FC<P> = (props) => (
+	<>
+		<Piece {...props} />
+		{props.scene.set !== 'board' ? <NoteTag text={props.scene.note} colors={props.colors} y={470} /> : null}
+	</>
+);
 

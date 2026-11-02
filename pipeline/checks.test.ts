@@ -171,3 +171,11 @@ test('real voiced duration is checked against brand limits', () => {
 	});
 	assert.ok(r.errors.some((e) => e.includes('the maximum is 50s')));
 });
+
+test('a document URL may carry a text fragment, but its page must still be a checked source', () => {
+	const doc = (url: string) => ({id: 's2', type: 'document', publisher: 'Example', quote: 'faster', url, say: 'Here is the page.', claims: ['C1']});
+	const ok = checkRun({storyboard: board([doc('https://example.com/a#:~:text=faster')]), ledger: ledger({claims: [{id: 'C0', text: 'x', status: 'verified'}, {id: 'C1', text: 'faster', status: 'verified', checked_sources: [{url: 'https://example.com/a', quote: '2.5x faster'}]}] as Ledger['claims']}), timing: null, brand});
+	assert.deepEqual(ok.errors, []);
+	const bad = checkRun({storyboard: board([doc('https://example.com/b#:~:text=faster')]), ledger: ledger(), timing: null, brand});
+	assert.ok(bad.errors.some((e) => e.includes('document URL is not one of the checked sources')));
+});

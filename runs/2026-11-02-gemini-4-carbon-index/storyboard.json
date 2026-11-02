@@ -1,0 +1,334 @@
+{
+  "title": "Google's new AI just ranked #1. You can't use it yet.",
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "hook",
+      "say": "Google's new AI just ranked number one.",
+      "kicker": "AI news",
+      "headline": "Ranked #1. Not public yet.",
+      "accent": "#1.",
+      "rows": [
+        {
+          "tag": "#1",
+          "label": "Gemini 4 Carbon (high)",
+          "value": 59,
+          "highlight": true,
+          "crown": true
+        }
+      ],
+      "note": "AA Index v5 · as of 2 Nov",
+      "emphasis": [
+        "Google's"
+      ],
+      "world": "blue",
+      "claims": [
+        "C2",
+        "C0",
+        "C9",
+        "C17"
+      ]
+    },
+    {
+      "id": "s2",
+      "type": "show",
+      "set": "locked",
+      "say": "You can't use it yet.",
+      "title": "Not public yet",
+      "emphasis": [
+        "can't"
+      ],
+      "transition": "flash",
+      "shake": true,
+      "world": "coral",
+      "claims": [
+        "C9",
+        "C0"
+      ]
+    },
+    {
+      "id": "s3",
+      "type": "document",
+      "say": "A small group of cyber defenders",
+      "publisher": "Google",
+      "quote": "Starting this week, we will make Carbon available to a subset of cyber defenders",
+      "highlight": "a subset of cyber defenders",
+      "date": "28 Oct 2026",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/#:~:text=a%20subset%20of%20cyber%20defenders",
+      "emphasis": [
+        "small"
+      ],
+      "transition": "slide",
+      "world": "sky",
+      "claims": [
+        "C9",
+        "C0"
+      ]
+    },
+    {
+      "id": "s4",
+      "type": "show",
+      "set": "versus",
+      "say": "gets it first.",
+      "title": "Defenders first",
+      "left": 3,
+      "winner": "left",
+      "transition": "whip",
+      "world": "teal",
+      "claims": [
+        "C9",
+        "C0"
+      ]
+    },
+    {
+      "id": "s5",
+      "type": "show",
+      "set": "parcel",
+      "say": "No date for everyone else.",
+      "title": "No date for everyone else",
+      "verdict": "Announced 28 Oct",
+      "transition": "zoom",
+      "world": "yellow",
+      "claims": [
+        "C9",
+        "C0"
+      ]
+    },
+    {
+      "id": "s6",
+      "type": "show",
+      "set": "blocks",
+      "say": "On the Artificial Analysis ranking,",
+      "title": "AA Index v5",
+      "left": 2,
+      "emphasis": [
+        "ranking"
+      ],
+      "transition": "slide",
+      "world": "teal",
+      "claims": [
+        "C2"
+      ]
+    },
+    {
+      "id": "s7",
+      "type": "show",
+      "set": "board",
+      "say": "Gemini four Carbon scores fifty-nine.",
+      "note": "AA Index v5 · as of 2 Nov",
+      "rows": [
+        {
+          "tag": "#1",
+          "label": "Gemini 4 Carbon (high)",
+          "value": 59,
+          "highlight": true,
+          "crown": true
+        },
+        {
+          "tag": "#2",
+          "label": "Claude Opus 5.5 (max)",
+          "value": 58,
+          "dim": true
+        }
+      ],
+      "winner": "left",
+      "transition": "zoom",
+      "world": "violet",
+      "claims": [
+        "C2",
+        "C3",
+        "C17"
+      ]
+    },
+    {
+      "id": "s8",
+      "type": "stat",
+      "say": "But Claude Opus five point five scores fifty-eight.",
+      "value": 58,
+      "label": "Claude Opus 5.5 (max)",
+      "context": "AA Index v5 · as of 2 Nov",
+      "emphasis": [
+        "But"
+      ],
+      "transition": "glitch",
+      "world": "blue",
+      "claims": [
+        "C17",
+        "C3"
+      ]
+    },
+    {
+      "id": "s9",
+      "type": "statement",
+      "say": "One point behind.",
+      "text": "Just 1 point apart · AA Index v5, as of 2 Nov",
+      "accent": "1 point",
+      "emphasis": [
+        "behind"
+      ],
+      "transition": "whip",
+      "world": "paper",
+      "claims": [
+        "C2",
+        "C3",
+        "C17"
+      ]
+    },
+    {
+      "id": "s10",
+      "type": "show",
+      "set": "board",
+      "say": "The day before Google announced Carbon,",
+      "note": "AA Index v5",
+      "rows": [
+        {
+          "tag": "27 Oct #1",
+          "label": "Claude Opus 5.5 (max)",
+          "value": 58,
+          "highlight": true,
+          "crown": true
+        },
+        {
+          "tag": "28 Oct #1",
+          "label": "Gemini 4 Carbon (high)",
+          "value": 59
+        }
+      ],
+      "emphasis": [
+        "day"
+      ],
+      "transition": "zoom",
+      "world": "teal",
+      "claims": [
+        "C4",
+        "C2",
+        "C17"
+      ]
+    },
+    {
+      "id": "s11",
+      "type": "document",
+      "say": "Claude Opus led this brand-new ranking.",
+      "publisher": "AA",
+      "quote": "Claude Opus 5.5 (max) leads at 58",
+      "highlight": "leads at 58",
+      "date": "27 Oct 2026",
+      "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5#:~:text=leads%20at%2058",
+      "emphasis": [
+        "led"
+      ],
+      "transition": "flash",
+      "world": "blue",
+      "claims": [
+        "C4",
+        "C3"
+      ]
+    },
+    {
+      "id": "s12",
+      "type": "show",
+      "set": "board",
+      "say": "But on Vals AI, another tester,",
+      "note": "Vals AI: #2 (about 70% accuracy) · as of 2 Nov",
+      "rows": [
+        {
+          "tag": "#1",
+          "label": "Claude Sonnet 5.5",
+          "crown": true
+        },
+        {
+          "tag": "#2",
+          "label": "Gemini 4 Carbon",
+          "highlight": true
+        }
+      ],
+      "winner": "right",
+      "emphasis": [
+        "another"
+      ],
+      "transition": "glitch",
+      "world": "sky",
+      "claims": [
+        "C16"
+      ]
+    },
+    {
+      "id": "s13",
+      "type": "catch",
+      "say": "Carbon ranks number two,",
+      "title": "The catch",
+      "text": "Carbon is #2 on Vals AI (about 70%)",
+      "transition": "flash",
+      "shake": true,
+      "world": "ink",
+      "claims": [
+        "C16"
+      ]
+    },
+    {
+      "id": "s14",
+      "type": "document",
+      "say": "behind Claude Sonnet five point five.",
+      "publisher": "Vals AI",
+      "quote": "behind Claude Sonnet 5.5",
+      "highlight": "Claude Sonnet 5.5",
+      "date": "as of 2 Nov",
+      "url": "https://www.vals.ai/models/google_gemini-4-carbon#:~:text=%232%20of%2029,Claude%20Sonnet%205.5",
+      "transition": "slide",
+      "world": "coral",
+      "claims": [
+        "C16"
+      ]
+    },
+    {
+      "id": "s15",
+      "type": "show",
+      "set": "meters",
+      "say": "So number one means one point, on one ranking.",
+      "title": "#1 = 1 point",
+      "labels": [
+        "#1",
+        "#2"
+      ],
+      "note": "AA Index v5 · as of 2 Nov",
+      "emphasis": [
+        "means"
+      ],
+      "transition": "zoom",
+      "world": "yellow",
+      "claims": [
+        "C2",
+        "C3",
+        "C16",
+        "C17"
+      ]
+    },
+    {
+      "id": "s16",
+      "type": "show",
+      "set": "tools",
+      "say": "When it opens up,",
+      "emphasis": [
+        "opens"
+      ],
+      "transition": "whip",
+      "world": "violet",
+      "claims": [
+        "C9"
+      ]
+    },
+    {
+      "id": "s17",
+      "type": "cta",
+      "say": "would you switch for a one-point lead? Yes or no?",
+      "prompt": "Would you switch for a 1-point lead?",
+      "sub": "Yes / No",
+      "transition": "flash",
+      "world": "sky",
+      "claims": [
+        "C9",
+        "C3"
+      ]
+    }
+  ]
+}

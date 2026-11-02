@@ -23,12 +23,28 @@ const base = {
 	world: z.enum(['blue', 'coral', 'yellow', 'teal', 'paper', 'violet', 'pink', 'sky', 'ink']).optional().describe('full-frame colour world; cycles if omitted'),
 };
 
+// One leaderboard row (the `board` set, and the hook's frame-1 picture). Labels are kept whole so qualifiers like
+// "(high)" or "(max)" never get cut off a model name.
+export const BoardRow = z.object({
+	label: words(4),
+	value: z.union([z.number(), z.string().max(10)]).optional(),
+	tag: z.string().max(10).optional().describe('rank badge; defaults to "#n" (e.g. "27 Oct #1")'),
+	highlight: z.boolean().optional().describe('the row the story is about: bright card'),
+	crown: z.boolean().optional().describe('a #1 crown drops onto this row'),
+	dim: z.boolean().optional().describe('lower contrast but still readable on a phone (never ghosted)'),
+});
+
+// Small permanent label for scope and date, e.g. "AA Index v5 · as of 2 Nov".
+const note = words(12).optional().describe('small permanent label: which ranking, as of when');
+
 export const HookScene = z.object({
 	...base,
 	type: z.literal('hook'),
 	headline: words(6),
 	accent: z.string().optional(),
 	kicker: words(4).optional(),
+	rows: z.array(BoardRow).min(1).max(2).optional().describe('leaderboard rows under the headline, so frame 1 shows the ranking'),
+	note,
 	// Optional picture under the headline so frame 1 shows the idea, e.g. 5 bots vs 1 bot.
 	matchup: z
 		.object({left: z.object({icon: z.enum(ICONS), count: z.number().int().min(1).max(6)}), right: z.object({icon: z.enum(ICONS), count: z.number().int().min(1).max(6)})})
@@ -168,7 +184,7 @@ export const BrollScene = z.object({
 	accent: z.string().optional(),
 });
 
-export const SETS = ['versus', 'tools', 'overload', 'lanes', 'meters', 'locked', 'combine', 'parcel', 'runs', 'blocks'] as const;
+export const SETS = ['versus', 'tools', 'overload', 'lanes', 'meters', 'locked', 'combine', 'parcel', 'runs', 'blocks', 'board'] as const;
 
 // An illustrated set piece: one giant animated idea with the robot character, almost no text.
 export const ShowScene = z.object({
@@ -180,6 +196,8 @@ export const ShowScene = z.object({
 	left: z.number().int().min(1).max(6).optional().describe('versus: size of the crowd; blocks: how many blocks'),
 	winner: z.enum(['left', 'right', 'none']).optional(),
 	labels: z.array(words(2)).max(2).optional().describe('meters: the two gauge labels'),
+	rows: z.array(BoardRow).min(1).max(3).optional().describe('board: leaderboard rows, top first'),
+	note,
 });
 
 export const Scene = z.discriminatedUnion('type', [
@@ -213,6 +231,7 @@ export const Storyboard = z
 		if (sb.scenes[0]?.type !== 'hook') ctx.addIssue({code: 'custom', message: 'the first scene must be a hook'});
 		if (sb.scenes.at(-1)?.type !== 'cta') ctx.addIssue({code: 'custom', message: 'the last scene must be a cta'});
 		sb.scenes.forEach((s, i) => {
+			if (s.type === 'show' && s.set === 'board' && !s.rows?.length) ctx.addIssue({code: 'custom', message: `${s.id}: the board set needs rows`});
 			if (i > 0 && !['statement', 'broll', 'show'].includes(s.type) && sb.scenes[i - 1].type === s.type)
 				ctx.addIssue({code: 'custom', message: `${s.id}: same scene type twice in a row (${s.type})`});
 		});

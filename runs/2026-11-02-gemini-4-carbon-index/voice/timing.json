@@ -1,0 +1,631 @@
+{
+  "fps": 30,
+  "scenes": [
+    {
+      "id": "s1",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s1.mp3",
+      "audioMs": 3057,
+      "durationInFrames": 94,
+      "words": [
+        {
+          "text": "Google's",
+          "startMs": 0,
+          "endMs": 436
+        },
+        {
+          "text": "new",
+          "startMs": 509,
+          "endMs": 655
+        },
+        {
+          "text": "AI",
+          "startMs": 727,
+          "endMs": 1309
+        },
+        {
+          "text": "just",
+          "startMs": 1527,
+          "endMs": 1673
+        },
+        {
+          "text": "ranked",
+          "startMs": 1745,
+          "endMs": 2036
+        },
+        {
+          "text": "number",
+          "startMs": 2109,
+          "endMs": 2327
+        },
+        {
+          "text": "one.",
+          "startMs": 2545,
+          "endMs": 3055
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s2.mp3",
+      "audioMs": 1604,
+      "durationInFrames": 50,
+      "words": [
+        {
+          "text": "You",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "can't",
+          "startMs": 218,
+          "endMs": 509
+        },
+        {
+          "text": "use",
+          "startMs": 582,
+          "endMs": 727
+        },
+        {
+          "text": "it",
+          "startMs": 800,
+          "endMs": 873
+        },
+        {
+          "text": "yet.",
+          "startMs": 945,
+          "endMs": 1600
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s3.mp3",
+      "audioMs": 1899,
+      "durationInFrames": 59,
+      "words": [
+        {
+          "text": "A",
+          "startMs": 0,
+          "endMs": 73
+        },
+        {
+          "text": "small",
+          "startMs": 218,
+          "endMs": 436
+        },
+        {
+          "text": "group",
+          "startMs": 509,
+          "endMs": 727
+        },
+        {
+          "text": "of",
+          "startMs": 836,
+          "endMs": 945
+        },
+        {
+          "text": "cyber",
+          "startMs": 1055,
+          "endMs": 1309
+        },
+        {
+          "text": "defenders",
+          "startMs": 1418,
+          "endMs": 1891
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s4.mp3",
+      "audioMs": 1386,
+      "durationInFrames": 44,
+      "words": [
+        {
+          "text": "gets",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "it",
+          "startMs": 327,
+          "endMs": 436
+        },
+        {
+          "text": "first.",
+          "startMs": 509,
+          "endMs": 1382
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s5.mp3",
+      "audioMs": 1825,
+      "durationInFrames": 57,
+      "words": [
+        {
+          "text": "No",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "date",
+          "startMs": 291,
+          "endMs": 509
+        },
+        {
+          "text": "for",
+          "startMs": 582,
+          "endMs": 655
+        },
+        {
+          "text": "everyone",
+          "startMs": 836,
+          "endMs": 1018
+        },
+        {
+          "text": "else.",
+          "startMs": 1091,
+          "endMs": 1891
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s6.mp3",
+      "audioMs": 2114,
+      "durationInFrames": 66,
+      "words": [
+        {
+          "text": "On",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "the",
+          "startMs": 218,
+          "endMs": 291
+        },
+        {
+          "text": "Artificial",
+          "startMs": 400,
+          "endMs": 800
+        },
+        {
+          "text": "Analysis",
+          "startMs": 873,
+          "endMs": 1382
+        },
+        {
+          "text": "ranking,",
+          "startMs": 1455,
+          "endMs": 2182
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s7.mp3",
+      "audioMs": 3059,
+      "durationInFrames": 94,
+      "words": [
+        {
+          "text": "Gemini",
+          "startMs": 0,
+          "endMs": 509
+        },
+        {
+          "text": "four",
+          "startMs": 655,
+          "endMs": 945
+        },
+        {
+          "text": "Carbon",
+          "startMs": 1200,
+          "endMs": 1455
+        },
+        {
+          "text": "scores",
+          "startMs": 1527,
+          "endMs": 1891
+        },
+        {
+          "text": "fifty-nine.",
+          "startMs": 1964,
+          "endMs": 3127
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s8.mp3",
+      "audioMs": 3484,
+      "durationInFrames": 107,
+      "words": [
+        {
+          "text": "But",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "Claude",
+          "startMs": 218,
+          "endMs": 509
+        },
+        {
+          "text": "Opus",
+          "startMs": 582,
+          "endMs": 873
+        },
+        {
+          "text": "five",
+          "startMs": 945,
+          "endMs": 1091
+        },
+        {
+          "text": "point",
+          "startMs": 1236,
+          "endMs": 1527
+        },
+        {
+          "text": "five",
+          "startMs": 1709,
+          "endMs": 1891
+        },
+        {
+          "text": "scores",
+          "startMs": 2036,
+          "endMs": 2400
+        },
+        {
+          "text": "fifty-eight.",
+          "startMs": 2436,
+          "endMs": 3491
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s9.mp3",
+      "audioMs": 1604,
+      "durationInFrames": 50,
+      "words": [
+        {
+          "text": "One",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "point",
+          "startMs": 364,
+          "endMs": 509
+        },
+        {
+          "text": "behind.",
+          "startMs": 582,
+          "endMs": 1600
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s10.mp3",
+      "audioMs": 2324,
+      "durationInFrames": 72,
+      "words": [
+        {
+          "text": "The",
+          "startMs": 0,
+          "endMs": 73
+        },
+        {
+          "text": "day",
+          "startMs": 145,
+          "endMs": 291
+        },
+        {
+          "text": "before",
+          "startMs": 364,
+          "endMs": 727
+        },
+        {
+          "text": "Google",
+          "startMs": 909,
+          "endMs": 1091
+        },
+        {
+          "text": "announced",
+          "startMs": 1164,
+          "endMs": 1455
+        },
+        {
+          "text": "Carbon,",
+          "startMs": 1527,
+          "endMs": 2400
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s11.mp3",
+      "audioMs": 2914,
+      "durationInFrames": 90,
+      "words": [
+        {
+          "text": "Claude",
+          "startMs": 0,
+          "endMs": 291
+        },
+        {
+          "text": "Opus",
+          "startMs": 364,
+          "endMs": 800
+        },
+        {
+          "text": "led",
+          "startMs": 945,
+          "endMs": 1091
+        },
+        {
+          "text": "this",
+          "startMs": 1200,
+          "endMs": 1309
+        },
+        {
+          "text": "brand-new",
+          "startMs": 1382,
+          "endMs": 1964
+        },
+        {
+          "text": "ranking.",
+          "startMs": 2036,
+          "endMs": 2909
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s12.mp3",
+      "audioMs": 2546,
+      "durationInFrames": 79,
+      "words": [
+        {
+          "text": "But",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "on",
+          "startMs": 218,
+          "endMs": 291
+        },
+        {
+          "text": "Vals",
+          "startMs": 364,
+          "endMs": 655
+        },
+        {
+          "text": "AI,",
+          "startMs": 800,
+          "endMs": 1491
+        },
+        {
+          "text": "another",
+          "startMs": 1527,
+          "endMs": 1818
+        },
+        {
+          "text": "tester,",
+          "startMs": 2182,
+          "endMs": 2618
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s13.mp3",
+      "audioMs": 1673,
+      "durationInFrames": 52,
+      "words": [
+        {
+          "text": "Carbon",
+          "startMs": 0,
+          "endMs": 291
+        },
+        {
+          "text": "ranks",
+          "startMs": 364,
+          "endMs": 655
+        },
+        {
+          "text": "number",
+          "startMs": 727,
+          "endMs": 1018
+        },
+        {
+          "text": "two,",
+          "startMs": 1091,
+          "endMs": 1745
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s14.mp3",
+      "audioMs": 2987,
+      "durationInFrames": 92,
+      "words": [
+        {
+          "text": "behind",
+          "startMs": 0,
+          "endMs": 364
+        },
+        {
+          "text": "Claude",
+          "startMs": 436,
+          "endMs": 727
+        },
+        {
+          "text": "Sonnet",
+          "startMs": 800,
+          "endMs": 1236
+        },
+        {
+          "text": "five",
+          "startMs": 1382,
+          "endMs": 1600
+        },
+        {
+          "text": "point",
+          "startMs": 1745,
+          "endMs": 1964
+        },
+        {
+          "text": "five.",
+          "startMs": 2036,
+          "endMs": 2982
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s15.mp3",
+      "audioMs": 3855,
+      "durationInFrames": 118,
+      "words": [
+        {
+          "text": "So",
+          "startMs": 0,
+          "endMs": 218
+        },
+        {
+          "text": "number",
+          "startMs": 436,
+          "endMs": 655
+        },
+        {
+          "text": "one",
+          "startMs": 727,
+          "endMs": 945
+        },
+        {
+          "text": "means",
+          "startMs": 1091,
+          "endMs": 1382
+        },
+        {
+          "text": "one",
+          "startMs": 1600,
+          "endMs": 1818
+        },
+        {
+          "text": "point,",
+          "startMs": 1891,
+          "endMs": 2545
+        },
+        {
+          "text": "on",
+          "startMs": 2655,
+          "endMs": 2764
+        },
+        {
+          "text": "one",
+          "startMs": 2909,
+          "endMs": 3127
+        },
+        {
+          "text": "ranking.",
+          "startMs": 3200,
+          "endMs": 3855
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s16.mp3",
+      "audioMs": 1170,
+      "durationInFrames": 37,
+      "words": [
+        {
+          "text": "When",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "it",
+          "startMs": 182,
+          "endMs": 218
+        },
+        {
+          "text": "opens",
+          "startMs": 291,
+          "endMs": 582
+        },
+        {
+          "text": "up,",
+          "startMs": 727,
+          "endMs": 1164
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "audio": "runs/2026-11-02-gemini-4-carbon-index/s17.mp3",
+      "audioMs": 3643,
+      "durationInFrames": 112,
+      "words": [
+        {
+          "text": "would",
+          "startMs": 0,
+          "endMs": 145
+        },
+        {
+          "text": "you",
+          "startMs": 218,
+          "endMs": 364
+        },
+        {
+          "text": "switch",
+          "startMs": 436,
+          "endMs": 727
+        },
+        {
+          "text": "for",
+          "startMs": 800,
+          "endMs": 873
+        },
+        {
+          "text": "a",
+          "startMs": 945,
+          "endMs": 1018
+        },
+        {
+          "text": "one-point",
+          "startMs": 1091,
+          "endMs": 1527
+        },
+        {
+          "text": "lead?",
+          "startMs": 1600,
+          "endMs": 2291
+        },
+        {
+          "text": "Yes",
+          "startMs": 2327,
+          "endMs": 2764
+        },
+        {
+          "text": "or",
+          "startMs": 2836,
+          "endMs": 2982
+        },
+        {
+          "text": "no?",
+          "startMs": 3127,
+          "endMs": 3709
+        }
+      ]
+    }
+  ]
+}

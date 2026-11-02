@@ -1,0 +1,339 @@
+{
+  "story": "Google's Gemini 4 Carbon, announced 28 Oct 2026, is #1 on Artificial Analysis's new Intelligence Index v5 with 59 points, one point ahead of Claude Opus 5.5, but only selected cyber defenders can use it.",
+  "input": "Google launched Gemini 4 Carbon on 28 October 2026 and says it ranks first on the Artificial Analysis Intelligence Index",
+  "publishable": true,
+  "kill_reason": null,
+  "mode": "news",
+  "checked_at": "2026-11-02",
+  "verdict_summary": "12 verified, 7 need softer wording, 0 unverified, 0 false. Premise holds: Google announced Carbon on 28 Oct 2026 (limited rollout to cyber defenders, not general availability) and both Google and Artificial Analysis put it #1 on Index v5 at 59 vs Claude Opus 5.5 at 58.",
+  "claims": [
+    {
+      "id": "C0",
+      "text": "Google launched Gemini 4 Carbon on 28 October 2026 and says it ranks first on the Artificial Analysis Intelligence Index",
+      "type": "premise",
+      "importance": "core",
+      "sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google)", "tier": 1, "quote": "Carbon ranks #1 on the recently updated v5.0 of Artificial Analysis Intelligence Index at 59.", "date": "2026-10-28"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Google announced Gemini 4 Carbon on 28 October 2026, rolling it out first to a small group of cyber defenders, and says it ranks #1 on the Artificial Analysis Intelligence Index.",
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), Koray Kavukcuoglu, 2026-10-28", "tier": 1, "quote": "Carbon ranks #1 on the recently updated v5.0 of Artificial Analysis Intelligence Index at 59."},
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google)", "tier": 1, "quote": "Starting this week, we will make Carbon available to a subset of cyber defenders"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5"},
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat (Carl Franzen), 2026-10-28", "tier": 3, "quote": "59 points, ahead of Claude Opus 5.5 at 58"}
+      ],
+      "note": "Premise is true. Google's post is dated 28 Oct 2026, by Koray Kavukcuoglu. The only problem is the word 'launched'. Access starts 'this week' for 'a subset of cyber defenders', and Google says it will reach developers, businesses and consumers only after more guardrail work. Google itself uses future tense ('will launch at the same introductory price'). Use 'announced' plus the limited-rollout qualifier, never 'launched' or 'out now' on its own."
+    },
+    {
+      "id": "C1",
+      "text": "Google announced Gemini 4 Carbon on 28 October 2026, describing it as its strongest model with state-of-the-art cybersecurity and long-horizon capabilities.",
+      "type": "event",
+      "importance": "core",
+      "sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google)", "tier": 1, "quote": "our strongest model with state-of-the-art cybersecurity and long horizon capabilities", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Gemini 4 Carbon is our strongest model with state-of-the-art cybersecurity and long horizon capabilities."},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder (Matthias Bastian), 2026-10-28", "tier": 3, "quote": "just two weeks after Argon"}
+      ],
+      "note": "Quote confirmed verbatim. 'Strongest' and 'state-of-the-art' are Google's own descriptions, and the claim already attributes them ('describing it as'). Keep that attribution on screen."
+    },
+    {
+      "id": "C2",
+      "text": "Gemini 4 Carbon (high reasoning) scores 59 on the Artificial Analysis Intelligence Index v5 and ranks #1.",
+      "type": "number",
+      "importance": "core",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "Gemini 4 Carbon scores 59 on Intelligence Index v5", "date": "2026-10-28"},
+        {"url": "https://artificialanalysis.ai/leaderboards/models", "publisher": "Artificial Analysis leaderboard (live, fetched 2026-11-02)", "tier": 2, "quote": "Gemini 4 Carbon (high)", "date": "2026-11-02"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "Gemini 4 Carbon scores 59 on Intelligence Index v5"},
+        {"url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index", "publisher": "Artificial Analysis Intelligence Index v5.0 page (fetched 2026-11-02)", "tier": 2, "quote": "Gemini 4 Carbon (High) scores the highest"},
+        {"url": "https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-claude-opus-5-5", "publisher": "Artificial Analysis comparison page (fetched 2026-11-02)", "tier": 2, "quote": "Gemini 4 Carbon (High) scores 59"},
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google)", "tier": 1, "quote": "Carbon ranks #1 on the recently updated v5.0 of Artificial Analysis Intelligence Index at 59."}
+      ],
+      "note": "I replaced the row-label-only quote with real score text. AA's article, the v5.0 evaluation page and the comparison page all show Carbon (High) at 59 and in first place. My own leaderboard fetch on 2026-11-02 also shows rank 1 'Gemini 4 Carbon (high)' at 59. The 59 applies to the high reasoning setting only. Carbon (medium) scores 58."
+    },
+    {
+      "id": "C3",
+      "text": "Carbon's lead is one point: Claude Opus 5.5 (max) scores 58 on Intelligence Index v5, versus Carbon's 59.",
+      "type": "comparison",
+      "importance": "core",
+      "sources": [
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat", "tier": 3, "quote": "first on its Intelligence Index v5.0 with 59 points, ahead of Claude Opus 5.5 at 58", "date": "2026-10-28"},
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis", "tier": 2, "quote": "Claude Opus 5.5 (max) leads at 58", "date": "2026-10-27"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-claude-opus-5-5", "publisher": "Artificial Analysis comparison page (fetched 2026-11-02)", "tier": 2, "quote": "Claude Opus 5.5 (Max, Default Fallback) at 58"},
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis, 2026-10-27", "tier": 2, "quote": "Claude Opus 5.5 (max) leads at 58"},
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat, 2026-10-28", "tier": 3, "quote": "59 points, ahead of Claude Opus 5.5 at 58"}
+      ],
+      "note": "The 59 vs 58 gap is confirmed by AA's comparison page, the v5.0 evaluation page and the live leaderboard, with VentureBeat as an independent outlet. AA labels Opus 'max' in its article and 'max with fallback' / 'Max, Default Fallback' on its live pages. It is the same 58-point entry. Carbon (medium) is also at 58, so 'one point ahead' applies only to Carbon (high)."
+    },
+    {
+      "id": "C4",
+      "text": "Artificial Analysis launched Intelligence Index v5 on 27 October 2026, one day before Carbon's announcement, and at launch Claude Opus 5.5 (max) led at 58.",
+      "type": "event",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis", "tier": 2, "quote": "Claude Opus 5.5 (max) leads at 58", "date": "2026-10-27"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis, dated 2026-10-27", "tier": 2, "quote": "Claude Opus 5.5 (max) leads at 58, ahead of GPT-6 Astra (max, 57) and GPT-6.1 Sol (max, 55)."},
+        {"url": "https://runtimewire.com/article/claude-opus-5-5-tops-artificial-analysis-revised-ai-index-with-58-points", "publisher": "RuntimeWire (Ryan Merket), 2026-10-28", "tier": 3, "quote": "October 27th update"}
+      ],
+      "note": "The article date (27 Oct) and the 58-point lead are confirmed, and RuntimeWire independently reports Opus 5.5 topping v5 with 58. 'One day before' matches the 28 Oct dates on Google's and AA's articles."
+    },
+    {
+      "id": "C5",
+      "text": "60% of Intelligence Index v5 is based on evaluations with private test sets or held-out answers, the first time a majority of the index is private.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis", "tier": 2, "quote": "60% of the Index is now based on evaluations with private test sets or held-out answers", "date": "2026-10-27"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "For the first time, the majority of the Index is built on private datasets.", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis, 2026-10-27", "tier": 2, "quote": "evaluations with private test sets or held-out answers"},
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis, 2026-10-27", "tier": 2, "quote": "For the first time, the majority of the Index is built on private datasets."}
+      ],
+      "note": "This is AA describing its own index, so AA is the primary source. The 60% figure and the 'first time' wording are both in the v5 launch article. If used on screen, attribute it to AA."
+    },
+    {
+      "id": "C6",
+      "text": "Intelligence Index v5.0 aggregates nine evaluations in four categories (Knowledge Work, Coding, Science, General), each weighted 25%.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index", "publisher": "Artificial Analysis", "tier": 2, "quote": "Four categories each contribute 25%: Knowledge Work, Coding, Science, and General.", "date": "2026-11-02"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index", "publisher": "Artificial Analysis v5.0 page (fetched 2026-11-02)", "tier": 2, "quote": "Four categories each contribute 25%: Knowledge Work, Coding, Science, and General."},
+        {"url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index", "publisher": "Artificial Analysis v5.0 page (fetched 2026-11-02)", "tier": 2, "quote": "Artificial Analysis Intelligence Index combines performance across nine evaluations"},
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis, 2026-10-27", "tier": 2, "quote": "v5 leaves significant room for progress across all nine evaluations, and no single model leads them all."}
+      ],
+      "note": "The evaluation page says it is 'aggregating nine challenging evaluations', and the v5 article lists them: Knowledge Work (AA-Briefcase, AutomationBench-AA, GDP.pdf), Coding (FrontierCode 2.0, Terminal-Bench 4.0), Science (Terminal-Bench-Science, CritPt v2), General (AA-Omniscience v1.1, HLE-Diamond). The research note's '2 new, 3 upgraded, 3 removed' also matches."
+    },
+    {
+      "id": "C7",
+      "text": "Carbon's predecessor Gemini 4 Argon scores 50 on Intelligence Index v5, 9 points below Carbon's 59.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder", "tier": 3, "quote": "Carbon tops the Artificial Analysis Intelligence Index v5 with 59 points, up from Argon's 50.", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5", "publisher": "Artificial Analysis, 2026-10-27", "tier": 2, "quote": "Gemini 4 Argon (high) is next at 50"},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder, 2026-10-28", "tier": 3, "quote": "Carbon tops the Artificial Analysis Intelligence Index v5 with 59 points, up from Argon's 50."}
+      ],
+      "note": "Traced upstream to AA's v5 article, which lists Gemini 4 Argon (high) at 50. Do NOT compare this with Argon's older 53, which came from AA's 30 Sep article on the pre-v5 index. Avoid the research note's 'in roughly two weeks' framing for the 9-point jump: AA was already scoring Argon on 30 Sep, four weeks before Carbon (see C8)."
+    },
+    {
+      "id": "C8",
+      "text": "Google released Carbon two weeks after Gemini 4 Argon.",
+      "type": "event",
+      "importance": "color",
+      "sources": [
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder", "tier": 3, "quote": "just two weeks after Argon", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Google says Carbon arrives two weeks after Gemini 4 Argon launched.",
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Building on Gemini 4 Argon, which was launched two weeks ago,"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-argon-google-top-three-labs", "publisher": "Artificial Analysis, 2026-09-30", "tier": 2, "quote": "scores 53 on the Artificial Analysis Intelligence Index"}
+      ],
+      "note": "The 'two weeks' comes from Google, and The Decoder repeats it. But Argon was publicly announced and benchmarked by AA on 30 Sep 2026, four weeks before Carbon. Secondary sources (not Google) put Argon's wider availability around 13 Oct, which matches Google's 'two weeks'. Carbon also wasn't 'released' in general (see C0). Attribute the timing to Google, or say 'two weeks after Argon's wider rollout'."
+    },
+    {
+      "id": "C9",
+      "text": "Carbon is not publicly available: Google is starting access with a subset of cyber defenders, with no date for developers or consumers.",
+      "type": "availability",
+      "importance": "core",
+      "sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google)", "tier": 1, "quote": "Starting this week, we will make Carbon available to a subset of cyber defenders.", "date": "2026-10-28"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "is being rolled out to selected users and is not yet publicly available", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Starting this week, we will make Carbon available to a subset of cyber defenders"},
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "before making Carbon available to developers, businesses, and consumers via our product surfaces as soon as possible."},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "is being rolled out to selected users and is not yet publicly available."}
+      ],
+      "note": "Confirmed by Google (tier 1) and independently by AA. Google gives no date, only 'as soon as possible'. Access will widen to 'additional trusted partners through our Fairwind Program'."
+    },
+    {
+      "id": "C10",
+      "text": "Carbon's introductory API price is $2 per million input tokens and $10 per million output tokens, rising later to $4 and $20, with no stated end date for the introductory period.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat", "tier": 3, "quote": "Google says Carbon will launch at $2 per million input tokens and $10 per million output tokens", "date": "2026-10-28"},
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat", "tier": 3, "quote": "Those rates are temporary: a footnote specifies subsequent prices of $4 and $20, respectively.", "date": "2026-10-28"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "$4/$20 per 1M input/output tokens, the same as Gemini 4 Argon's standard pricing", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Gemini 4 Carbon will launch at the same introductory price"},
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat, 2026-10-28", "tier": 3, "quote": "Google hasn't specified in its release blog post when Carbon's introductory period will end."},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "Google is offering a 50% launch discount, with no confirmed end date."}
+      ],
+      "note": "Google's post gives $2/$10 introductory pricing (cached input 95% off), then $4/$20 after the introductory period. VentureBeat and AA independently confirm there is no end date. Because Carbon isn't open to developers yet, frame it as 'when it opens up'."
+    },
+    {
+      "id": "C11",
+      "text": "Artificial Analysis says Carbon costs $7.76 per Intelligence Index task at standard pricing, about 23% less than Claude Opus 5.5.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "Carbon costs $7.76 per Intelligence Index task, ~23% less than Claude Opus 5.5", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "With standard pricing, Gemini 4 Carbon costs $7.76 per Intelligence Index task"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "~23% less than Claude Opus 5.5 (max, $10.04)"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "All our charts and figures use standard pricing for both Gemini 4 Carbon and Argon."}
+      ],
+      "note": "AA is the originator of this measurement, and the claim attributes it to AA. Arithmetic checks out: 7.76/10.04 = 0.773, so 22.7% less, about 23%. AA confirms the cost uses standard ($4/$20) pricing, not the discount."
+    },
+    {
+      "id": "C12",
+      "text": "Carbon uses 123k output tokens per Intelligence Index task, 29% fewer than Claude Opus 5.5 (max) at 173k.",
+      "type": "comparison",
+      "importance": "color",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "It uses 123k output tokens per task, 29% fewer than Claude Opus 5.5 (max, 173k).", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "According to Artificial Analysis, Carbon used 123k output tokens per Index task, 29% fewer than Claude Opus 5.5 (173k).",
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "It uses 123k output tokens per task, 29% fewer than Claude Opus 5.5 (max, 173k)."}
+      ],
+      "note": "Verbatim match, and the arithmetic holds (123/173 = 0.711). The figure exists only in AA's own measurement, so attribute it to AA on screen."
+    },
+    {
+      "id": "C13",
+      "text": "On AA-Omniscience, Carbon's answer accuracy rose from 48% to 58% versus Argon, but its hallucination rate rose from 4% to 11%.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder", "tier": 3, "quote": "Answer accuracy rises from 48 to 58 percent compared to Argon, while the hallucination rate climbs from four to 11 percent.", "date": "2026-10-28"},
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat", "tier": 3, "quote": "records a higher hallucination rate than Argon on a factual-knowledge test", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "On Artificial Analysis's AA-Omniscience test, Carbon's accuracy rose from 48% to 58% vs Argon, but its hallucination rate rose from 4% to 11%. That is still the second-lowest of any model AA tested (Claude Opus 5.5 and GPT-6 Astra: 50%).",
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "Accuracy (% correct) rises 10 points over Argon to 58%, while its hallucination rate rises from 4% to 11%."},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "This is still the second lowest of any model, behind only Argon,"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "compared with 50% for both Claude Opus 5.5 (max) and GPT-6 Astra (max)"},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder, 2026-10-28", "tier": 3, "quote": "Answer accuracy rises from 48 to 58 percent compared to Argon, while the hallucination rate climbs from four to 11 percent."}
+      ],
+      "note": "Traced upstream: AA's own article contains the figures, so this no longer depends on The Decoder alone. 48% is implied by AA's '10 points over Argon to 58%'. Softened only for fairness: '4% to 11%' without context misleads, because Carbon still hallucinates far less than its rivals. Always pair the rise with the 'second-lowest' context."
+    },
+    {
+      "id": "C14",
+      "text": "On Artificial Analysis's Coding Agent Index, Claude Code with Claude Opus 5.5 (max) scores 62, ahead of Carbon's 59.",
+      "type": "comparison",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis", "tier": 2, "quote": "Claude Code with Claude Opus 5.5 (max, 62)", "date": "2026-10-28"},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder", "tier": 3, "quote": "still trails Claude Opus 5.5 (62 points)", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "On Artificial Analysis's Coding Agent Index, Claude Code with Opus 5.5 scores 62, ahead of Carbon (in Google's Antigravity CLI) at 59.",
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "With Antigravity CLI, Gemini 4 Carbon (high) scores 59 only 3 points behind Claude Code"},
+        {"url": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1", "publisher": "Artificial Analysis, 2026-10-28", "tier": 2, "quote": "with Claude Opus 5.5 (max, 62) on the Artificial Analysis Coding Agent Index."},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder, 2026-10-28", "tier": 3, "quote": "still trails Claude Opus 5.5 (62 points)"}
+      ],
+      "note": "Numbers confirmed. This index scores agent+tool combinations: Carbon's 59 is with Antigravity CLI, Opus's 62 is with Claude Code. Name the harnesses. Also, this 59 is a different index from the Intelligence Index 59, so don't let the two blur on screen."
+    },
+    {
+      "id": "C15",
+      "text": "Google's cybersecurity benchmark results for Carbon are self-reported and were evaluated without guardrails: SEC-bench Pro 88.2%, ExploitGym 54.8%, CWE-bench 71.0%.",
+      "type": "number",
+      "importance": "color",
+      "sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google)", "tier": 1, "quote": "SEC-bench Pro", "date": "2026-10-28"},
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat", "tier": 3, "quote": "without guardrails.", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "Google reports Carbon scored 88.2% on SEC-bench Pro, 54.8% on ExploitGym and 71.0% on CWE-bench, tested without safety guardrails. These are Google's own numbers, not independently checked.",
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Carbon excels across key external benchmarks (evaluated without guardrails):"},
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "landing a firm lead in SEC-bench Pro (88.2%)"},
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Carbon sets a new state-of-the-art on the popular exploitation benchmark ExploitGym (54.8%)."},
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), 2026-10-28", "tier": 1, "quote": "Carbon reaches 71.0% on Collinear's CWE-bench"},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder, 2026-10-28", "tier": 3, "quote": "Google also cites internal results that can't be independently verified."}
+      ],
+      "note": "All three numbers and 'evaluated without guardrails' are verbatim in Google's post. The benchmarks are external, but Google ran and reported the scores itself, and I found no independent reproduction. Keep the 'Google reports' attribution. Don't call them 'state-of-the-art' unless you attribute that too."
+    },
+    {
+      "id": "C16",
+      "text": "On Vals AI's Vals Index, Carbon ranks #2, not #1, with 70.36% accuracy.",
+      "type": "comparison",
+      "importance": "color",
+      "sources": [
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder", "tier": 3, "quote": "Carbon's Vals AI accuracy is 70.36 percent", "date": "2026-10-28"}
+      ],
+      "status": "verified_with_wording",
+      "safe_text": "On Vals AI's Vals Index, Carbon ranks #2 (about 70%), just behind Claude Sonnet 5.5.",
+      "checked_sources": [
+        {"url": "https://www.vals.ai/models/google_gemini-4-carbon", "publisher": "Vals AI model page (fetched 2026-11-02)", "tier": 2, "quote": "behind Claude Sonnet 5.5 (70.85%)"},
+        {"url": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/", "publisher": "The Decoder, 2026-10-28", "tier": 3, "quote": "puts Carbon in second place at 70.36 percent accuracy, behind Claude Sonnet 5.5 (70.85 percent)."}
+      ],
+      "note": "I checked Vals AI's own page directly. It shows 70.45% ±0.97, #2 of 32, and its 28 Oct update says 70.36%, '#2 of 29'. The #2 rank is confirmed (behind Claude Sonnet 5.5). The score has moved: 70.36% in the 28 Oct update, 70.45% ±0.97 on the live page as of 2 Nov. Don't put an exact percentage on screen. Use 'about 70%' or just the rank. Note the leader here is Sonnet 5.5, not Opus."
+    },
+    {
+      "id": "C17",
+      "text": "As of 2 November 2026, the live Artificial Analysis leaderboard still lists Gemini 4 Carbon (high) at #1 with 59, ahead of Claude Opus 5.5 (max with fallback) at 58.",
+      "type": "number",
+      "importance": "supporting",
+      "sources": [
+        {"url": "https://artificialanalysis.ai/leaderboards/models", "publisher": "Artificial Analysis leaderboard (live, fetched 2026-11-02)", "tier": 2, "quote": "Gemini 4 Carbon (high)", "date": "2026-11-02"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://artificialanalysis.ai/leaderboards/models", "publisher": "Artificial Analysis leaderboard (re-fetched by fact-checker 2026-11-02)", "tier": 2, "quote": "1 Gemini 4 Carbon (high) 59; 2 Claude Opus 5.5 (max with fallback) 58; 3 Gemini 4 Carbon (medium) 58"},
+        {"url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index", "publisher": "Artificial Analysis v5.0 page (fetched 2026-11-02)", "tier": 2, "quote": "Gemini 4 Carbon (High) scores the highest"},
+        {"url": "https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-claude-opus-5-5", "publisher": "Artificial Analysis comparison page (fetched 2026-11-02)", "tier": 2, "quote": "Gemini 4 Carbon (High) is more intelligent."}
+      ],
+      "note": "My own re-fetch on 2026-11-02 matches: the leaderboard's top three are Carbon (high) 59, Opus 5.5 (max with fallback) 58, Carbon (medium) 58, followed by Opus 5.5 (xhigh with fallback) 57 and GPT-6 Astra (max) 57. The leaderboard shows no 'last updated' date, so say 'as of 2 Nov' and re-check before publishing if the reel ships later."
+    },
+    {
+      "id": "C18",
+      "text": "Google's Koray Kavukcuoglu said internal teams have seen Carbon run for days.",
+      "type": "quote",
+      "importance": "color",
+      "sources": [
+        {"url": "https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited", "publisher": "VentureBeat", "tier": 3, "quote": "Internally, our teams have seen Carbon run for days,", "date": "2026-10-28"}
+      ],
+      "status": "verified",
+      "safe_text": null,
+      "checked_sources": [
+        {"url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/", "publisher": "Google (blog.google), by Koray Kavukcuoglu, 2026-10-28", "tier": 1, "quote": "Internally, our teams have seen Carbon run for days to persist through dead ends"}
+      ],
+      "note": "Traced to the tier 1 origin. This is a line from Kavukcuoglu's bylined launch post, not a spoken quote, so say 'wrote' or 'Google's launch post says' rather than implying an interview. It is an anecdotal company claim with no independent check."
+    }
+  ]
+}

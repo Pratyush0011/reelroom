@@ -4,7 +4,7 @@ import React from 'react';
 import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {Robot} from './components/Robot';
 import {countUp, enter, formatNumber, lerp} from './motion';
-import {SetPiece} from './sets';
+import {BoardRow, NoteTag, SetPiece} from './sets';
 import type {Colors, ICONS, Scene, Word} from './schema';
 import {CONTENT, display, fitSize, mono, serif} from './theme';
 
@@ -89,7 +89,8 @@ const markAccent = (text: string, accent?: string) => {
 export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 	const frame = useCurrentFrame();
 	const tokens = markAccent(scene.headline, scene.accent);
-	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: scene.matchup ? 3 : 4, max: scene.matchup ? 126 : 168});
+	const busy = Boolean(scene.matchup || scene.rows?.length);
+	const size = fitSize(scene.headline, {maxWidth: CONTENT.width, maxLines: busy ? 3 : 4, max: busy ? 126 : 168});
 	// Frame 0 is the thumbnail, so the whole hook is already on screen and the words only settle in.
 	return (
 		<Stage gap={40}>
@@ -131,6 +132,15 @@ export const Hook: React.FC<P<'hook'>> = ({scene, colors, dur}) => {
 				})}
 			</div>
 			{scene.matchup ? <Matchup matchup={scene.matchup} colors={colors} start={8} /> : null}
+			{/* Rows are already in place on frame 0 (the thumbnail); only the crown drops in. */}
+			{scene.rows?.length ? (
+				<div style={{width: '100%', display: 'flex', flexDirection: 'column', gap: 24, marginTop: 34}}>
+					{scene.rows.map((r, i) => (
+						<BoardRow key={i} row={r} i={i} at={-12 + i * 4} colors={colors} compact still />
+					))}
+				</div>
+			) : null}
+			<NoteTag text={scene.note} colors={colors} />
 		</Stage>
 	);
 };
